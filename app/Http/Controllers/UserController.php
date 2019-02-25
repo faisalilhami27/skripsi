@@ -40,9 +40,6 @@ class UserController extends Controller
         $level = $request->level;
         $status = $request->status;
         $images = $request->file('images');
-//        $fileName = $images->getClientOriginalName();
-//        $path = 'storage/img';
-//        $images->move($path, $fileName);
 
         $insert = UserModel::create([
             'nama' => $nama,

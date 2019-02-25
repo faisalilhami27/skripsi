@@ -43,13 +43,12 @@ class ProfileController extends Controller
             $pathDelete = "storage/img/" . $images;
             unlink($pathDelete);
 
-            $fileName = $file->getClientOriginalName();
-            $path = 'storage/img';
-            $file->move($path, $fileName);
             $update = UserModel::findOrFail($id)->update([
                'nama' => $nama,
                'email' => $email,
-               'images' => $fileName
+               'images' => $file->store(
+                   'img','public'
+               )
             ]);
         } else {
             $update = UserModel::findOrFail($id)->update([
