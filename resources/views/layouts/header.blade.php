@@ -30,7 +30,7 @@
     <link rel="stylesheet" href="{{ asset('css/elephant.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/application.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css">
     <style>
         /* scroller browser */
         ::-webkit-scrollbar {

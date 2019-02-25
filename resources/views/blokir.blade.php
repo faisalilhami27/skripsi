@@ -17,7 +17,7 @@
     <meta name="twitter:title" content="The fastest way to build Modern Admin APPS for any platform, browser, or device.">
     <meta name="twitter:description" content="Elephant is an admin template that helps you build modern Admin Applications, professionally fast! Built on top of Bootstrap, it includes a large collection of HTML, CSS and JS components that are simple to use and easy to customize.">
     <meta name="twitter:image" content="http://demo.madebytilde.com/elephant.jpg">
-    <link rel="icon" type="image/png" href="{{ asset('img/icon.png') }}" sizes="32x32">
+    <link rel="icon" type="image/png" href="{{ asset('img/logo2.png') }}" sizes="32x32">
     <meta name="theme-color" content="#1d2a39">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,700">
     <link rel="stylesheet" href="{{ asset('css/vendor.min.css') }}">
@@ -40,7 +40,7 @@
         </p>
     </div>
 </div>
-<script src="{{ asset('assets/js/vendor.min.js') }}"></script>
-<script src="{{ asset('assets/js/elephant.min.js') }}"></script>
+<script src="{{ asset('js/vendor.min.js') }}"></script>
+<script src="{{ asset('js/elephant.min.js') }}"></script>
 </body>
 </html>
