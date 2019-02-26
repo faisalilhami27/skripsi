@@ -55,7 +55,7 @@
     </div>
 </div>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
 <script src="{{ asset('js/vendor.min.js') }}"></script>
 <script src="{{ asset('js/elephant.min.js') }}"></script>
 <script src="{{ asset('js/script.js') }}"></script>
