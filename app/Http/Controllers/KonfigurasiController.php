@@ -71,18 +71,16 @@ class KonfigurasiController extends Controller
             }
         } else {
             $kode = "LOGO_PERUSAHAAN";
-            $fileName = $file->getClientOriginalName();
 
             $data = [
-              'nilai_konfig' => $fileName
+              'nilai_konfig' => $file->store('path', 'public')
             ];
 
             if ($file->getSize() > 1000000) {
                 return response()->json(["status" => 449, "msg" => "Maksimal file adalah 1 MB"]);
             } else {
                 $update = KonfigurasiModel::where('kode_konfig', $kode)->update($data);
-                $path = "storage/img";
-                $file->move($path, $fileName);
+
                 if ($update) {
                     return response()->json(['status' => 200, 'msg' => 'Data berhasil diubah otomatis']);
                 } else {
