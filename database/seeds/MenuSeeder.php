@@ -67,13 +67,6 @@ class MenuSeeder extends Seeder
                 'icon' => 'icon icon-mobile',
                 'is_main_menu' => 0,
                 'is_aktif' => 'y'
-            ],
-            [
-                'title' => 'Profile',
-                'url' => 'profile',
-                'icon' => 'icon icon-user',
-                'is_main_menu' => 0,
-                'is_aktif' => 'n'
             ]
         ]);
     }
