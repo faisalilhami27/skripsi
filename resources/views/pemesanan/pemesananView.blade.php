@@ -145,7 +145,7 @@
                                 </span>
                             </div>
                             <div class="form-group">
-                                <label for="upd_uang">Total Pemabayaran</label>
+                                <label for="upd_uang">Total Pembayaran</label>
                                 <input id="upd_uang" name="upd_uang" class="form-control" readonly type="text"
                                        placeholder="Masukan jumlah uang">
                                 <span class="text-danger">
@@ -433,15 +433,17 @@
             });
 
             $("#btnRefresh").click(function () {
-                table.ajax.reload();(null, false);
+                table.ajax.reload();
+                (null, false);
             });
 
-            // setInterval(function () {
-            //     table.ajax.reload();(null, false);
-            // }, 15000);
+            setInterval(function () {
+                table.ajax.reload();
+            }, 15000);
 
             $("#btnTiket1").click(function () {
                 var tiket = 1;
+                var pembayaran = $("#ins_pembayaran").val();
                 var harga = "{{ $konfig[2]->nilai_konfig }}";
                 var total = tiket * harga;
                 var reverse = total.toString().split('').reverse().join(''),
@@ -449,10 +451,21 @@
                 ribuan = ribuan.join('.').split('').reverse().join('');
                 $("#ins_uang").val(ribuan);
                 $("#ins_tiket").val(tiket);
+                if (pembayaran == '') {
+                    $("#ins_kembalian").val('');
+                } else {
+                    var bayar = pembayaran.split('.').join('');
+                    var kembalian = bayar - total;
+                    var uangKembalian = kembalian.toString().split('').reverse().join(''),
+                        ribuan = uangKembalian.match(/\d{1,3}/g);
+                    ribuan = ribuan.join('.').split('').reverse().join('');
+                    $("#ins_kembalian").val(ribuan);
+                }
             });
 
             $("#btnTiket2").click(function () {
                 var tiket = 2;
+                var pembayaran = $("#ins_pembayaran").val();
                 var harga = "{{ $konfig[2]->nilai_konfig }}";
                 var total = tiket * harga;
                 var reverse = total.toString().split('').reverse().join(''),
@@ -460,10 +473,21 @@
                 ribuan = ribuan.join('.').split('').reverse().join('');
                 $("#ins_uang").val(ribuan);
                 $("#ins_tiket").val(tiket);
+                if (pembayaran == '') {
+                    $("#ins_kembalian").val('');
+                } else {
+                    var bayar = pembayaran.split('.').join('');
+                    var kembalian = bayar - total;
+                    var uangKembalian = kembalian.toString().split('').reverse().join(''),
+                        ribuan = uangKembalian.match(/\d{1,3}/g);
+                    ribuan = ribuan.join('.').split('').reverse().join('');
+                    $("#ins_kembalian").val(ribuan);
+                }
             });
 
             $("#btnTiket3").click(function () {
                 var tiket = 3;
+                var pembayaran = $("#ins_pembayaran").val();
                 var harga = "{{ $konfig[2]->nilai_konfig }}";
                 var total = tiket * harga;
                 var reverse = total.toString().split('').reverse().join(''),
@@ -471,10 +495,21 @@
                 ribuan = ribuan.join('.').split('').reverse().join('');
                 $("#ins_uang").val(ribuan);
                 $("#ins_tiket").val(tiket);
+                if (pembayaran == '') {
+                    $("#ins_kembalian").val('');
+                } else {
+                    var bayar = pembayaran.split('.').join('');
+                    var kembalian = bayar - total;
+                    var uangKembalian = kembalian.toString().split('').reverse().join(''),
+                        ribuan = uangKembalian.match(/\d{1,3}/g);
+                    ribuan = ribuan.join('.').split('').reverse().join('');
+                    $("#ins_kembalian").val(ribuan);
+                }
             });
 
             $("#btnTiket4").click(function () {
                 var tiket = 4;
+                var pembayaran = $("#ins_pembayaran").val();
                 var harga = "{{ $konfig[2]->nilai_konfig }}";
                 var total = tiket * harga;
                 var reverse = total.toString().split('').reverse().join(''),
@@ -482,6 +517,16 @@
                 ribuan = ribuan.join('.').split('').reverse().join('');
                 $("#ins_uang").val(ribuan);
                 $("#ins_tiket").val(tiket);
+                if (pembayaran == '') {
+                    $("#ins_kembalian").val('');
+                } else {
+                    var bayar = pembayaran.split('.').join('');
+                    var kembalian = bayar - total;
+                    var uangKembalian = kembalian.toString().split('').reverse().join(''),
+                        ribuan = uangKembalian.match(/\d{1,3}/g);
+                    ribuan = ribuan.join('.').split('').reverse().join('');
+                    $("#ins_kembalian").val(ribuan);
+                }
             });
         });
     </script>
