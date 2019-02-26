@@ -22,6 +22,9 @@ class CheckingRoleUser
             return redirect('auth');
         } else {
             $modul = Request::segment(1);
+            if ($modul == "") {
+                $modul = "dashboard";
+            }
             $idUserLevel = $request->session()->get('id_user_level');
             $menu = MenuModel::where('url', $modul)->first();
             $idMenu = $menu['id'];

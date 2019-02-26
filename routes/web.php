@@ -94,3 +94,11 @@ Route::group(['prefix' => 'profile'], function (){
     Route::put('/changepassword', 'ProfileController@changePassword');
 });
 
+Route::group(['prefix' => 'mobile'], function () {
+    Route::get('/', 'KonfigurasiMobileController@index');
+    Route::get('/json', 'KonfigurasiMobileController@datatable');
+    Route::get('/getMobile', 'KonfigurasiMobileController@edit');
+    Route::post('/insert/', 'KonfigurasiMobileController@store');
+    Route::put('/update', 'KonfigurasiMobileController@update');
+    Route::delete('/delete', 'KonfigurasiMobileController@destroy');
+});

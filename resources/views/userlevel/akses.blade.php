@@ -129,7 +129,7 @@
                             toastr.success(data.msg);
                             setTimeout(function () {
                                 location.reload();
-                            }, 1000);
+                            }, 2000);
                         },
                         error: function (xhr, status, error) {
                             alert(status + " : " + error);
@@ -169,9 +169,9 @@
                                 "hideMethod": "fadeOut"
                             };
                             toastr.success(data.msg);
-                            setTimeout(function () {
+                             setTimeout(function () {
                                 location.reload();
-                            }, 1000);
+                            }, 2000);
                         },
                         error: function (xhr, status, error) {
                             alert(status + " : " + error);
@@ -211,9 +211,9 @@
                                 "hideMethod": "fadeOut"
                             };
                             toastr.success(data.msg);
-                            setTimeout(function () {
+                             setTimeout(function () {
                                 location.reload();
-                            }, 1000);
+                            }, 2000);
                         },
                         error: function (xhr, status, error) {
                             alert(status + " : " + error);
@@ -253,9 +253,9 @@
                                 "hideMethod": "fadeOut"
                             };
                             toastr.success(data.msg);
-                            setTimeout(function () {
+                             setTimeout(function () {
                                 location.reload();
-                            }, 1000);
+                            }, 2000);
                         },
                         error: function (xhr, status, error) {
                             alert(status + " : " + error);
@@ -295,9 +295,9 @@
                             "hideMethod": "fadeOut"
                         };
                         toastr.success(data.msg);
-                        setTimeout(function () {
-                            location.reload();
-                        }, 1000);
+                         setTimeout(function () {
+                                location.reload();
+                            }, 2000);
                     },
                     error: function (xhr, status, error) {
                         alert(status + " : " + error);

@@ -15,7 +15,7 @@ class UserModel extends Model
 
     public function userLevel()
     {
-        return $this->hasOne(UserLevelModel::class, 'id');
+        return $this->hasOne(UserLevelModel::class, 'id', 'id_user_level');
     }
 
     public function pemesanan()

@@ -6,6 +6,7 @@ use App\Models\UserModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
 {
@@ -40,21 +41,38 @@ class ProfileController extends Controller
         if (!is_null($file)) {
             $user = UserModel::find($id)->first();
             $images = $user->images;
-            $pathDelete = "storage/img/" . $images;
-            unlink($pathDelete);
 
-            $update = UserModel::findOrFail($id)->update([
-               'nama' => $nama,
-               'email' => $email,
-               'images' => $file->store(
-                   'img','public'
-               )
-            ]);
+            if (is_null($images)) {
+                $update = UserModel::findOrFail($id)->update([
+                    'nama' => $nama,
+                    'email' => $email,
+                    'images' => $file->store(
+                        'img','public'
+                    )
+                ]);
+            } else {
+                $pathDelete = "storage/" . $images;
+                unlink($pathDelete);
+
+                $update = UserModel::findOrFail($id)->update([
+                    'nama' => $nama,
+                    'email' => $email,
+                    'images' => $file->store(
+                        'img','public'
+                    )
+                ]);
+            }
+            Session::put('images', $file->store(
+                'img','public'
+            ));
         } else {
             $update = UserModel::findOrFail($id)->update([
                 'nama' => $nama,
                 'email' => $email,
             ]);
+
+            Session::put('nama_lengkap', $nama);
+            Session::put('email', $email);
         }
 
         if ($update) {

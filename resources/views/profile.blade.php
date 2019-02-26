@@ -141,7 +141,7 @@
                             <div class="tab-pane fade active in" id="home-11">
                                 <div class="profile-avetar">
                                     <img class="img-circle"
-                                         src="{{ asset('storage/img/' . $user['images']) }}"
+                                         src="{{ asset('storage/' . $user['images']) }}"
                                          width="128px" height="128px"
                                          style="margin-left: 38%; border: 3px solid #FFFFFF" alt="Profile">
                                 </div>

@@ -83,7 +83,7 @@
                 <span class="arrow-up"></span>
                 <span class="ellipsis ellipsis-vertical">
               <img class="ellipsis-object" width="32" height="32"
-                   src="{{ asset('storage/img/' . Session::get('images')) }}"
+                   src="{{ asset('storage/' . Session::get('images')) }}"
                    alt="Teddy Wilson">
             </span>
             </button>
@@ -132,7 +132,7 @@
                     <li class="dropdown hidden-xs">
                         <button class="navbar-account-btn" data-toggle="dropdown" aria-haspopup="true">
                             <img class="circle" width="36" height="36"
-                                 src="{{ asset('storage/img/'. Session::get('images'))}}"
+                                 src="{{ asset('storage/'. Session::get('images'))}}"
                                  alt="test"> {{ Session::get('nama_lengkap') }}
                             <span class="caret"></span>
                         </button>

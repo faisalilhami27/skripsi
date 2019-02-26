@@ -7,6 +7,7 @@ use App\Models\KonfigurasiModel;
 use App\Models\PemesananModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 use LaravelQRCode\Facades\QRCode;
 use Yajra\DataTables\DataTables;
 
@@ -49,6 +50,7 @@ class PemesananController extends Controller
             $generate = "TRS-" . date('d') . "-" . $kode;
             $qrCode = $generate . ".png";
             $path = "storage/qr_code/" . $qrCode;
+            Storage::makeDirectory('qr_code');
             QRCode::text($generate)
                 ->setErrorCorrectionLevel("H")
                 ->setSize(10)

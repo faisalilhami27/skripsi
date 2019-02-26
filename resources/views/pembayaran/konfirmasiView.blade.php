@@ -189,9 +189,7 @@
                     success: function (data) {
                         $("#infoModalColoredHeader1").modal('hide');
                         notification(data.status, data.msg);
-                        setTimeout(function () {
-                            location.reload();
-                        }, 1000);
+                        table.ajax.reload();
                     },
                     error: function (resp) {
                         if (_.has(resp.responseJSON, 'errors')) {
@@ -234,9 +232,7 @@
                                     dataType: "json",
                                     success: function (data) {
                                         notification(data.status, data.msg);
-                                        setTimeout(function () {
-                                            location.reload();
-                                        }, 1000);
+                                        table.ajax.reload();
                                     },
                                     error: function (xhr, status, error) {
                                         alert(status + " : " + error);

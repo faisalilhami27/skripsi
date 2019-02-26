@@ -6,9 +6,9 @@ use App\Http\Requests\UserRequest;
 use App\Models\KonfigurasiModel;
 use App\Models\UserLevelModel;
 use App\Models\UserModel;
-use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\DataTables;
 
 class UserController extends Controller
