@@ -49,9 +49,9 @@ if (!function_exists('sidebar')) {
 							<ul class='sidenav level-2 collapse'>";
                 foreach ($subMenu as $sub) {
                     if ($page == $sub->url) {
-                        echo "<li class='active'>" . "<a href='" . URL($sub->url) . "'>" . strtoupper($sub->title) . "</a></li>";
+                        echo "<li class='active'>" . "<a href='" . URL($sub->url) . "'  style='cursor: pointer'>" .  '<span class="'. $sub->icon .'"></span>' . strtoupper($sub->title) . "</a></li>";
                     } else {
-                        echo "<li>" . "<a href='" . URL($sub->url) . "'>" . strtoupper($sub->title) . "</a></li>";
+                        echo "<li>" . "<a href='" . URL($sub->url) . "'  style='cursor: pointer'>" . '<span class="'. $sub->icon .'"></span>' . strtoupper($sub->title) . "</a></li>";
                     }
                 }
                 echo " </ul>

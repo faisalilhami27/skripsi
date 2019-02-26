@@ -139,11 +139,18 @@
                         </ul>
                         <div class="tab-content">
                             <div class="tab-pane fade active in" id="home-11">
-                                <div class="profile-avetar">
-                                    <img class="img-circle"
-                                         src="{{ asset('storage/' . $user['images']) }}"
-                                         width="128px" height="128px"
-                                         style="margin-left: 38%; border: 3px solid #FFFFFF" alt="Profile">
+                                <div class="profile-avatar">
+                                    @if(is_null($user['images']))
+                                        <img class="img-circle"
+                                             src="{{ asset('img/no_image.svg') }}"
+                                             width="128px" height="128px"
+                                             style="margin-left: 38%; border: 3px solid #FFFFFF" alt="Profile">
+                                    @else
+                                        <img class="img-circle"
+                                             src="{{ asset('storage/' . $user['images']) }}"
+                                             width="128px" height="128px"
+                                             style="margin-left: 38%; border: 3px solid #FFFFFF" alt="Profile">
+                                    @endif
                                 </div>
                                 <div class="card-body">
                                     <h3 class="card-title text-center">{{ $user['nama'] }}</h3>

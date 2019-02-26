@@ -258,13 +258,24 @@
 
             $("#ins_tiket, #upd_tiket").keyup(function () {
                 var jml_tiket = $(this).val();
-                var jml_uang = jml_tiket * "{{ $konfig[2]->nilai_konfig }}";
-                var bilangan = jml_uang;
+                if (jml_tiket <= 0) {
+                    $("#tiket-error").html('can not be 0 or negative');
+                    $("#tiket-error").css('color', 'red');
+                    $("#tiket-error").fadeIn(1000);
+                    $("#tiket-error").fadeOut(5000);
+                    $("#btn-insert-data").attr("disabled", 'disabled');
+                } else {
+                    $("#tiket-error").html('');
+                    $("#btn-insert-data").removeAttr("disabled");
 
-                var reverse = bilangan.toString().split('').reverse().join(''),
-                    ribuan = reverse.match(/\d{1,3}/g);
-                ribuan = ribuan.join('.').split('').reverse().join('');
-                $("#ins_uang, #upd_uang").val(ribuan);
+                    var jml_uang = jml_tiket * "{{ $konfig[2]->nilai_konfig }}";
+                    var bilangan = jml_uang;
+
+                    var reverse = bilangan.toString().split('').reverse().join(''),
+                        ribuan = reverse.match(/\d{1,3}/g);
+                    ribuan = ribuan.join('.').split('').reverse().join('');
+                    $("#ins_uang, #upd_uang").val(ribuan);
+                }
             });
 
             $('#ins_pembayaran').keyup(function () {

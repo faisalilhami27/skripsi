@@ -104,7 +104,7 @@
                 </button>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="visible-xs-block">
-                        <h4 class="navbar-text text-center">Hi, Teddy Wilson</h4>
+                        <h4 class="navbar-text text-center">Hi, {{ Session::get('nama_lengkap') }}</h4>
                     </li>
                     <li class="dropdown oces">
                         <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true">
@@ -131,10 +131,17 @@
                     </li>
                     <li class="dropdown hidden-xs">
                         <button class="navbar-account-btn" data-toggle="dropdown" aria-haspopup="true">
-                            <img class="circle" width="36" height="36"
-                                 src="{{ asset('storage/'. Session::get('images'))}}"
-                                 alt="test"> {{ Session::get('nama_lengkap') }}
-                            <span class="caret"></span>
+                            @if(is_null(Session::get('images')))
+                                <img class="circle" width="36" height="36"
+                                     src="{{ asset('img/no_image.svg') }}"
+                                     alt="test"> {{ Session::get('nama_lengkap') }}
+                                <span class="caret"></span>
+                            @else
+                                <img class="circle" width="36" height="36"
+                                     src="{{ asset('storage/'. Session::get('images'))}}"
+                                     alt="test"> {{ Session::get('nama_lengkap') }}
+                                <span class="caret"></span>
+                            @endif
                         </button>
                         <ul class="dropdown-menu dropdown-menu-right">
                             <li class="navbar-upgrade-version"> Version {{ versionApp() }}</li>
