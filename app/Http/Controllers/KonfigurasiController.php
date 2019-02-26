@@ -62,7 +62,11 @@ class KonfigurasiController extends Controller
                 $kode = "HARGA_TIKET";
             }
 
-            $update = KonfigurasiModel::where('kode_konfig', $kode)->update($data);
+            if ($kode == '' && $data == '') {
+                return response()->json(['status' => 449]);
+            } else {
+                $update = KonfigurasiModel::where('kode_konfig', $kode)->update($data);
+            }
 
             if ($update) {
                 return response()->json(['status' => 200, 'msg' => 'Data berhasil diubah otomatis']);

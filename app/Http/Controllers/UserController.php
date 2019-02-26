@@ -106,8 +106,9 @@ class UserController extends Controller
     public function resetPassword(Request $request)
     {
         $id = $request->id;
-        $konfigurasi = KonfigurasiModel::first();
-        $password = Hash::make($konfigurasi->reset_password);
+        $konfigurasi = KonfigurasiModel::get();
+
+        $password = Hash::make($konfigurasi[7]->nilai_konfig);
 
         $data = [
           'password' => $password
