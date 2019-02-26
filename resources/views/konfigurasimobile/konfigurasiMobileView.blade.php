@@ -151,7 +151,7 @@
                 },
 
                 images: function (row, type, data) {
-                    return `<img src="{{ asset('storage/')}} /${data.images}" width="60px" height="60px">`;
+                    return `<img src="{{ asset('storage')}} /${data.images}" width="60px" height="60px">`;
                 }
             };
 
