@@ -72,8 +72,8 @@
                                 </span>
                             </div>
                             <div class="form-group">
-                                <label for="demo-select2-1" class="form-label">Main Menu</label>
-                                <select id="demo-select2-1" name="main_menu" class="form-control">
+                                <label for="demo-select2-2" class="form-label">Main Menu</label>
+                                <select id="demo-select2-2" name="main_menu" class="form-control">
                                     <option value="">-- Pilih Main Menu --</option>
                                     <option value="0">Main Menu</option>
                                     @foreach($menu as $m)
@@ -85,8 +85,8 @@
                                 </span>
                             </div>
                             <div class="form-group">
-                                <label for="demo-select2-2" class="form-label">Status</label>
-                                <select id="demo-select2-2" name="status" class="form-control">
+                                <label for="demo-select2-1" class="form-label">Status</label>
+                                <select id="demo-select2-1" name="status" class="form-control">
                                     <option value="">-- Pilih Status --</option>
                                     <option value="y">Aktif</option>
                                     <option value="n">Tidak</option>
@@ -145,7 +145,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="upd_main_menu" class="form-label">Main Menu</label>
-                                <select id="upd_main_menu" name="main_menu" class="form-control">
+                                <select id="upd_main_menu demo-select2-2" name="main_menu" class="form-control">
                                     <option value="">-- Pilih Main Menu --</option>
                                     <option value="0">Main Menu</option>
                                     @foreach($menu as $m)
@@ -254,8 +254,8 @@
                     var title = $("#title").val(),
                         url = $("#url").val(),
                         icon = $("#icon").val(),
-                        menu = $("#demo-select2-1").val(),
-                        status = $("#demo-select2-2").val(),
+                        menu = $("#demo-select2-2").val(),
+                        status = $("#demo-select2-1").val(),
                         sendData = "title=" + title + "&url=" + url + "&icon=" + icon + "&is_main_menu=" + menu + "&is_aktif=" + status;
 
                     $.ajax({

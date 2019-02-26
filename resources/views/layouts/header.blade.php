@@ -82,9 +82,15 @@
                 <span class="sr-only">Toggle navigation</span>
                 <span class="arrow-up"></span>
                 <span class="ellipsis ellipsis-vertical">
-              <img class="ellipsis-object" width="32" height="32"
-                   src="{{ asset('storage/' . Session::get('images')) }}"
-                   alt="Teddy Wilson">
+                    @if(is_null(Session::get('images')))
+                        <img class="ellipsis-object" width="32" height="32"
+                             src="{{ asset('img/no_image.svg') }}"
+                             alt="Profile">
+                    @else
+                        <img class="ellipsis-object" width="32" height="32"
+                             src="{{ asset('storage/'. Session::get('images'))}}"
+                             alt="Teddy Wilson">
+                    @endif
             </span>
             </button>
         </div>
@@ -165,7 +171,7 @@
                     <li class="visible-xs-block">
                         <a href="contacts.html">
                             <span class="icon icon-level-up icon-lg icon-fw"></span>
-                            Version
+                            Version {{ versionApp() }}
                         </a>
                     </li>
                 </ul>
