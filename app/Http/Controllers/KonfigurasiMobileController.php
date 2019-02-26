@@ -68,7 +68,7 @@ class KonfigurasiMobileController extends Controller
                 'title' => $title,
             ]);
         } else {
-            $pathDelete = "storage/img/" . $getData->images;
+            $pathDelete = "storage/" . $getData->images;
             unlink($pathDelete);
 
             $update = KonfigurasiMobileModel::findOrFile($id)->update([
