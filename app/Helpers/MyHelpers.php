@@ -243,3 +243,11 @@ if (!function_exists('version')) {
         return $query[8]->nilai_konfig;
     }
 }
+
+if (!function_exists('checkProfile')) {
+    function checkProfile()
+    {
+        $query = Session::get('login');
+        return $query;
+    }
+}

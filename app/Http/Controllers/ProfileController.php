@@ -6,13 +6,17 @@ use App\Models\UserModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('checkRole');
+        $this->middleware(function ($request, $next) {
+            if (!$request->session()->get('login')) {
+                return redirect('auth');
+            }
+            return $next($request);
+        });
     }
 
     public function index()
