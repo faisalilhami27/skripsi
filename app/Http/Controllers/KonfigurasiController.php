@@ -73,7 +73,7 @@ class KonfigurasiController extends Controller
             $kode = "LOGO_PERUSAHAAN";
 
             $data = [
-              'nilai_konfig' => $file->store('path', 'public')
+              'nilai_konfig' => $file->store('img', 'public')
             ];
 
             if ($file->getSize() > 1000000) {

@@ -151,7 +151,7 @@
                         </ul>
                         <div class="tab-content">
                             <div class="tab-pane fade active in" id="home-11">
-                                <img class="img-responsive" src="{{ asset('storage/img/' . $konfig[3]->nilai_konfig) }}" width="70%" style="margin-left: 16%; margin-top: 0%" alt="Failda">
+                                <img class="img-responsive" src="{{ asset('storage/' . $konfig[3]->nilai_konfig) }}" width="70%" style="margin-left: 16%; margin-top: 0%" alt="Failda">
                                 <div class="card-body">
                                     <h3 class="card-title text-center">{{ $konfig[4]->nilai_konfig }}</h3>
                                     <p class="card-text text-center">
