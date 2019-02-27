@@ -18,11 +18,11 @@ class AuthController extends Controller
 
     public function checkLogin(AuthRequest $request)
     {
-        $email = htmlspecialchars($request->email);
+        $username = htmlspecialchars($request->username);
         $password = htmlspecialchars($request->password);
-        $user = UserModel::where('email', $email)->first();
-        if (is_null($user['email'])){
-            return response()->json(['status' => 449, 'msg' => 'Email anda tidak terdaftar']);
+        $user = UserModel::where('username', $username)->first();
+        if (is_null($user['username'])){
+            return response()->json(['status' => 449, 'msg' => 'Username anda tidak terdaftar']);
         } else {
             if ($user['status'] == "y") {
                 if ($user->count() > 0) {

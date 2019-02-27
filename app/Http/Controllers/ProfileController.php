@@ -34,10 +34,12 @@ class ProfileController extends Controller
     {
         $request->validate([
             'nama' => 'required|max:60|regex:/^[a-zA-Z ]*$/',
-            'email' => 'required|email|max:60'
+            'email' => 'required|email|max:60',
+            'username' => 'required|max:60|regex:/^[a-zA-Z0-9.-_ ]*$/',
         ]);
 
         $nama = htmlspecialchars($request->nama);
+        $username = htmlspecialchars($request->username);
         $email = htmlspecialchars($request->email);
         $id = Session::get('id_users');
         $file = $request->file('images');
@@ -49,6 +51,7 @@ class ProfileController extends Controller
             if (is_null($images)) {
                 $update = UserModel::findOrFail($id)->update([
                     'nama' => $nama,
+                    'username' => $username,
                     'email' => $email,
                     'images' => $file->store(
                         'img','public'
@@ -61,6 +64,7 @@ class ProfileController extends Controller
                 $update = UserModel::findOrFail($id)->update([
                     'nama' => $nama,
                     'email' => $email,
+                    'username' => $username,
                     'images' => $file->store(
                         'img','public'
                     )
@@ -73,10 +77,12 @@ class ProfileController extends Controller
             $update = UserModel::findOrFail($id)->update([
                 'nama' => $nama,
                 'email' => $email,
+                'username' => $username,
             ]);
 
             Session::put('nama_lengkap', $nama);
             Session::put('email', $email);
+            Session::put('username', $username);
         }
 
         if ($update) {

@@ -11,7 +11,7 @@ class UserModel extends Model
     protected $table = "mst_user_karyawan";
     protected $primaryKey = "id";
     protected $dates = ['deleted_at', 'updated_at', 'created_at'];
-    protected $fillable = ["nama", "email", "password", "images", "id_user_level", "status"];
+    protected $fillable = ["nama", "email", "username", "password", "images", "id_user_level", "status"];
 
     public function userLevel()
     {

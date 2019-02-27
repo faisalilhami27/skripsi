@@ -16,7 +16,8 @@ class CreateMstUserKaryawanTable extends Migration
         Schema::create('mst_user_karyawan', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nama', 50);
-            $table->string('email', 50);
+            $table->string('username', 20);
+            $table->string('email', 60);
             $table->string('password', 255);
             $table->text('images')->nullable();
             $table->integer('id_user_level')->unsigned();

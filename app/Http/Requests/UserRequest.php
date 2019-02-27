@@ -26,6 +26,7 @@ class UserRequest extends FormRequest
         return [
             'nama' => 'required|max:60|regex:/^[a-zA-Z ]*$/',
             'email' => 'required|max:60|email',
+            'username' => 'required|max:60|regex:/^[a-zA-Z0-9.-_ ]*$/',
             'password' => 'required',
             'level' => 'required',
             'status' => 'required',

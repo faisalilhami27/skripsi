@@ -145,7 +145,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="upd_main_menu" class="form-label">Main Menu</label>
-                                <select id="upd_main_menu demo-select2-2" name="main_menu" class="form-control">
+                                <select id="upd_main_menu" name="main_menu" class="form-control">
                                     <option value="">-- Pilih Main Menu --</option>
                                     <option value="0">Main Menu</option>
                                     @foreach($menu as $m)
@@ -195,6 +195,8 @@
                         }
                     }
                 };
+
+                $("#upd_main_menu").select2();
 
                 //	//datatables
                 table = $('#demo-datatables').DataTable({

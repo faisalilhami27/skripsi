@@ -46,7 +46,8 @@ Route::group(['prefix' => 'userlevel'], function (){
 Route::group(['prefix' => 'user'], function (){
     Route::get('/', 'UserController@index');
     Route::get('/json', 'UserController@datatable');
-    Route::get('/cekemail', 'UserController@cekEmail');
+    Route::get('/cekUsername', 'UserController@cekUsername');
+    Route::get('/cekEmail', 'UserController@cekEmail');
     Route::get('/getUserById', 'UserController@edit');
     Route::post('/insert', 'UserController@store');
     Route::put('/resetpassword', 'UserController@resetPassword');
@@ -89,7 +90,7 @@ Route::group(['prefix' => 'konfirmasi'], function (){
 
 Route::group(['prefix' => 'profile'], function (){
     Route::get('/', 'ProfileController@index');
-    Route::get('/cekemail', 'UserController@cekEmail');
+    Route::get('/cekUsername', 'UserController@cekUsername');
     Route::post('/update', 'ProfileController@update');
     Route::put('/changepassword', 'ProfileController@changePassword');
 });

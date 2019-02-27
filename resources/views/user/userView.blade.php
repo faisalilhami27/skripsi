@@ -19,6 +19,7 @@
                                 <tr>
                                     <th>No</th>
                                     <th>Nama Lengkap</th>
+                                    <th>Username</th>
                                     <th>Email</th>
                                     <th>Level</th>
                                     <th>Status</th>
@@ -52,6 +53,14 @@
                                 <span class="text-danger">
                                 <strong id="nama-error"></strong>
                             </span>
+                            </div>
+                            <div class="form-group">
+                                <label for="ins_username">Username</label>
+                                <input id="ins_username" name="ins_username" class="form-control" type="text"
+                                       placeholder="Masukan nama username" maxlength="60">
+                                <span class="text-danger">
+                                    <strong id="username-error"></strong>
+                                </span>
                             </div>
                             <div class="form-group">
                                 <label for="ins_email">Email</label>
@@ -240,6 +249,7 @@
                     columns: [
                         {data: 'DT_RowIndex'},
                         {data: 'nama'},
+                        {data: 'username'},
                         {data: 'email'},
                         {data: 'user_level.nama_level'},
                         {data: 'status', render: styles.status},
@@ -284,12 +294,14 @@
                     e.preventDefault();
                     var nama = $("#ins_nama").val();
                     var email = $("#ins_email").val();
+                    var username = $("#ins_username").val();
                     var password = $("#ins_password").val();
                     var level = $("#demo-select2-1").val();
                     var status = $("#demo-select2-2").val();
                     var images = $('#ins_images').prop('files')[0];
                     var formData = new FormData();
                     formData.append('nama', nama);
+                    formData.append('username', username);
                     formData.append('email', email);
                     formData.append('password', password);
                     formData.append('level', level);
@@ -444,7 +456,7 @@
                         headers: {
                             "X-CSRF-TOKEN": "{{ csrf_token() }}",
                         },
-                        url: "{{ URL('user/cekemail') }}",
+                        url: "{{ URL('user/cekEmail') }}",
                         type: "GET",
                         data: "email=" + email,
                         dataType: "json",
@@ -455,6 +467,33 @@
                             } else {
                                 $("#email-error").html(data.msg);
                                 $("#email-error").css("color", "red");
+                                $("#btn-insert-data").attr('disabled', 'disabled');
+                            }
+                        },
+                        error: function (xhr, status, error) {
+                            alert(status + " : " + error);
+                        }
+                    });
+                });
+
+                $("#ins_username").keyup(function (e) {
+                    e.preventDefault();
+                    var username = $(this).val();
+                    $.ajax({
+                        headers: {
+                            "X-CSRF-TOKEN": "{{ csrf_token() }}",
+                        },
+                        url: "{{ URL('user/cekUsername') }}",
+                        type: "GET",
+                        data: "username=" + username,
+                        dataType: "json",
+                        success: function (data) {
+                            if (data.status == 200) {
+                                $("#username-error").html("");
+                                $("#btn-insert-data").removeAttr('disabled');
+                            } else {
+                                $("#username-error").html(data.msg);
+                                $("#username-error").css("color", "red");
                                 $("#btn-insert-data").attr('disabled', 'disabled');
                             }
                         },

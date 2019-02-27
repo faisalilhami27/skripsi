@@ -280,7 +280,7 @@
                     headers: {
                         "X-CSRF-TOKEN": "{{ csrf_token() }}",
                     },
-                    url: "{{ URL('user/cekemail') }}",
+                    url: "{{ URL('user/cekUsername') }}",
                     type: "GET",
                     data: "email=" + email,
                     dataType: "json",

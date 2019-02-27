@@ -11,7 +11,7 @@ class CustomerModel extends Model
     protected $table = "mst_user_customer";
     protected $primaryKey = "id";
     protected $dates = ['deleted_at', 'updated_at', 'created_at'];
-    protected $fillable = ['nama', 'email', 'password', 'no_hp', 'images'];
+    protected $fillable = ['nama', 'email', "username", 'password', 'no_hp', 'images'];
 
     public function pemesanan()
     {

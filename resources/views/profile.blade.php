@@ -21,10 +21,24 @@
                                                 <div class="input-with-icon">
                                                     <input id="nama_lengkap" autocomplete="off" name="nama_lengkap"
                                                            value="{{ $user['nama'] }}" class="form-control"
-                                                           type="text" placeholder="Nama Lengkap">
-                                                    <span class="icon icon-user input-icon"></span>
+                                                           type="text" placeholder="Nama Lengkap" maxlength="60">
+                                                    <span class="icon icon-user-secret input-icon"></span>
                                                     <span class="text-danger">
                                                         <strong id="nama-error"></strong>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-4" for="form-control-1">Username</label>
+                                            <div class="col-sm-8">
+                                                <div class="input-with-icon">
+                                                    <input id="username" autocomplete="off" name="text"
+                                                           value="{{ $user['username'] }}" class="form-control"
+                                                           type="text" placeholder="Username" maxlength="20">
+                                                    <span class="icon icon-user input-icon"></span>
+                                                    <span class="text-danger">
+                                                        <strong id="username-error"></strong>
                                                     </span>
                                                 </div>
                                             </div>
@@ -80,7 +94,7 @@
                                         <div class="col-sm-8">
                                             <div class="input-with-icon">
                                                 <div class="input-group">
-                                                    <input class="form-control form-password" id="password" max="20"
+                                                    <input class="form-control form-password" id="password" maxlength="12"
                                                            type="password" placeholder="Password">
                                                     <span class="input-group-addon">
                                                             <label
@@ -105,7 +119,7 @@
                                             <div class="input-with-icon">
                                                 <div class="input-group">
                                                     <input class="form-control form-password1" id="konf_password"
-                                                           max="20" type="password" placeholder="Konfirmasi Password">
+                                                           maxlength="12" type="password" placeholder="Konfirmasi Password">
                                                     <span class="input-group-addon">
                                                             <label
                                                                 class="custom-control custom-control-primary custom-checkbox">
@@ -204,12 +218,14 @@
                 event.preventDefault();
 
                 var nama = $("#nama_lengkap").val();
+                var username = $("#username").val();
                 var email = $("#email").val();
                 var images = $('#gambar').prop('files')[0];
                 var formData = new FormData();
 
                 formData.append('nama', nama);
                 formData.append('email', email);
+                formData.append('username', username);
                 formData.append('images', images);
 
                 $.ajax({
@@ -278,7 +294,7 @@
                     headers: {
                         "X-CSRF-TOKEN": "{{ csrf_token() }}",
                     },
-                    url: "{{ URL('profile/cekemail') }}",
+                    url: "{{ URL('user/cekEmail') }}",
                     type: "GET",
                     data: "email=" + email,
                     dataType: "json",
@@ -286,11 +302,39 @@
                         if (data.status == 200) {
                             $("#email-error").html("");
                             $("#email-error").css("color", "green");
-                            $("#btn-insert-data").removeAttr('disabled');
+                            $("#btn-update-data").removeAttr('disabled');
                         } else {
                             $("#email-error").html(data.msg);
                             $("#email-error").css("color", "red");
-                            $("#btn-insert-data").attr('disabled', 'disabled');
+                            $("#btn-update-data").attr('disabled', 'disabled');
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        alert(status + " : " + error);
+                    }
+                });
+            });
+
+            $("#username").keyup(function (e) {
+                e.preventDefault();
+                var username = $(this).val();
+                $.ajax({
+                    headers: {
+                        "X-CSRF-TOKEN": "{{ csrf_token() }}",
+                    },
+                    url: "{{ URL('user/cekUsername') }}",
+                    type: "GET",
+                    data: "username=" + username,
+                    dataType: "json",
+                    success: function (data) {
+                        if (data.status == 200) {
+                            $("#username-error").html("");
+                            $("#username-error").css("color", "green");
+                            $("#btn-update-data").removeAttr('disabled');
+                        } else {
+                            $("#username-error").html(data.msg);
+                            $("#username-error").css("color", "red");
+                            $("#btn-update-data").attr('disabled', 'disabled');
                         }
                     },
                     error: function (xhr, status, error) {

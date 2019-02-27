@@ -16,6 +16,7 @@ class CreateMstUserCustomerTable extends Migration
         Schema::create('mst_user_customer', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nama', 60);
+            $table->string('username', 20);
             $table->string('email', 60);
             $table->string('password', 60);
             $table->string('no_hp', 15);

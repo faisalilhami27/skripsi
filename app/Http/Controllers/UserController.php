@@ -36,6 +36,7 @@ class UserController extends Controller
     {
         $nama = $request->nama;
         $email = $request->email;
+        $username = $request->username;
         $password = Hash::make($request->password);
         $level = $request->level;
         $status = $request->status;
@@ -43,6 +44,7 @@ class UserController extends Controller
 
         $insert = UserModel::create([
             'nama' => $nama,
+            'username' => $username,
             'email' => $email,
             'password' => $password,
             'id_user_level' => $level,
@@ -123,11 +125,24 @@ class UserController extends Controller
         }
     }
 
+    public function cekUsername(Request $request)
+    {
+        $username = $request->username;
+        $cekUsername = UserModel::where('username', $username)->get();
+        $getEmail = $cekUsername->count();
+
+        if ($getEmail == 1) {
+            return response()->json(['status' => 449, 'msg' => 'username has been used']);
+        } else {
+            return response()->json(['status' => 200, 'msg' => 'username available']);
+        }
+    }
+
     public function cekEmail(Request $request)
     {
         $email = $request->email;
-        $cekEmail = UserModel::where('email', $email)->get();
-        $getEmail = $cekEmail->count();
+        $cekUsername = UserModel::where('email', $email)->get();
+        $getEmail = $cekUsername->count();
 
         if ($getEmail == 1) {
             return response()->json(['status' => 449, 'msg' => 'email has been used']);
