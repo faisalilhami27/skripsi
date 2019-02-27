@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMstUserKaryawanTable extends Migration
+class CreateTrsUserKaryawanTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,10 @@ class CreateMstUserKaryawanTable extends Migration
      */
     public function up()
     {
-        Schema::create('mst_user_karyawan', function (Blueprint $table) {
+        Schema::create('trs_user_karyawan', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nama', 50);
-            $table->string('username', 20);
-            $table->string('email', 60);
-            $table->string('password', 255);
-            $table->text('images')->nullable();
-            $table->enum('status' ,['y', 'n']);
+            $table->integer('id_karyawan');
+            $table->integer('id_user_level');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -33,6 +29,6 @@ class CreateMstUserKaryawanTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mst_user_karyawan');
+        Schema::dropIfExists('trs_user_karyawan');
     }
 }

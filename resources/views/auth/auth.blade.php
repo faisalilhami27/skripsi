@@ -103,9 +103,15 @@
                 success: function (data) {
                     if (data.status == 200) {
                         notification(data.status, data.msg);
-                        setTimeout(function () {
-                            $(location).attr('href', "{{ url('dashboard') }}");
-                        }, 1000);
+                        if (data.count == 1) {
+                            setTimeout(function () {
+                                $(location).attr('href', "{{ url('dashboard') }}");
+                            }, 1000);
+                        } else {
+                            setTimeout(function () {
+                                $(location).attr('href', "{{ url('role') }}");
+                            }, 1000);
+                        }
                     } else {
                         notification(data.status, data.msg);
                     }

@@ -152,28 +152,61 @@
                         <ul class="dropdown-menu dropdown-menu-right">
                             <li class="navbar-upgrade-version"> Version {{ versionApp() }}</li>
                             <li class="divider"></li>
-                            <li><a href="{{ URL('profile') }}">Profile</a></li>
-                            <li><a href="{{ URL('logout') }}">Sign out</a></li>
+                            @if(Session::get('count') > 1)
+                                <li><a href="{{ URL('role') }}">Pilih Hak Akses</a></li>
+                                <li><a href="{{ URL('profile') }}">Profile</a></li>
+                                <li><a href="{{ URL('logout') }}">Sign out</a></li>
+                            @else
+                                <li><a href="{{ URL('profile') }}">Profile</a></li>
+                                <li><a href="{{ URL('logout') }}">Sign out</a></li>
+                            @endif
                         </ul>
                     </li>
-                    <li class="visible-xs-block">
-                        <a href="{{ URL('profile') }}">
-                            <span class="icon icon-user icon-lg icon-fw"></span>
-                            Profile
-                        </a>
-                    </li>
-                    <li class="visible-xs-block">
-                        <a href="{{ URL('logout') }}">
-                            <span class="icon icon-power-off icon-lg icon-fw"></span>
-                            Sign out
-                        </a>
-                    </li>
-                    <li class="visible-xs-block">
-                        <a href="contacts.html">
-                            <span class="icon icon-level-up icon-lg icon-fw"></span>
-                            Version {{ versionApp() }}
-                        </a>
-                    </li>
+                    @if(Session::get('count') > 1)
+                        <li class="visible-xs-block">
+                            <a href="{{ URL('role') }}">
+                                <span class="icon icon-user icon-lg icon-fw"></span>
+                                Pilih Hak Akses
+                            </a>
+                        </li>
+                        <li class="visible-xs-block">
+                            <a href="{{ URL('profile') }}">
+                                <span class="icon icon-user icon-lg icon-fw"></span>
+                                Profile
+                            </a>
+                        </li>
+                        <li class="visible-xs-block">
+                            <a href="{{ URL('logout') }}">
+                                <span class="icon icon-power-off icon-lg icon-fw"></span>
+                                Sign out
+                            </a>
+                        </li>
+                        <li class="visible-xs-block">
+                            <a href="contacts.html">
+                                <span class="icon icon-level-up icon-lg icon-fw"></span>
+                                Version {{ versionApp() }}
+                            </a>
+                        </li>
+                    @else
+                        <li class="visible-xs-block">
+                            <a href="{{ URL('profile') }}">
+                                <span class="icon icon-user icon-lg icon-fw"></span>
+                                Profile
+                            </a>
+                        </li>
+                        <li class="visible-xs-block">
+                            <a href="{{ URL('logout') }}">
+                                <span class="icon icon-power-off icon-lg icon-fw"></span>
+                                Sign out
+                            </a>
+                        </li>
+                        <li class="visible-xs-block">
+                            <a href="contacts.html">
+                                <span class="icon icon-level-up icon-lg icon-fw"></span>
+                                Version {{ versionApp() }}
+                            </a>
+                        </li>
+                    @endif
                 </ul>
                 <div class="title-bar">
                     <h1 class="title-bar-title">

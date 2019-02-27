@@ -236,11 +236,18 @@ if (!function_exists('setKode')) {
     }
 }
 
-if (!function_exists('version')) {
+if (!function_exists('versionApp')) {
     function versionApp()
     {
         $query = KonfigurasiModel::all();
         return $query[8]->nilai_konfig;
+    }
+}
+
+if (!function_exists('getIdUserLevel')) {
+    function getIdUserLevel($id)
+    {
+        return $id;
     }
 }
 

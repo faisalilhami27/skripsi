@@ -18,7 +18,6 @@ class UserSeeder extends Seeder
                 'email' => 'faisal.ilhami1997@gmail.com',
                 'password' => Hash::make('barca1899'),
                 'images' => null,
-                'id_user_level' => 1,
                 'status' => 'y'
             ]
         ]);

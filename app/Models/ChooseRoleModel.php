@@ -5,17 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class UserLevelModel extends Model
+class ChooseRoleModel extends Model
 {
     use SoftDeletes;
-    protected $table = "mst_user_level";
+    protected $table = "trs_user_karyawan";
     protected $primaryKey = "id";
     protected $dates = ['deleted_at', 'updated_at', 'created_at'];
-    protected $fillable = ["nama_level"];
+    protected $fillable = ['id_user_level', 'id_karyawan'];
 
     public function role()
     {
-        return $this->hasMany(ChooseRoleModel::class, 'id_karyawan', 'id');
+        return $this->hasMany(UserLevelModel::class, 'id', 'id_user_level');
     }
-
 }

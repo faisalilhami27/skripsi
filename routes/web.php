@@ -19,6 +19,8 @@ Route::get('/', 'DashboardController@index');
 Route::get('/auth', "AuthController@index");
 Route::get('/blokir', "AuthController@blokir");
 Route::get('/logout', "AuthController@logout");
+Route::get('/role', "ChooseRoleController@index");
+Route::get('/link', "ChooseRoleController@linkDashboard");
 Route::post('auth/checklogin', "AuthController@checkLogin");
 
 Route::group(['prefix' => 'dashboard'], function (){

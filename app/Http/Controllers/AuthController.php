@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\AuthRequest;
+use App\Models\ChooseRoleModel;
 use App\Models\UserModel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -27,14 +28,20 @@ class AuthController extends Controller
             if ($user['status'] == "y") {
                 if ($user->count() > 0) {
                     if (Hash::check($password, $user['password'])) {
+                        $chooseRole = ChooseRoleModel::with('role')
+                            ->where('id_karyawan', $user->id)
+                            ->get();
+                        if ($chooseRole->count() == 1) {
+                            Session::put('id_user_level', $chooseRole[0]->id_user_level);
+                        }
                         Session::put('id_users', $user->id);
                         Session::put('nama_lengkap', $user->nama);
                         Session::put('email', $user->email);
                         Session::put('images', $user->images);
-                        Session::put('id_user_level', $user->id_user_level);
                         Session::put('is_aktif', $user->status);
                         Session::put('login', TRUE);
-                        return response()->json(['status' => 200, 'msg' => 'Login berhasil akan diarahkan ke halaman utama']);
+                        Session::put('count', $chooseRole->count());
+                        return response()->json(['status' => 200, 'msg' => 'Login berhasil akan diarahkan ke halaman utama', 'count' => $chooseRole->count()]);
                     } else {
                         return response()->json(['status' => 449, 'msg' => 'Password yang anda inputkan salah']);
                     }
