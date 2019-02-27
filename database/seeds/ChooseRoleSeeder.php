@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class RoleSeeder extends Seeder
+class ChooseRoleSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -19,10 +19,6 @@ class RoleSeeder extends Seeder
             [
                 'id_karyawan' => 1,
                 'id_user_level' => 2
-            ],
-            [
-                'id_karyawan' => 1,
-                'id_user_level' => 3
             ],
         ]);
     }
