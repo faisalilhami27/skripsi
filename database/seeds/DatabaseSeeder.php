@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
         $this->call(UserLevelSeeder::class);
         $this->call(UserSeeder::class);
         $this->call(RoleLevelSeeder::class);
-        $this->call(ChooseRoleSeeder::class);
         $this->call(KonfigurasiSeeder::class);
+        $this->call(ChooseRoleSeeder::class);
     }
 }
