@@ -1,8 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
-class ChooseRoleSeeder extends Seeder
+class HakAksesSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -19,7 +20,7 @@ class ChooseRoleSeeder extends Seeder
             [
                 'id_karyawan' => 1,
                 'id_user_level' => 2
-            ],
+            ]
         ]);
     }
 }
