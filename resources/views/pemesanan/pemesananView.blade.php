@@ -239,7 +239,7 @@
                     {data: 'DT_RowIndex'},
                     {data: 'kode_pemesanan'},
                     {data: 'tgl_pemesanan'},
-                    {data: 'karyawan.nama'},
+                    {data: 'karyawan.karyawan.nama'},
                     {data: 'jumlah_tiket'},
                     {data: 'total_uang_masuk', render: styles.uang},
                     {data: 'status_penggunaan', render: styles.status},

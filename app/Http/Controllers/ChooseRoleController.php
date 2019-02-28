@@ -21,7 +21,7 @@ class ChooseRoleController extends Controller
     public function index()
     {
         $idKaryawan = Session::get('id_users');
-        $chooseRole = ChooseRoleModel::with('role')
+        $chooseRole = ChooseRoleModel::with('roleMany')
             ->where('id_karyawan', $idKaryawan)
             ->get();
         $title = "Choose Role Level";

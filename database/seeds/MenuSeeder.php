@@ -34,6 +34,13 @@ class MenuSeeder extends Seeder
                 'is_aktif' => 'y'
             ],
             [
+                'title' => 'Karyawan',
+                'url' => 'karyawan',
+                'icon' => 'icon icon-user-plus',
+                'is_main_menu' => 0,
+                'is_aktif' => 'y'
+            ],
+            [
                 'title' => 'Kelola Penguna',
                 'url' => 'user',
                 'icon' => 'icon icon-user',
@@ -67,7 +74,7 @@ class MenuSeeder extends Seeder
                 'icon' => 'icon icon-mobile',
                 'is_main_menu' => 0,
                 'is_aktif' => 'y'
-            ]
+            ],
         ]);
     }
 }

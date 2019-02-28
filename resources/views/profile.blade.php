@@ -20,7 +20,7 @@
                                             <div class="col-sm-8">
                                                 <div class="input-with-icon">
                                                     <input id="nama_lengkap" autocomplete="off" name="nama_lengkap"
-                                                           value="{{ $user['nama'] }}" class="form-control"
+                                                           value="{{ $user->karyawan->nama }}" class="form-control"
                                                            type="text" placeholder="Nama Lengkap" maxlength="60">
                                                     <span class="icon icon-user-secret input-icon"></span>
                                                     <span class="text-danger">
@@ -34,7 +34,7 @@
                                             <div class="col-sm-8">
                                                 <div class="input-with-icon">
                                                     <input id="username" autocomplete="off" name="text"
-                                                           value="{{ $user['username'] }}" class="form-control"
+                                                           value="{{ $user->username }}" class="form-control"
                                                            type="text" placeholder="Username" maxlength="20">
                                                     <span class="icon icon-user input-icon"></span>
                                                     <span class="text-danger">
@@ -48,11 +48,25 @@
                                             <div class="col-sm-8">
                                                 <div class="input-with-icon">
                                                     <input id="email" autocomplete="off" maxlength="60" name="email"
-                                                           value="{{ $user['email'] }}" class="form-control"
+                                                           value="{{ $user->karyawan->email }}" class="form-control"
                                                            type="email" placeholder="Email">
                                                     <span class="icon icon-envelope input-icon"></span>
                                                     <span class="text-danger">
                                                         <strong id="email-error"></strong>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-4" for="form-control-1">No Handphone</label>
+                                            <div class="col-sm-8">
+                                                <div class="input-with-icon">
+                                                    <input id="no_hp" autocomplete="off" maxlength="15" name="no_hp"
+                                                           value="{{ $user->karyawan->no_hp }}" class="form-control"
+                                                           type="text" placeholder="Email">
+                                                    <span class="icon icon-phone input-icon"></span>
+                                                    <span class="text-danger">
+                                                        <strong id="no_hp-error"></strong>
                                                     </span>
                                                 </div>
                                             </div>
@@ -167,12 +181,15 @@
                                     @endif
                                 </div>
                                 <div class="card-body">
-                                    <h3 class="card-title text-center">{{ $user['nama'] }}</h3>
+                                    <h3 class="card-title text-center">{{ $user->karyawan->nama }}</h3>
                                     <p class="card-text text-center">
-                                        <small>{{ $user['userLevel']['nama_level'] }}</small>
+                                        <small>{{ $implode }}</small>
                                     </p>
                                     <p class="card-text text-center">
-                                        <small>{{ $user['email'] }}</small>
+                                        <small>{{ $user->karyawan->no_hp }}</small>
+                                    </p>
+                                    <p class="card-text text-center">
+                                        <small>{{ $user->karyawan->email }}</small>
                                     </p>
                                 </div>
                             </div>
@@ -220,12 +237,14 @@
                 var nama = $("#nama_lengkap").val();
                 var username = $("#username").val();
                 var email = $("#email").val();
+                var no_hp = $("#no_hp").val();
                 var images = $('#gambar').prop('files')[0];
                 var formData = new FormData();
 
                 formData.append('nama', nama);
                 formData.append('email', email);
                 formData.append('username', username);
+                formData.append('no_hp', no_hp);
                 formData.append('images', images);
 
                 $.ajax({

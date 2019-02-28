@@ -21,22 +21,23 @@ class AuthController extends Controller
     {
         $username = htmlspecialchars($request->username);
         $password = htmlspecialchars($request->password);
-        $user = UserModel::where('username', $username)->first();
+        $user = UserModel::with('karyawan')
+            ->where('username', $username)->first();
         if (is_null($user['username'])){
             return response()->json(['status' => 449, 'msg' => 'Username anda tidak terdaftar']);
         } else {
             if ($user['status'] == "y") {
                 if ($user->count() > 0) {
                     if (Hash::check($password, $user['password'])) {
-                        $chooseRole = ChooseRoleModel::with('role')
+                        $chooseRole = ChooseRoleModel::with('roleMany')
                             ->where('id_karyawan', $user->id)
                             ->get();
                         if ($chooseRole->count() == 1) {
                             Session::put('id_user_level', $chooseRole[0]->id_user_level);
                         }
                         Session::put('id_users', $user->id);
-                        Session::put('nama_lengkap', $user->nama);
-                        Session::put('email', $user->email);
+                        Session::put('nama_lengkap', $user->karyawan->nama);
+                        Session::put('email', $user->karyawan->email);
                         Session::put('images', $user->images);
                         Session::put('is_aktif', $user->status);
                         Session::put('login', TRUE);
@@ -63,6 +64,6 @@ class AuthController extends Controller
     {
         Auth::logout();
         Session::flush();
-        return redirect()->back();
+        return redirect()->route('auth');
     }
 }

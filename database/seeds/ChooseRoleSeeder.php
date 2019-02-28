@@ -16,10 +16,6 @@ class ChooseRoleSeeder extends Seeder
             [
                 'id_karyawan' => 1,
                 'id_user_level' => 1
-            ],
-            [
-                'id_karyawan' => 1,
-                'id_user_level' => 2
             ]
         ]);
     }

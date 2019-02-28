@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ChooseRoleModel;
+use App\Models\KaryawanModel;
 use App\Models\UserModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -22,12 +24,25 @@ class ProfileController extends Controller
     public function index()
     {
         $id = Session::get('id_users');
-        $user = UserModel::with('userLevel')
-            ->where('id', $id)
+        $user = UserModel::with('karyawan')
+            ->where('id_karyawan', $id)
             ->first();
+        $level = ChooseRoleModel::with('roleMany')
+            ->where('id_karyawan', $id)
+            ->get();
+
+        $array = [];
+        $i = 1;
+        foreach ($level as $item) {
+            foreach ($item->roleMany as $r) {
+                $array[$i] = $r->nama_level;
+            }
+            $i++;
+        }
+        $implode = @implode(', ', $array);
         $title = "Halaman Profile";
         $deskripsi = "Halaman profile digunakan untuk mengelola identitas user";
-        return view('profile', compact('title','deskripsi', 'user'));
+        return view('profile', compact('title', 'deskripsi', 'user', 'implode'));
     }
 
     public function update(Request $request)
@@ -35,12 +50,14 @@ class ProfileController extends Controller
         $request->validate([
             'nama' => 'required|max:60|regex:/^[a-zA-Z ]*$/',
             'email' => 'required|email|max:60',
+            'no_hp' => 'required|numeric',
             'username' => 'required|max:60|regex:/^[a-zA-Z0-9.-_ ]*$/',
         ]);
 
         $nama = htmlspecialchars($request->nama);
         $username = htmlspecialchars($request->username);
         $email = htmlspecialchars($request->email);
+        $noHp = htmlspecialchars($request->no_hp);
         $id = Session::get('id_users');
         $file = $request->file('images');
 
@@ -49,29 +66,38 @@ class ProfileController extends Controller
             $images = $user->images;
 
             if (is_null($images)) {
-                $update = UserModel::findOrFail($id)->update([
+
+                KaryawanModel::where('id', $user->id_karyawan)->update([
                     'nama' => $nama,
-                    'username' => $username,
                     'email' => $email,
+                    'no_hp' => $noHp
+                ]);
+
+                $update = UserModel::findOrFail($id)->update([
+                    'username' => $username,
                     'images' => $file->store(
-                        'img','public'
+                        'img', 'public'
                     )
                 ]);
             } else {
                 $pathDelete = "storage/" . $images;
                 unlink($pathDelete);
 
-                $update = UserModel::findOrFail($id)->update([
+                KaryawanModel::where('id', $user->id_karyawan)->update([
                     'nama' => $nama,
                     'email' => $email,
+                    'no_hp' => $noHp
+                ]);
+
+                $update = UserModel::findOrFail($id)->update([
                     'username' => $username,
                     'images' => $file->store(
-                        'img','public'
+                        'img', 'public'
                     )
                 ]);
             }
             Session::put('images', $file->store(
-                'img','public'
+                'img', 'public'
             ));
         } else {
             $update = UserModel::findOrFail($id)->update([

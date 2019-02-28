@@ -31,7 +31,7 @@ class PemesananController extends Controller
 
     public function datatable()
     {
-        $data = PemesananModel::with('karyawan', 'jenisPemesanan')->get();
+        $data = PemesananModel::with('karyawan.karyawan', 'jenisPemesanan')->get();
         return DataTables::of($data)->addIndexColumn()->make(true);
     }
 

@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'DashboardController@index');
 
-Route::get('/auth', "AuthController@index");
+Route::get('/auth', "AuthController@index")->name('auth');
 Route::get('/blokir', "AuthController@blokir");
 Route::get('/logout', "AuthController@logout");
 Route::get('/role', "ChooseRoleController@index");
@@ -104,4 +104,13 @@ Route::group(['prefix' => 'mobile'], function () {
     Route::post('/insert/', 'KonfigurasiMobileController@store');
     Route::put('/update', 'KonfigurasiMobileController@update');
     Route::delete('/delete', 'KonfigurasiMobileController@destroy');
+});
+
+Route::group(['prefix' => 'karyawan'], function () {
+    Route::get('/', 'KaryawanController@index');
+    Route::get('/json', 'KaryawanController@datatable');
+    Route::get('/getKaryawan', 'KaryawanController@edit');
+    Route::post('/insert/', 'KaryawanController@store');
+    Route::put('/update', 'KaryawanController@update');
+    Route::delete('/delete', 'KaryawanController@destroy');
 });

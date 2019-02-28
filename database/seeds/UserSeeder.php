@@ -11,11 +11,10 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('mst_user_karyawan')->insert([
+        DB::table('trs_karyawan')->insert([
             [
-                'nama' => 'Muhamad Faisal Ilhami Akbar',
+                'id_karyawan' => 1,
                 'username' => 'faisal27',
-                'email' => 'faisal.ilhami1997@gmail.com',
                 'password' => Hash::make('barca1899'),
                 'images' => null,
                 'status' => 'y'

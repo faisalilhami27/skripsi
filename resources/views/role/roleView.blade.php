@@ -33,7 +33,7 @@
             <small>Silahkan pilih level yang anda miliki dibawah ini : </small>
         </p>
         @foreach($chooseRole as $r)
-            @foreach($r->role as $cr)
+            @foreach($r->roleMany as $cr)
                 <p><a class="btn btn-primary btn-pill btn-thick" id="{{ $r->id_user_level }}" href="">{{ $cr->nama_level }}</a></p>
             @endforeach
         @endforeach

@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UserRequest;
+use App\Models\ChooseRoleModel;
+use App\Models\KaryawanModel;
 use App\Models\KonfigurasiModel;
 use App\Models\UserLevelModel;
 use App\Models\UserModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Session;
 use Yajra\DataTables\DataTables;
 
 class UserController extends Controller
@@ -20,34 +22,74 @@ class UserController extends Controller
 
     public function index()
     {
+//        $data = ChooseRoleModel::with(['user' => function ($query) {
+//        }])
+//            ->where('id_karyawan', 1)
+//            ->get();
+//        $item = [];
+//        $i = 0;
+//        foreach ($data as $d) {
+//            $item[$i] = $d->id_user_level;
+//            $i++;
+//        }
+//        print_r($item); die;
+//        $data = UserModel::with('karyawan', 'karyawanRole.role')->get();
+//        $merge = [];
+//        $i = 0;
+//        foreach ($data as $item) {
+//            foreach ($item->roleKaryawan as $r) {
+//                $merge[$i] = $r;
+////                foreach ($r->role as $test) {
+////                    $merge[$i] = $test->nama_level;
+////                }
+//                $i++;
+//            }
+//        }
+////        $implode = @implode(',', $merge);
+////        $explode = @explode(' ', $merge);
+////        foreach ($explode as $item) {
+////            $test = $item;
+////        }
+//        echo json_encode($data); die;
+        $user = KaryawanModel::all();
         $level = UserLevelModel::all();
         $title = "Halaman Pengguna";
         $deskripsi = "Halaman pengguna digunakan untuk mengelola data user";
-        return view('user.userView', compact('title', 'deskripsi', 'level'));
+        return view('user.userView', compact('title', 'deskripsi', 'level', 'user'));
     }
 
     public function datatable()
     {
-        $data = UserModel::with('userLevel')->get();
+        $data = UserModel::with('karyawan', 'karyawanRole.role')->get();
         return DataTables::of($data)->addIndexColumn()->make(true);
     }
 
     public function store(UserRequest $request)
     {
-        $nama = $request->nama;
-        $email = $request->email;
+        $karyawan = $request->karyawan;
         $username = $request->username;
         $password = Hash::make($request->password);
-        $level = $request->level;
+        $level = @explode(',', $request->level);
         $status = $request->status;
         $images = $request->file('images');
 
+        $cekUser = UserModel::where('id_karyawan', $karyawan)->first();
+
+        if ($cekUser['id_karyawan'] == $karyawan) {
+            return response()->json(['status' => 449, 'msg' => 'Akun sudah ada pada sistem']);
+        }
+
+        foreach ($level as $item) {
+            ChooseRoleModel::create([
+                'id_karyawan' => $karyawan,
+                'id_user_level' => $item
+            ]);
+        }
+
         $insert = UserModel::create([
-            'nama' => $nama,
             'username' => $username,
-            'email' => $email,
+            'id_karyawan' => $karyawan,
             'password' => $password,
-            'id_user_level' => $level,
             'status' => $status,
             'images' => $images->store(
                 'img', 'public'
@@ -64,10 +106,20 @@ class UserController extends Controller
     public function edit(Request $request)
     {
         $id = $request->id;
-        $data = UserModel::findOrFail($id);
+        $level = ChooseRoleModel::with(['user' => function ($query) use($id) {
+        }])
+            ->where('id_karyawan', $id)
+            ->get();
+        $user = UserModel::findOrFail($id);
+        $item = [];
+        $i = 0;
+        foreach ($level as $d) {
+            $item[$i] = $d->id_user_level;
+            $i++;
+        }
 
-        if ($data) {
-            return response()->json(['status' => 200, 'user' => $data]);
+        if ($level) {
+            return response()->json(['status' => 200, 'level' => $item, 'user' => $user]);
         } else {
             return response()->json(['status' => 449, 'msg' => "Data tidak ditemukan"]);
         }
@@ -76,15 +128,35 @@ class UserController extends Controller
     public function update(Request $request)
     {
         $request->validate([
-           'level' => 'required',
-           'status' => 'required'
+            'level' => 'required',
+            'status' => 'required'
         ]);
 
-        $data = $request->all();
-        $id = $request['id'];
+        $status = $request->status;
+        $level = @explode(',', $request->level);
+        $id = $request->id;
 
-        $update = UserModel::findOrFail($id)->update($data);
+        $update = UserModel::findOrFail($id);
 
+        ChooseRoleModel::where('id_karyawan', $update->id)->delete();
+
+        foreach ($level as $item) {
+            ChooseRoleModel::create([
+                'id_karyawan' => $update->id,
+                'id_user_level' => $item
+            ]);
+        }
+
+        $update->update([
+            'status' => $status
+        ]);
+
+        $chooseRole = ChooseRoleModel::with('roleMany')
+            ->where('id_karyawan', $update->id)
+            ->get();
+
+        Session::put('count', $chooseRole->count());
+        
         if ($update) {
             return response()->json(['status' => 200, 'msg' => 'Data berhasil diubah']);
         } else {
@@ -113,7 +185,7 @@ class UserController extends Controller
         $password = Hash::make($konfigurasi[7]->nilai_konfig);
 
         $data = [
-          'password' => $password
+            'password' => $password
         ];
 
         $reset = UserModel::findOrFail($id)->update($data);
@@ -141,7 +213,7 @@ class UserController extends Controller
     public function cekEmail(Request $request)
     {
         $email = $request->email;
-        $cekUsername = UserModel::where('email', $email)->get();
+        $cekUsername = KaryawanModel::where('email', $email)->get();
         $getEmail = $cekUsername->count();
 
         if ($getEmail == 1) {
