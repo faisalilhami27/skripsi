@@ -49,7 +49,7 @@ class DashboardController extends Controller
     {
         $data = PemesananModel::select(DB::raw('MONTHNAME(tgl_pemesanan) AS bulan, COUNT(*) AS jumlah'))
             ->whereRaw('YEAR(tgl_pemesanan) = YEAR(CURDATE())')
-            ->groupBy(DB::raw('YEAR(tgl_pemesanan) = YEAR(CURDATE())'))
+            ->groupBy(DB::raw('MONTH(tgl_pemesanan)'))
             ->get();
         return response()->json($data);
     }
