@@ -70,6 +70,7 @@
                                     } ?>
                                     </tbody>
                                 </table>
+                                <div class="pull-left" style="margin-top: 20px"><a href="{{ URL('userlevel') }}" class="btn btn-danger btn-sm"><span class="icon icon-backward"></span> Kembali</a></div>
                                 <div class="pull-right">{{ $menu->links() }}</div>
                             </div>
                         </div>

@@ -56,7 +56,7 @@ class RoleLevelSeeder extends Seeder
             [
                 'id_user_level' => 1,
                 'id_menu' => 6,
-                'create' => 1,
+                'create' => 0,
                 'read' => 1,
                 'update' => 1,
                 'delete' => 1
