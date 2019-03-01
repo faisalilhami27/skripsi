@@ -34,7 +34,7 @@
 <body>
 <div class="login">
     <div class="login-body">
-        <a class="login-brand" href="index.html">
+        <a class="login-brand">
             <img class="img-responsive" src="{{ asset('img/logo2.png') }}" alt="Elephant">
         </a>
         <div class="login-form">
