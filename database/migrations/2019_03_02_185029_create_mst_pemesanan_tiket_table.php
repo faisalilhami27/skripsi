@@ -31,7 +31,6 @@ class CreateMstPemesananTiketTable extends Migration
             $table->softDeletes();
 
             $table->foreign('id_karyawan')->references('id')->on('trs_karyawan');
-            $table->foreign('id_pengubah')->references('id')->on('trs_karyawan');
             $table->foreign('id_jenis')->references('id')->on('mst_jenis_pemesanan');
         });
     }
