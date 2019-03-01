@@ -17,7 +17,7 @@
                                     <th>No</th>
                                     <th>Bukti Pembayaran</th>
                                     <th>Kode Pemesanan</th>
-                                    <th>Tanggal Pemesanan</th>
+                                    <th>Total Pembayaran</th>
                                     <th>Tanggal Masuk</th>
                                     <th>Nama Customer</th>
                                     <th>Status</th>
@@ -52,7 +52,7 @@
                                 <select id="upd_status" name="main_menu" class="form-control">
                                     <option value="">-- Pilih Status --</option>
                                     @foreach($status as $m)
-                                        <option value="{{ $m->id_status }}">{{ $m->nama_status }}</option>
+                                        <option value="{{ $m->id }}">{{ $m->nama_status }}</option>
                                     @endforeach
                                 </select>
                                 <span class="text-danger">
@@ -73,37 +73,46 @@
     <script type="text/javascript">
         var table;
         $(document).ready(function () {
+            $("#btn-edit").attr('disabled', 'disabled');
             var styles = {
                 status: function (row, type, data) {
                     if (data.id_status == 1) {
-                        return "Unpaid";
+                        return "<span class='label label-danger'>Unpaid</span>";
                     } else {
-                        return "Confirmed";
+                        return "<span class='label label-success'>Confirmed</span>";
                     }
                 },
 
                 images: function (row, type, data) {
-                    return `<a href="{{ asset('storage/img') . '/' }}${data.bukti_pembayaran}" target="blank">${data.bukti_pembayaran}</a>`;
+                    if (data.bukti_pembayaran == null) {
+                        return 'Belum konfirmasi pembayaran';
+                    } else {
+                        return `<a href="${data.bukti_pembayaran}" target="blank">view Bukti Pembayaran</a>`;
+                    }
                 },
 
                 button: function (row, type, data) {
                     var update = "{{ $akses['update'] }}";
                     var hapus = "{{ $akses['delete'] }}";
-                    console.log(update);
                     if (update == 1 && hapus == 1) {
                         if (data.id_status == 2) {
-                            return "<center>" + `<a disabled="disabled" href="#" class="btn btn-success btn-sm btn-edit"  id="${data.id}" data-toggle="modal" data-target="#infoModalColoredHeader1"><i class="icon icon-pencil-square-o"></i></a>
+                            return "<center>" + `<a disabled="disabled" href="#" class="btn btn-success btn-sm btn-edit"  id="${data.id}"><i class="icon icon-pencil-square-o"></i></a>
                                 <a href="#" class="btn btn-danger btn-sm btn-delete"  id="${data.id}"><i class="icon icon-trash-o"></i></a>` + "</center>";
                         } else {
-                            if (data.id_status == 2) {
+                            if (data.bukti_pembayaran == null) {
+                                return "<center>" + `<a href="#" disabled='' class="btn btn-success btn-sm btn-edit"  id="${data.id}" ><i class="icon icon-pencil-square-o"></i></a>
+                                <a href="#" class="btn btn-danger btn-sm btn-delete"  id="${data.id}"><i class="icon icon-trash-o"></i></a>` + "</center>";
+                            } else {
                                 return "<center>" + `<a href="#" class="btn btn-success btn-sm btn-edit"  id="${data.id}" data-toggle="modal" data-target="#infoModalColoredHeader1"><i class="icon icon-pencil-square-o"></i></a>
                                 <a href="#" class="btn btn-danger btn-sm btn-delete"  id="${data.id}"><i class="icon icon-trash-o"></i></a>` + "</center>";
                             }
                         }
                     } else if (update == 1) {
                         if (data.id_status == 2) {
-                            if (data.id_status == 2) {
-                                return "<center>" + `<a disabled="disabled" href="#" class="btn btn-success btn-sm btn-edit"  id="${data.id}" data-toggle="modal" data-target="#infoModalColoredHeader1"><i class="icon icon-pencil-square-o"></i></a>` + "</center>";
+                            return "<center>" + `<a disabled="disabled" href="#" class="btn btn-success btn-sm btn-edit"  id="${data.id}" data-toggle="modal" data-target="#infoModalColoredHeader1"><i class="icon icon-pencil-square-o"></i></a>` + "</center>";
+                        } else {
+                            if (data.bukti_pembayaran == null) {
+                                return "<center>" + `<a href="#" class="btn btn-success btn-sm btn-edit"  id="${data.id}" disabled=''><i class="icon icon-pencil-square-o"></i></a>` + "</center>";
                             } else {
                                 return "<center>" + `<a href="#" class="btn btn-success btn-sm btn-edit"  id="${data.id}" data-toggle="modal" data-target="#infoModalColoredHeader1"><i class="icon icon-pencil-square-o"></i></a>` + "</center>";
                             }
@@ -111,6 +120,10 @@
                     } else {
                         return "";
                     }
+                },
+
+                uang: function (row, type, data) {
+                    return 'Rp. ' + format(data.pemesanan_tiket.total_uang_masuk);
                 }
             };
 
@@ -132,7 +145,7 @@
                     {data: 'DT_RowIndex'},
                     {data: 'bukti_pembayaran', render: styles.images},
                     {data: 'kode_pemesanan'},
-                    {data: 'pemesanan_tiket.tgl_pemesanan'},
+                    {data: 'total_uang_masuk', render: styles.uang},
                     {data: 'pemesanan_tiket.tgl_masuk'},
                     {data: 'pemesanan_tiket.customer.nama'},
                     {data: 'id_status', render: styles.status},
@@ -161,6 +174,7 @@
                     dataType: 'json',
                     success: function (data) {
                         if (data.status == 200) {
+                            console.log(data);
                             $("#id_konfirmasi").val(data.list.id);
                             $("#upd_status").val(data.list.id_status);
                         } else {
@@ -243,6 +257,24 @@
                     }
                 });
             });
+
+            $("")
         });
+
+        function format(angka) {
+            var number_string = angka.replace(/[^,\d]/g, '').toString(),
+                split = number_string.split(','),
+                sisa = split[0].length % 3,
+                rupiah = split[0].substr(0, sisa),
+                ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+
+            if (ribuan) {
+                separator = sisa ? '.' : '';
+                rupiah += separator + ribuan.join('.');
+            }
+
+            rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
+            return rupiah;
+        }
     </script>
 @endsection

@@ -17,14 +17,12 @@ class CreateMstPembayaranTable extends Migration
             $table->increments('id');
             $table->string('kode_pemesanan', 20);
             $table->integer('id_status')->unsigned();
-            $table->text('bukti_pembayaran');
-            $table->integer('id_karyawan')->unsigned();
-            $table->integer('id_pengubah')->unsigned()->nullable();
+            $table->text('bukti_pembayaran')->nullable();
+            $table->integer('id_karyawan')->unsigned()->nullable();
             $table->timestamps();
             $table->softDeletes();
 
             $table->foreign('id_karyawan')->references('id')->on('trs_karyawan');
-            $table->foreign('id_pengubah')->references('id')->on('trs_karyawan');
             $table->foreign('id_status')->references('id')->on('mst_status_pembayaran');
         });
     }

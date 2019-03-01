@@ -29,7 +29,7 @@
                                         <th style="text-align: center">Tanggal</th>
                                         <th style="text-align: center">Nama kasir</th>
                                         <th style="text-align: center">Jumlah Tiket</th>
-                                        <th style="text-align: center">Total Pembayaran</th>
+                                        <th style="text-align: center">Pembayaran</th>
                                         <th style="text-align: center">Status</th>
                                         <th style="text-align: center">Jenis</th>
                                         <th style="text-align: center" width="120px">Aksi</th>
@@ -139,7 +139,7 @@
                             <div class="form-group">
                                 <label for="upd_tiket">Jumlah Tiket</label>
                                 <input id="upd_tiket" name="upd_tiket" maxlength="5" class="form-control"
-                                       type="number" placeholder="Masukan jumlah tiket">
+                                       type="text" placeholder="Masukan jumlah tiket" min="1">
                                 <span class="text-danger">
                                     <strong class="tiket-error"></strong>
                                 </span>
@@ -195,14 +195,27 @@
                     var update = "{{ $akses['update'] }}";
                     var hapus = "{{ $akses['delete'] }}";
                     if (update == 1 && hapus == 1) {
-                        return '<center>' + `<a href="#" class="btn btn-success btn-sm btn-edit"  id="${data.id}" data-toggle="modal" data-target="#infoModalColoredHeader1"><i class="icon icon-pencil-square-o"></i></a>
-                        <a href="#" class="btn btn-danger btn-sm btn-delete"  id="${data.id}"><i class="icon icon-trash-o"></i></a>
-                        <a href="#" class="btn btn-warning btn-sm btn-print"  id="${data.kode_pemesanan}"><i class="icon icon-print"></i></a>` + '</center>';
+                        if (data.id_jenis == 2) {
+                            return '<center>' + `<a href="#" class="btn btn-success btn-sm btn-edit"  id="${data.id}" data-toggle="modal" data-target="#infoModalColoredHeader1"><i class="icon icon-pencil-square-o"></i></a>
+                                                 <a href="#" class="btn btn-danger btn-sm btn-delete"  id="${data.id}"><i class="icon icon-trash-o"></i></a>` + '</center>';
+                        } else {
+                            return '<center>' + `<a href="#" class="btn btn-success btn-sm btn-edit"  id="${data.id}" data-toggle="modal" data-target="#infoModalColoredHeader1"><i class="icon icon-pencil-square-o"></i></a>
+                                                 <a href="#" class="btn btn-danger btn-sm btn-delete"  id="${data.id}"><i class="icon icon-trash-o"></i></a>
+                                                 <a href="#" class="btn btn-warning btn-sm btn-print"  id="${data.kode_pemesanan}"><i class="icon icon-print"></i></a>` + '</center>';
+                        }
                     } else if (update == 1) {
-                        return '<center>' + `<a href="#" class="btn btn-success btn-sm btn-edit"  id="${data.id}" data-toggle="modal" data-target="#infoModalColoredHeader1"><i class="icon icon-pencil-square-o"></i></a>
-                        <a href="#" class="btn btn-warning btn-sm btn-print"  id="${data.kode_pemesanan}"><i class="icon icon-print"></i></a>` + '</center>';
+                        if (data.id_jenis == 2) {
+                            return '<center>' + `<a href="#" class="btn btn-success btn-sm btn-edit"  id="${data.id}" data-toggle="modal" data-target="#infoModalColoredHeader1"><i class="icon icon-pencil-square-o"></i></a>` + '</center>';
+                        } else {
+                            return '<center>' + `<a href="#" class="btn btn-success btn-sm btn-edit"  id="${data.id}" data-toggle="modal" data-target="#infoModalColoredHeader1"><i class="icon icon-pencil-square-o"></i></a>
+                                                 <a href="#" class="btn btn-warning btn-sm btn-print"  id="${data.kode_pemesanan}"><i class="icon icon-print"></i></a>` + '</center>';
+                        }
                     } else {
-                        return '<center>' + `<a href="#" class="btn btn-warning btn-sm btn-print"  id="${data.kode_pemesanan}"><i class="icon icon-print"></i></a>` + '</center>';
+                        if (data.id_jenis == 2) {
+                            return '<center>' + 'Tidak ada aksi' + '</center>';
+                        } else {
+                            return '<center>' + `<a href="#" class="btn btn-warning btn-sm btn-print"  id="${data.kode_pemesanan}"><i class="icon icon-print"></i></a>` + '</center>';
+                        }
                     }
                 },
 
@@ -216,6 +229,14 @@
 
                 uang: function (row, type, data) {
                     return "Rp. " + format(data.total_uang_masuk);
+                },
+
+                karyawan: function (row, type, data) {
+                    if (data.id_karyawan == null) {
+                        return '-';
+                    } else {
+                        return data.karyawan.karyawan.nama;
+                    }
                 }
             };
 
@@ -239,7 +260,7 @@
                     {data: 'DT_RowIndex'},
                     {data: 'kode_pemesanan'},
                     {data: 'tgl_pemesanan'},
-                    {data: 'karyawan.karyawan.nama'},
+                    {data: 'karyawan', render: styles.karyawan},
                     {data: 'jumlah_tiket'},
                     {data: 'total_uang_masuk', render: styles.uang},
                     {data: 'status_penggunaan', render: styles.status},
@@ -259,14 +280,16 @@
             $("#ins_tiket, #upd_tiket").keyup(function () {
                 var jml_tiket = $(this).val();
                 if (jml_tiket <= 0) {
-                    $("#tiket-error").html('can not be 0 or negative');
-                    $("#tiket-error").css('color', 'red');
-                    $("#tiket-error").fadeIn(1000);
-                    $("#tiket-error").fadeOut(5000);
+                    $("#tiket-error, .tiket-error").html('can not be 0 or negative');
+                    $("#tiket-error, .tiket-error").css('color', 'red');
+                    $("#tiket-error, .tiket-error").fadeIn(1000);
+                    $("#tiket-error, .tiket-error").fadeOut(5000);
                     $("#btn-insert-data").attr("disabled", 'disabled');
+                    $("#btn-update-data").attr("disabled", 'disabled');
                 } else {
                     $("#tiket-error").html('');
                     $("#btn-insert-data").removeAttr("disabled");
+                    $("#btn-update-data").removeAttr("disabled");
 
                     var jml_uang = jml_tiket * "{{ $konfig[2]->nilai_konfig }}";
                     var bilangan = jml_uang;
@@ -305,9 +328,12 @@
                     dataType: 'json',
                     success: function (data) {
                         if (data.status == 200) {
-                            $("#id_trs").val(data.pemesanan[0].id);
-                            $("#upd_tiket").val(data.pemesanan[0].jumlah_tiket);
-                            $("#upd_uang").val(data.pemesanan[0].jumlah_uang);
+                            var reverse = data.list.total_uang_masuk.toString().split('').reverse().join(''),
+                                ribuan = reverse.match(/\d{1,3}/g),
+                                ribuan = ribuan.join('.').split('').reverse().join('');
+                            $("#id_trs").val(data.list.id);
+                            $("#upd_tiket").val(data.list.jumlah_tiket);
+                            $("#upd_uang").val(ribuan);
                         } else {
                             notification(502, "Data tidak ditemukan");
                         }

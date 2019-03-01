@@ -70,7 +70,7 @@ Route::group(['prefix' => 'pemesanan'], function (){
     Route::get('/', 'PemesananController@index');
     Route::get('/getall', 'PemesananController@getAll');
     Route::get('/json', 'PemesananController@datatable');
-    Route::get('/getPemesananById', 'PemesananController@getPemesananById');
+    Route::get('/getPemesananById', 'PemesananController@edit');
     Route::get('/printTicket/{id}', 'PemesananController@printTicket');
     Route::post('/insert', 'PemesananController@store');
     Route::put('/update', 'PemesananController@update');

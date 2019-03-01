@@ -58,7 +58,7 @@ class PemesananController extends Controller
                 ->png();
 
             $insert = PemesananModel::create([
-                'kode_pemesanan' => "TRS-" . date('d') . "-" . $kode,
+                'kode_pemesanan' => "TRS-" . date('m-d') . "-" . $kode,
                 'tgl_pemesanan' => date('Y-m-d'),
                 'tgl_masuk' => date('Y-m-d'),
                 'id_jenis' => $idJenis,
@@ -77,6 +77,56 @@ class PemesananController extends Controller
             return response()->json(['status' => 200, 'msg' => 'Data berhasil ditambahkan']);
         } else {
             return response()->json(['status' => 449, 'msg' => 'Data gagal ditambahkan']);
+        }
+    }
+
+    public function edit(Request $request)
+    {
+        $id = $request->id;
+        $data = PemesananModel::findOrFail($id);
+
+        if ($data) {
+            return response()->json(['status' => 200, 'list' => $data]);
+        } else {
+            return response()->json(['status' => 449, 'msg' => 'Data tidak ditemukan']);
+        }
+    }
+
+    public function update(Request $request)
+    {
+        $request->validate([
+            'tiket' => 'required|numeric',
+            'total' => 'required|numeric'
+        ]);
+
+        $tiket = $request->tiket;
+        $total = $request->total;
+        $pengubah = Session::get('id_users');
+        $id = $request->id;
+
+        $update = PemesananModel::find($id)->update([
+            'jumlah_tiket' => $tiket,
+            'total_uang_masuk' => $total,
+            'id_pengubah' => $pengubah
+        ]);
+
+        if ($update) {
+            return response()->json(['status' => 200, 'msg' => 'Data berhasil diubah']);
+        } else {
+            return response()->json(['status' => 449, 'msg' => 'Data gagal diubah']);
+        }
+    }
+
+    public function destroy(Request $request)
+    {
+        $id = $request->id;
+
+        $delete = PemesananModel::find($id)->delete();
+
+        if ($delete) {
+            return response()->json(['status' => 200, 'msg' => 'Data berhasil dihapus']);
+        } else {
+            return response()->json(['status' => 449, 'msg' => 'Data gagal dihapus']);
         }
     }
 

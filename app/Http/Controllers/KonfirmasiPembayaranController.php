@@ -52,10 +52,14 @@ class KonfirmasiPembayaranController extends Controller
 
     public function update(KonfirmasiPembayaranRequest $request)
     {
-        $data = $request->all();
-        $id = $request['id'];
+        $status = $request->id_status;
+        $pengubah = Session::get('id_users');
+        $id = $request->id;
 
-        $update = KonfirmasiPembayaranModel::find($id)->update($data);
+        $update = KonfirmasiPembayaranModel::find($id)->update([
+            'id_status' => $status,
+            'id_karyawan' => $pengubah
+        ]);
 
         if ($update) {
             return response()->json(['status' => 200, 'msg' => 'Data berhasil diubah']);
