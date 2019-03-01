@@ -47,7 +47,7 @@ class PemesananController extends Controller
             return response()->json(['status' => 449, 'msg' => 'Uang pembayaran tidak boleh kurang dari harga']);
         } else {
             $kode = setKode();
-            $generate = "TRS-" . date('d') . "-" . $kode;
+            $generate = "TRS-" . date('m-d') . "-" . $kode;
             $qrCode = $generate . ".png";
             $path = "storage/qr_code/" . $qrCode;
             Storage::makeDirectory('qr_code');

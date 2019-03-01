@@ -18,12 +18,13 @@ class CreateMstPemesananTiketTable extends Migration
             $table->string('kode_pemesanan', 20)->unique();
             $table->date('tgl_pemesanan');
             $table->date('tgl_masuk');
-            $table->integer('id_karyawan')->unsigned();
+            $table->integer('id_karyawan')->unsigned()->nullable();
             $table->integer('jumlah_tiket');
-            $table->integer('total_uang_masuk');
+            $table->integer('total_uang_masuk')->nullable();
             $table->integer('uang_pembayaran');
             $table->integer('status_penggunaan');
             $table->enum('status_notif', ['0', '1']);
+            $table->integer('id_pengubah')->unsigned()->nullable();
             $table->integer('id_jenis')->unsigned();
             $table->integer('id_customer')->unsigned();
             $table->string('qr_code', 100);
@@ -31,6 +32,7 @@ class CreateMstPemesananTiketTable extends Migration
             $table->softDeletes();
 
             $table->foreign('id_karyawan')->references('id')->on('trs_karyawan');
+            $table->foreign('id_pengubah')->references('id')->on('trs_karyawan');
             $table->foreign('id_jenis')->references('id')->on('mst_jenis_pemesanan');
         });
     }
