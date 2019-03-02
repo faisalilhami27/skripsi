@@ -19,12 +19,6 @@ class KonfirmasiPembayaranController extends Controller
 
     public function index()
     {
-        $data = KonfirmasiPembayaranModel::with(['pemesananTiket.customer'])
-            ->whereHas('pemesananTiket', function ($query){
-                $query->where('id_jenis', 2);
-                $query->where('id_customer', '!=' , 0);
-            })->get();
-        die(json_encode($data));
         $idUserLevel = Session::get('id_user_level');
         $idMenu = getIdMenu();
         $akses = checkAccess($idUserLevel, $idMenu);
