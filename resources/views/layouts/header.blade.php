@@ -257,11 +257,11 @@
                     hasil += '<a class="list-group-item" href="#">\n' +
                         '                                        <div class="notification">\n' +
                         '                                            <div class="notification-media">\n' +
-                        '\t\t\t\t\t\t\t\t\t\t\t\t<span><img src="{{ config('constants.URL') }}' + "/assets/img/" + obj[i].customer.images + '" class="circle sq-40" alt=""></span>\n' +
+                        '\t\t\t\t\t\t\t\t\t\t\t\t<span><img src="{{ config('constants.URL') }}' + "/assets/img/" + obj[i].pemesanan_tiket.customer.images + '" class="circle sq-40" alt=""></span>\n' +
                         '                                            </div>\n' +
                         '                                            <div class="notification-content">\n' +
-                        '                                                <small class="notification-timestamp">' + obj[i].tgl_pemesanan + '</small>\n' +
-                        '                                                <h5 class="notification-hea ding">' + obj[i].customer.nama + '</h5>\n' +
+                        '                                                <small class="notification-timestamp">' + obj[i].pemesanan_tiket.tgl_pemesanan + '</small>\n' +
+                        '                                                <h5 class="notification-hea ding">' + obj[i].pemesanan_tiket.customer.nama + '</h5>\n' +
                         '                                                <p class="notification-text">\n' +
                         '                                                    <small class="truncate">Dengan kode transaksi ' + obj[i].kode_pemesanan + ' \n' +
                         '                                                        melalui aplikasi mobile \n' +

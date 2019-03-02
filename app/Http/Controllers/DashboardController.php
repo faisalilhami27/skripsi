@@ -16,9 +16,26 @@ class DashboardController extends Controller
 
     public function index()
     {
+////        $message = PemesananModel::with(['customer' => function ($query) {
+////            $query->select('id', 'nama', 'images');
+////        }, 'pembayaran' => function ($query) {
+////            $query->where('id_status', '=', 2);
+////        }])
+////            ->where('id_customer', '!=', 0)
+////            ->select('kode_pemesanan', 'tgl_pemesanan', 'tgl_masuk', 'jumlah_tiket', 'id_customer')
+////            ->get();
+//        $message = KonfirmasiPembayaranModel::with(['pemesananTiket' => function ($query) {
+//            $query->select('kode_pemesanan', 'tgl_pemesanan', 'tgl_masuk', 'jumlah_tiket', 'id_customer');
+//        }, 'pemesananTiket.customer' => function ($query) {
+//            $query->select('id', 'nama', 'images');
+//        }])
+//            ->where('id_status', 1)
+//            ->get();
+//        return response()->json(['notification' => $message]);
+//        die;
         $date = date('Y-m-d');
         $hari = PemesananModel::select(DB::raw('count(kode_pemesanan) as total'))
-            ->where('tgl_pemesanan' , '=', $date)
+            ->where('tgl_pemesanan', '=', $date)
             ->first()->total;
         $bulan = PemesananModel::select(DB::raw('count(kode_pemesanan) as total'))
             ->whereRaw('MONTH(tgl_pemesanan) = MONTH(CURDATE())')
@@ -56,18 +73,19 @@ class DashboardController extends Controller
 
     public function getNotification()
     {
-        $countNotif = PemesananModel::whereHas('customer', function ($query){
+        $countNotif = PemesananModel::whereHas('customer', function ($query) {
             $query->where('id', '!=', null);
             $query->orWhere('id', '!=', 0);
         })
             ->where('status_notif', "0")
             ->select('kode_pemesanan', 'tgl_pemesanan', 'tgl_masuk', 'jumlah_tiket')
             ->count();
-        $message = PemesananModel::with(['customer' => function($query){
+        $message = KonfirmasiPembayaranModel::with(['pemesananTiket' => function ($query) {
+            $query->select('kode_pemesanan', 'tgl_pemesanan', 'tgl_masuk', 'jumlah_tiket', 'id_customer');
+        }, 'pemesananTiket.customer' => function ($query) {
             $query->select('id', 'nama', 'images');
         }])
-            ->where('id_customer', '!=', 0)
-            ->select('kode_pemesanan', 'tgl_pemesanan', 'tgl_masuk', 'jumlah_tiket', 'id_customer')
+            ->where('id_status', 1)
             ->get();
         return response()->json(['unseen_notification' => $countNotif, 'notification' => $message]);
     }
@@ -75,7 +93,7 @@ class DashboardController extends Controller
     public function updateNotif()
     {
         $data = [
-          'status_notif' => "1"
+            'status_notif' => "1"
         ];
 
         PemesananModel::where('id', '>', 0)->update($data);

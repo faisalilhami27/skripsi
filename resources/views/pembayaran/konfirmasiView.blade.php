@@ -258,7 +258,9 @@
                 });
             });
 
-            $("")
+            setInterval(function () {
+                table.ajax.reload();
+            }, 15000);
         });
 
         function format(angka) {
