@@ -254,7 +254,7 @@
                 var hasil = '';
                 for (var i = 0; i < data.notification.length; i++) {
                     var obj = $.parseJSON(JSON.stringify(data.notification));
-                    hasil += '<a class="list-group-item" href="#">\n' +
+                    hasil += '<a class="list-group-item" href="{{ URL('konfirmasi') }}">\n' +
                         '                                        <div class="notification">\n' +
                         '                                            <div class="notification-media">\n' +
                         '\t\t\t\t\t\t\t\t\t\t\t\t<span><img src="{{ config('constants.URL') }}' + "/assets/img/" + obj[i].pemesanan_tiket.customer.images + '" class="circle sq-40" alt=""></span>\n' +
