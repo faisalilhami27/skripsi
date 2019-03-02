@@ -84,8 +84,7 @@
                         <img src="" class="gambar center-block" alt="" width="400px" height="400px">
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-default" data-dismiss="modal" type="button">Cancel</button>
-                        <button class="btn btn-primary" type="submit">Submit</button>
+                        <button class="btn btn-default" data-dismiss="modal" type="button">Close</button>
                     </div>
                 </div>
             </div>
