@@ -110,7 +110,7 @@
                     if (data.bukti_pembayaran == null) {
                         return 'Belum konfirmasi pembayaran';
                     } else {
-                        var jumlah = 'Total yang harus dibayar : ' + data.pemesanan_tiket.total_uang_masuk;
+                        var jumlah = 'Total yang harus dibayar : Rp. ' + format(data.pemesanan_tiket.total_uang_masuk);
                         $(".gambar").attr('src', data.bukti_pembayaran);
                         $(".jumlah").html(jumlah);
                         return `<a href="#" id="${data.id}" data-toggle="modal" data-target="#infoModalColoredHeader2">View bukti pembayaran</a>`;
