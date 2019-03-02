@@ -68,6 +68,28 @@
                 </div>
             </div>
         </div>
+
+        <div id="infoModalColoredHeader2" role="dialog" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header bg-primary">
+                        <button type="button" class="close" data-dismiss="modal">
+                            <span aria-hidden="true">×</span>
+                            <span class="sr-only">Close</span>
+                        </button>
+                        <h4 class="modal-title-update">View Bukti Pembayaran</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p class="jumlah" style="text-align: center; font-weight: bold"></p>
+                        <img src="" class="gambar center-block" alt="" width="400px" height="400px">
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-default" data-dismiss="modal" type="button">Cancel</button>
+                        <button class="btn btn-primary" type="submit">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="{{ asset('js/jquery.idle.min.js') }}"></script>
@@ -88,7 +110,10 @@
                     if (data.bukti_pembayaran == null) {
                         return 'Belum konfirmasi pembayaran';
                     } else {
-                        return `<a href="${data.bukti_pembayaran}" target="blank">view Bukti Pembayaran</a>`;
+                        var jumlah = 'Total yang harus dibayar : ' + data.pemesanan_tiket.total_uang_masuk;
+                        $(".gambar").attr('src', data.bukti_pembayaran);
+                        $(".jumlah").html(jumlah);
+                        return `<a href="#" id="${data.id}" data-toggle="modal" data-target="#infoModalColoredHeader2">View bukti pembayaran</a>`;
                     }
                 },
 
@@ -283,7 +308,7 @@
     <script>
         $(document).idle({
             onIdle: function () {
-                window.location = "{{ URL('pemesanan') }}";
+                window.location = "{{ URL('konfirmasi') }}";
             },
             idle: 60000
         });
