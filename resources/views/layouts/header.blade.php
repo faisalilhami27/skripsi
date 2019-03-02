@@ -257,7 +257,7 @@
                     hasil += '<a class="list-group-item" href="{{ URL('konfirmasi') }}">\n' +
                         '                                        <div class="notification">\n' +
                         '                                            <div class="notification-media">\n' +
-                        '\t\t\t\t\t\t\t\t\t\t\t\t<span><img src="{{ config('constants.URL') }}' + "/assets/img/" + obj[i].pemesanan_tiket.customer.images + '" class="circle sq-40" alt=""></span>\n' +
+                        '\t\t\t\t\t\t\t\t\t\t\t\t<span><img src="'+ obj[i].pemesanan_tiket.customer.images + '" class="circle sq-40" alt=""></span>\n' +
                         '                                            </div>\n' +
                         '                                            <div class="notification-content">\n' +
                         '                                                <small class="notification-timestamp">' + obj[i].pemesanan_tiket.tgl_pemesanan + '</small>\n' +
