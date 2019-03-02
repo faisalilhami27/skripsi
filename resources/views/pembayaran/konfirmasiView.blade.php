@@ -150,14 +150,6 @@
 
                 uang: function (row, type, data) {
                     return 'Rp. ' + format(data.pemesanan_tiket.total_uang_masuk);
-                }, 
-                
-                nama: function (row, type, data) {
-                    if (data.pemesanan_tiket.id_customer == 0) {
-                        return 'Pengunjung';
-                    } else {
-                        return data.pemesanan_tiket.customer.nama;
-                    }
                 }
             };
 
@@ -181,7 +173,7 @@
                     {data: 'kode_pemesanan'},
                     {data: 'total_uang_masuk', render: styles.uang},
                     {data: 'pemesanan_tiket.tgl_masuk'},
-                    {data: 'nama', render: styles.nama},
+                    {data: 'pemesanan_tiket.customer.nama'},
                     {data: 'id_status', render: styles.status},
                     {data: 'action', orderable: false, render: styles.button}
                 ],
