@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\PemesananRequest;
 use App\Models\KonfigurasiModel;
+use App\Models\KonfirmasiPembayaranModel;
 use App\Models\PemesananModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -70,6 +71,12 @@ class PemesananController extends Controller
                 'status_notif' => "0",
                 'id_customer' => 0,
                 'qr_code' => $qrCode
+            ]);
+
+            KonfirmasiPembayaranModel::create([
+                'kode_pemesanan' => $insert->kode_pemesanan,
+                'bukti_pembayaran' => null,
+                'id_status' => 2
             ]);
         }
 
