@@ -153,7 +153,7 @@
                 }, 
                 
                 nama: function (row, type, data) {
-                    if (data.pemesanan_tike.id_customer == 0) {
+                    if (data.pemesanan_tiket.id_customer == 0) {
                         return 'Pengunjung';
                     } else {
                         return data.pemesanan_tiket.customer.nama;
