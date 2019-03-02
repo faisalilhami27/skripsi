@@ -70,6 +70,7 @@
         </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="{{ asset('js/jquery.idle.min.js') }}"></script>
     <script type="text/javascript">
         var table;
         $(document).ready(function () {
@@ -278,5 +279,13 @@
             rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
             return rupiah;
         }
+    </script>
+    <script>
+        $(document).idle({
+            onIdle: function () {
+                window.location = "{{ URL('pemesanan') }}";
+            },
+            idle: 60000
+        });
     </script>
 @endsection

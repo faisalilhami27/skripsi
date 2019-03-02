@@ -556,4 +556,12 @@
             });
         });
     </script>
+    <script>
+        $(document).idle({
+            onIdle: function () {
+                window.location = "{{ URL('pemesanan') }}";
+            },
+            idle: 60000
+        });
+    </script>
 @endsection
