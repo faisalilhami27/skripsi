@@ -129,7 +129,7 @@
 
             //	//datatables
             table = $('#demo-datatables').DataTable({
-                processing: true,
+                // processing: true,
                 serverSide: true,
                 responsive: true,
                 order: [],
