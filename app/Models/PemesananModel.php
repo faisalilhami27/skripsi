@@ -30,6 +30,6 @@ class PemesananModel extends Model
 
     public function customer()
     {
-        return $this->belongsTo(CustomerModel::class, 'id_customer', 'id');
+        return $this->belongsTo(CustomerModel::class, 'id');
     }
 }
