@@ -16,23 +16,6 @@ class DashboardController extends Controller
 
     public function index()
     {
-////        $message = PemesananModel::with(['customer' => function ($query) {
-////            $query->select('id', 'nama', 'images');
-////        }, 'pembayaran' => function ($query) {
-////            $query->where('id_status', '=', 2);
-////        }])
-////            ->where('id_customer', '!=', 0)
-////            ->select('kode_pemesanan', 'tgl_pemesanan', 'tgl_masuk', 'jumlah_tiket', 'id_customer')
-////            ->get();
-//        $message = KonfirmasiPembayaranModel::with(['pemesananTiket' => function ($query) {
-//            $query->select('kode_pemesanan', 'tgl_pemesanan', 'tgl_masuk', 'jumlah_tiket', 'id_customer');
-//        }, 'pemesananTiket.customer' => function ($query) {
-//            $query->select('id', 'nama', 'images');
-//        }])
-//            ->where('id_status', 1)
-//            ->get();
-//        return response()->json(['notification' => $message]);
-//        die;
         $date = date('Y-m-d');
         $hari = PemesananModel::select(DB::raw('count(kode_pemesanan) as total'))
             ->where('tgl_pemesanan', '=', $date)
@@ -85,7 +68,6 @@ class DashboardController extends Controller
         }, 'pemesananTiket.customer' => function ($query) {
             $query->select('id', 'nama', 'images');
         }])
-            ->where('id_status', 1)
             ->get();
         return response()->json(['unseen_notification' => $countNotif, 'notification' => $message]);
     }
