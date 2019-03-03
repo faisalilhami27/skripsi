@@ -20,6 +20,7 @@ class CreateMstUserCustomerTable extends Migration
             $table->string('email', 60);
             $table->string('password', 60);
             $table->string('no_hp', 15);
+            $table->integer('status')->default(0);
             $table->text('images')->nullable();
             $table->timestamps();
             $table->softDeletes();
