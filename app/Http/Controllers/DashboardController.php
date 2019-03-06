@@ -26,6 +26,7 @@ class DashboardController extends Controller
         $konfirmasi = KonfirmasiPembayaranModel::with(['pemesananTiket'])
             ->select(DB::raw('count(kode_pemesanan) as total'))
             ->where('id_status', 1)
+            ->where('bukti_pembayaran', '!=', null)
             ->first()->total;
         $totalUang = PemesananModel::select(DB::raw('sum(total_uang_masuk) as total'))
             ->where('tgl_pemesanan', '=', $date)
