@@ -34,7 +34,7 @@ class MenuSeeder extends Seeder
                 'is_aktif' => 'y'
             ],
             [
-                'title' => 'Karyawan',
+                'title' => 'Kelola Karyawan',
                 'url' => 'karyawan',
                 'icon' => 'icon icon-user-plus',
                 'is_main_menu' => 0,
