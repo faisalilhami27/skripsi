@@ -156,6 +156,7 @@
             table = $('#demo-datatables').DataTable({
                 // processing: true,
                 serverSide: true,
+                destroy:true,
                 responsive: true,
                 order: [],
 
