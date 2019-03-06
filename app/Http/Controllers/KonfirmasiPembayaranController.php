@@ -50,6 +50,20 @@ class KonfirmasiPembayaranController extends Controller
         }
     }
 
+    public function getBuktiPembayaran(Request $request)
+    {
+        $id = $request->id;
+        $data = KonfirmasiPembayaranModel::with('pemesananTiket')
+            ->where('id', $id)
+            ->first();
+
+        if ($data) {
+            return response()->json(['status' => 200, 'list' => $data]);
+        } else {
+            return response()->json(['status' => 449, 'msg' => 'Data tidak ditemukan']);
+        }
+    }
+
     public function update(KonfirmasiPembayaranRequest $request)
     {
         $status = $request->id_status;

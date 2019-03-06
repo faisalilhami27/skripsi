@@ -109,10 +109,7 @@
                     if (data.bukti_pembayaran == null) {
                         return 'Belum konfirmasi pembayaran';
                     } else {
-                        var jumlah = 'Total yang harus dibayar : Rp. ' + format(data.pemesanan_tiket.total_uang_masuk);
-                        $(".gambar").attr('src', data.bukti_pembayaran);
-                        $(".jumlah").html(jumlah);
-                        return `<a href="#" id="${data.id}" data-toggle="modal" data-target="#infoModalColoredHeader2">View bukti pembayaran</a>`;
+                        return `<a href="#" id="${data.id}" class="btn-link" data-toggle="modal" data-target="#infoModalColoredHeader2">View bukti pembayaran</a>`;
                     }
                 },
 
@@ -200,9 +197,34 @@
                     dataType: 'json',
                     success: function (data) {
                         if (data.status == 200) {
-                            console.log(data);
                             $("#id_konfirmasi").val(data.list.id);
                             $("#upd_status").val(data.list.id_status);
+                        } else {
+                            notification(502, "Data tidak ditemukan");
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        alert(status + " : " + error);
+                    }
+                });
+            });
+
+            table.on('click', '.btn-link', function (e) {
+                e.preventDefault();
+                var id = $(this).attr("id");
+                $.ajax({
+                    headers: {
+                        "X-CSRF-TOKEN": "{{ csrf_token() }}",
+                    },
+                    url: "{{ URL('konfirmasi/getBuktiPembayaran') }}",
+                    type: "GET",
+                    data: "id=" + id,
+                    dataType: 'json',
+                    success: function (data) {
+                        if (data.status == 200) {
+                            var jumlah = 'Total yang harus dibayar : Rp. ' + data.list.pemesanan_tiket.jumlah_tiket;
+                            $(".gambar").attr('src', data.list.bukti_pembayaran);
+                            $(".jumlah").text(jumlah);
                         } else {
                             notification(502, "Data tidak ditemukan");
                         }
