@@ -171,7 +171,7 @@
                     {data: 'total_uang_masuk', render: styles.uang},
                     {data: 'pemesanan_tiket.tgl_masuk'},
                     {data: 'pemesanan_tiket.customer.nama'},
-                    {data: 'id_status', render: styles.status},
+                    {data: 'nama_status', render: styles.status},
                     {data: 'action', orderable: false, render: styles.button}
                 ],
 
