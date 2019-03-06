@@ -222,7 +222,7 @@
                     dataType: 'json',
                     success: function (data) {
                         if (data.status == 200) {
-                            var jumlah = 'Total yang harus dibayar : Rp. ' + data.list.pemesanan_tiket.jumlah_tiket;
+                            var jumlah = 'Total yang harus dibayar : Rp. ' + data.list.pemesanan_tiket.total_uang_masuk;
                             $(".gambar").attr('src', data.list.bukti_pembayaran);
                             $(".jumlah").text(jumlah);
                         } else {
