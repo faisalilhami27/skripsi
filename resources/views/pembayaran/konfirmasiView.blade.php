@@ -99,9 +99,9 @@
             var styles = {
                 status: function (row, type, data) {
                     if (data.id_status == 1) {
-                        return "<span class='label label-danger'>Unpaid</span>";
+                        return "<span class='label label-danger'>"+ data.status_pembayaran.nama_status +"</span>";
                     } else {
-                        return "<span class='label label-success'>Confirmed</span>";
+                        return "<span class='label label-success'>"+ data.status_pembayaran.nama_status +"</span>";
                     }
                 },
 

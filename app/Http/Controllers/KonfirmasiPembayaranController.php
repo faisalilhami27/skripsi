@@ -30,7 +30,7 @@ class KonfirmasiPembayaranController extends Controller
 
     public function datatable()
     {
-        $data = KonfirmasiPembayaranModel::with(['pemesananTiket.customer'])
+        $data = KonfirmasiPembayaranModel::with(['pemesananTiket.customer', 'statusPembayaran'])
             ->whereHas('pemesananTiket', function ($query){
                 $query->where('id_jenis', 2);
                 $query->where('id_customer', '!=' , 0);

@@ -17,4 +17,9 @@ class KonfirmasiPembayaranModel extends Model
     {
         return $this->hasOne(PemesananModel::class, 'kode_pemesanan', 'kode_pemesanan');
     }
+
+    public function statusPembayaran()
+    {
+        return $this->hasOne(StatusPembayaranModel::class, 'id', 'id_status');
+    }
 }
