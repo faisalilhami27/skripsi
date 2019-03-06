@@ -226,23 +226,6 @@
 <script>
     $(document).ready(function () {
         load_unseen_notification();
-        $(".dropdown-toggle").click(function (e) {
-            e.preventDefault();
-            $.ajax({
-                headers: {
-                    "X-CSRF-TOKEN": "{{ csrf_token() }}",
-                },
-                url: "{{ URL('dashboard/update') }}",
-                type: "PUT",
-                dataType: 'json',
-                success: function () {
-                    $('.badge-notif, .notif').html('');
-                },
-                error: function (xhr, status, error) {
-                    alert(status + " : " + error);
-                }
-            });
-        });
     });
 
     function load_unseen_notification() {
