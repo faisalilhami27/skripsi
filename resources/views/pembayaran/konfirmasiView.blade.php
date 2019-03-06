@@ -251,7 +251,9 @@
                     success: function (data) {
                         $("#infoModalColoredHeader1").modal('hide');
                         notification(data.status, data.msg);
-                        table.ajax.reload();
+                        setTimeout(function () {
+                            table.ajax.reload();
+                        }, 1000);
                     },
                     error: function (resp) {
                         if (_.has(resp.responseJSON, 'errors')) {
