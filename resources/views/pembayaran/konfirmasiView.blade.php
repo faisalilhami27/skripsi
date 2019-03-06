@@ -252,7 +252,7 @@
                         $("#infoModalColoredHeader1").modal('hide');
                         notification(data.status, data.msg);
                         setTimeout(function () {
-                            table.ajax.reload();
+                            location.reload();
                         }, 1000);
                     },
                     error: function (resp) {
