@@ -57,29 +57,17 @@ class DashboardController extends Controller
 
     public function getNotification()
     {
-        $countNotif = PemesananModel::whereHas('customer', function ($query) {
-            $query->where('id', '!=', null);
-            $query->orWhere('id', '!=', 0);
-        })
-            ->where('status_notif', "0")
-            ->select('kode_pemesanan', 'tgl_pemesanan', 'tgl_masuk', 'jumlah_tiket')
+        $countNotif = KonfirmasiPembayaranModel::where('id_status', 1)
+            ->where('bukti_pembayaran', '!=', null)
             ->count();
         $message = KonfirmasiPembayaranModel::with(['pemesananTiket' => function ($query) {
             $query->select('kode_pemesanan', 'tgl_pemesanan', 'tgl_masuk', 'jumlah_tiket', 'id_customer');
         }, 'pemesananTiket.customer' => function ($query) {
             $query->select('id', 'nama', 'images');
         }])
+            ->where('id_status', 1)
+            ->where('bukti_pembayaran', '!=', null)
             ->get();
         return response()->json(['unseen_notification' => $countNotif, 'notification' => $message]);
-    }
-
-    public function updateNotif()
-    {
-        $data = [
-            'status_notif' => "1"
-        ];
-
-        PemesananModel::where('id', '>', 0)->update($data);
-        return response()->json(['msg' => 'Data berhasil diubah']);
     }
 }

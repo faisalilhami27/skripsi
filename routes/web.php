@@ -27,7 +27,6 @@ Route::group(['prefix' => 'dashboard'], function (){
     Route::get('/', 'DashboardController@index');
     Route::get('/chart', 'DashboardController@chartForDataByDay');
     Route::get('/notif', 'DashboardController@getNotification');
-    Route::put('/update', 'DashboardController@updateNotif');
     Route::get('/chart1', 'DashboardController@chartForDataByMonth');
     Route::put('/update', 'DashboardController@updateNotif');
     Route::get('/chart1', 'DashboardController@chartForDataByMonth');
