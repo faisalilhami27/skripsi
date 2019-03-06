@@ -11,7 +11,7 @@ class PemesananModel extends Model
     protected $table = "mst_pemesanan_tiket";
     protected $primaryKey = "id";
     protected $dates = ['deleted_at', 'updated_at', 'created_at'];
-    protected $fillable = ['kode_pemesanan', 'tgl_pemesanan', 'tgl_masuk', 'id_karyawan', 'jumlah_tiket', 'total_uang_masuk', 'uang_pembayaran', 'status_penggunaan', 'status_notif', 'id_jenis', 'id_customer', 'qr_code'];
+    protected $fillable = ['kode_pemesanan', 'tgl_pemesanan', 'tgl_masuk', 'id_karyawan', 'jumlah_tiket', 'total_uang_masuk', 'uang_pembayaran', 'status_penggunaan', 'id_jenis', 'id_customer', 'qr_code'];
 
     public function karyawan()
     {

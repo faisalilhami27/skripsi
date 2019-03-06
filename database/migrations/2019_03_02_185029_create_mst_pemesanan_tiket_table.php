@@ -23,7 +23,6 @@ class CreateMstPemesananTiketTable extends Migration
             $table->integer('total_uang_masuk')->nullable();
             $table->integer('uang_pembayaran');
             $table->integer('status_penggunaan');
-            $table->enum('status_notif', ['0', '1']);
             $table->integer('id_jenis')->unsigned();
             $table->integer('id_customer')->unsigned();
             $table->string('qr_code', 100);

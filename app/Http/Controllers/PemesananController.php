@@ -68,7 +68,6 @@ class PemesananController extends Controller
                 'uang_pembayaran' => $uangPembayaran,
                 'id_karyawan' => $namaKasir,
                 'status_penggunaan' => 0,
-                'status_notif' => "0",
                 'id_customer' => 0,
                 'qr_code' => $qrCode
             ]);
