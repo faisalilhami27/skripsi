@@ -97,13 +97,13 @@ class KonfirmasiPembayaranController extends Controller
                 $mail->IsSMTP(true);
                 $mail->IsHTML(true);
                 $mail->SMTPSecure = "ssl";
-                $mail->Host = "smtp.gmail.com";
+                $mail->Host = "mail.failda-waterpark.com";
                 $mail->Port = 465;
                 $mail->SMTPAuth = true;
-                $mail->Username = "faisal.ilhami1997@gmail.com";
-                $mail->Password = "annysaeka12";
-                $mail->SetFrom($mail->Username, "Email Verification");
-                $mail->Subject = "Email Verification";
+                $mail->Username = "admin@failda-waterpark.com";
+                $mail->Password = "barca1899";
+                $mail->SetFrom($mail->Username, "Verifikasi Pembayaran");
+                $mail->Subject = "Verifikasi Pembayaran";
                 $mail->AddAddress($email);
                 $mail->Body = $body;
                 if ( $mail->send()) {
