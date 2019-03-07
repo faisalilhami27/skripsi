@@ -4,11 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\KonfirmasiPembayaranRequest;
 use App\Models\CustomerModel;
+use App\Models\KonfigurasiModel;
 use App\Models\KonfirmasiPembayaranModel;
+use App\Models\PemesananModel;
 use App\Models\StatusPembayaranModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use PHPMailer\PHPMailer\PHPMailer;
 use Yajra\DataTables\DataTables;
+use PHPMailer\PHPMailer\Exception;
 
 class KonfirmasiPembayaranController extends Controller
 {
@@ -66,19 +70,53 @@ class KonfirmasiPembayaranController extends Controller
 
     public function update(KonfirmasiPembayaranRequest $request)
     {
+        $konfigurasi = KonfigurasiModel::all();
         $status = $request->id_status;
         $pengubah = Session::get('id_users');
         $id = $request->id;
+        $getKode = KonfirmasiPembayaranModel::findOrFail($id);
+        $kode = $getKode->kode_pemesanan;
+        $data = PemesananModel::with('customer')
+            ->where('kode_pemesanan', $kode)
+            ->first();
+        $email = $data->customer->email;
+        $getTotal = $data->total_uang_masuk * $data->jumlah_tiket;
+        $total = "Rp. " . number_format($getTotal, 0, ".", ".");
 
         $update = KonfirmasiPembayaranModel::find($id)->update([
             'id_status' => $status,
             'id_karyawan' => $pengubah
         ]);
 
-        if ($update) {
-            return response()->json(['status' => 200, 'msg' => 'Data berhasil diubah']);
+        $mail = new PHPMailer(true);
+        if ($status == 1) {
+            return response()->json(['status' => 449, 'msg' => 'Silahkan ubah status jika data sudah lengkap']);
         } else {
-            return response()->json(['status' => 449, 'msg' => 'Data gagal diubah']);
+            try {
+                $body = view('bodyEmail', compact('data', 'konfigurasi', 'total', 'getKode'))->render();
+                $mail->IsSMTP(true);
+                $mail->IsHTML(true);
+                $mail->SMTPSecure = "ssl";
+                $mail->Host = "smtp.gmail.com";
+                $mail->Port = 465;
+                $mail->SMTPAuth = true;
+                $mail->Username = "faisal.ilhami1997@gmail.com";
+                $mail->Password = "annysaeka12";
+                $mail->SetFrom($mail->Username, "Email Verification");
+                $mail->Subject = "Email Verification";
+                $mail->AddAddress($email);
+                $mail->Body = $body;
+                if ( $mail->send()) {
+                    if ($update) {
+                        return response()->json(['status' => 200, 'msg' => 'Data berhasil diubah']);
+                    } else {
+                        return response()->json(['status' => 449, 'msg' => 'Data gagal diubah']);
+                    }
+                }
+            } catch (Exception $e) {
+                echo 'Message could not be sent.';
+                echo 'Mailer Error: ' . $mail->ErrorInfo;
+            }
         }
     }
 

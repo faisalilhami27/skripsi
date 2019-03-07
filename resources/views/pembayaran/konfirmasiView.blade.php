@@ -222,7 +222,7 @@
                     dataType: 'json',
                     success: function (data) {
                         if (data.status == 200) {
-                            var jumlah = 'Total yang harus dibayar : Rp. ' + format(data.list.pemesanan_tiket.total_uang_masuk);
+                            var jumlah = 'Total yang harus dibayar : Rp. ' + data.list.pemesanan_tiket.total_uang_masuk;
                             $(".gambar").attr('src', data.list.bukti_pembayaran);
                             $(".jumlah").text(jumlah);
                         } else {
@@ -248,7 +248,11 @@
                     type: "PUT",
                     data: sendData,
                     dataType: 'json',
+                    beforeSend: function () {
+                        loadingBeforeSend();
+                    },
                     success: function (data) {
+                        loadingAfterSend()
                         $("#infoModalColoredHeader1").modal('hide');
                         notification(data.status, data.msg);
                         setTimeout(function () {
@@ -256,6 +260,7 @@
                         }, 1000);
                     },
                     error: function (resp) {
+                        loadingBeforeSend();
                         if (_.has(resp.responseJSON, 'errors')) {
                             _.map(resp.responseJSON.errors, function (val, key) {
                                 $('#' + key + '-error').html(val[0]).fadeIn(1000).fadeOut(5000);
@@ -327,6 +332,16 @@
 
             rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
             return rupiah;
+        }
+
+        function loadingBeforeSend() {
+            $("#btn-insert-data, #btn-update-data").attr('disabled', 'disabled');
+            $("#btn-insert-data, #btn-update-data").text('Menyimpan data....');
+        }
+
+        function loadingAfterSend() {
+            $("#btn-insert-data, #btn-update-data").removeAttr('disabled');
+            $("#btn-insert-data, #btn-update-data").text('Submit');
         }
     </script>
     <script>

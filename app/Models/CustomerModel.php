@@ -15,6 +15,6 @@ class CustomerModel extends Model
 
     public function pemesanan()
     {
-        return $this->hasMany(PemesananModel::class, 'id_customer', 'id');
+        return $this->hasOne(PemesananModel::class, 'id_customer', 'id');
     }
 }

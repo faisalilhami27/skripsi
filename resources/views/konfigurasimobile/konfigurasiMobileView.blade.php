@@ -220,12 +220,17 @@
                     contentType: false,
                     processData: false,
                     dataType: 'json',
+                    beforeSend: function() {
+                      loadingBeforeSend();
+                    },
                     success: function (data) {
                         $("#infoModalColoredHeader").modal('hide');
+                        loadingAfterSend();
                         notification(data.status, data.msg);
                         table.ajax.reload();
                     },
                     error: function (resp) {
+                        loadingAfterSend();
                         if (_.has(resp.responseJSON, 'errors')) {
                             _.map(resp.responseJSON.errors, function (val, key) {
                                 $('#' + key + '-error').html(val[0]).fadeIn(1000).fadeOut(5000);
@@ -255,12 +260,17 @@
                     contentType: false,
                     processData: false,
                     dataType: 'json',
+                    beforeSend: function() {
+                      loadingBeforeSend();
+                    },
                     success: function (data) {
                         $("#infoModalColoredHeader").modal('hide');
+                        loadingAfterSend();
                         notification(data.status, data.msg);
                         table.ajax.reload();
                     },
                     error: function (resp) {
+                        loadingAfterSend();
                         if (_.has(resp.responseJSON, 'errors')) {
                             _.map(resp.responseJSON.errors, function (val, key) {
                                 $('#' + key + '-error').html(val[0]).fadeIn(1000).fadeOut(5000);
@@ -341,6 +351,16 @@
                 });
             });
         });
+
+        function loadingBeforeSend() {
+            $("#btn-insert-data, #btn-update-data").attr('disabled', 'disabled');
+            $("#btn-insert-data, #btn-update-data").text('Menyimpan data....');
+        }
+
+        function loadingAfterSend() {
+            $("#btn-insert-data, #btn-update-data").removeAttr('disabled');
+            $("#btn-insert-data, #btn-update-data").text('Submit');
+        }
     </script>
 
 @endsection
