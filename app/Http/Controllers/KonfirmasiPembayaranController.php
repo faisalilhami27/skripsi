@@ -80,7 +80,7 @@ class KonfirmasiPembayaranController extends Controller
             ->where('kode_pemesanan', $kode)
             ->first();
         $email = $data->customer->email;
-        $getTotal = $data->total_uang_masuk * $data->jumlah_tiket;
+        $getTotal = $konfigurasi[2]->nilai_konfig * $data->jumlah_tiket;
         $total = "Rp. " . number_format($getTotal, 0, ".", ".");
 
         $update = KonfirmasiPembayaranModel::find($id)->update([
