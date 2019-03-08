@@ -470,7 +470,6 @@
 
             $("#btnRefresh").click(function () {
                 table.ajax.reload();
-                (null, false);
             });
 
             setInterval(function () {

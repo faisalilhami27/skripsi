@@ -2,6 +2,9 @@
 @section('content')
     <div class="layout-content">
         <div class="layout-content-body">
+            <button class="btn btn-success btn-sm" type="button" id="btnRefresh"
+                    style="margin-bottom: 10px"><i class="icon icon-refresh"></i> Refresh
+            </button>
             <div class="row gutter-xs">
                 <div class="col-xs-12">
                     <div class="card">
@@ -311,6 +314,10 @@
                         }
                     }
                 });
+            });
+
+            $("#btnRefresh").click(function () {
+                table.ajax.reload();
             });
 
             setInterval(function () {

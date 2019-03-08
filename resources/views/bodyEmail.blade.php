@@ -397,7 +397,7 @@
                                                                 style="padding:0;Margin:0;padding-top:15px;padding-bottom:20px;">
                                                                 <p style="text-align: center ;Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:16px;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:24px;color:#777777;">
                                                                     Bukti pembayaran anda telah kami terima, silahkan
-                                                                    datang sesuai tanggal masuk atau sebelumnya. terima
+                                                                    datang sesuai tanggal masuk atau sebelumnya. Terima
                                                                     kasih<br></p></td>
                                                         </tr>
                                                     </table>
