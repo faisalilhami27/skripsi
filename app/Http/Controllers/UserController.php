@@ -222,4 +222,17 @@ class UserController extends Controller
             return response()->json(['status' => 200, 'msg' => 'email available']);
         }
     }
+
+    public function cekNoHp(Request $request)
+    {
+        $noHp = $request->noHp;
+        $cekUsername = KaryawanModel::where('no_hp', $noHp)->get();
+        $getNoHp = $cekUsername->count();
+
+        if ($getNoHp == 1) {
+            return response()->json(['status' => 449, 'msg' => 'No Handphone has been used']);
+        } else {
+            return response()->json(['status' => 200, 'msg' => 'No Handphone available']);
+        }
+    }
 }

@@ -303,6 +303,33 @@
                 });
             });
 
+            $("#no_hp, #upd_no_hp").keyup(function (e) {
+                e.preventDefault();
+                var noHp = $(this).val();
+                $.ajax({
+                    headers: {
+                        "X-CSRF-TOKEN": "{{ csrf_token() }}",
+                    },
+                    url: "{{ URL('user/cekNoHp') }}",
+                    type: "GET",
+                    data: "noHp=" + noHp,
+                    dataType: "json",
+                    success: function (data) {
+                        if (data.status == 200) {
+                            $("#noHp-error, .noHp-error").html("");
+                            $("#btn-insert-data").removeAttr('disabled');
+                        } else {
+                            $("#noHp-error, .noHp-error").html(data.msg);
+                            $("#noHp-error, .noHp-error").css("color", "red");
+                            $("#btn-insert-data").attr('disabled', 'disabled');
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        alert(status + " : " + error);
+                    }
+                });
+            });
+
             $("#email, #upd_email").keyup(function (e) {
                 e.preventDefault();
                 var email = $(this).val();

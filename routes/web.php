@@ -49,6 +49,7 @@ Route::group(['prefix' => 'user'], function (){
     Route::get('/json', 'UserController@datatable');
     Route::get('/cekUsername', 'UserController@cekUsername');
     Route::get('/cekEmail', 'UserController@cekEmail');
+    Route::get('/cekNoHp', 'UserController@cekNoHp');
     Route::get('/getUserById', 'UserController@edit');
     Route::post('/insert', 'UserController@store');
     Route::put('/resetpassword', 'UserController@resetPassword');

@@ -19,7 +19,7 @@ class KonfigurasiSeeder extends Seeder
             ],
             [
                 'kode_konfig' => "EMAIL",
-                'nilai_konfig' => 'failda.waterpark@gmail.com'
+                'nilai_konfig' => 'failda.waterpark06@gmail.com'
             ],
             [
                 'kode_konfig' => "HARGRA_TIKET",

@@ -362,6 +362,34 @@
                 });
             });
 
+            $("#no_hp").keyup(function (e) {
+                e.preventDefault();
+                var noHp = $(this).val();
+                $.ajax({
+                    headers: {
+                        "X-CSRF-TOKEN": "{{ csrf_token() }}",
+                    },
+                    url: "{{ URL('user/cekNoHp') }}",
+                    type: "GET",
+                    data: "noHp=" + noHp,
+                    dataType: "json",
+                    success: function (data) {
+                        if (data.status == 200) {
+                            $("#no_hp-error").html("");
+                            $("#no_hp-error").css("color", "green");
+                            $("#btn-update-data").removeAttr('disabled');
+                        } else {
+                            $("#no_hp-error").html(data.msg);
+                            $("#no_hp-error").css("color", "red");
+                            $("#btn-update-data").attr('disabled', 'disabled');
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        alert(status + " : " + error);
+                    }
+                });
+            });
+
             $(function () {
 
                 // We can attach the `fileselect` event to all file inputs on the page
