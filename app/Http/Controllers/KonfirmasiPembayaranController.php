@@ -92,30 +92,30 @@ class KonfirmasiPembayaranController extends Controller
         if ($status == 1) {
             return response()->json(['status' => 449, 'msg' => 'Silahkan ubah status jika data sudah lengkap']);
         } else {
-            try {
-                $body = view('bodyEmail', compact('data', 'konfigurasi', 'total', 'getKode'))->render();
-                $mail->IsSMTP(true);
-                $mail->IsHTML(true);
-                $mail->SMTPSecure = "ssl";
-                $mail->Host = "smtp.gmail.com";
-                $mail->Port = 465;
-                $mail->SMTPAuth = true;
-                $mail->Username = "failda.waterpark06@gmail.com";
-                $mail->Password = "barca1899";
-                $mail->SetFrom($mail->Username, "Verifikasi Pembayaran");
-                $mail->Subject = "Verifikasi Pembayaran";
-                $mail->AddAddress($email);
-                $mail->Body = $body;
-                if ( $mail->send()) {
-                    if ($update) {
+            if ($update) {
+                try {
+                    $body = view('bodyEmail', compact('data', 'konfigurasi', 'total', 'getKode'))->render();
+                    $mail->IsSMTP(true);
+                    $mail->IsHTML(true);
+                    $mail->SMTPSecure = "ssl";
+                    $mail->Host = "smtp.gmail.com";
+                    $mail->Port = 465;
+                    $mail->SMTPAuth = true;
+                    $mail->Username = "failda.waterpark06@gmail.com";
+                    $mail->Password = "barca1899";
+                    $mail->SetFrom($mail->Username, "Verifikasi Pembayaran");
+                    $mail->Subject = "Verifikasi Pembayaran";
+                    $mail->AddAddress($email);
+                    $mail->Body = $body;
+                    if ( $mail->send()) {
                         return response()->json(['status' => 200, 'msg' => 'Data berhasil diubah']);
-                    } else {
-                        return response()->json(['status' => 449, 'msg' => 'Data gagal diubah']);
                     }
+                } catch (Exception $e) {
+                    echo 'Message could not be sent.';
+                    echo 'Mailer Error: ' . $mail->ErrorInfo;
                 }
-            } catch (Exception $e) {
-                echo 'Message could not be sent.';
-                echo 'Mailer Error: ' . $mail->ErrorInfo;
+            } else {
+                return response()->json(['status' => 449, 'msg' => 'Data gagal diubah']);
             }
         }
     }
