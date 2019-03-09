@@ -22,7 +22,7 @@ class KonfigurasiSeeder extends Seeder
                 'nilai_konfig' => 'failda.waterpark06@gmail.com'
             ],
             [
-                'kode_konfig' => "HARGRA_TIKET",
+                'kode_konfig' => "HARGA_TIKET",
                 'nilai_konfig' => '13000'
             ],
             [

@@ -94,7 +94,6 @@
         </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="{{ asset('js/jquery.idle.min.js') }}"></script>
     <script type="text/javascript">
         var table;
         $(document).ready(function () {
@@ -350,13 +349,5 @@
             $("#btn-insert-data, #btn-update-data").removeAttr('disabled');
             $("#btn-insert-data, #btn-update-data").text('Submit');
         }
-    </script>
-    <script>
-        $(document).idle({
-            onIdle: function () {
-                window.location = "{{ URL('konfirmasi') }}";
-            },
-            idle: 60000
-        });
     </script>
 @endsection

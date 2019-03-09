@@ -64,7 +64,7 @@
                                             <label class="col-sm-4" for="form-control-1">Harga Tiket</label>
                                             <div class="col-sm-8">
                                                 <div class="input-with-icon">
-                                                    <input id="harga" autocomplete="off" name="harga" value="{{ $konfig[2]->nilai_konfig }}" maxlength="12" class="form-control" type="text" placeholder="Nomor Telepon Perusahaan">
+                                                    <input id="harga" autocomplete="off" name="harga" value="{{ number_format($konfig[2]->nilai_konfig, 0, ".", ".") }}" maxlength="12" class="form-control" type="text" placeholder="Nomor Telepon Perusahaan">
                                                     <span class="icon icon-shopping-cart input-icon"></span>
                                                     <span class="text-danger">
                                                         <strong id="harga-error"></strong>
@@ -207,6 +207,10 @@
                 return rupiah;
             };
 
+            $('#harga').keyup(function () {
+                $(this).val(format($(this).val()));
+            });
+
             $('.form-checkbox').click(function(){
                 if($(this).is(':checked')){
                     $('.form-password').attr('type','text');
@@ -231,7 +235,7 @@
                 var password = $("#password").val();
                 var email = $("#email").val();
                 var alamat = $("#alamat").val();
-                var harga = $("#harga").val();
+                var harga = $("#harga").val().split(".").join("");
                 var versi = $("#versi").val();
                 var noHP = $("#no_hp").val();
                 var images = $('#gambar').prop('files')[0];
