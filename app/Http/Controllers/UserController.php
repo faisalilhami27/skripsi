@@ -67,8 +67,8 @@ class UserController extends Controller
     public function store(UserRequest $request)
     {
         $karyawan = $request->karyawan;
-        $username = $request->username;
-        $password = Hash::make($request->password);
+        $username = htmlspecialchars($request->username);
+        $password = Hash::make(htmlspecialchars($request->password));
         $level = @explode(',', $request->level);
         $status = $request->status;
         $images = $request->file('images');

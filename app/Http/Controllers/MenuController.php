@@ -30,7 +30,7 @@ class MenuController extends Controller
 
     public function store(MenuRequest $request)
     {
-        $data = $request->all();
+        $data = htmlspecialchars($request->all());
 
         $insert = MenuModel::create($data);
 

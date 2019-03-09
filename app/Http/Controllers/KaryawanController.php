@@ -29,9 +29,9 @@ class KaryawanController extends Controller
 
     public function store(KaryawanRequest $request)
     {
-        $nama = $request->nama;
-        $email = $request->email;
-        $noHp = $request->noHp;
+        $nama = htmlspecialchars($request->nama);
+        $email = htmlspecialchars($request->email);
+        $noHp = htmlspecialchars($request->noHp);
 
         $insert = KaryawanModel::create([
             'nama' => $nama,
@@ -61,7 +61,7 @@ class KaryawanController extends Controller
 
     public function update(KaryawanRequest $request)
     {
-        $data = $request->all();
+        $data = htmlspecialchars($request->all());
         $id = $request['id'];
 
         $update = KaryawanModel::find($id)->update($data);

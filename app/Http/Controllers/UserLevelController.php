@@ -32,7 +32,7 @@ class UserLevelController extends Controller
 
     public function store(UserLevelRequest $request)
     {
-        $data = $request->all();
+        $data = htmlspecialchars($request->all());
 
         $insert = UserLevelModel::create($data);
 
@@ -68,7 +68,7 @@ class UserLevelController extends Controller
 
     public function update(UserLevelRequest $request)
     {
-        $data = $request->all();
+        $data = htmlspecialchars($request->all());
         $id = $request['id_user_level'];
 
         $update = UserLevelModel::find($id)->update($data);

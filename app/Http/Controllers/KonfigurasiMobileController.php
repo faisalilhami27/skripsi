@@ -29,7 +29,7 @@ class KonfigurasiMobileController extends Controller
 
     public function store(KonfigurasiMobileRequest $request)
     {
-        $title = $request->title;
+        $title = htmlspecialchars($request->title);
         $images = $request->file('images');
         $insert  = KonfigurasiMobileModel::create([
             'title' => $title,
