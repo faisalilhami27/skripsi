@@ -84,7 +84,9 @@
                     </div>
                     <div class="modal-body">
                         <p class="jumlah" style="text-align: center; font-weight: bold"></p>
-                        <img src="" class="gambar center-block" alt="" width="400px" height="400px">
+                        <div class="col-sm-12 table-responsive">
+                            <img src="" class="gambar center-block" alt="" width="400px" height="400px">
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button class="btn btn-default" data-dismiss="modal" type="button">Close</button>
