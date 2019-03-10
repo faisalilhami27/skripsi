@@ -8,6 +8,7 @@ use App\Models\UserModel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\URL;
 
 class AuthController extends Controller
 {
@@ -23,7 +24,7 @@ class AuthController extends Controller
         $password = htmlspecialchars($request->password);
         $user = UserModel::with('karyawan')
             ->where('username', $username)->first();
-        if (is_null($user['username'])){
+        if (is_null($user['username'])) {
             return response()->json(['status' => 449, 'msg' => 'Username anda tidak terdaftar']);
         } else {
             if ($user['status'] == "y") {
@@ -64,6 +65,6 @@ class AuthController extends Controller
     {
         Auth::logout();
         Session::flush();
-        return redirect()->route('auth');
+        return redirect(URL::previous());
     }
 }
