@@ -17,7 +17,6 @@ class CreateMstPemesananTiketTable extends Migration
             $table->increments('id');
             $table->string('kode_pemesanan', 20)->unique();
             $table->date('tgl_pemesanan');
-            $table->date('tgl_masuk');
             $table->integer('id_karyawan')->unsigned()->nullable();
             $table->integer('jumlah_tiket');
             $table->integer('total_uang_masuk')->nullable();

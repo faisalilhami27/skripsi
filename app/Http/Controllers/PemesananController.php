@@ -32,7 +32,9 @@ class PemesananController extends Controller
 
     public function datatable()
     {
-        $data = PemesananModel::with('karyawan.karyawan', 'jenisPemesanan')->get();
+        $data = PemesananModel::with('karyawan.karyawan', 'jenisPemesanan')
+            ->where('tgl_pemesanan', date('Y-m-d'))
+            ->get();
         return DataTables::of($data)->addIndexColumn()->make(true);
     }
 
@@ -61,7 +63,6 @@ class PemesananController extends Controller
             $insert = PemesananModel::create([
                 'kode_pemesanan' => "TRS-" . date('m-d') . "-" . $kode,
                 'tgl_pemesanan' => date('Y-m-d'),
-                'tgl_masuk' => date('Y-m-d'),
                 'id_jenis' => $idJenis,
                 'jumlah_tiket' => $tiket,
                 'total_uang_masuk' => $jumlahUang,

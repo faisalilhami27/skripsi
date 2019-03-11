@@ -396,9 +396,8 @@
                                                             <td align="left"
                                                                 style="padding:0;Margin:0;padding-top:15px;padding-bottom:20px;">
                                                                 <p style="text-align: center ;Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:16px;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:24px;color:#777777;">
-                                                                    Bukti pembayaran anda telah kami terima, silahkan
-                                                                    datang sesuai tanggal masuk atau sebelumnya. Terima
-                                                                    kasih<br></p></td>
+                                                                    Bukti pembayaran anda telah kami terima. Terima
+                                                                    kasih telah berkunjung ke tempat kami.<br></p></td>
                                                         </tr>
                                                     </table>
                                                 </td>
@@ -484,16 +483,6 @@
                                                                             align="left"><p
                                                                                 style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:16px;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:24px;color:#333333;">
                                                                                 {{ $data->tgl_pemesanan }}<br></p></td>
-                                                                    </tr>
-                                                                    <tr style="border-collapse:collapse;">
-                                                                        <td style="padding:5px 10px 5px 0;Margin:0;"
-                                                                            width="80%" align="left"><p
-                                                                                style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:16px;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:24px;color:#333333;">
-                                                                                Tanggal Masuk</p></td>
-                                                                        <td style="padding:5px 0;Margin:0;" width="20%"
-                                                                            align="left"><p
-                                                                                style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:16px;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:24px;color:#333333;">
-                                                                                {{ $data->tgl_masuk }}<br></p></td>
                                                                     </tr>
                                                                     <tr style="border-collapse:collapse;">
                                                                         <td style="padding:5px 10px 5px 0;Margin:0;"
