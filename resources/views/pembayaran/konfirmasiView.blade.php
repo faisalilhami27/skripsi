@@ -21,7 +21,6 @@
                                     <th>Bukti Pembayaran</th>
                                     <th>Kode Pemesanan</th>
                                     <th>Total Pembayaran</th>
-                                    <th>Tanggal Masuk</th>
                                     <th>Nama Customer</th>
                                     <th>Status</th>
                                     <th>Aksi</th>
@@ -173,7 +172,6 @@
                     {data: 'bukti_pembayaran', render: styles.images},
                     {data: 'kode_pemesanan'},
                     {data: 'total_uang_masuk', render: styles.uang},
-                    {data: 'pemesanan_tiket.tgl_masuk'},
                     {data: 'pemesanan_tiket.customer.nama'},
                     {data: 'nama_status', render: styles.status},
                     {data: 'action', orderable: false, render: styles.button}
