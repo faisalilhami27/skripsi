@@ -11,7 +11,7 @@
         onIdle: function () {
             window.location = "{{ URL('logout') }}";
         },
-        idle: 300000
+        idle: 600000
     });
 </script>
 </body>

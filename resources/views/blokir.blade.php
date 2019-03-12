@@ -32,7 +32,6 @@
         <p>
             <small>Silahkan hubungi Administrator untuk merubah hak akses anda.</small>
         </p>
-        <p><a class="btn btn-primary btn-pill btn-thick" href="{{ URL('logout') }}">Back</a></p>
     </div>
     <div class="error-footer">
         <p>
