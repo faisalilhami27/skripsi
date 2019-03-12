@@ -25,6 +25,7 @@ class KonfigurasiMobileRequest extends FormRequest
     {
         return [
             'title' => 'required|max:40|regex:/^[a-zA-Z0-9 ]*$/',
+            'deskripsi' => 'required|max:80',
             'images' => 'file|required'
         ];
     }

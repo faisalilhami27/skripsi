@@ -23,16 +23,18 @@ class KonfigurasiMobileController extends Controller
 
     public function datatable()
     {
-        $data = KonfigurasiMobileModel::select("id", "title", "images")->get();
+        $data = KonfigurasiMobileModel::select("id", "title", "images", "deskripsi")->get();
         return DataTables::of($data)->addIndexColumn()->make(true);
     }
 
     public function store(KonfigurasiMobileRequest $request)
     {
         $title = htmlspecialchars($request->title);
+        $deskripsi = htmlspecialchars($request->deskripsi);
         $images = $request->file('images');
         $insert  = KonfigurasiMobileModel::create([
             'title' => $title,
+            'deskripsi' => $deskripsi,
             'images' => $images->store('img', 'public')
         ]);
 
@@ -56,23 +58,31 @@ class KonfigurasiMobileController extends Controller
         }
     }
 
-    public function update(KonfigurasiMobileRequest $request)
+    public function update(Request $request)
     {
+        $request->validate([
+            'title' => 'required|max:40|regex:/^[a-zA-Z0-9 ]*$/',
+            'deskripsi' => 'required|max:80',
+        ]);
+
         $id = $request->id;
         $title = $request->title;
+        $deskripsi = $request->deskripsi;
         $images = $request->file('images');
         $getData = KonfigurasiMobileModel::where('id', $id)->first();
 
         if (is_null($images)) {
-            $update = KonfigurasiMobileModel::findOrFile($id)->update([
+            $update = KonfigurasiMobileModel::find($id)->update([
                 'title' => $title,
+                'deskripsi' => $deskripsi,
             ]);
         } else {
             $pathDelete = "storage/" . $getData->images;
             unlink($pathDelete);
 
-            $update = KonfigurasiMobileModel::findOrFile($id)->update([
+            $update = KonfigurasiMobileModel::find($id)->update([
                 'title' => $title,
+                'deskripsi' => $deskripsi,
                 'images' => $images->store('img', 'public')
             ]);
         }

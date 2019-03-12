@@ -20,6 +20,7 @@
                                     <th width="20px">No</th>
                                     <th>Images</th>
                                     <th>Title</th>
+                                    <th>Deskripsi</th>
                                     <th>Aksi</th>
                                 </tr>
                                 </thead>
@@ -50,6 +51,16 @@
                                        placeholder="Masukan title" maxlength="30">
                                 <span class="text-danger">
                                     <strong id="title-error"></strong>
+                                </span>
+                            </div>
+                            <div class="form-group">
+                                <label for="deskripsi" class="control-label">Deskripsi</label>
+                                <textarea id="deskripsi" class="form-control" maxlength="80" placeholder="Masukan deskripsi" name="deskripsi" rows="3" required></textarea>
+                                <span class="text-danger">
+                                    <strong id="deskripsi-error"></strong>
+                                </span>
+                                <span>
+                                    <strong style="float: right;"><strong id="countCharacters">80</strong> characters remaining</strong>
                                 </span>
                             </div>
                             <div class="form-group">
@@ -108,6 +119,16 @@
                                 </span>
                             </div>
                             <div class="form-group">
+                                <label for="upd_deskripsi" class="control-label">Deskripsi</label>
+                                <textarea id="upd_deskripsi" class="form-control" maxlength="80" placeholder="Masukan deskripsi" name="upd_deskripsi" rows="3" required></textarea>
+                                <span class="text-danger">
+                                    <strong class="deskripsi-error"></strong>
+                                </span>
+                                <span>
+                                    <strong style="float: right;"><strong class="countCharacters">0</strong> characters remaining</strong>
+                                </span>
+                            </div>
+                            <div class="form-group">
                                 <label for="upd_images">Images</label>
                                 <div class="input-with-icon">
                                     <div class="input-group input-file">
@@ -144,6 +165,14 @@
     <script type="text/javascript">
         var table;
         $(document).ready(function () {
+
+            var maxLength = 80;
+            $('textarea').keyup(function() {
+                var length = $(this).val().length;
+                var length = maxLength-length;
+                $('#countCharacters, .countCharacters').text(length);
+            });
+
             var styles = {
                 button: function (row, type, data) {
                     return '<center>' + `<a href="#" class="btn btn-success btn-sm btn-edit" id="${data.id}" data-toggle="modal" data-target="#infoModalColoredHeader1"><i class="icon icon-pencil-square-o"></i></a>
@@ -171,8 +200,9 @@
 
                 columns: [
                     {data: 'DT_RowIndex'},
-                    {data: 'is_aktif', render: styles.images},
+                    {data: 'images', render: styles.images},
                     {data: 'title'},
+                    {data: 'deskripsi'},
                     {data: 'action', orderable: false, render: styles.button}
 
                 ],
@@ -191,6 +221,9 @@
                         if (data.status == 200) {
                             $("#id").val(data.list.id);
                             $("#upd_title").val(data.list.title);
+                            $("#upd_deskripsi").val(data.list.deskripsi);
+                            var count = 80 - data.list.deskripsi.length;
+                            $(".countCharacters").html(count);
                         } else {
                             notification(data.status, data.msg);
                         }
@@ -204,10 +237,12 @@
             $("#btn-insert-data").click(function (e) {
                 e.preventDefault();
                 var title = $("#title").val(),
+                    deskripsi = $("#deskripsi").val(),
                     images = $('#ins_images').prop('files')[0],
                     formData = new FormData();
 
                 formData.append('title', title);
+                formData.append('deskripsi', deskripsi);
                 formData.append('images', images);
                 $.ajax({
                     headers: {
@@ -233,7 +268,7 @@
                         loadingAfterSend();
                         if (_.has(resp.responseJSON, 'errors')) {
                             _.map(resp.responseJSON.errors, function (val, key) {
-                                $('#' + key + '-error').html(val[0]).fadeIn(1000).fadeOut(5000);
+                                $('#' + key + '-error').html(val[0]).fadeIn(1000).fadeOut(8000);
                             })
                         }
                         alert(resp.responseJSON.message)
@@ -244,10 +279,14 @@
             $("#btn-update-data").click(function (e) {
                 e.preventDefault();
                 var title = $("#upd_title").val(),
+                    deskripsi = $("#upd_deskripsi").val(),
+                    id = $("#id").val(),
                     images = $('#upd_images').prop('files')[0],
                     formData = new FormData();
 
+                formData.append('id', id);
                 formData.append('title', title);
+                formData.append('deskripsi', deskripsi);
                 formData.append('images', images);
                 $.ajax({
                     headers: {
@@ -264,7 +303,7 @@
                       loadingBeforeSend();
                     },
                     success: function (data) {
-                        $("#infoModalColoredHeader").modal('hide');
+                        $("#infoModalColoredHeader1").modal('hide');
                         loadingAfterSend();
                         notification(data.status, data.msg);
                         table.ajax.reload();
@@ -273,7 +312,7 @@
                         loadingAfterSend();
                         if (_.has(resp.responseJSON, 'errors')) {
                             _.map(resp.responseJSON.errors, function (val, key) {
-                                $('#' + key + '-error').html(val[0]).fadeIn(1000).fadeOut(5000);
+                                $('.' + key + '-error').html(val[0]).fadeIn(1000).fadeOut(8000);
                             })
                         }
                         alert(resp.responseJSON.message)

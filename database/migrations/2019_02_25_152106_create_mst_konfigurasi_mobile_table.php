@@ -17,6 +17,7 @@ class CreateMstKonfigurasiMobileTable extends Migration
             $table->increments('id');
             $table->string('title', 50);
             $table->text('images');
+            $table->text('deskripsi');
             $table->timestamps();
             $table->softDeletes();
         });
