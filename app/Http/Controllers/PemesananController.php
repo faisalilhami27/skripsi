@@ -34,6 +34,7 @@ class PemesananController extends Controller
     {
         $data = PemesananModel::with('karyawan.karyawan', 'jenisPemesanan')
             ->where('tgl_pemesanan', date('Y-m-d'))
+            ->orderBy('kode_pemesanan', 'DESC')
             ->get();
         return DataTables::of($data)->addIndexColumn()->make(true);
     }
