@@ -32,7 +32,7 @@ class UserLevelController extends Controller
 
     public function store(UserLevelRequest $request)
     {
-        $data = htmlspecialchars($request->all());
+        $data = htmlspecialchars($request->nama_level);
 
         $insert = UserLevelModel::create($data);
 
@@ -68,10 +68,12 @@ class UserLevelController extends Controller
 
     public function update(UserLevelRequest $request)
     {
-        $data = htmlspecialchars($request->all());
-        $id = $request['id_user_level'];
+        $data = htmlspecialchars($request->nama_level);
+        $id = $request->id_user_level;
 
-        $update = UserLevelModel::find($id)->update($data);
+        $update = UserLevelModel::find($id)->update([
+            'nama_level' => $data
+        ]);
 
         if ($update) {
             return response()->json(['status' => 200, 'msg' => 'Data berhasil diubah']);

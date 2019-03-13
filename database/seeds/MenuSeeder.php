@@ -41,9 +41,16 @@ class MenuSeeder extends Seeder
                 'is_aktif' => 'y'
             ],
             [
-                'title' => 'Kelola Penguna',
+                'title' => 'Kelola Pengguna',
                 'url' => 'user',
                 'icon' => 'icon icon-user',
+                'is_main_menu' => 0,
+                'is_aktif' => 'y'
+            ],
+            [
+                'title' => 'Kelola Customer',
+                'url' => 'customer',
+                'icon' => 'icon icon-user-plus',
                 'is_main_menu' => 0,
                 'is_aktif' => 'y'
             ],

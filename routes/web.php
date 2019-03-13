@@ -115,3 +115,11 @@ Route::group(['prefix' => 'karyawan'], function () {
     Route::put('/update', 'KaryawanController@update');
     Route::delete('/delete', 'KaryawanController@destroy');
 });
+
+Route::group(['prefix' => 'customer'], function () {
+    Route::get('/', 'CustomerController@index');
+    Route::get('/json', 'CustomerController@datatable');
+    Route::get('/getCustomer', 'CustomerController@edit');
+    Route::put('/update', 'CustomerController@update');
+    Route::delete('/delete', 'CustomerController@destroy');
+});

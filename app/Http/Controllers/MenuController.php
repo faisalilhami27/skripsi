@@ -30,9 +30,19 @@ class MenuController extends Controller
 
     public function store(MenuRequest $request)
     {
-        $data = htmlspecialchars($request->all());
+        $title = $request->title;
+        $url = $request->url;
+        $icon = $request->icon;
+        $menu = $request->is_main_menu;
+        $status = $request->is_aktif;
 
-        $insert = MenuModel::create($data);
+        $insert = MenuModel::create([
+            'title' => $title,
+            'url' => $url,
+            'icon' => $icon,
+            'is_main_menu' => $menu,
+            'is_aktif' => $status
+        ]);
 
         if ($insert) {
             return response()->json(['status' => 200, 'msg' => 'Data berhasil ditambahkan']);
@@ -56,10 +66,20 @@ class MenuController extends Controller
 
     public function update(MenuRequest $request)
     {
-        $data = $request->all();
-        $id = $request['id'];
+        $title = $request->title;
+        $url = $request->url;
+        $icon = $request->icon;
+        $menu = $request->is_main_menu;
+        $status = $request->is_aktif;
+        $id = $request->id;
 
-        $update = MenuModel::find($id)->update($data);
+        $update = MenuModel::find($id)->update([
+            'title' => $title,
+            'url' => $url,
+            'icon' => $icon,
+            'is_main_menu' => $menu,
+            'is_aktif' => $status
+        ]);
 
         if ($update) {
             return response()->json(['status' => 200, 'msg' => 'Data berhasil diubah']);

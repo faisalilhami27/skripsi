@@ -188,7 +188,7 @@
             table.on('click', '.btn-edit', function (e) {
                 e.preventDefault();
                 var id = $(this).attr("id");
-                $(".modal-title-update").html("Update Data Konfirmasi");
+                $(".modal-title-update").html("Update Data Pembayaran");
                 $.ajax({
                     headers: {
                         "X-CSRF-TOKEN": "{{ csrf_token() }}",

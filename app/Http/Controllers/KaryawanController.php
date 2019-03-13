@@ -61,7 +61,7 @@ class KaryawanController extends Controller
 
     public function update(KaryawanRequest $request)
     {
-        $data = htmlspecialchars($request->all());
+        $data = $request->all();
         $id = $request['id'];
 
         $update = KaryawanModel::find($id)->update($data);

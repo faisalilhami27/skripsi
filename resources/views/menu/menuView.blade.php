@@ -275,9 +275,7 @@
                             notification(data.status, data.msg);
                             $('#infoModalColoredHeader').modal('hide');
                             loadingAfterSend();
-                            setTimeout(function () {
-                                location.reload();
-                            }, 1000)
+                            table.ajax.reload();
                         },
                         error: function (resp) {
                             loadingAfterSend();
@@ -315,9 +313,7 @@
                             notification(data.status, data.msg);
                             $('#infoModalColoredHeader1').modal('hide');
                             loadingAfterSend();
-                            setTimeout(function () {
-                                location.reload();
-                            }, 1000)
+                           table.ajax.reload();
                         },
                         error: function (resp) {
                             loadingAfterSend();

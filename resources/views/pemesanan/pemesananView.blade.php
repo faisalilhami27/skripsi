@@ -27,7 +27,8 @@
                                         <th style="text-align: center">No</th>
                                         <th style="text-align: center">Kode</th>
                                         <th style="text-align: center">Tanggal</th>
-                                        <th style="text-align: center">Nama kasir</th>
+                                        <th style="text-align: center">Nama Customer</th>
+                                        <th style="text-align: center">Nama Kasir</th>
                                         <th style="text-align: center">Jumlah Tiket</th>
                                         <th style="text-align: center">Pembayaran</th>
                                         <th style="text-align: center">Status</th>
@@ -236,6 +237,14 @@
                     } else {
                         return data.karyawan.karyawan.nama;
                     }
+                },
+
+                customer: function (row, type, data) {
+                    if (data.id_customer == 0) {
+                        return '-';
+                    } else {
+                        return data.customer.nama;
+                    }
                 }
             };
 
@@ -259,6 +268,7 @@
                     {data: 'DT_RowIndex'},
                     {data: 'kode_pemesanan'},
                     {data: 'tgl_pemesanan'},
+                    {data: 'customer', render: styles.customer},
                     {data: 'karyawan', render: styles.karyawan},
                     {data: 'jumlah_tiket'},
                     {data: 'total_uang_masuk', render: styles.uang},
