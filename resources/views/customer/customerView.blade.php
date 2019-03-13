@@ -56,7 +56,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="upd_status" class="form-label">Level</label>
-                                <select id="upd_status" name="upd_status" class="form-control" multiple>
+                                <select id="upd_status" name="upd_status" class="form-control">
                                     <option value="">-- Pilih Level --</option>
                                     <option value="0">Belum diverifikasi</option>
                                     <option value="1">Sudah diverifikasi</option>
