@@ -47,8 +47,8 @@
                             {{ csrf_field() }}
                             <input type="hidden" name="id" id="id">
                             <div class="form-group">
-                                <label for="email">Email</label>
-                                <input id="email" name="email" class="form-control" type="text"
+                                <label for="upd_email">Email</label>
+                                <input id="upd_email" name="upd_email" class="form-control" type="email"
                                        placeholder="Masukan email" maxlength="60">
                                 <span class="text-danger">
                                     <strong id="email-error"></strong>

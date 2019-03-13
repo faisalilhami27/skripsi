@@ -42,7 +42,7 @@ class CustomerController extends Controller
     public function update(Request $request)
     {
         $request->validate([
-            'email' => 'required|email|max:50|regex:/^[a-zA-Z ]*$',
+            'email' => 'required|email|max:60',
             'status' => 'required'
         ]);
 

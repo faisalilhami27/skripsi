@@ -25,7 +25,7 @@ class UserRequest extends FormRequest
     {
         return [
             'karyawan' => 'required',
-            'username' => 'required|max:60|regex:/^[a-zA-Z0-9.-_ ]*$/',
+            'username' => 'required|max:20|regex:/^[a-zA-Z0-9.-_ ]*$/',
             'password' => 'required',
             'level' => 'required',
             'status' => 'required',
