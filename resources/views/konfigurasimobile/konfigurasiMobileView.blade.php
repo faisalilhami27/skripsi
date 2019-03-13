@@ -55,12 +55,12 @@
                             </div>
                             <div class="form-group">
                                 <label for="deskripsi" class="control-label">Deskripsi</label>
-                                <textarea id="deskripsi" class="form-control" maxlength="80" placeholder="Masukan deskripsi" name="deskripsi" rows="3" required></textarea>
+                                <textarea id="deskripsi" class="form-control" maxlength="100" placeholder="Masukan deskripsi" name="deskripsi" rows="3" required></textarea>
                                 <span class="text-danger">
                                     <strong id="deskripsi-error"></strong>
                                 </span>
                                 <span>
-                                    <strong style="float: right;"><strong id="countCharacters">80</strong> characters remaining</strong>
+                                    <strong style="float: right;"><strong id="countCharacters">100</strong> characters remaining</strong>
                                 </span>
                             </div>
                             <div class="form-group">
@@ -120,7 +120,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="upd_deskripsi" class="control-label">Deskripsi</label>
-                                <textarea id="upd_deskripsi" class="form-control" maxlength="80" placeholder="Masukan deskripsi" name="upd_deskripsi" rows="3" required></textarea>
+                                <textarea id="upd_deskripsi" class="form-control" maxlength="100" placeholder="Masukan deskripsi" name="upd_deskripsi" rows="3" required></textarea>
                                 <span class="text-danger">
                                     <strong class="deskripsi-error"></strong>
                                 </span>
@@ -166,7 +166,7 @@
         var table;
         $(document).ready(function () {
 
-            var maxLength = 80;
+            var maxLength = 100;
             $('textarea').keyup(function() {
                 var length = $(this).val().length;
                 var length = maxLength-length;
@@ -222,7 +222,7 @@
                             $("#id").val(data.list.id);
                             $("#upd_title").val(data.list.title);
                             $("#upd_deskripsi").val(data.list.deskripsi);
-                            var count = 80 - data.list.deskripsi.length;
+                            var count = maxLength - data.list.deskripsi.length;
                             $(".countCharacters").html(count);
                         } else {
                             notification(data.status, data.msg);
@@ -268,7 +268,7 @@
                         loadingAfterSend();
                         if (_.has(resp.responseJSON, 'errors')) {
                             _.map(resp.responseJSON.errors, function (val, key) {
-                                $('#' + key + '-error').html(val[0]).fadeIn(1000).fadeOut(8000);
+                                $('#' + key + '-error').html(val[0]).fadeIn(1000).fadeOut(10000);
                             })
                         }
                         alert(resp.responseJSON.message)
@@ -312,7 +312,7 @@
                         loadingAfterSend();
                         if (_.has(resp.responseJSON, 'errors')) {
                             _.map(resp.responseJSON.errors, function (val, key) {
-                                $('.' + key + '-error').html(val[0]).fadeIn(1000).fadeOut(8000);
+                                $('.' + key + '-error').html(val[0]).fadeIn(1000).fadeOut(10000);
                             })
                         }
                         alert(resp.responseJSON.message)
