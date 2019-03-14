@@ -39,7 +39,15 @@ class ProfileController extends Controller
             }
             $i++;
         }
-        $implode = @implode(', ', $array);
+        $data = @implode(', ', $array);
+        $explode = @explode(",", $data);
+        $size = sizeof($explode);
+        if ($size > 2) {
+            $implode = "Memiliki " . $size . " Hak Akses";
+        } else {
+            $implode = $data;
+        }
+
         $title = "Halaman Profile";
         $deskripsi = "Halaman profile digunakan untuk mengelola identitas user";
         return view('profile', compact('title', 'deskripsi', 'user', 'implode'));
