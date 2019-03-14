@@ -32,7 +32,7 @@ class PemesananController extends Controller
 
     public function datatable()
     {
-        $data = PemesananModel::with('karyawan.karyawan', 'jenisPemesanan', 'customer')
+        $data = PemesananModel::with('karyawan.karyawan', 'jenisPemesanan')
             ->where('tgl_pemesanan', date('Y-m-d'))
             ->orderBy('kode_pemesanan', 'DESC')
             ->get();
