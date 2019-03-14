@@ -339,7 +339,7 @@
 
             setInterval(function () {
                 table.ajax.reload();
-            }, 15000);
+            }, 10000);
         });
 
         function format(angka) {
