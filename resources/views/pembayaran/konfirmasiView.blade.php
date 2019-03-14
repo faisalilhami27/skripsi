@@ -103,7 +103,7 @@
             $("#btn-edit").attr('disabled', 'disabled');
             var styles = {
                 status: function (row, type, data) {
-                    var today = moment().format("YYYY-MM-DD");
+                    var today = moment().format("YYYY-MM-DD hh:mm");
                     var limitDateOrder = data.batas_pembayaran;
                     var todayTime = new Date(today).getTime();
                     var limitTime = new Date(limitDateOrder).getTime();
