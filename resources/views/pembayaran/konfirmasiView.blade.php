@@ -164,7 +164,7 @@
                 },
 
                 batas: function (row, type, data) {
-                    var batas = moment(data.batas_pembayaran).format("DD-MM-YYYY");
+                    var batas = moment(data.batas_pembayaran).format("DD-MM-YYYY HH:mm");
                     return batas;
                 }
             };
