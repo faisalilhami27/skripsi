@@ -275,9 +275,7 @@
                         loadingAfterSend()
                         $("#infoModalColoredHeader1").modal('hide');
                         notification(data.status, data.msg);
-                        setTimeout(function () {
-                            location.reload();
-                        }, 1000);
+                        table.ajax.reload();
                     },
                     error: function (resp) {
                         loadingBeforeSend();

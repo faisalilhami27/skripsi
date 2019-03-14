@@ -35,9 +35,9 @@ class KonfirmasiPembayaranController extends Controller
     public function datatable()
     {
         $data = KonfirmasiPembayaranModel::with(['pemesananTiket.customer', 'statusPembayaran'])
-            ->whereHas('pemesananTiket', function ($query){
+            ->whereHas('pemesananTiket', function ($query) {
                 $query->where('id_jenis', 2);
-                $query->where('id_customer', '!=' , 0);
+                $query->where('id_customer', '!=', 0);
             })->get();
         return DataTables::of($data)->addIndexColumn()->make(true);
     }
@@ -83,15 +83,17 @@ class KonfirmasiPembayaranController extends Controller
         $getTotal = $konfigurasi[2]->nilai_konfig * $data->jumlah_tiket;
         $total = "Rp. " . number_format($getTotal, 0, ".", ".");
 
+        if ($status == 1) {
+            return response()->json(['status' => 449, 'msg' => 'Silahkan ubah status jika data sudah lengkap']);
+        }
+
         $update = KonfirmasiPembayaranModel::find($id)->update([
             'id_status' => $status,
             'id_karyawan' => $pengubah
         ]);
 
         $mail = new PHPMailer(true);
-        if ($status == 1) {
-            return response()->json(['status' => 449, 'msg' => 'Silahkan ubah status jika data sudah lengkap']);
-        } else if ($status == 3) {
+        if ($status == 3) {
             if ($update) {
                 try {
                     $body = view('bodyEmailFailed', compact('data', 'konfigurasi', 'total', 'getKode'))->render();
@@ -107,7 +109,7 @@ class KonfirmasiPembayaranController extends Controller
                     $mail->Subject = "Kesalahan Verifikasi Pembayaran";
                     $mail->AddAddress($email);
                     $mail->Body = $body;
-                    if ( $mail->send()) {
+                    if ($mail->send()) {
                         return response()->json(['status' => 200, 'msg' => 'Data berhasil diubah']);
                     }
                 } catch (Exception $e) {
@@ -133,7 +135,7 @@ class KonfirmasiPembayaranController extends Controller
                     $mail->Subject = "Verifikasi Pembayaran";
                     $mail->AddAddress($email);
                     $mail->Body = $body;
-                    if ( $mail->send()) {
+                    if ($mail->send()) {
                         return response()->json(['status' => 200, 'msg' => 'Data berhasil diubah']);
                     }
                 } catch (Exception $e) {
