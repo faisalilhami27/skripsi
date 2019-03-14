@@ -14,10 +14,13 @@ class StatusPembayaranSeeder extends Seeder
     {
         DB::table('mst_status_pembayaran')->insert([
             [
-                'nama_status' => 'Unpaid',
+                'nama_status' => 'Menunggu Pembayaran',
             ],
             [
-                'nama_status' => 'Confirmed',
+                'nama_status' => 'Dibayar',
+            ],
+            [
+                'nama_status' => 'Pembayaran Tidak Sesuai',
             ]
         ]);
     }

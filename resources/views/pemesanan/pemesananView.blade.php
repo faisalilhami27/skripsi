@@ -27,8 +27,8 @@
                                         <th style="text-align: center">No</th>
                                         <th style="text-align: center">Kode</th>
                                         <th style="text-align: center">Tanggal</th>
-                                        <th style="text-align: center">Nama Customer</th>
-                                        <th style="text-align: center">Nama Kasir</th>
+                                        <th style="text-align: center">Customer</th>
+                                        <th style="text-align: center">Kasir</th>
                                         <th style="text-align: center">Jumlah Tiket</th>
                                         <th style="text-align: center">Pembayaran</th>
                                         <th style="text-align: center">Status</th>

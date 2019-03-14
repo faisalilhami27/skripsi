@@ -61,7 +61,7 @@ class DashboardController extends Controller
             ->where('bukti_pembayaran', '!=', null)
             ->count();
         $message = KonfirmasiPembayaranModel::with(['pemesananTiket' => function ($query) {
-            $query->select('kode_pemesanan', 'tgl_pemesanan', 'tgl_masuk', 'jumlah_tiket', 'id_customer');
+            $query->select('kode_pemesanan', 'tgl_pemesanan', 'jumlah_tiket', 'id_customer');
         }, 'pemesananTiket.customer' => function ($query) {
             $query->select('id', 'nama', 'images');
         }])

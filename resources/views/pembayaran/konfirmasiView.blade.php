@@ -20,6 +20,7 @@
                                     <th>No</th>
                                     <th>Bukti Pembayaran</th>
                                     <th>Kode Pemesanan</th>
+                                    <th>Batas Pembayaran</th>
                                     <th>Total Pembayaran</th>
                                     <th>Nama Customer</th>
                                     <th>Status</th>
@@ -94,17 +95,28 @@
             </div>
         </div>
     </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script type="text/javascript">
         var table;
         $(document).ready(function () {
             $("#btn-edit").attr('disabled', 'disabled');
             var styles = {
                 status: function (row, type, data) {
-                    if (data.id_status == 1) {
-                        return "<span class='label label-danger'>"+ data.status_pembayaran.nama_status +"</span>";
+                    var today = moment().format("YYYY-MM-DD");
+                    var limitDateOrder = data.batas_pembayaran;
+                    var todayTime = new Date(today).getTime();
+                    var limitTime = new Date(limitDateOrder).getTime();
+                    if ((data.bukti_pembayaran == null) && (todayTime > limitTime)) {
+                        return "<span class='label label-danger'>Pemesanan Expired</span>";
                     } else {
-                        return "<span class='label label-success'>"+ data.status_pembayaran.nama_status +"</span>";
+                        if (data.id_status == 1) {
+                            return "<span class='label label-warning'>"+ data.status_pembayaran.nama_status +"</span>";
+                        } else if (data.id_status == 3) {
+                            return "<span class='label label-danger'>"+ data.status_pembayaran.nama_status +"</span>";
+                        } else {
+                            return "<span class='label label-success'>"+ data.status_pembayaran.nama_status +"</span>";
+                        }
                     }
                 },
 
@@ -171,6 +183,7 @@
                     {data: 'DT_RowIndex'},
                     {data: 'bukti_pembayaran', render: styles.images},
                     {data: 'kode_pemesanan'},
+                    {data: 'batas_pembayaran'},
                     {data: 'total_uang_masuk', render: styles.uang},
                     {data: 'pemesanan_tiket.customer.nama'},
                     {data: 'nama_status', render: styles.status},

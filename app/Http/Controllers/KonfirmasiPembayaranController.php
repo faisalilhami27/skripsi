@@ -91,6 +91,32 @@ class KonfirmasiPembayaranController extends Controller
         $mail = new PHPMailer(true);
         if ($status == 1) {
             return response()->json(['status' => 449, 'msg' => 'Silahkan ubah status jika data sudah lengkap']);
+        } else if ($status == 3) {
+            if ($update) {
+                try {
+                    $body = view('bodyEmailFailed', compact('data', 'konfigurasi', 'total', 'getKode'))->render();
+                    $mail->IsSMTP(true);
+                    $mail->IsHTML(true);
+                    $mail->SMTPSecure = "ssl";
+                    $mail->Host = "smtp.gmail.com";
+                    $mail->Port = 465;
+                    $mail->SMTPAuth = true;
+                    $mail->Username = "failda.waterpark06@gmail.com";
+                    $mail->Password = "barca1899";
+                    $mail->SetFrom($mail->Username, "Kesalahan Verifikasi Pembayaran");
+                    $mail->Subject = "Kesalahan Verifikasi Pembayaran";
+                    $mail->AddAddress($email);
+                    $mail->Body = $body;
+                    if ( $mail->send()) {
+                        return response()->json(['status' => 200, 'msg' => 'Data berhasil diubah']);
+                    }
+                } catch (Exception $e) {
+                    echo 'Message could not be sent.';
+                    echo 'Mailer Error: ' . $mail->ErrorInfo;
+                }
+            } else {
+                return response()->json(['status' => 449, 'msg' => 'Data gagal diubah']);
+            }
         } else {
             if ($update) {
                 try {

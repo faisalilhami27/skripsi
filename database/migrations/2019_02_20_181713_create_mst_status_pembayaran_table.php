@@ -15,7 +15,7 @@ class CreateMstStatusPembayaranTable extends Migration
     {
         Schema::create('mst_status_pembayaran', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nama_status', 20);
+            $table->string('nama_status', 30);
             $table->timestamps();
             $table->softDeletes();
         });
