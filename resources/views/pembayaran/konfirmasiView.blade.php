@@ -161,6 +161,11 @@
 
                 uang: function (row, type, data) {
                     return 'Rp. ' + format(data.pemesanan_tiket.total_uang_masuk);
+                },
+
+                batas: function (row, type, data) {
+                    var batas = moment(data.batas_pembayaran).format("DD-MM-YYYY");
+                    return batas;
                 }
             };
 
@@ -183,7 +188,7 @@
                     {data: 'DT_RowIndex'},
                     {data: 'bukti_pembayaran', render: styles.images},
                     {data: 'kode_pemesanan'},
-                    {data: 'batas_pembayaran'},
+                    {data: 'batas_pembayaran', render: styles.batas},
                     {data: 'total_uang_masuk', render: styles.uang},
                     {data: 'pemesanan_tiket.customer.nama'},
                     {data: 'nama_status', render: styles.status},

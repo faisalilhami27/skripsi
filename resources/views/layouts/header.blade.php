@@ -257,6 +257,8 @@
                 $('.list-group').html(hasil);
                 if (data.unseen_notification > 0) {
                     $('.badge-notif, .notif').html(data.unseen_notification);
+                } else if (data.unseen_notification == 0) {
+                    $('.badge-notif, .notif').html("");
                 }
                 setTimeout(load_unseen_notification, 10000);
             }

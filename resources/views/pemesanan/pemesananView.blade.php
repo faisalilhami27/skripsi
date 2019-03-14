@@ -377,7 +377,9 @@
                         $("#infoModalColoredHeader").modal('hide');
                         loadingAfterSend();
                         notification(data.status, data.msg);
-                        table.ajax.reload();
+                        setTimeout(function () {
+                            location.reload();
+                        }, 1000);
                     },
                     error: function (resp) {
                         loadingAfterSend();
@@ -413,7 +415,9 @@
                         $("#infoModalColoredHeader1").modal('hide');
                         loadingAfterSend();
                         notification(data.status, data.msg);
-                        table.ajax.reload();
+                        setTimeout(function () {
+                            location.reload();
+                        }, 1000);
                     },
                     error: function (resp) {
                         loadingAfterSend();
