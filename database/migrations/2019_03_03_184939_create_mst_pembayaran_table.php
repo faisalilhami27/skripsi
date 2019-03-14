@@ -17,7 +17,7 @@ class CreateMstPembayaranTable extends Migration
             $table->increments('id');
             $table->string('kode_pemesanan', 20);
             $table->integer('id_status')->unsigned();
-            $table->date('batas_pembayaran');
+            $table->dateTime('batas_pembayaran');
             $table->text('bukti_pembayaran')->nullable();
             $table->integer('id_karyawan')->unsigned()->nullable();
             $table->timestamps();
