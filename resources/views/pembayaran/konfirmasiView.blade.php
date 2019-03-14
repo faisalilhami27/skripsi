@@ -175,7 +175,7 @@
                 ajax: {
                     "url": '{{ URL('konfirmasi/json') }}',
                     "headers": {
-                        "X-CSRF-TOKEN": "{{ csrf_token() }}"
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
                 },
 

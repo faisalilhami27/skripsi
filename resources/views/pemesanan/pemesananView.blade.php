@@ -260,7 +260,7 @@
                     "url": '{{ URL('pemesanan/json') }}',
                     "cache": false,
                     "headers": {
-                        "X-CSRF-TOKEN": "{{ csrf_token() }}"
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
                 },
 
