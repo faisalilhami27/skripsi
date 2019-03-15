@@ -18,8 +18,8 @@
                                         <label class="col-sm-3" for="kode" style="margin-top: 5px">Kode Pemesanan</label>
                                         <div class="col-sm-5">
                                             <div class="input-with-icon">
-                                                <input style="margin-left: -20px" class="form-control" id="kode" maxlength="20" placeholder="Kode pemesanan" type="text">
-                                                <span class="icon icon-shopping-cart input-icon" style="margin-left: -20px"></span>
+                                                <input class="form-control" id="kode" maxlength="20" placeholder="Kode pemesanan" type="text">
+                                                <span class="icon icon-shopping-cart input-icon"></span>
                                             </div>
                                         </div>
                                     </div>
