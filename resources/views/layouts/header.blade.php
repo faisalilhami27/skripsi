@@ -84,7 +84,7 @@
                 <span class="ellipsis ellipsis-vertical">
                     @if(is_null(Session::get('images')))
                         <img class="ellipsis-object" width="32" height="32"
-                             src="{{ asset('img/no_image.svg') }}"
+                             src="{{ Avatar::create(Session::get('nama_lengkap'))->toBase64() }}"
                              alt="Profile">
                     @else
                         <img class="ellipsis-object" width="32" height="32"
@@ -139,7 +139,7 @@
                         <button class="navbar-account-btn" data-toggle="dropdown" aria-haspopup="true">
                             @if(is_null(Session::get('images')))
                                 <img class="circle" width="36" height="36"
-                                     src="{{ asset('img/no_image.svg') }}"
+                                     src="{{ Avatar::create(Session::get('nama_lengkap'))->toBase64() }}"
                                      alt="test"> {{ Session::get('nama_lengkap') }}
                                 <span class="caret"></span>
                             @else

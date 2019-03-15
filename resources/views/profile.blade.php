@@ -170,9 +170,9 @@
                                 <div class="profile-avatar">
                                     @if(is_null($user['images']))
                                         <img class="img-circle"
-                                             src="{{ asset('img/no_image.svg') }}"
+                                             src="{{ Avatar::create(Session::get('nama_lengkap'))->toBase64() }}"
                                              width="128px" height="128px"
-                                             style="margin-left: 38%; border: 3px solid #FFFFFF" alt="Profile">
+                                             style="margin-left: 38%; border: 2px solid #FFFFFF" alt="Profile">
                                     @else
                                         <img class="img-circle"
                                              src="{{ asset('storage/' . $user['images']) }}"

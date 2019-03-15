@@ -40,6 +40,7 @@
         </a>
         <div class="login-form">
             <form method="post">
+                {{ csrf_field() }}
                 <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
                 <div class="form-group">
                     <label for="username">Username</label>

@@ -86,6 +86,7 @@ Route::group(['prefix' => 'konfirmasi'], function (){
     Route::get('/', 'KonfirmasiPembayaranController@index');
     Route::get('/json', 'KonfirmasiPembayaranController@datatable');
     Route::get('/getKonfirmasiById', 'KonfirmasiPembayaranController@edit');
+    Route::get('/getKodePemesanan', 'KonfirmasiPembayaranController@getKodePemesanan');
     Route::get('/getBuktiPembayaran', 'KonfirmasiPembayaranController@getBuktiPembayaran');
     Route::put('/update', 'KonfirmasiPembayaranController@update');
     Route::delete('/delete', 'KonfirmasiPembayaranController@destroy');

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\KonfirmasiPembayaranRequest;
-use App\Models\CustomerModel;
 use App\Models\KonfigurasiModel;
 use App\Models\KonfirmasiPembayaranModel;
 use App\Models\PemesananModel;
@@ -32,14 +31,29 @@ class KonfirmasiPembayaranController extends Controller
         return view('pembayaran.konfirmasiView', compact('title', 'deskripsi', 'status', 'akses'));
     }
 
-    public function datatable()
+    public function datatable(Request $request)
     {
         $data = KonfirmasiPembayaranModel::with(['pemesananTiket.customer', 'statusPembayaran'])
             ->whereHas('pemesananTiket', function ($query) {
                 $query->where('id_jenis', 2);
                 $query->where('id_customer', '!=', 0);
-            })->get();
-        return DataTables::of($data)->addIndexColumn()->make(true);
+            });
+
+            if ($request->has('kode') && $request->query('kode') != "") {
+                $data->where('kode_pemesanan', $request->query('kode'));
+            } else {
+                $data->where('id_status', '!=' , 2);
+            }
+
+            $datatable = $data->orderBy('kode_pemesanan', 'DESC')->get();
+        return DataTables::of($datatable)->addIndexColumn()->make(true);
+    }
+
+    public function getKodePemesanan(Request $request)
+    {
+        $query = $request->queryData;
+        $data = KonfirmasiPembayaranModel::where('kode_pemesanan', $query)->get();
+        return response()->json($data);
     }
 
     public function edit(Request $request)

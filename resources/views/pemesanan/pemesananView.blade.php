@@ -18,6 +18,13 @@
                             <strong>Daftar Pemesanan Tiket</strong>
                         </div>
                         <div class="card-body">
+                            <div class="col-md-3" style="margin-left: -15px; margin-bottom: 10px">
+                                <div class="input-with-icon">
+                                    <input class="form-control" id="filter_tanggal" placeholder="Filter Tanggal" type="text" data-date-today-highlight="true">
+                                    <span class="icon icon-calendar input-icon"></span>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
                             <div class="table-responsive">
                                 <table id="demo-datatables" class="table table-responsive table-striped dataTable"
                                        cellspacing="0"
@@ -29,7 +36,7 @@
                                         <th style="text-align: center">Tanggal</th>
                                         <th style="text-align: center">Kasir</th>
                                         <th style="text-align: center">Jumlah Tiket</th>
-                                        <th style="text-align: center">Total Pembayaran</th>
+                                        <th style="text-align: center">Pembayaran</th>
                                         <th style="text-align: center">Status</th>
                                         <th style="text-align: center">Jenis</th>
                                         <th style="text-align: center" width="120px">Aksi</th>
@@ -162,9 +169,9 @@
             </div>
         </div>
     </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
+
             var format = function (angka) {
                 var number_string = angka.replace(/[^,\d]/g, '').toString(),
                     split = number_string.split(','),
@@ -239,6 +246,12 @@
                 }
             };
 
+            $("#filter_tanggal").datepicker({
+                format: "yyyy-mm-dd"
+            });
+
+            var dataTableURL = '/pemesanan/json';
+
             //	//datatables
             table = $('#demo-datatables').DataTable({
                 // processing: true,
@@ -248,11 +261,10 @@
                 order: [],
 
                 ajax: {
-                    "url": '{{ URL('pemesanan/json') }}',
-                    "cache": false,
                     "headers": {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
+                    "url": dataTableURL + "?tanggal=" + $("#filter_tanggal").val(),
                 },
 
                 columns: [
@@ -275,6 +287,20 @@
                     },
                 ],
             });
+
+            $("#filter_tanggal").change(function () {
+                reloadDT('?tanggal=' + $(this).val());
+            });
+
+            function reloadDT(query, backToOne){
+                query = (query) ? query : '';
+
+                if (backToOne) {
+                    table.ajax.url(dataTableURL + query).draw()
+                } else {
+                    table.ajax.url(dataTableURL + query).draw(false)
+                }
+            }
 
             $("#ins_tiket, #upd_tiket").keyup(function () {
                 var jml_tiket = $(this).val();

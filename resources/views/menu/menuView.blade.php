@@ -177,209 +177,208 @@
             </div>
         </div>
     </div>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script type="text/javascript">
-            var table;
-            $(document).ready(function () {
-                var styles = {
-                    button: function (row, type, data) {
-                        return '<center>' + `<a href="#" class="btn btn-success btn-sm btn-edit" id="${data.id}" data-toggle="modal" data-target="#infoModalColoredHeader1"><i class="icon icon-pencil-square-o"></i></a>
+    <script type="text/javascript">
+        var table;
+        $(document).ready(function () {
+            var styles = {
+                button: function (row, type, data) {
+                    return '<center>' + `<a href="#" class="btn btn-success btn-sm btn-edit" id="${data.id}" data-toggle="modal" data-target="#infoModalColoredHeader1"><i class="icon icon-pencil-square-o"></i></a>
                                              <a href="#" class="btn btn-danger btn-sm btn-delete"  id="${data.id}"><i class="icon icon-trash-o"></i></a>` + '</center>';
-                    },
+                },
 
-                    status: function (row, type, data) {
-                        if (data.is_aktif == "y") {
-                            return "<center>" + "<span class='label label-primary'>Aktif</span>" + "</center>";
-                        } else {
-                            return "<center>" + "<span class='label label-danger'>Tidak aktif</span>" + "</center>";
-                        }
+                status: function (row, type, data) {
+                    if (data.is_aktif == "y") {
+                        return "<center>" + "<span class='label label-primary'>Aktif</span>" + "</center>";
+                    } else {
+                        return "<center>" + "<span class='label label-danger'>Tidak aktif</span>" + "</center>";
                     }
-                };
+                }
+            };
 
-                $("#upd_main_menu").select2();
+            $("#upd_main_menu").select2();
 
-                //	//datatables
-                table = $('#demo-datatables').DataTable({
-                    processing: true,
-                    serverSide: true,
-                    responsive: true,
-                    order: [],
+            //	//datatables
+            table = $('#demo-datatables').DataTable({
+                processing: true,
+                serverSide: true,
+                responsive: true,
+                order: [],
 
-                    ajax: {
-                        "url": '{{ URL('kelolamenu/json') }}',
-                        "headers": {
-                            "X-CSRF-TOKEN": "{{ csrf_token() }}",
-                        },
+                ajax: {
+                    "url": '{{ URL('kelolamenu/json') }}',
+                    "headers": {
+                        "X-CSRF-TOKEN": "{{ csrf_token() }}",
                     },
+                },
 
-                    columns: [
-                        {data: 'DT_RowIndex'},
-                        {data: 'title'},
-                        {data: 'url'},
-                        {data: 'icon'},
-                        {data: 'is_main_menu'},
-                        {data: 'is_aktif', render: styles.status},
-                        {data: 'action', orderable: false, render: styles.button}
+                columns: [
+                    {data: 'DT_RowIndex'},
+                    {data: 'title'},
+                    {data: 'url'},
+                    {data: 'icon'},
+                    {data: 'is_main_menu'},
+                    {data: 'is_aktif', render: styles.status},
+                    {data: 'action', orderable: false, render: styles.button}
 
-                    ],
-                });
+                ],
+            });
 
-                table.on('click', '.btn-edit', function (e) {
-                    e.preventDefault();
-                    var id = $(this).attr("id");
-                    $(".modal-title-update").html("Update Data Menu");
-                    $.ajax({
-                        url: "{{ URL('kelolamenu/getMenu') }}",
-                        type: "GET",
-                        data: "id=" + id,
-                        dataType: 'json',
-                        success: function (data) {
-                            if (data.status == 200) {
-                                $("#id").val(data.list.id);
-                                $("#upd_title").val(data.list.title);
-                                $("#upd_url").val(data.list.url);
-                                $("#upd_icon").val(data.list.icon);
-                                $("#upd_main_menu").val(data.list.is_main_menu);
-                                $("#upd_status").val(data.list.is_aktif);
-                            } else {
-                                notification(data.status, data.msg);
-                            }
-                        },
-                        error: function (xhr, status, error) {
-                            alert(status + " : " + error);
-                        }
-                    });
-                });
-
-                $("#btn-insert-data").click(function (e) {
-                    e.preventDefault();
-                    var title = $("#title").val(),
-                        url = $("#url").val(),
-                        icon = $("#icon").val(),
-                        menu = $("#demo-select2-2").val(),
-                        status = $("#demo-select2-1").val(),
-                        sendData = "title=" + title + "&url=" + url + "&icon=" + icon + "&is_main_menu=" + menu + "&is_aktif=" + status;
-
-                    $.ajax({
-                        headers: {
-                            'X-CSRF-TOKEN': "{{ csrf_token() }}"
-                        },
-                        url: "{{ URL('kelolamenu/insert') }}",
-                        type: "POST",
-                        data: sendData,
-                        dataType: 'json',
-                        beforeSend: function() {
-                          loadingBeforeSend();
-                        },
-                        success: function (data) {
+            table.on('click', '.btn-edit', function (e) {
+                e.preventDefault();
+                var id = $(this).attr("id");
+                $(".modal-title-update").html("Update Data Menu");
+                $.ajax({
+                    url: "{{ URL('kelolamenu/getMenu') }}",
+                    type: "GET",
+                    data: "id=" + id,
+                    dataType: 'json',
+                    success: function (data) {
+                        if (data.status == 200) {
+                            $("#id").val(data.list.id);
+                            $("#upd_title").val(data.list.title);
+                            $("#upd_url").val(data.list.url);
+                            $("#upd_icon").val(data.list.icon);
+                            $("#upd_main_menu").val(data.list.is_main_menu);
+                            $("#upd_status").val(data.list.is_aktif);
+                        } else {
                             notification(data.status, data.msg);
-                            $('#infoModalColoredHeader').modal('hide');
-                            loadingAfterSend();
-                            table.ajax.reload();
-                        },
-                        error: function (resp) {
-                            loadingAfterSend();
-                            if (_.has(resp.responseJSON, 'errors')) {
-                                _.map(resp.responseJSON.errors, function (val, key) {
-                                    $('#' + key + '-error').html(val[0]).fadeIn(1000).fadeOut(5000);
-                                })
-                            }
-                            alert(resp.responseJSON.message)
                         }
-                    });
-                });
-
-                $("#btn-update-data").click(function (e) {
-                    e.preventDefault();
-                    var title = $("#upd_title").val(),
-                        url = $("#upd_url").val(),
-                        icon = $("#upd_icon").val(),
-                        menu = $("#upd_main_menu").val(),
-                        status = $("#upd_status").val(),
-                        id = $("#id").val(),
-                        sendData = "id=" + id + "&title=" + title + "&url=" + url + "&icon=" + icon + "&is_main_menu=" + menu + "&is_aktif=" + status;
-                    $.ajax({
-                        headers: {
-                            'X-CSRF-TOKEN': "{{ csrf_token() }}"
-                        },
-                        url: "{{ URL('kelolamenu/update') }}",
-                        type: "PUT",
-                        data: sendData,
-                        dataType: 'json',
-                        beforeSend: function() {
-                            loadingBeforeSend();
-                        },
-                        success: function (data) {
-                            notification(data.status, data.msg);
-                            $('#infoModalColoredHeader1').modal('hide');
-                            loadingAfterSend();
-                           table.ajax.reload();
-                        },
-                        error: function (resp) {
-                            loadingAfterSend();
-                            if (_.has(resp.responseJSON, 'errors')) {
-                                _.map(resp.responseJSON.errors, function (val, key) {
-                                    $('.' + key + '-error').html(val[0]).fadeIn(1000).fadeOut(5000);
-                                })
-                            }
-                            alert(resp.responseJSON.message)
-                        }
-                    });
-                });
-
-                table.on('click', '.btn-delete', function (e) {
-                    e.preventDefault();
-                    var id = $(this).attr("id");
-                    $.confirm({
-                        content: 'Data yang dihapus tidak akan dapat dikembalikan.',
-                        title: 'Apakah yakin ingin menghapus ?',
-                        type: 'red',
-                        typeAnimated: true,
-                        buttons: {
-                            cancel: {
-                                text: 'Batal',
-                                btnClass: 'btn-danger',
-                                keys: ['esc'],
-                                action: function () {
-                                }
-                            },
-                            ok: {
-                                text: '<i class="icon icon-trash"></i> Hapus',
-                                btnClass: 'btn-warning',
-                                action: function () {
-                                    $.ajax({
-                                        headers: {
-                                            'X-CSRF-TOKEN': "{{ csrf_token() }}"
-                                        },
-                                        url: "{{ URL('kelolamenu/delete') }}",
-                                        type: "DELETE",
-                                        data: "id=" + id,
-                                        dataType: "json",
-                                        success: function (data) {
-                                            notification(data.status, data.msg);
-                                            setTimeout(function () {
-                                                location.reload();
-                                            }, 1000)
-                                        },
-                                        error: function (xhr, status, error) {
-                                            alert(status + " : " + error);
-                                        }
-                                    });
-                                }
-                            }
-                        }
-                    });
+                    },
+                    error: function (xhr, status, error) {
+                        alert(status + " : " + error);
+                    }
                 });
             });
 
-            function loadingBeforeSend() {
-                $("#btn-insert-data, #btn-update-data").attr('disabled', 'disabled');
-                $("#btn-insert-data, #btn-update-data").text('Menyimpan data....');
-            }
+            $("#btn-insert-data").click(function (e) {
+                e.preventDefault();
+                var title = $("#title").val(),
+                    url = $("#url").val(),
+                    icon = $("#icon").val(),
+                    menu = $("#demo-select2-2").val(),
+                    status = $("#demo-select2-1").val(),
+                    sendData = "title=" + title + "&url=" + url + "&icon=" + icon + "&is_main_menu=" + menu + "&is_aktif=" + status;
 
-            function loadingAfterSend() {
-                $("#btn-insert-data, #btn-update-data").removeAttr('disabled');
-                $("#btn-insert-data, #btn-update-data").text('Submit');
-            }
-        </script>
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                    },
+                    url: "{{ URL('kelolamenu/insert') }}",
+                    type: "POST",
+                    data: sendData,
+                    dataType: 'json',
+                    beforeSend: function () {
+                        loadingBeforeSend();
+                    },
+                    success: function (data) {
+                        notification(data.status, data.msg);
+                        $('#infoModalColoredHeader').modal('hide');
+                        loadingAfterSend();
+                        table.ajax.reload();
+                    },
+                    error: function (resp) {
+                        loadingAfterSend();
+                        if (_.has(resp.responseJSON, 'errors')) {
+                            _.map(resp.responseJSON.errors, function (val, key) {
+                                $('#' + key + '-error').html(val[0]).fadeIn(1000).fadeOut(5000);
+                            })
+                        }
+                        alert(resp.responseJSON.message)
+                    }
+                });
+            });
+
+            $("#btn-update-data").click(function (e) {
+                e.preventDefault();
+                var title = $("#upd_title").val(),
+                    url = $("#upd_url").val(),
+                    icon = $("#upd_icon").val(),
+                    menu = $("#upd_main_menu").val(),
+                    status = $("#upd_status").val(),
+                    id = $("#id").val(),
+                    sendData = "id=" + id + "&title=" + title + "&url=" + url + "&icon=" + icon + "&is_main_menu=" + menu + "&is_aktif=" + status;
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                    },
+                    url: "{{ URL('kelolamenu/update') }}",
+                    type: "PUT",
+                    data: sendData,
+                    dataType: 'json',
+                    beforeSend: function () {
+                        loadingBeforeSend();
+                    },
+                    success: function (data) {
+                        notification(data.status, data.msg);
+                        $('#infoModalColoredHeader1').modal('hide');
+                        loadingAfterSend();
+                        table.ajax.reload();
+                    },
+                    error: function (resp) {
+                        loadingAfterSend();
+                        if (_.has(resp.responseJSON, 'errors')) {
+                            _.map(resp.responseJSON.errors, function (val, key) {
+                                $('.' + key + '-error').html(val[0]).fadeIn(1000).fadeOut(5000);
+                            })
+                        }
+                        alert(resp.responseJSON.message)
+                    }
+                });
+            });
+
+            table.on('click', '.btn-delete', function (e) {
+                e.preventDefault();
+                var id = $(this).attr("id");
+                $.confirm({
+                    content: 'Data yang dihapus tidak akan dapat dikembalikan.',
+                    title: 'Apakah yakin ingin menghapus ?',
+                    type: 'red',
+                    typeAnimated: true,
+                    buttons: {
+                        cancel: {
+                            text: 'Batal',
+                            btnClass: 'btn-danger',
+                            keys: ['esc'],
+                            action: function () {
+                            }
+                        },
+                        ok: {
+                            text: '<i class="icon icon-trash"></i> Hapus',
+                            btnClass: 'btn-warning',
+                            action: function () {
+                                $.ajax({
+                                    headers: {
+                                        'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                                    },
+                                    url: "{{ URL('kelolamenu/delete') }}",
+                                    type: "DELETE",
+                                    data: "id=" + id,
+                                    dataType: "json",
+                                    success: function (data) {
+                                        notification(data.status, data.msg);
+                                        setTimeout(function () {
+                                            location.reload();
+                                        }, 1000)
+                                    },
+                                    error: function (xhr, status, error) {
+                                        alert(status + " : " + error);
+                                    }
+                                });
+                            }
+                        }
+                    }
+                });
+            });
+        });
+
+        function loadingBeforeSend() {
+            $("#btn-insert-data, #btn-update-data").attr('disabled', 'disabled');
+            $("#btn-insert-data, #btn-update-data").text('Menyimpan data....');
+        }
+
+        function loadingAfterSend() {
+            $("#btn-insert-data, #btn-update-data").removeAttr('disabled');
+            $("#btn-insert-data, #btn-update-data").text('Submit');
+        }
+    </script>
 @endsection

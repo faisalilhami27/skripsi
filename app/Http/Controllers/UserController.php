@@ -22,35 +22,6 @@ class UserController extends Controller
 
     public function index()
     {
-//        $data = ChooseRoleModel::with(['user' => function ($query) {
-//        }])
-//            ->where('id_karyawan', 1)
-//            ->get();
-//        $item = [];
-//        $i = 0;
-//        foreach ($data as $d) {
-//            $item[$i] = $d->id_user_level;
-//            $i++;
-//        }
-//        print_r($item); die;
-//        $data = UserModel::with('karyawan', 'karyawanRole.role')->get();
-//        $merge = [];
-//        $i = 0;
-//        foreach ($data as $item) {
-//            foreach ($item->roleKaryawan as $r) {
-//                $merge[$i] = $r;
-////                foreach ($r->role as $test) {
-////                    $merge[$i] = $test->nama_level;
-////                }
-//                $i++;
-//            }
-//        }
-////        $implode = @implode(',', $merge);
-////        $explode = @explode(' ', $merge);
-////        foreach ($explode as $item) {
-////            $test = $item;
-////        }
-//        echo json_encode($data); die;
         $user = KaryawanModel::all();
         $level = UserLevelModel::all();
         $title = "Halaman Pengguna";
@@ -71,7 +42,6 @@ class UserController extends Controller
         $password = Hash::make(htmlspecialchars($request->password));
         $level = @explode(',', $request->level);
         $status = $request->status;
-        $images = $request->file('images');
 
         $cekUser = UserModel::where('id_karyawan', $karyawan)->first();
 
@@ -91,9 +61,6 @@ class UserController extends Controller
             'id_karyawan' => $karyawan,
             'password' => $password,
             'status' => $status,
-            'images' => $images->store(
-                'img', 'public'
-            )
         ]);
 
         if ($insert) {

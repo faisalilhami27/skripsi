@@ -152,7 +152,7 @@
                         <div class="tab-content">
                             <div class="tab-pane fade active in" id="home-11">
                                 @if($konfig[3]->nilai_konfig == 'logo2.png')
-                                    <img class="img-responsive" src="{{ asset('img/no_image.svg') }}" width="50%" style="margin-left: 25%; margin-top: 0%" alt="Failda">
+                                    <img class="img-responsive" src="{{ Avatar::create("Failda Waterpark")->toBase64() }}" style="margin-left: 40%; margin-top: 0%" alt="Failda">
                                 @else
                                     <img class="img-responsive" src="{{ asset('storage/' . $konfig[3]->nilai_konfig) }}" width="70%" style="margin-left: 16%; margin-top: 0%" alt="Failda">
                                 @endif

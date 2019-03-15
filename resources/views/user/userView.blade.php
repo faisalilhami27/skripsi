@@ -84,29 +84,6 @@
                                 </span>
                             </div>
                             <div class="form-group">
-                                <label for="ins_images">Images</label>
-                                <div class="input-with-icon">
-                                    <div class="input-group input-file">
-                                        <input class="form-control" readonly type="text" placeholder="No file chosen"
-                                               style="background-color: rgba(0,0,0, 0.1)">
-                                        <span class="icon icon-paperclip input-icon"></span>
-                                        <span class="input-group-btn">
-                                        <label class="btn btn-primary file-upload-btn">
-                                            <input id="ins_images" type="file" accept="image/*"
-                                                   class="file-upload-input" name="ins_images">
-                                            <span class="icon icon-paperclip icon-lg"></span>
-                                        </label>
-                                    </span>
-                                    </div>
-                                </div>
-                                <span class="text-danger">
-                                    <strong id="images-error"></strong>
-                                </span>
-                                <p class="help-block">
-                                    <small>Allowed types: png gif jpg jpeg.</small>
-                                </p>
-                            </div>
-                            <div class="form-group">
                                 <label for="demo-select2-1" class="form-label">Level</label>
                                 <select id="demo-select2-1" name="ins_level" class="form-control" multiple>
                                     <option value="">-- Pilih Level --</option>
@@ -184,8 +161,6 @@
             </div>
         </div>
     </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
     <script type="text/javascript">
         var table;
         $(document).ready(function () {
@@ -199,19 +174,6 @@
             });
 
             $("#karyawan, #upd_level").select2();
-
-            $('input[type=file]').change(function () {
-                var val = $(this).val().toLowerCase(),
-                    regex = new RegExp("(.*?)\.(png|jpg|jpeg)$");
-                if (!(regex.test(val))) {
-                    $(this).val('');
-                    alert('Format yang diizinkan png atau jpg');
-                } else if (this.files[0].size > 1000024) {
-                    $(this).val('');
-                    $("#images-error").html("Maximum file size of 1 MB").fadeIn(1000).fadeOut(5000);
-                    $("#images-error").css("color", "red");
-                }
-            });
 
             var styles = {
                 button: function (row, type, data) {
@@ -307,14 +269,7 @@
                 var password = $("#ins_password").val();
                 var level = $("#demo-select2-1").val();
                 var status = $("#demo-select2-2").val();
-                var images = $('#ins_images').prop('files')[0];
-                var formData = new FormData();
-                formData.append('karyawan', karyawan);
-                formData.append('username', username);
-                formData.append('password', password);
-                formData.append('level', level);
-                formData.append('status', status);
-                formData.append('images', images);
+                var sendData = "karyawan=" + karyawan + "&username=" + username + "&password=" + password + "&level=" + level + "&status=" + status;
 
                 if (level == null) {
                     $('#level-error').html('The level field is required.');
@@ -328,10 +283,7 @@
                         },
                         url: "{{ URL('user/insert') }}",
                         type: "POST",
-                        data: formData,
-                        cache: false,
-                        contentType: false,
-                        processData: false,
+                        data: sendData,
                         dataType: 'json',
                         beforeSend: function() {
                           loadingBeforeSend();
@@ -340,9 +292,7 @@
                             $("#infoModalColoredHeader").modal('hide');
                             loadingAfterSend();
                             notification(data.status, data.msg);
-                            setTimeout(function () {
-                                location.reload();
-                            }, 1000);
+                            table.ajax.reload();
                         },
                         error: function (resp) {
                             loadingAfterSend();
@@ -385,9 +335,7 @@
                             $("#infoModalColoredHeader1").modal('hide');
                             loadingAfterSend();
                             notification(data.status, data.msg);
-                            setTimeout(function () {
-                                location.reload();
-                            }, 1000);
+                            table.ajax.reload();
                         },
                         error: function (resp) {
                             loadingAfterSend();
@@ -511,32 +459,6 @@
                     error: function (xhr, status, error) {
                         alert(status + " : " + error);
                     }
-                });
-            });
-
-            $(function () {
-                // We can attach the `fileselect` event to all file inputs on the page
-                $(document).on('change', ':file', function () {
-                    var input = $(this),
-                        numFiles = input.get(0).files ? input.get(0).files.length : 1,
-                        label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
-                    input.trigger('fileselect', [numFiles, label]);
-                });
-
-                // We can watch for our custom `fileselect` event like this
-                $(document).ready(function () {
-                    $(':file').on('fileselect', function (event, numFiles, label) {
-
-                        var input = $(this).parents('.input-file').find(':text'),
-                            log = numFiles > 1 ? numFiles + ' files selected' : label;
-
-                        if (input.length) {
-                            input.val(log);
-                        } else {
-                            if (log) alert(log);
-                        }
-
-                    });
                 });
             });
         });

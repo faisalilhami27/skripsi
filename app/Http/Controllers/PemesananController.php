@@ -30,13 +30,18 @@ class PemesananController extends Controller
         return view('pemesanan.pemesananView', compact('konfig', 'title', 'deskripsi', 'akses'));
     }
 
-    public function datatable()
+    public function datatable(Request $request)
     {
-        $data = PemesananModel::with('karyawan.karyawan', 'jenisPemesanan')
-            ->where('tgl_pemesanan', date('Y-m-d'))
-            ->orderBy('kode_pemesanan', 'DESC')
-            ->get();
-        return DataTables::of($data)->addIndexColumn()->make(true);
+        $data = PemesananModel::with('karyawan.karyawan', 'jenisPemesanan');
+
+        if ($request->has('tanggal') && $request->query('tanggal') != "") {
+            $data->where('tgl_pemesanan', $request->query('tanggal'));
+        } else {
+            $data->where('tgl_pemesanan', date('Y-m-d'));
+        }
+
+        $datatable = $data->orderBy('kode_pemesanan', 'DESC')->get();
+        return DataTables::of($datatable)->addIndexColumn()->make(true);
     }
 
     public function store(PemesananRequest $request)

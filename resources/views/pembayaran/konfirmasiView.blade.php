@@ -12,19 +12,33 @@
                             <strong>Daftar Konfirmasi Pembayaran</strong>
                         </div>
                         <div class="card-body">
+                            <div class="col-md-6" style="margin-left: -15px; margin-bottom: 10px">
+                                <form action="" method="post" class="form form-horizontal">
+                                    <div class="form-group">
+                                        <label class="col-sm-3" for="kode" style="margin-top: 5px">Kode Pemesanan</label>
+                                        <div class="col-sm-5">
+                                            <div class="input-with-icon">
+                                                <input style="margin-left: -20px" class="form-control" id="kode" maxlength="20" placeholder="Kode pemesanan" type="text">
+                                                <span class="icon icon-shopping-cart input-icon" style="margin-left: -20px"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="clearfix"></div>
                             <table id="demo-datatables"
-                                   class="table table-responsive table-striped table-nowrap dataTable" cellspacing="0"
+                                   class="table table-responsive table-striped dataTable" cellspacing="0"
                                    width="100%">
                                 <thead>
                                 <tr>
-                                    <th>No</th>
-                                    <th>Bukti Pembayaran</th>
-                                    <th>Kode Pemesanan</th>
-                                    <th>Batas Pembayaran</th>
-                                    <th>Total Pembayaran</th>
-                                    <th>Nama Customer</th>
-                                    <th>Status</th>
-                                    <th>Aksi</th>
+                                    <th style="text-align: center">No</th>
+                                    <th style="text-align: center">Bukti Pembayaran</th>
+                                    <th style="text-align: center">Kode</th>
+                                    <th style="text-align: center">Batas Pembayaran</th>
+                                    <th style="text-align: center">Pembayaran</th>
+                                    <th style="text-align: center">Customer</th>
+                                    <th style="text-align: center">Status</th>
+                                    <th width="80" style="text-align: center">Aksi</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -95,8 +109,6 @@
             </div>
         </div>
     </div>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script type="text/javascript">
         var table;
         $(document).ready(function () {
@@ -169,6 +181,8 @@
                 }
             };
 
+            var dataTableURL = '/konfirmasi/json';
+
             //	//datatables
             table = $('#demo-datatables').DataTable({
                 // processing: true,
@@ -178,7 +192,7 @@
                 order: [],
 
                 ajax: {
-                    "url": '{{ URL('konfirmasi/json') }}',
+                    "url": dataTableURL + "?kode=" + $("#kode").val(),
                     "headers": {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
@@ -202,6 +216,42 @@
                     },
                 ],
             });
+
+            $('#kode').typeahead({
+                items: 20,
+                source: function (query, result) {
+                    var items = [];
+                    return $.ajax({
+                        headers: {
+                            "X-CSRF-TOKEN": "{{ csrf_token() }}",
+                        },
+                        url: '{{ URL('konfirmasi/getKodePemesanan') }}',
+                        type: 'GET',
+                        data: {queryData: query},
+                        dataType: 'json',
+                        success: function (data) {
+                            result($.map(data, function (item) {
+                                items.push(item.kode_pemesanan);
+                            }));
+                            result(items);
+                        }
+                    });
+                }
+            });
+
+            $("#kode").change(function () {
+                reloadDT('?kode=' + $(this).val());
+            });
+
+            function reloadDT(query, backToOne){
+                query = (query) ? query : '';
+
+                if (backToOne) {
+                    table.ajax.url(dataTableURL + query).draw()
+                } else {
+                    table.ajax.url(dataTableURL + query).draw(false)
+                }
+            }
 
             table.on('click', '.btn-edit', function (e) {
                 e.preventDefault();
@@ -272,10 +322,12 @@
                         loadingBeforeSend();
                     },
                     success: function (data) {
-                        loadingAfterSend()
+                        loadingAfterSend();
                         $("#infoModalColoredHeader1").modal('hide');
                         notification(data.status, data.msg);
-                        table.ajax.reload();
+                        setTimeout(function () {
+                            table.ajax.reload();
+                        }, 1000);
                     },
                     error: function (resp) {
                         loadingBeforeSend();

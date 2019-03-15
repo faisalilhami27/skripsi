@@ -29,7 +29,6 @@ class UserRequest extends FormRequest
             'password' => 'required',
             'level' => 'required',
             'status' => 'required',
-            'images' => 'required|file'
         ];
     }
 }
