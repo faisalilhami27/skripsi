@@ -39,8 +39,8 @@ class KonfirmasiPembayaranController extends Controller
                 $query->where('id_customer', '!=', 0);
             });
 
-            if ($request->has('kode') && $request->query('kode') != "") {
-                $data->where('kode_pemesanan', $request->query('kode'));
+            if (htmlspecialchars($request->has('kode')) && htmlspecialchars($request->query('kode')) != "") {
+                $data->where('kode_pemesanan', htmlspecialchars($request->query('kode')));
             } else {
                 $data->where('id_status', '!=' , 2);
             }

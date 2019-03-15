@@ -34,8 +34,8 @@ class PemesananController extends Controller
     {
         $data = PemesananModel::with('karyawan.karyawan', 'jenisPemesanan');
 
-        if ($request->has('tanggal') && $request->query('tanggal') != "") {
-            $data->where('tgl_pemesanan', $request->query('tanggal'));
+        if (htmlspecialchars($request->has('tanggal')) && htmlspecialchars($request->query('tanggal')) != "") {
+            $data->where('tgl_pemesanan', htmlspecialchars($request->query('tanggal')));
         } else {
             $data->where('tgl_pemesanan', date('Y-m-d'));
         }

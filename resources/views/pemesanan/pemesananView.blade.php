@@ -24,7 +24,7 @@
                                         <label class="col-sm-3" for="kode" style="margin-top: 5px">Pilih Tanggal</label>
                                         <div class="col-sm-5">
                                             <div class="input-with-icon">
-                                                <input class="form-control" id="filter_tanggal" placeholder="Filter Tanggal" type="text" data-date-today-highlight="true">
+                                                <input class="form-control" maxlength="15" id="filter_tanggal" placeholder="Filter Tanggal" type="text" data-date-today-highlight="true">
                                                 <span class="icon icon-calendar input-icon"></span>
                                             </div>
                                         </div>
@@ -39,7 +39,7 @@
                                     <thead>
                                     <tr>
                                         <th style="text-align: center">No</th>
-                                        <th style="text-align: center">Kode</th>
+                                        <th style="text-align: center; width: 100px">Kode</th>
                                         <th style="text-align: center">Tanggal</th>
                                         <th style="text-align: center">Kasir</th>
                                         <th style="text-align: center">Jumlah Tiket</th>
