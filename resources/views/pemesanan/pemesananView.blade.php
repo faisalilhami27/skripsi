@@ -18,11 +18,18 @@
                             <strong>Daftar Pemesanan Tiket</strong>
                         </div>
                         <div class="card-body">
-                            <div class="col-md-3" style="margin-left: -15px; margin-bottom: 10px">
-                                <div class="input-with-icon">
-                                    <input class="form-control" id="filter_tanggal" placeholder="Filter Tanggal" type="text" data-date-today-highlight="true">
-                                    <span class="icon icon-calendar input-icon"></span>
-                                </div>
+                            <div class="col-md-6" style="margin-left: -15px; margin-bottom: 10px">
+                                <form action="" method="post" class="form form-horizontal">
+                                    <div class="form-group">
+                                        <label class="col-sm-3" for="kode" style="margin-top: 5px">Pilih Tanggal</label>
+                                        <div class="col-sm-5">
+                                            <div class="input-with-icon" style="margin-left: -30px">
+                                                <input class="form-control" id="filter_tanggal" placeholder="Filter Tanggal" type="text" data-date-today-highlight="true">
+                                                <span class="icon icon-calendar input-icon"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                             <div class="clearfix"></div>
                             <div class="table-responsive">
