@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>{{ $title }}</title>
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="_token" content="{!! csrf_token() !!}">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
     <meta name="description"
           content="Elephant is an admin template that helps you build modern Admin Applications, professionally fast! Built on top of Bootstrap, it includes a large collection of HTML, CSS and JS components that are simple to use and easy to customize.">
@@ -40,8 +40,8 @@
         </a>
         <div class="login-form">
             <form method="post">
-                {{ csrf_field() }}
-                <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
+                @csrf
+                <input type="hidden" name="_token" value="{!! csrf_token()  !!}">
                 <div class="form-group">
                     <label for="username">Username</label>
                     <div class="input-with-icon">
