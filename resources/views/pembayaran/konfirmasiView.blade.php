@@ -12,13 +12,13 @@
                             <strong>Daftar Konfirmasi Pembayaran</strong>
                         </div>
                         <div class="card-body">
-                            <div class="col-md-6" style="margin-left: -15px; margin-bottom: 10px">
-                                <form action="" method="post" class="form form-horizontal">
-                                    <div class="form-group">
-                                        <label class="col-sm-3" for="kode" style="margin-top: 5px">Kode Pemesanan</label>
-                                        <div class="col-sm-5">
+                            <div class="col-md-12" style="margin-left: -30px">
+                                <form action="" method="post">
+                                    <div class="form-row">
+                                        <div class="form-group col-md-3">
+                                            <label for="status" class="form-label">Filter Berdasarkan Kode Pemesanan</label>
                                             <div class="input-with-icon">
-                                                <input class="form-control" id="kode" maxlength="20" placeholder="Kode pemesanan" type="text">
+                                                <input class="form-control" autocomplete="off" id="kode" maxlength="20" placeholder="Kode pemesanan" type="text">
                                                 <span class="icon icon-shopping-cart input-icon"></span>
                                             </div>
                                         </div>
@@ -218,7 +218,7 @@
             });
 
             $('#kode').typeahead({
-                items: 20,
+                items: 5,
                 source: function (query, result) {
                     var items = [];
                     return $.ajax({

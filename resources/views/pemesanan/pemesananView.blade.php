@@ -18,14 +18,26 @@
                             <strong>Daftar Pemesanan Tiket</strong>
                         </div>
                         <div class="card-body">
-                            <div class="col-md-6" style="margin-left: -15px; margin-bottom: 10px">
-                                <form action="" method="post" class="form form-horizontal">
-                                    <div class="form-group">
-                                        <label class="col-sm-3" for="kode" style="margin-top: 5px">Pilih Tanggal</label>
-                                        <div class="col-sm-5">
-                                            <div class="input-with-icon">
-                                                <input class="form-control" maxlength="15" id="filter_tanggal" placeholder="Filter Tanggal" type="text" data-date-today-highlight="true">
-                                                <span class="icon icon-calendar input-icon"></span>
+                            <div class="col-md-12" style="margin-left: -30px">
+                                <form action="" method="post">
+                                    <div class="form-row">
+                                        <div class="form-group col-md-3">
+                                            <label for="status" class="form-label">Filter Berdasarkan Status</label>
+                                            <select id="status" name="status" class="form-control">
+                                                <option value="">-- Pilih Status --</option>
+                                                <option value="0">Belum diverifikasi</option>
+                                                <option value="1">Sudah diverifikasi</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <div class="form-group">
+                                                <label for="jenis" class="form-label">Filter Berdasarkan Jenis</label>
+                                                <select id="jenis" name="jenis" class="form-control">
+                                                    <option value="">-- Pilih Jenis --</option>
+                                                    @foreach($jenis as $j)
+                                                        <option value="<?= $j->id ?>"><?= $j->nama_jenis ?></option>
+                                                    @endforeach
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
@@ -41,6 +53,7 @@
                                         <th style="text-align: center">No</th>
                                         <th style="text-align: center; width: 100px">Kode</th>
                                         <th style="text-align: center">Tanggal</th>
+                                        <th style="text-align: center">Batas Masuk</th>
                                         <th style="text-align: center">Kasir</th>
                                         <th style="text-align: center">Jumlah Tiket</th>
                                         <th style="text-align: center">Pembayaran</th>
@@ -250,12 +263,18 @@
                     } else {
                         return data.karyawan.karyawan.nama;
                     }
+                },
+
+                batas: function (row, type, data) {
+                    if (data.id_jenis == 2) {
+                        var start = moment(data.tgl_pemesanan);
+                        var tanggal = moment(start).add(7, 'days');
+                        return tanggal.format("DD-MM-YYYY");
+                    } else {
+                        return data.tgl_pemesanan;
+                    }
                 }
             };
-
-            $("#filter_tanggal").datepicker({
-                format: "yyyy-mm-dd"
-            });
 
             var dataTableURL = '/pemesanan/json';
 
@@ -271,13 +290,14 @@
                     "headers": {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
-                    "url": dataTableURL + "?tanggal=" + $("#filter_tanggal").val(),
+                    "url": dataTableURL + "?status=" + $("#status").val() + "&jenis=" + $("#jenis").val(),
                 },
 
                 columns: [
                     {data: 'DT_RowIndex'},
                     {data: 'kode_pemesanan'},
                     {data: 'tgl_pemesanan'},
+                    {data: 'batas', render: styles.batas},
                     {data: 'karyawan', render: styles.karyawan},
                     {data: 'jumlah_tiket'},
                     {data: 'total_uang_masuk', render: styles.uang},
@@ -295,11 +315,11 @@
                 ],
             });
 
-            $("#filter_tanggal").change(function () {
-                reloadDT('?tanggal=' + $(this).val());
+            $("#status, #jenis").change(function () {
+                reloadDT('?status=' + $("#status").val() + "&jenis=" + $("#jenis").val());
             });
 
-            function reloadDT(query, backToOne){
+            function reloadDT(query, backToOne) {
                 query = (query) ? query : '';
 
                 if (backToOne) {
@@ -393,7 +413,7 @@
                     type: "POST",
                     data: sendData,
                     dataType: 'json',
-                    beforeSend: function() {
+                    beforeSend: function () {
                         loadingBeforeSend();
                     },
                     success: function (data) {
@@ -431,8 +451,8 @@
                     type: "PUT",
                     data: sendData,
                     dataType: 'json',
-                    beforeSend: function() {
-                      loadingBeforeSend();
+                    beforeSend: function () {
+                        loadingBeforeSend();
                     },
                     success: function (data) {
                         $("#infoModalColoredHeader1").modal('hide');

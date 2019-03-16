@@ -39,20 +39,23 @@ class KonfirmasiPembayaranController extends Controller
                 $query->where('id_customer', '!=', 0);
             });
 
-            if (htmlspecialchars($request->has('kode')) && htmlspecialchars($request->query('kode')) != "") {
-                $data->where('kode_pemesanan', htmlspecialchars($request->query('kode')));
-            } else {
-                $data->where('id_status', '!=' , 2);
-            }
+        $query = htmlspecialchars($request->query('kode'));
+        $has = htmlspecialchars($request->has('kode'));
 
-            $datatable = $data->orderBy('kode_pemesanan', 'DESC')->get();
+        if ($has && $query != "") {
+            $data->where('kode_pemesanan', $query);
+        } else {
+            $data->where('id_status', '!=', 2);
+        }
+
+        $datatable = $data->orderBy('kode_pemesanan', 'DESC')->get();
         return DataTables::of($datatable)->addIndexColumn()->make(true);
     }
 
     public function getKodePemesanan(Request $request)
     {
         $query = $request->queryData;
-        $data = KonfirmasiPembayaranModel::where('kode_pemesanan', $query)->get();
+        $data = KonfirmasiPembayaranModel::where('kode_pemesanan', 'LIKE', "%$query%")->get();
         return response()->json($data);
     }
 

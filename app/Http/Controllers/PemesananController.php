@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\PemesananRequest;
+use App\Models\JenisPemesananModel;
 use App\Models\KonfigurasiModel;
 use App\Models\KonfirmasiPembayaranModel;
 use App\Models\PemesananModel;
@@ -22,22 +23,27 @@ class PemesananController extends Controller
     public function index()
     {
         $konfig = KonfigurasiModel::get();
+        $jenis = JenisPemesananModel::get();
         $idUserLevel = Session::get('id_user_level');
         $idMenu = getIdMenu();
         $akses = checkAccess($idUserLevel, $idMenu);
         $title = "Halaman Pemesanan";
         $deskripsi = "Halaman pemesanan digunakan untuk mengelola pemesanan dari customer";
-        return view('pemesanan.pemesananView', compact('konfig', 'title', 'deskripsi', 'akses'));
+        return view('pemesanan.pemesananView', compact('konfig', 'title', 'deskripsi', 'akses', 'jenis'));
     }
 
     public function datatable(Request $request)
     {
         $data = PemesananModel::with('karyawan.karyawan', 'jenisPemesanan');
 
-        if (htmlspecialchars($request->has('tanggal')) && htmlspecialchars($request->query('tanggal')) != "") {
-            $data->where('tgl_pemesanan', htmlspecialchars($request->query('tanggal')));
+        if (htmlspecialchars($request->has('status')) && htmlspecialchars($request->query('status')) != "") {
+            $data->where('status_penggunaan', htmlspecialchars($request->query('status')));
         } else {
             $data->where('tgl_pemesanan', date('Y-m-d'));
+        }
+
+        if (htmlspecialchars($request->has('jenis')) && htmlspecialchars($request->query('jenis')) != "") {
+            $data->where('id_jenis', htmlspecialchars($request->query('jenis')));
         }
 
         $datatable = $data->orderBy('kode_pemesanan', 'DESC')->get();

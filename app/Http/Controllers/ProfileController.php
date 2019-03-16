@@ -108,7 +108,7 @@ class ProfileController extends Controller
                 'img', 'public'
             ));
         } else {
-            $update = UserModel::findOrFail($id)->update([
+            $update = KaryawanModel::findOrFail($id)->update([
                 'nama' => $nama,
                 'email' => $email,
                 'username' => $username,
