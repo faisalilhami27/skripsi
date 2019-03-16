@@ -40,7 +40,7 @@
         </a>
         <div class="login-form">
             <form method="post">
-                @csrf
+                {{ csrf_field() }}
                 <div class="form-group">
                     <label for="username">Username</label>
                     <div class="input-with-icon">
