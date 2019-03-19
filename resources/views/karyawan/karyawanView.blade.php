@@ -12,21 +12,23 @@
                             <strong>Daftar Menu</strong>
                         </div>
                         <div class="card-body">
-                            <table id="demo-datatables"
-                                   class="table table-striped table-hover table-nowrap dataTable"
-                                   width="100%">
-                                <thead>
-                                <tr>
-                                    <th width="20px">No</th>
-                                    <th>Nama Lengkap</th>
-                                    <th>Email</th>
-                                    <th>No HP</th>
-                                    <th>Aksi</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                </tbody>
-                            </table>
+                            <div class="table-responsive">
+                                <table id="demo-datatables"
+                                       class="table table-striped table-hover table-nowrap dataTable"
+                                       width="100%">
+                                    <thead>
+                                    <tr>
+                                        <th width="20px">No</th>
+                                        <th>Nama Lengkap</th>
+                                        <th>Email</th>
+                                        <th>No HP</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -208,6 +210,7 @@
                         notification(data.status, data.msg);
                         $('#infoModalColoredHeader').modal('hide');
                         loadingAfterSend();
+                        resetForm();
                         table.ajax.reload();
                     },
                     error: function (resp) {
@@ -356,6 +359,12 @@
                 });
             });
         });
+
+        function resetForm() {
+            $("#ins_nama").val("");
+            $("#ins_email").val("");
+            $("#ins_no_hp").val("");
+        }
 
         function loadingBeforeSend() {
             $("#btn-insert-data, #btn-update-data").attr('disabled', 'disabled');

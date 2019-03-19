@@ -12,19 +12,21 @@
                             <strong>Daftar Level</strong>
                         </div>
                         <div class="card-body">
-                            <table id="demo-datatables" class="table table-striped table-nowrap dataTable"
-                                   cellspacing="0"
-                                   width="100%">
-                                <thead>
-                                <tr>
-                                    <th width="20px">No</th>
-                                    <th>Nama Level</th>
-                                    <th width="150px">Aksi</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                </tbody>
-                            </table>
+                            <div class="table-responsive">
+                                <table id="demo-datatables" class="table table-striped table-nowrap dataTable"
+                                       cellspacing="0"
+                                       width="100%">
+                                    <thead>
+                                    <tr>
+                                        <th width="20px">No</th>
+                                        <th>Nama Level</th>
+                                        <th width="150px">Aksi</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>

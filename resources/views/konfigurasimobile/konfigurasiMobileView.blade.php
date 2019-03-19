@@ -12,21 +12,23 @@
                             <strong>Daftar Content Aplikasi Mobile</strong>
                         </div>
                         <div class="card-body">
-                            <table id="demo-datatables"
-                                   class="table table-striped table-hover table-nowrap dataTable"
-                                   width="100%">
-                                <thead>
-                                <tr>
-                                    <th width="20px">No</th>
-                                    <th>Images</th>
-                                    <th>Title</th>
-                                    <th>Deskripsi</th>
-                                    <th>Aksi</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                </tbody>
-                            </table>
+                            <div class="table-responsive">
+                                <table id="demo-datatables"
+                                       class="table table-striped table-hover table-nowrap dataTable"
+                                       width="100%">
+                                    <thead>
+                                    <tr>
+                                        <th width="20px">No</th>
+                                        <th>Images</th>
+                                        <th>Title</th>
+                                        <th>Deskripsi</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -261,6 +263,7 @@
                         $("#infoModalColoredHeader").modal('hide');
                         loadingAfterSend();
                         notification(data.status, data.msg);
+                        resetForm();
                         table.ajax.reload();
                     },
                     error: function (resp) {
@@ -389,6 +392,11 @@
                 });
             });
         });
+
+        function resetForm() {
+            $("#upd_title").val("");
+            $("#upd_deskripsi").val("");
+        }
 
         function loadingBeforeSend() {
             $("#btn-insert-data, #btn-update-data").attr('disabled', 'disabled');

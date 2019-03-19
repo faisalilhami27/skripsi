@@ -9,23 +9,25 @@
                             <strong>Daftar Menu</strong>
                         </div>
                         <div class="card-body">
-                            <table id="demo-datatables"
-                                   class="table table-striped table-hover table-nowrap dataTable"
-                                   width="100%">
-                                <thead>
-                                <tr>
-                                    <th width="20px">No</th>
-                                    <th>Nama Lengkap</th>
-                                    <th>Username</th>
-                                    <th>Email</th>
-                                    <th>No HP</th>
-                                    <th>Status</th>
-                                    <th>Aksi</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                </tbody>
-                            </table>
+                            <div class="table-responsive">
+                                <table id="demo-datatables"
+                                       class="table table-striped table-hover table-nowrap dataTable"
+                                       width="100%">
+                                    <thead>
+                                    <tr>
+                                        <th width="20px">No</th>
+                                        <th>Nama Lengkap</th>
+                                        <th>Username</th>
+                                        <th>Email</th>
+                                        <th>No HP</th>
+                                        <th>Status</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>

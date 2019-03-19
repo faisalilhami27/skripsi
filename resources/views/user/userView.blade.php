@@ -12,23 +12,25 @@
                             <strong>Daftar User</strong>
                         </div>
                         <div class="card-body">
-                            <table id="demo-datatables" class="table table-striped table-nowrap dataTable"
-                                   cellspacing="0"
-                                   width="100%">
-                                <thead>
-                                <tr>
-                                    <th>No</th>
-                                    <th>Nama Lengkap</th>
-                                    <th>Username</th>
-                                    <th>Email</th>
-                                    <th>Level</th>
-                                    <th>Status</th>
-                                    <th>Aksi</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                </tbody>
-                            </table>
+                            <div class="table-responsive">
+                                <table id="demo-datatables" class="table table-striped table-nowrap dataTable"
+                                       cellspacing="0"
+                                       width="100%">
+                                    <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Nama Lengkap</th>
+                                        <th>Username</th>
+                                        <th>Email</th>
+                                        <th>Level</th>
+                                        <th>Status</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -292,6 +294,7 @@
                             $("#infoModalColoredHeader").modal('hide');
                             loadingAfterSend();
                             notification(data.status, data.msg);
+                            resetForm();
                             table.ajax.reload();
                         },
                         error: function (resp) {
@@ -462,6 +465,14 @@
                 });
             });
         });
+
+        function resetForm() {
+            $("#karyawan").val("");
+            $("#ins_username").val("");
+            $("#ins_password").val("");
+            $("#demo-select2-1").val("");
+            $("#demo-select2-2").val("");
+        }
 
         function loadingBeforeSend() {
             $("#btn-insert-data, #btn-update-data").attr('disabled', 'disabled');
