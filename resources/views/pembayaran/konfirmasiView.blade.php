@@ -16,9 +16,11 @@
                                 <form action="" method="post">
                                     <div class="form-row">
                                         <div class="form-group col-md-3">
-                                            <label for="status" class="form-label">Filter Berdasarkan Kode Pemesanan</label>
+                                            <label for="status" class="form-label">Filter Berdasarkan Kode
+                                                Pemesanan</label>
                                             <div class="input-with-icon">
-                                                <input class="form-control" autocomplete="off" id="kode" maxlength="20" placeholder="Kode pemesanan" type="text">
+                                                <input class="form-control" autocomplete="off" id="kode" maxlength="20"
+                                                       placeholder="Kode pemesanan" type="text">
                                                 <span class="icon icon-shopping-cart input-icon"></span>
                                             </div>
                                         </div>
@@ -26,24 +28,24 @@
                                 </form>
                             </div>
                             <div class="clearfix"></div>
-                            <table id="demo-datatables"
-                                   class="table table-responsive table-striped dataTable" cellspacing="0"
-                                   width="100%">
-                                <thead>
-                                <tr>
-                                    <th style="text-align: center">No</th>
-                                    <th style="text-align: center">Bukti Pembayaran</th>
-                                    <th style="text-align: center">Kode</th>
-                                    <th style="text-align: center">Batas Pembayaran</th>
-                                    <th style="text-align: center">Pembayaran</th>
-                                    <th style="text-align: center">Customer</th>
-                                    <th style="text-align: center">Status</th>
-                                    <th width="80" style="text-align: center">Aksi</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                </tbody>
-                            </table>
+                            <div class="table-responsive">
+                                <table id="demo-datatables" class="table table-responsive table-striped dataTable" cellspacing="0" width="100%">
+                                    <thead>
+                                    <tr>
+                                        <th style="text-align: center">No</th>
+                                        <th style="text-align: center">Bukti Pembayaran</th>
+                                        <th style="text-align: center">Kode</th>
+                                        <th style="text-align: center">Batas Pembayaran</th>
+                                        <th style="text-align: center">Pembayaran</th>
+                                        <th style="text-align: center">Customer</th>
+                                        <th style="text-align: center">Status</th>
+                                        <th width="80" style="text-align: center">Aksi</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -123,11 +125,11 @@
                         return "<span class='label label-danger'>Pemesanan Expired</span>";
                     } else {
                         if (data.id_status == 1) {
-                            return "<span class='label label-warning'>"+ data.status_pembayaran.nama_status +"</span>";
+                            return "<span class='label label-warning'>" + data.status_pembayaran.nama_status + "</span>";
                         } else if (data.id_status == 3) {
-                            return "<span class='label label-danger'>"+ data.status_pembayaran.nama_status +"</span>";
+                            return "<span class='label label-danger'>" + data.status_pembayaran.nama_status + "</span>";
                         } else {
-                            return "<span class='label label-success'>"+ data.status_pembayaran.nama_status +"</span>";
+                            return "<span class='label label-success'>" + data.status_pembayaran.nama_status + "</span>";
                         }
                     }
                 },
@@ -187,7 +189,7 @@
             table = $('#demo-datatables').DataTable({
                 // processing: true,
                 serverSide: true,
-                destroy:true,
+                destroy: true,
                 responsive: true,
                 order: [],
 
@@ -243,7 +245,7 @@
                 reloadDT('?kode=' + $(this).val());
             });
 
-            function reloadDT(query, backToOne){
+            function reloadDT(query, backToOne) {
                 query = (query) ? query : '';
 
                 if (backToOne) {
