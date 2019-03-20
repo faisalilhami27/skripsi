@@ -193,8 +193,8 @@
                 level: function (row, type, data) {
                     if (data.karyawan_role != null) {
                         const numRole = data.karyawan_role.length;
-                        if (numRole >= 4) {
-                            return `${numRole} hak akses`
+                        if (numRole > 2) {
+                            return `Memiliki ${numRole} hak akses`
                         }
 
                         let arrRole = [];
@@ -295,7 +295,9 @@
                             loadingAfterSend();
                             notification(data.status, data.msg);
                             resetForm();
-                            table.ajax.reload();
+                            setTimeout(function () {
+                                table.ajax.reload();
+                            }, 1000);
                         },
                         error: function (resp) {
                             loadingAfterSend();
@@ -338,7 +340,9 @@
                             $("#infoModalColoredHeader1").modal('hide');
                             loadingAfterSend();
                             notification(data.status, data.msg);
-                            table.ajax.reload();
+                            setTimeout(function () {
+                                table.ajax.reload();
+                            }, 1000);
                         },
                         error: function (resp) {
                             loadingAfterSend();
@@ -383,7 +387,9 @@
                                     dataType: "json",
                                     success: function (data) {
                                         notification(data.status, data.msg);
-                                        table.ajax.reload();
+                                        setTimeout(function () {
+                                            table.ajax.reload();
+                                        }, 1000);
                                     },
                                     error: function (xhr, status, error) {
                                         alert(status + " : " + error);
@@ -426,7 +432,9 @@
                                     dataType: "json",
                                     success: function (data) {
                                         notification(data.status, data.msg);
-                                        table.ajax.reload();
+                                        setTimeout(function () {
+                                            table.ajax.reload();
+                                        }, 1000);
                                     },
                                     error: function (xhr, status, error) {
                                         alert(status + " : " + error);
