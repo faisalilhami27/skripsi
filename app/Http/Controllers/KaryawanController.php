@@ -9,10 +9,6 @@ use Yajra\DataTables\DataTables;
 
 class KaryawanController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('checkRole');
-    }
 
     public function index()
     {

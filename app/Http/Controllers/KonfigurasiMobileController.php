@@ -9,10 +9,6 @@ use Yajra\DataTables\DataTables;
 
 class KonfigurasiMobileController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('checkRole');
-    }
 
     public function index()
     {

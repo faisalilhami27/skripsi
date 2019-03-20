@@ -12,10 +12,6 @@ use Yajra\DataTables\DataTables;
 
 class UserLevelController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('checkRole');
-    }
 
     public function index()
     {

@@ -15,10 +15,6 @@ use PHPMailer\PHPMailer\Exception;
 
 class KonfirmasiPembayaranController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('checkRole');
-    }
 
     public function index()
     {

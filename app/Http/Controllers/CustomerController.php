@@ -8,10 +8,6 @@ use Yajra\DataTables\DataTables;
 
 class CustomerController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('checkRole');
-    }
 
     public function index()
     {

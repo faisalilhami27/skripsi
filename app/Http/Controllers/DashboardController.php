@@ -9,11 +9,6 @@ use Illuminate\Support\Facades\DB;
 class DashboardController extends Controller
 {
 
-    public function __construct()
-    {
-        $this->middleware('checkRole');
-    }
-
     public function index()
     {
         $date = date('Y-m-d');

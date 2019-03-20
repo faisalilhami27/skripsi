@@ -7,10 +7,6 @@ use App\Models\KonfigurasiModel;
 
 class KonfigurasiController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('checkRole');
-    }
 
     public function index()
     {
