@@ -46,7 +46,7 @@
                     <div class="card bg-warning no-border">
                         <div class="card-values">
                             <div class="p-x">
-                                <small>Pemesanan Belum dikonfirmasi</small>
+                                <small>Belum dikonfirmasi</small>
                                 <h3 class="card-title fw-l">{{ $konfirmasi }}</h3>
                             </div>
                         </div>

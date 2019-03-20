@@ -167,17 +167,17 @@
                         </ul>
                         <div class="tab-content">
                             <div class="tab-pane fade active in" id="home-11">
-                                <div class="profile-avatar">
+                                <div class="col-md-12">
                                     @if(is_null($user['images']))
-                                        <img class="img-circle"
+                                        <img class="img-circle center-block"
                                              src="{{ Avatar::create(Session::get('nama_lengkap'))->toBase64() }}"
                                              width="128px" height="128px"
-                                             style="margin-left: 38%; border: 2px solid #FFFFFF" alt="Profile">
+                                             style="margin-bottom: 5%; border: 2px solid #FFFFFF" alt="Profile">
                                     @else
-                                        <img class="img-circle"
+                                        <img class="img-circle center-block"
                                              src="{{ asset('storage/' . $user['images']) }}"
                                              width="128px" height="128px"
-                                             style="margin-left: 38%; border: 3px solid #FFFFFF" alt="Profile">
+                                             style="margin-bottom: 5%; border: 3px solid #FFFFFF" alt="Profile">
                                     @endif
                                 </div>
                                 <div class="card-body">

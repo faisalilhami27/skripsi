@@ -29,17 +29,6 @@
                                                 <option value="1">Sudah diverifikasi</option>
                                             </select>
                                         </div>
-                                        <div class="form-group col-md-3">
-                                            <div class="form-group">
-                                                <label for="jenis" class="form-label">Filter Berdasarkan Jenis</label>
-                                                <select id="jenis" name="jenis" class="form-control">
-                                                    <option value="">-- Pilih Jenis --</option>
-                                                    @foreach($jenis as $j)
-                                                        <option value="<?= $j->id ?>"><?= $j->nama_jenis ?></option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
                                     </div>
                                 </form>
                             </div>
@@ -290,7 +279,7 @@
                     "headers": {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
-                    "url": dataTableURL + "?status=" + $("#status").val() + "&jenis=" + $("#jenis").val(),
+                    "url": dataTableURL + "?status=" + $("#status").val(),
                 },
 
                 columns: [
@@ -316,7 +305,7 @@
             });
 
             $("#status, #jenis").change(function () {
-                reloadDT('?status=' + $("#status").val() + "&jenis=" + $("#jenis").val());
+                reloadDT('?status=' + $("#status").val());
             });
 
             function reloadDT(query, backToOne) {

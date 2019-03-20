@@ -7,6 +7,7 @@ use App\Models\JenisPemesananModel;
 use App\Models\KonfigurasiModel;
 use App\Models\KonfirmasiPembayaranModel;
 use App\Models\PemesananModel;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
@@ -23,13 +24,12 @@ class PemesananController extends Controller
     public function index()
     {
         $konfig = KonfigurasiModel::get();
-        $jenis = JenisPemesananModel::get();
         $idUserLevel = Session::get('id_user_level');
         $idMenu = getIdMenu();
         $akses = checkAccess($idUserLevel, $idMenu);
         $title = "Halaman Pemesanan";
         $deskripsi = "Halaman pemesanan digunakan untuk mengelola pemesanan dari customer";
-        return view('pemesanan.pemesananView', compact('konfig', 'title', 'deskripsi', 'akses', 'jenis'));
+        return view('pemesanan.pemesananView', compact('konfig', 'title', 'deskripsi', 'akses'));
     }
 
     public function datatable(Request $request)
@@ -39,11 +39,7 @@ class PemesananController extends Controller
         if (htmlspecialchars($request->has('status')) && htmlspecialchars($request->query('status')) != "") {
             $data->where('status_penggunaan', htmlspecialchars($request->query('status')));
         } else {
-            $data->where('tgl_pemesanan', date('Y-m-d'));
-        }
-
-        if (htmlspecialchars($request->has('jenis')) && htmlspecialchars($request->query('jenis')) != "") {
-            $data->where('id_jenis', htmlspecialchars($request->query('jenis')));
+            $data->where('tgl_pemesanan', Carbon::now()->format('Y-m-d'));
         }
 
         $datatable = $data->orderBy('kode_pemesanan', 'DESC')->get();
@@ -62,7 +58,7 @@ class PemesananController extends Controller
             return response()->json(['status' => 449, 'msg' => 'Uang pembayaran tidak boleh kurang dari harga']);
         } else {
             $kode = setKode();
-            $generate = "TRS-" . date('m-d') . "-" . $kode;
+            $generate = "TRS-" . Carbon::now()->format('m-d') . "-" . $kode;
             $qrCode = $generate . ".png";
             $path = "storage/qr_code/" . $qrCode;
             Storage::makeDirectory('qr_code');
@@ -73,7 +69,7 @@ class PemesananController extends Controller
                 ->png();
 
             $insert = PemesananModel::create([
-                'kode_pemesanan' => "TRS-" . date('m-d') . "-" . $kode,
+                'kode_pemesanan' => "TRS-" . Carbon::now()->format('m-d') . "-" . $kode,
                 'tgl_pemesanan' => date('Y-m-d'),
                 'id_jenis' => $idJenis,
                 'jumlah_tiket' => $tiket,

@@ -151,11 +151,13 @@
                         </ul>
                         <div class="tab-content">
                             <div class="tab-pane fade active in" id="home-11">
-                                @if($konfig[3]->nilai_konfig == 'logo2.png')
-                                    <img class="img-responsive" src="{{ Avatar::create("Failda Waterpark")->toBase64() }}" style="margin-left: 40%; margin-top: 0%" alt="Failda">
-                                @else
-                                    <img class="img-responsive" src="{{ asset('storage/' . $konfig[3]->nilai_konfig) }}" width="70%" style="margin-left: 16%; margin-top: 0%" alt="Failda">
-                                @endif
+                                <div class="col-md-12">
+                                    @if($konfig[3]->nilai_konfig == 'logo2.png')
+                                        <img class="img-responsive center-block" src="{{ Avatar::create("Failda Waterpark")->toBase64() }}" width="128px" height="128px" style="margin-bottom: 5%" alt="Failda">
+                                    @else
+                                        <img class="img-responsive center-block" src="{{ asset('storage/' . $konfig[3]->nilai_konfig) }}" width="70%" style="margin-bottom: 5%" alt="Failda">
+                                    @endif
+                                </div>
                                 <div class="card-body">
                                     <h3 class="card-title text-center">{{ $konfig[4]->nilai_konfig }}</h3>
                                     <p class="card-text text-center">
