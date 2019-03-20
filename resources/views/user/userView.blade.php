@@ -296,7 +296,7 @@
                             notification(data.status, data.msg);
                             resetForm();
                             setTimeout(function () {
-                                table.ajax.reload();
+                                location.reload();
                             }, 1000);
                         },
                         error: function (resp) {
@@ -341,7 +341,7 @@
                             loadingAfterSend();
                             notification(data.status, data.msg);
                             setTimeout(function () {
-                                table.ajax.reload();
+                                location.reload();
                             }, 1000);
                         },
                         error: function (resp) {
@@ -388,7 +388,7 @@
                                     success: function (data) {
                                         notification(data.status, data.msg);
                                         setTimeout(function () {
-                                            table.ajax.reload();
+                                            location.reload();
                                         }, 1000);
                                     },
                                     error: function (xhr, status, error) {
