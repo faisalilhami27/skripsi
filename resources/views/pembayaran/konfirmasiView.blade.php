@@ -296,7 +296,7 @@
                         if (data.status == 200) {
                             var jumlah = 'Total yang harus dibayar : Rp. ' + data.list.pemesanan_tiket.total_uang_masuk;
                             $(".gambar").attr('src', data.list.bukti_pembayaran);
-                            $(".jumlah").text(format(jumlah));
+                            $(".jumlah").text("Rp. " + format(jumlah));
                         } else {
                             notification(502, "Data tidak ditemukan");
                         }
