@@ -15,6 +15,7 @@ class DashboardController extends Controller
         $date = Carbon::now()->format("Y-m-d");
         $hari = PemesananModel::select(DB::raw('count(kode_pemesanan) as total'))
             ->where('tgl_pemesanan', '=', $date)
+            ->where('id_jenis', '=', 1)
             ->first()->total;
         $bulan = PemesananModel::select(DB::raw('count(kode_pemesanan) as total'))
             ->whereRaw('MONTH(tgl_pemesanan) = MONTH(CURDATE())')
