@@ -148,6 +148,7 @@
 
                 ajax: {
                     "url": '{{ URL('karyawan/json') }}',
+                    "type": "POST",
                     "headers": {
                         "X-CSRF-TOKEN": "{{ csrf_token() }}",
                     },

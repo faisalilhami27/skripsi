@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\KonfirmasiPembayaranModel;
 use App\Models\PemesananModel;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
@@ -11,7 +12,7 @@ class DashboardController extends Controller
 
     public function index()
     {
-        $date = date('Y-m-d');
+        $date = Carbon::now()->format("Y-m-d");
         $hari = PemesananModel::select(DB::raw('count(kode_pemesanan) as total'))
             ->where('tgl_pemesanan', '=', $date)
             ->first()->total;
@@ -25,6 +26,7 @@ class DashboardController extends Controller
             ->first()->total;
         $totalUang = PemesananModel::select(DB::raw('sum(total_uang_masuk) as total'))
             ->where('tgl_pemesanan', '=', $date)
+            ->where('id_jenis', '=', 1)
             ->first()->total;
 
         $title = "Halaman Dashboard";

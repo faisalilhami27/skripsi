@@ -31,6 +31,7 @@ Route::group(['prefix' => 'profile'], function () {
 
 Route::middleware(['checkRole'])->group(function () {
     Route::get('/', 'DashboardController@index');
+
     // modul dashboard
     Route::group(['prefix' => 'dashboard'], function () {
         Route::get('/', 'DashboardController@index');
@@ -44,7 +45,7 @@ Route::middleware(['checkRole'])->group(function () {
     // modul user level
     Route::group(['prefix' => 'userlevel'], function () {
         Route::get('/', 'UserLevelController@index');
-        Route::get('/json', 'UserLevelController@datatable');
+        Route::post('/json', 'UserLevelController@datatable');
         Route::get('/getakses/{id}', 'UserLevelController@show');
         Route::get('/getLevelById', 'UserLevelController@edit');
         Route::post('/insert/', 'UserLevelController@store');
@@ -57,7 +58,7 @@ Route::middleware(['checkRole'])->group(function () {
     // modul user
     Route::group(['prefix' => 'user'], function () {
         Route::get('/', 'UserController@index');
-        Route::get('/json', 'UserController@datatable');
+        Route::post('/json', 'UserController@datatable');
         Route::get('/cekUsername', 'UserController@cekUsername');
         Route::get('/cekEmail', 'UserController@cekEmail');
         Route::get('/cekNoHp', 'UserController@cekNoHp');
@@ -71,7 +72,7 @@ Route::middleware(['checkRole'])->group(function () {
     // modul kelola menu
     Route::group(['prefix' => 'kelolamenu'], function () {
         Route::get('/', 'MenuController@index');
-        Route::get('/json', 'MenuController@datatable');
+        Route::post('/json', 'MenuController@datatable');
         Route::get('/getMenu', 'MenuController@edit');
         Route::post('/insert/', 'MenuController@store');
         Route::put('/update', 'MenuController@update');
@@ -82,7 +83,7 @@ Route::middleware(['checkRole'])->group(function () {
     Route::group(['prefix' => 'pemesanan'], function () {
         Route::get('/', 'PemesananController@index');
         Route::get('/getall', 'PemesananController@getAll');
-        Route::get('/json', 'PemesananController@datatable');
+        Route::post('/json', 'PemesananController@datatable');
         Route::get('/getPemesananById', 'PemesananController@edit');
         Route::get('/printTicket/{id}', 'PemesananController@printTicket');
         Route::post('/insert', 'PemesananController@store');
@@ -98,7 +99,7 @@ Route::middleware(['checkRole'])->group(function () {
     // modul pembayaran
     Route::group(['prefix' => 'konfirmasi'], function () {
         Route::get('/', 'KonfirmasiPembayaranController@index');
-        Route::get('/json', 'KonfirmasiPembayaranController@datatable');
+        Route::post('/json', 'KonfirmasiPembayaranController@datatable');
         Route::get('/getKonfirmasiById', 'KonfirmasiPembayaranController@edit');
         Route::get('/getKodePemesanan', 'KonfirmasiPembayaranController@getKodePemesanan');
         Route::get('/getBuktiPembayaran', 'KonfirmasiPembayaranController@getBuktiPembayaran');
@@ -109,7 +110,7 @@ Route::middleware(['checkRole'])->group(function () {
     // modul konfiguasi mobile
     Route::group(['prefix' => 'mobile'], function () {
         Route::get('/', 'KonfigurasiMobileController@index');
-        Route::get('/json', 'KonfigurasiMobileController@datatable');
+        Route::post('/json', 'KonfigurasiMobileController@datatable');
         Route::get('/getMobile', 'KonfigurasiMobileController@edit');
         Route::post('/insert/', 'KonfigurasiMobileController@store');
         Route::post('/update', 'KonfigurasiMobileController@update');
@@ -119,7 +120,7 @@ Route::middleware(['checkRole'])->group(function () {
 // modul kelola karyawan
     Route::group(['prefix' => 'karyawan'], function () {
         Route::get('/', 'KaryawanController@index');
-        Route::get('/json', 'KaryawanController@datatable');
+        Route::post('/json', 'KaryawanController@datatable');
         Route::get('/getKaryawan', 'KaryawanController@edit');
         Route::post('/insert/', 'KaryawanController@store');
         Route::put('/update', 'KaryawanController@update');
@@ -129,7 +130,7 @@ Route::middleware(['checkRole'])->group(function () {
 // modul kelola customer
     Route::group(['prefix' => 'customer'], function () {
         Route::get('/', 'CustomerController@index');
-        Route::get('/json', 'CustomerController@datatable');
+        Route::post('/json', 'CustomerController@datatable');
         Route::get('/getCustomer', 'CustomerController@edit');
         Route::put('/update', 'CustomerController@update');
         Route::delete('/delete', 'CustomerController@destroy');

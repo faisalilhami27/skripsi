@@ -13,19 +13,17 @@
                         </div>
                         <div class="card-body">
                             <div class="col-md-12" style="margin-left: -30px">
-                                <form action="" method="post">
-                                    <div class="form-row">
-                                        <div class="form-group col-md-3">
-                                            <label for="status" class="form-label">Filter Berdasarkan Kode
-                                                Pemesanan</label>
-                                            <div class="input-with-icon">
-                                                <input class="form-control" autocomplete="off" id="kode" maxlength="20"
-                                                       placeholder="Kode pemesanan" type="text">
-                                                <span class="icon icon-shopping-cart input-icon"></span>
-                                            </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-3">
+                                        <label for="status" class="form-label">Filter Berdasarkan Kode
+                                            Pemesanan</label>
+                                        <div class="input-with-icon">
+                                            <input class="form-control" autocomplete="off" id="kode" maxlength="20"
+                                                   placeholder="Kode pemesanan" type="text">
+                                            <span class="icon icon-shopping-cart input-icon"></span>
                                         </div>
                                     </div>
-                                </form>
+                                </div>
                             </div>
                             <div class="clearfix"></div>
                             <div class="table-responsive">
@@ -195,6 +193,7 @@
 
                 ajax: {
                     "url": dataTableURL + "?kode=" + $("#kode").val(),
+                    "type": "POST",
                     "headers": {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },

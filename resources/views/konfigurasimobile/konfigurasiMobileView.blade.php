@@ -194,6 +194,7 @@
 
                 ajax: {
                     "url": '{{ URL('mobile/json') }}',
+                    "type": "POST",
                     "headers": {
                         "X-CSRF-TOKEN": "{{ csrf_token() }}",
                     },

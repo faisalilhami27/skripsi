@@ -19,18 +19,16 @@
                         </div>
                         <div class="card-body">
                             <div class="col-md-12" style="margin-left: -30px">
-                                <form action="" method="post">
-                                    <div class="form-row">
-                                        <div class="form-group col-md-3">
-                                            <label for="status" class="form-label">Filter Berdasarkan Status</label>
-                                            <select id="status" name="status" class="form-control">
-                                                <option value="">-- Pilih Status --</option>
-                                                <option value="0">Belum diverifikasi</option>
-                                                <option value="1">Sudah diverifikasi</option>
-                                            </select>
-                                        </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-3">
+                                        <label for="status" class="form-label">Filter Berdasarkan Status</label>
+                                        <select id="status" name="status" class="form-control">
+                                            <option value="">-- Pilih Status --</option>
+                                            <option value="0">Belum diverifikasi</option>
+                                            <option value="1">Sudah diverifikasi</option>
+                                        </select>
                                     </div>
-                                </form>
+                                </div>
                             </div>
                             <div class="clearfix"></div>
                             <div class="table-responsive">
@@ -48,7 +46,7 @@
                                         <th style="text-align: center">Pembayaran</th>
                                         <th style="text-align: center">Status</th>
                                         <th style="text-align: center">Jenis</th>
-                                        <th style="text-align: center" width="120px">Aksi</th>
+                                        <th style="text-align: center" width="150px">Aksi</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -276,6 +274,7 @@
                 order: [],
 
                 ajax: {
+                    "type": "POST",
                     "headers": {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },

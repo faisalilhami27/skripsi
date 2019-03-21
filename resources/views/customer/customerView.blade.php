@@ -104,6 +104,7 @@
 
                 ajax: {
                     "url": '{{ URL('customer/json') }}',
+                    "type": "POST",
                     "headers": {
                         "X-CSRF-TOKEN": "{{ csrf_token() }}",
                     },

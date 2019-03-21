@@ -208,6 +208,7 @@
 
                 ajax: {
                     "url": '{{ URL('kelolamenu/json') }}',
+                    "type": "POST",
                     "headers": {
                         "X-CSRF-TOKEN": "{{ csrf_token() }}",
                     },

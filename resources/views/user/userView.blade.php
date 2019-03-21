@@ -216,6 +216,7 @@
                 order: [],
                 ajax: {
                     "url": '{{ URL('user/json') }}',
+                    "type": "POST",
                     "headers": {
                         "X-CSRF-TOKEN": "{{ csrf_token() }}"
                     },
