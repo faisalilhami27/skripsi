@@ -7,7 +7,7 @@
                     <div class="card bg-primary no-border">
                         <div class="card-values">
                             <div class="p-x">
-                                <small>Penjualan Per Hari</small>
+                                <small>Penjualan Tiket Offline Per Hari</small>
                                 <h3 class="card-title fw-l">{{ $hari }}</h3>
                             </div>
                         </div>
@@ -17,23 +17,10 @@
                     </div>
                 </div>
                 <div class="col-xs-6 col-md-3">
-                    <div class="card bg-info no-border">
-                        <div class="card-values">
-                            <div class="p-x">
-                                <small>Penjualan Per Bulan</small>
-                                <h3 class="card-title fw-l">{{ $bulan }}</h3>
-                            </div>
-                        </div>
-                        <div class="card-chart">
-                            <canvas data-chart="line" data-animation="false" data-labels='["Jun 21", "Jun 20", "Jun 19", "Jun 18", "Jun 17", "Jun 16", "Jun 15"]' data-values='[{"backgroundColor": "transparent", "borderColor": "#ffffff", "data": [116196, 145160, 124419, 147004, 134740, 120846, 137225]}]' data-scales='{"yAxes": [{ "ticks": {"max": 158029}}]}' data-hide='["legend", "points", "scalesX", "scalesY", "tooltips"]' height="35"></canvas>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs-6 col-md-3">
                     <div class="card bg-danger no-border">
                         <div class="card-values">
                             <div class="p-x">
-                                <small>Total Pemasukan Uang</small>
+                                <small>Total Pemasukan Dari Tiket Offline Per Hari</small>
                                 <h3 class="card-title fw-l">Rp. {{ number_format($totalUang, 0 , ".", ".") }}</h3>
                             </div>
                         </div>
@@ -43,11 +30,24 @@
                     </div>
                 </div>
                 <div class="col-xs-6 col-md-3">
+                    <div class="card bg-info no-border">
+                        <div class="card-values">
+                            <div class="p-x">
+                                <small>Penjualan Tiket Online Per Hari</small>
+                                <h3 class="card-title fw-l">{{ $hari2 }}</h3>
+                            </div>
+                        </div>
+                        <div class="card-chart">
+                            <canvas data-chart="line" data-animation="false" data-labels='["Jun 21", "Jun 20", "Jun 19", "Jun 18", "Jun 17", "Jun 16", "Jun 15"]' data-values='[{"backgroundColor": "transparent", "borderColor": "#ffffff", "data": [116196, 145160, 124419, 147004, 134740, 120846, 137225]}]' data-scales='{"yAxes": [{ "ticks": {"max": 158029}}]}' data-hide='["legend", "points", "scalesX", "scalesY", "tooltips"]' height="35"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-md-3">
                     <div class="card bg-warning no-border">
                         <div class="card-values">
                             <div class="p-x">
-                                <small>Belum Dikonfirmasi</small>
-                                <h3 class="card-title fw-l">{{ $konfirmasi }}</h3>
+                                <small>Total Pemasukan Dari Tiket Online Per Hari</small>
+                                <h3 class="card-title fw-l">Rp. {{ number_format($totalUangFromMobile, 0 , ".", ".") }}</h3>
                             </div>
                         </div>
                         <div class="card-chart">

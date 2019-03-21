@@ -17,29 +17,35 @@ class DashboardController extends Controller
             ->where('tgl_pemesanan', '=', $date)
             ->where('id_jenis', '=', 1)
             ->first()->total;
-        $bulan = PemesananModel::select(DB::raw('count(kode_pemesanan) as total'))
-            ->whereRaw('MONTH(tgl_pemesanan) = MONTH(CURDATE())')
-            ->first()->total;
-        $konfirmasi = KonfirmasiPembayaranModel::with(['pemesananTiket'])
-            ->select(DB::raw('count(kode_pemesanan) as total'))
-            ->where('id_status', 1)
-            ->where('bukti_pembayaran', '!=', null)
+        $hari2 = PemesananModel::select(DB::raw('count(kode_pemesanan) as total'))
+            ->whereHas('pembayaran', function ($query) {
+                $query->where('id_status', 2);
+            })
+            ->where('tgl_pemesanan', '=', $date)
+            ->where('id_jenis', '=', 2)
             ->first()->total;
         $totalUang = PemesananModel::select(DB::raw('sum(total_uang_masuk) as total'))
             ->where('tgl_pemesanan', '=', $date)
             ->where('id_jenis', '=', 1)
             ->first()->total;
+        $totalUangFromMobile = PemesananModel::select(DB::raw('sum(total_uang_masuk) as total'))
+            ->whereHas('pembayaran', function ($query) {
+                $query->where('id_status', 2);
+            })
+            ->where('tgl_pemesanan', '=', $date)
+            ->where('id_jenis', '=', 2)
+            ->first()->total;
 
         $title = "Halaman Dashboard";
         $deskripsi = "Halaman Dashboard digunakan untuk melihat statistik";
-        return view('dashboard', compact('title', 'deskripsi', 'hari', 'bulan', 'konfirmasi', 'totalUang'));
+        return view('dashboard', compact('title', 'deskripsi', 'hari', 'hari2', 'totalUangFromMobile', 'totalUang'));
     }
 
     public function chartForDataByDay()
     {
         $data = PemesananModel::select(DB::raw('DAY(tgl_pemesanan) AS tanggal, COUNT(*) AS jumlah'))
             ->whereRaw('MONTH(tgl_pemesanan) = MONTH(CURDATE())')
-            ->groupBy(DB::raw('YEARWEEK(tgl_pemesanan)'))
+            ->groupBy(DB::raw('tgl_pemesanan'))
             ->get();
         return response()->json($data);
     }
