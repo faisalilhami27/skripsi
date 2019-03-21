@@ -14,8 +14,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', 'DashboardController@index');
-
 Route::get('/auth', "AuthController@index")->name('auth');
 Route::get('/blokir', "AuthController@blokir");
 Route::get('/logout', "AuthController@logout");
@@ -32,6 +30,7 @@ Route::group(['prefix' => 'profile'], function () {
 });
 
 Route::middleware(['checkRole'])->group(function () {
+    Route::get('/', 'DashboardController@index');
     // modul dashboard
     Route::group(['prefix' => 'dashboard'], function () {
         Route::get('/', 'DashboardController@index');
