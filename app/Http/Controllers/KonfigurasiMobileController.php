@@ -58,7 +58,7 @@ class KonfigurasiMobileController extends Controller
     {
         $request->validate([
             'title' => 'required|max:40|regex:/^[a-zA-Z0-9 ]*$/',
-            'deskripsi' => 'required|max:80',
+            'deskripsi' => 'required|max:100',
         ]);
 
         $id = $request->id;
