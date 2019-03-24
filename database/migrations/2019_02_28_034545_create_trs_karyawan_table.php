@@ -20,7 +20,7 @@ class CreateTrsKaryawanTable extends Migration
             $table->string('password', 255);
             $table->text('images')->nullable();
             $table->enum('status' ,['y', 'n']);
-            $table->string('api_token', 255)->nullable()->unique();
+            $table->string('api_token', 200)->nullable()->unique();
             $table->timestamps();
             $table->softDeletes();
 

@@ -22,7 +22,7 @@ class CreateMstUserCustomerTable extends Migration
             $table->string('no_hp', 15);
             $table->enum('status' ,['y', 'n']);
             $table->text('images')->nullable();
-            $table->string('api_token', 255)->nullable()->unique();
+            $table->string('api_token', 200)->nullable()->unique();
             $table->timestamps();
             $table->softDeletes();
         });
