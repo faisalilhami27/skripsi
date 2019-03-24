@@ -69,7 +69,7 @@
                                 <label for="ins_images">Images</label>
                                 <div class="input-with-icon">
                                     <div class="input-group input-file">
-                                        <input class="form-control" readonly type="text" placeholder="No file chosen"
+                                        <input class="form-control ins_images" readonly type="text" placeholder="No file chosen"
                                                style="background-color: rgba(0,0,0, 0.1)">
                                         <span class="icon icon-paperclip input-icon"></span>
                                         <span class="input-group-btn">
@@ -134,7 +134,7 @@
                                 <label for="upd_images">Images</label>
                                 <div class="input-with-icon">
                                     <div class="input-group input-file">
-                                        <input class="form-control" readonly type="text" placeholder="No file chosen"
+                                        <input class="form-control upd_images" readonly type="text" placeholder="No file chosen"
                                                style="background-color: rgba(0,0,0, 0.1)">
                                         <span class="icon icon-paperclip input-icon"></span>
                                         <span class="input-group-btn">
@@ -397,7 +397,7 @@
         function resetForm() {
             $("#title").val("");
             $("#deskripsi").val("");
-            $("#ins_images").val("");
+            $(".ins_images, .upd_images").val("");
         }
 
         function loadingBeforeSend() {
