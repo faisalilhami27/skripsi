@@ -13,7 +13,7 @@ class AddTokenUser extends Migration
      */
     public function up()
     {
-        Schema::table('mst_user_karyawan', function ($table) {
+        Schema::table('mst_user_karyawan', function (Blueprint $table) {
             $table->string('api_token', 255)->after('status')
                 ->unique()
                 ->nullable()
