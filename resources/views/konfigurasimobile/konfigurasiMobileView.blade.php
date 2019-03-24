@@ -395,8 +395,9 @@
         });
 
         function resetForm() {
-            $("#upd_title").val("");
-            $("#upd_deskripsi").val("");
+            $("#title").val("");
+            $("#deskripsi").val("");
+            $("#ins_images").val("");
         }
 
         function loadingBeforeSend() {
