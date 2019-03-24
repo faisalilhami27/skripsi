@@ -14,14 +14,14 @@ class AddTokenUser extends Migration
     public function up()
     {
         Schema::table('mst_user_karyawan', function (Blueprint $table) {
-            $table->string('api_token', 255)->after('status')
+            $table->text('api_token')->after('status')
                 ->unique()
                 ->nullable()
                 ->default(null);
         });
 
-        Schema::table('mst_user_customer', function ($table) {
-            $table->string('api_token', 255)->after('images')
+        Schema::table('mst_user_customer', function (Blueprint $table) {
+            $table->text('api_token')->after('images')
                 ->unique()
                 ->nullable()
                 ->default(null);
