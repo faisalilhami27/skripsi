@@ -13,9 +13,9 @@ class CustomerController extends Controller
         $id = $request->id;
 
         $customer = CustomerModel::findOrFail($id);
-
+        $data[] = $customer;
         if ($customer) {
-            return response()->json(['result' => $customer, 'status' => 200]);
+            return response()->json(['result' => $data, 'status' => 200]);
         } else {
             return response()->json(['msg' => "Data tidak ditemukan", 'status' => 500]);
         }
