@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\api;
 
 use App\Models\CustomerModel;
-use function GuzzleHttp\Psr7\str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -31,7 +30,7 @@ class CustomerController extends Controller
 
         $checkData = CustomerModel::findOrFail($id);
         $size = 1000000;
-        $update = "";
+
         if ($checkData->no_hp == $noHp) {
             if (!is_null($file)) {
                 if ($file->getSize() > $size) {
