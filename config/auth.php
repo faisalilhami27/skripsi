@@ -41,10 +41,20 @@ return [
             'provider' => 'users',
         ],
 
-        'api' => [
+//        'api' => [
+//            'driver' => 'token',
+//            'provider' => 'users',
+//        ],
+
+        'api_customer' => [
             'driver' => 'token',
-            'provider' => 'users',
+            'provider' => 'customer',
         ],
+
+        'api_karyawan' => [
+            'driver' => 'token',
+            'provider' => 'karyawan',
+        ]
     ],
 
     /*
@@ -67,9 +77,16 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\User::class,
+            'model' => App\Models\UserModel::class,
         ],
-
+        'customer' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\CustomerModel::class,
+        ],
+        'karyawan' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\UserModel::class,
+        ],
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',

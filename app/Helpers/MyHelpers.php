@@ -49,9 +49,9 @@ if (!function_exists('sidebar')) {
 							<ul class='sidenav level-2 collapse'>";
                 foreach ($subMenu as $sub) {
                     if ($page == $sub->url) {
-                        echo "<li class='active'>" . "<a href='" . URL($sub->url) . "'  style='cursor: pointer'>" .  '<span class="'. $sub->icon .'"></span>' . strtoupper($sub->title) . "</a></li>";
+                        echo "<li class='active'>" . "<a href='" . URL($sub->url) . "'  style='cursor: pointer'>" . '<span class="' . $sub->icon . '"></span>' . strtoupper($sub->title) . "</a></li>";
                     } else {
-                        echo "<li>" . "<a href='" . URL($sub->url) . "'  style='cursor: pointer'>" . '<span class="'. $sub->icon .'"></span>' . strtoupper($sub->title) . "</a></li>";
+                        echo "<li>" . "<a href='" . URL($sub->url) . "'  style='cursor: pointer'>" . '<span class="' . $sub->icon . '"></span>' . strtoupper($sub->title) . "</a></li>";
                     }
                 }
                 echo " </ul>
@@ -256,5 +256,48 @@ if (!function_exists('checkProfile')) {
     {
         $query = Session::get('login');
         return $query;
+    }
+}
+
+if (!function_exists('encryptString')) {
+    function encryptString($string)
+    {
+        $output = false;
+
+        $encrypt_method = config('constants.ENCRYPT_METHOD');
+        $secret_key = config('constants.SECRET_KEY');
+        $secret_iv = config('constants.SECRET_IV');
+
+        // hash
+        $key = hash('sha256', $secret_key);
+
+        // iv - encrypt method AES-256-CBC expects 16 bytes - else you will get a warning
+        $iv = substr(hash('sha256', $secret_iv), 0, 16);
+
+        $output = openssl_encrypt($string, $encrypt_method, $key, 0, $iv);
+        $output = base64_encode($output);
+
+        return $output;
+    }
+}
+
+if (!function_exists('decryptString')) {
+    function decryptString($string)
+    {
+        $output = false;
+
+        $encrypt_method = config('constants.ENCRYPT_METHOD');
+        $secret_key = config('constants.SECRET_KEY');
+        $secret_iv = config('constants.SECRET_IV');
+
+        // hash
+        $key = hash('sha256', $secret_key);
+
+        // iv - encrypt method AES-256-CBC expects 16 bytes - else you will get a warning
+        $iv = substr(hash('sha256', $secret_iv), 0, 16);
+
+        $output = openssl_decrypt(base64_decode($string), $encrypt_method, $key, 0, $iv);
+
+        return $output;
     }
 }

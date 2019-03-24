@@ -2,16 +2,22 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class CustomerModel extends Model
+class CustomerModel extends Authenticatable
 {
     use SoftDeletes;
     protected $table = "mst_user_customer";
+    protected $guard = 'api_customer';
     protected $primaryKey = "id";
     protected $dates = ['deleted_at', 'updated_at', 'created_at'];
-    protected $fillable = ['nama', 'email', "username", 'password', 'no_hp', 'images', 'status'];
+    protected $fillable = ['nama', 'email', "username", 'password', 'no_hp', 'images', 'status' , "api_token"];
+
+    protected $hidden = [
+        'password'
+    ];
+
 
     public function pemesanan()
     {

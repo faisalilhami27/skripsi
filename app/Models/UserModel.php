@@ -2,16 +2,23 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class UserModel extends Model
+class UserModel extends Authenticatable
 {
+    use Notifiable;
     use SoftDeletes;
     protected $table = "mst_user_karyawan";
+    protected $guard = 'api_karyawan';
     protected $primaryKey = "id";
     protected $dates = ['deleted_at', 'updated_at', 'created_at'];
-    protected $fillable = ["id_karyawan", "username", "password", "images", "status"];
+    protected $fillable = ["id_karyawan", "username", "password", "images", "status", "api_token"];
+
+    protected $hidden = [
+        'password'
+    ];
 
     public function pemesanan()
     {

@@ -1,0 +1,70 @@
+<?php
+
+namespace App\Http\Controllers\api;
+
+use App\Models\CustomerModel;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+
+class CustomerController extends Controller
+{
+    public function show(Request $request)
+    {
+        $id = $request->id;
+
+        $customer = CustomerModel::findOrFail($id);
+
+        if ($customer) {
+            return response()->json(['result' => $customer, 'status' => 200]);
+        } else {
+            return response()->json(['msg' => "Data tidak ditemukan", 'status' => 500]);
+        }
+    }
+
+    public function update(Request $request)
+    {
+        $id = $request->id;
+        $nama = $request->nama;
+        $noHp = $request->no_hp;
+        $file = $request->file('images');
+
+        $checkData = CustomerModel::findOrFail($id);
+        $size = 1000000;
+
+        if ($checkData->no_hp == $noHp) {
+            if (!is_null($file)) {
+                if ($file->getSize() > $size) {
+                    return response()->json(["status" => 500, "msg" => "Maximum file 1 MB"]);
+                }
+
+                $update = CustomerModel::where('id', $id)->update([
+                    'nama' => $nama,
+                    'no_hp' => $noHp,
+                    'images' => url('storage') . "/" . $file->store('img', 'public')
+                ]);
+            } else {
+                $update = CustomerModel::where('id', $id)->update([
+                    'nama' => $nama,
+                    'no_hp' => $noHp
+                ]);
+            }
+        } else {
+            $checkNoHp = CustomerModel::where('no_hp', $noHp)->count();
+
+            if ($checkNoHp == 1) {
+                return response()->json(["status" => 500, "result" => $checkNoHp, "msg" => "No Handphone sudah terdaftar"]);
+            } else {
+                $update = CustomerModel::where('id', $id)->update([
+                    'nama' => $nama,
+                    'no_hp' => $noHp
+                ]);
+            }
+        }
+
+        if ($update) {
+            return response()->json(['status' => 200, 'msg' => 'Data berhasil diubah']);
+        } else {
+            return response()->json(['status' => 500, 'msg' => 'Data gagal diubah']);
+        }
+    }
+}
