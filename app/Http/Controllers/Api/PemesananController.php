@@ -117,7 +117,7 @@ class PemesananController extends Controller
             'tgl_pemesanan' => Carbon::now()->format('Y-m-d'),
             'id_jenis' => $idJenis,
             'jumlah_tiket' => $tiket,
-            'total_uang_masuk' => $jumlahUang,
+            'total_uang_masuk' => $uangPembayaran,
             'uang_pembayaran' => $uangPembayaran,
             'status_penggunaan' => 0,
             'id_customer' => $customer,
