@@ -49,7 +49,6 @@ class RegisterCustomerController extends Controller
                 'email' => $email,
                 'password' => Hash::make($password),
                 'no_hp' => $noHP,
-                'images' => url('') . '/storage/img/' . 'avatar.png',
                 'status' => "n",
             ]);
 
