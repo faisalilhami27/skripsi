@@ -617,17 +617,13 @@
         }
     </script>
     <script>
-
-        // Enable pusher logging - don't include this in production
-        Pusher.logToConsole = true;
-
         var pusher = new Pusher('ca529096e60dc5ab5a37', {
             cluster: 'ap1',
             forceTLS: true
         });
 
         var channel = pusher.subscribe('my-channel');
-        channel.bind('my-event', function(data) {
+        channel.bind('my-event', function (data) {
             table.ajax.reload();
         });
     </script>

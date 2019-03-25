@@ -31,7 +31,7 @@
                                     <thead>
                                     <tr>
                                         <th style="text-align: center">No</th>
-                                        <th style="text-align: center">Bukti Pembayaran</th>
+                                        <th  width="200" style="text-align: center">Bukti Pembayaran</th>
                                         <th style="text-align: center">Kode</th>
                                         <th style="text-align: center">Batas Pembayaran</th>
                                         <th style="text-align: center">Pembayaran</th>
@@ -417,10 +417,6 @@
         }
     </script>
     <script>
-
-        // Enable pusher logging - don't include this in production
-        Pusher.logToConsole = true;
-
         var pusher = new Pusher('ca529096e60dc5ab5a37', {
             cluster: 'ap1',
             forceTLS: true
