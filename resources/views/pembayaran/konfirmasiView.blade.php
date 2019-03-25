@@ -109,6 +109,7 @@
             </div>
         </div>
     </div>
+    <script src="https://js.pusher.com/4.4/pusher.min.js"></script>
     <script type="text/javascript">
         var table;
         $(document).ready(function () {
@@ -327,7 +328,7 @@
                         $("#infoModalColoredHeader1").modal('hide');
                         notification(data.status, data.msg);
                         setTimeout(function () {
-                            table.ajax.reload();
+                            location.reload();
                         }, 1000);
                     },
                     error: function (resp) {
@@ -387,10 +388,6 @@
             $("#btnRefresh").click(function () {
                 table.ajax.reload();
             });
-
-            setInterval(function () {
-                table.ajax.reload();
-            }, 10000);
         });
 
         function format(angka) {
@@ -418,5 +415,20 @@
             $("#btn-insert-data, #btn-update-data").removeAttr('disabled');
             $("#btn-insert-data, #btn-update-data").text('Submit');
         }
+    </script>
+    <script>
+
+        // Enable pusher logging - don't include this in production
+        Pusher.logToConsole = true;
+
+        var pusher = new Pusher('ca529096e60dc5ab5a37', {
+            cluster: 'ap1',
+            forceTLS: true
+        });
+
+        var channel = pusher.subscribe('my-channel1');
+        channel.bind('my-event1', function(data) {
+            table.ajax.reload()
+        });
     </script>
 @endsection

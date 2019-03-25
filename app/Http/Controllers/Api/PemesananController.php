@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Storage;
 use LaravelQRCode\Facades\QRCode;
 use PHPMailer\PHPMailer\Exception;
 use PHPMailer\PHPMailer\PHPMailer;
+use Pusher\Pusher;
 
 class PemesananController extends Controller
 {
@@ -196,6 +197,19 @@ class PemesananController extends Controller
             } elseif ($getData->status_penggunaan == 1) {
                 return response()->json(['result' => 'Data Kosong', 'status' => 500, 'msg' => 'QR Code sudah digunakan']);
             } else {
+                $options = array(
+                    'cluster' => 'ap1',
+                    'useTLS' => true
+                );
+                $pusher = new Pusher(
+                    'ca529096e60dc5ab5a37',
+                    '06eb93af4bceb9c2da38',
+                    '717606',
+                    $options
+                );
+
+                $data['message'] = 'hello world';
+                $pusher->trigger('my-channel', 'my-event', $data);
                 $pemesanan = PemesananModel::where('kode_pemesanan', $kode)->update([
                     'status_penggunaan' => 1
                 ]);
