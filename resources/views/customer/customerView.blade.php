@@ -77,6 +77,8 @@
             </div>
         </div>
     </div>
+    @stop
+    @push('scripts')
     <script type="text/javascript">
         var table;
         $(document).ready(function () {
@@ -166,7 +168,7 @@
                     success: function (data) {
                         notification(data.status, data.msg);
                         $('#infoModalColoredHeader1').modal('hide');
-                        loadingAfterSend();
+                  loadingAfterSend();
                         table.ajax.reload();
                     },
                     error: function (resp) {
@@ -263,4 +265,4 @@
             $("#btn-update-data").text('Submit');
         }
     </script>
-@endsection
+@endpush

@@ -163,6 +163,8 @@
             </div>
         </div>
     </div>
+@stop
+@push('scripts')
     <script type="text/javascript">
         var table;
         $(document).ready(function () {
@@ -198,7 +200,7 @@
                         }
 
                         let arrRole = [];
-                        _.each(data.karyawan_role, function(role) {
+                        _.each(data.karyawan_role, function (role) {
                             arrRole.push(role.role.nama_level)
                         });
 
@@ -288,8 +290,8 @@
                         type: "POST",
                         data: sendData,
                         dataType: 'json',
-                        beforeSend: function() {
-                          loadingBeforeSend();
+                        beforeSend: function () {
+                            loadingBeforeSend();
                         },
                         success: function (data) {
                             $("#infoModalColoredHeader").modal('hide');
@@ -334,8 +336,8 @@
                         type: "PUT",
                         data: sendData,
                         dataType: 'json',
-                        beforeSend: function() {
-                          loadingBeforeSend();
+                        beforeSend: function () {
+                            loadingBeforeSend();
                         },
                         success: function (data) {
                             $("#infoModalColoredHeader1").modal('hide');
@@ -484,13 +486,13 @@
         }
 
         function loadingBeforeSend() {
-            $("#btn-insert-data, #btn-update-data").attr('disabled', 'disabled');
-            $("#btn-insert-data, #btn-update-data").text('Menyimpan data....');
+            $("#btn-update-data").attr('disabled', 'disabled');
+            $("#btn-update-data").text('Menyimpan data....');
         }
 
         function loadingAfterSend() {
-            $("#btn-insert-data, #btn-update-data").removeAttr('disabled');
-            $("#btn-insert-data, #btn-update-data").text('Submit');
+            $("#btn-update-data").removeAttr('disabled');
+            $("#btn-update-data").text('Submit');
         }
     </script>
-@endsection
+@endpush

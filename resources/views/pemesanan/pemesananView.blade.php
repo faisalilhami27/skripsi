@@ -38,7 +38,7 @@
                                     <thead>
                                     <tr>
                                         <th style="text-align: center">No</th>
-                                        <th style="text-align: center; width: 100px">Kode</th>
+                                        <th style="text-align: center; width: 130px">Kode</th>
                                         <th style="text-align: center">Tanggal</th>
                                         <th style="text-align: center">Batas Masuk</th>
                                         <th style="text-align: center">Kasir</th>
@@ -46,7 +46,7 @@
                                         <th style="text-align: center">Pembayaran</th>
                                         <th style="text-align: center">Status</th>
                                         <th style="text-align: center">Jenis</th>
-                                        <th style="text-align: center" width="120px">Aksi</th>
+                                        <th style="text-align: center" width="200px">Aksi</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -176,7 +176,9 @@
             </div>
         </div>
     </div>
-    <script src="https://js.pusher.com/4.4/pusher.min.js"></script>
+@stop
+
+@push('scripts')
     <script type="text/javascript">
         $(document).ready(function () {
 
@@ -257,7 +259,7 @@
                     if (data.id_jenis == 2) {
                         var start = moment(data.tgl_pemesanan);
                         var tanggal = moment(start).add(7, 'days');
-                        return tanggal.format("DD-MM-YYYY");
+                        return tanggal.format("YYYY-MM-DD");
                     } else {
                         return data.tgl_pemesanan;
                     }
@@ -607,13 +609,13 @@
         });
 
         function loadingBeforeSend() {
-            $("#btn-insert-data, #btn-update-data").attr('disabled', 'disabled');
-            $("#btn-insert-data, #btn-update-data").text('Menyimpan data....');
+            $("#btn-update-data").attr('disabled', 'disabled');
+            $("#btn-update-data").text('Menyimpan data....');
         }
 
         function loadingAfterSend() {
-            $("#btn-insert-data, #btn-update-data").removeAttr('disabled');
-            $("#btn-insert-data, #btn-update-data").text('Submit');
+            $("#btn-update-data").removeAttr('disabled');
+            $("#btn-update-data").text('Submit');
         }
     </script>
     <script>
@@ -627,4 +629,4 @@
             table.ajax.reload();
         });
     </script>
-@endsection
+@endpush
