@@ -71,7 +71,6 @@
                     } else if (data.unseen_notification == 0) {
                         $('.badge-notif, .notif').html("");
                     }
-                    // setTimeout(load_unseen_notification, 5000);
                 }
             });
         }
