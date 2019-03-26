@@ -82,7 +82,7 @@ Route::middleware(['checkRole'])->group(function () {
     // modul pemesanan
     Route::group(['prefix' => 'pemesanan'], function () {
         Route::get('/', 'PemesananController@index');
-        Route::get('/getall', 'PemesananController@getAll');
+        Route::get('/show/{id}', 'PemesananController@show');
         Route::post('/json', 'PemesananController@datatable');
         Route::get('/getPemesananById', 'PemesananController@edit');
         Route::get('/printTicket/{id}', 'PemesananController@printTicket');

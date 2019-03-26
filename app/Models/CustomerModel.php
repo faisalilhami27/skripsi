@@ -15,7 +15,7 @@ class CustomerModel extends Authenticatable
     protected $fillable = ['nama', 'email', "username", 'password', 'no_hp', 'images', 'status' , "api_token"];
 
     protected $hidden = [
-        'password'
+        'password' , 'api_token'
     ];
 
 

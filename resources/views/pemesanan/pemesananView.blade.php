@@ -40,12 +40,11 @@
                                         <th style="text-align: center">No</th>
                                         <th style="text-align: center; width: 100px">Kode</th>
                                         <th style="text-align: center">Batas Masuk</th>
-                                        <th style="text-align: center">Kasir</th>
                                         <th style="text-align: center">Jumlah Tiket</th>
                                         <th style="text-align: center">Pembayaran</th>
                                         <th style="text-align: center">Status</th>
                                         <th style="text-align: center">Jenis</th>
-                                        <th style="text-align: center" width="120px">Aksi</th>
+                                        <th style="text-align: center" width="150px">Aksi</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -211,25 +210,30 @@
                     var hapus = "{{ $akses['delete'] }}";
                     if (update == 1 && hapus == 1) {
                         if (data.id_jenis == 2) {
-                            return '<center>' + `<a href="#" class="btn btn-success btn-sm btn-edit"  id="${data.id}" data-toggle="modal" data-target="#infoModalColoredHeader1"><i class="icon icon-pencil-square-o"></i></a>
+                            return '<center>' + `<a href="{{ URL('pemesanan/show') }}/${data.id}" class="btn btn-info btn-sm"  id="${data.id}"><i class="icon icon-eye"></i></a>
+                                                 <a href="#" class="btn btn-success btn-sm btn-edit"  id="${data.id}" data-toggle="modal" data-target="#infoModalColoredHeader1"><i class="icon icon-pencil-square-o"></i></a>
                                                  <a href="#" class="btn btn-danger btn-sm btn-delete"  id="${data.id}"><i class="icon icon-trash-o"></i></a>` + '</center>';
                         } else {
-                            return '<center>' + `<a href="#" class="btn btn-success btn-sm btn-edit"  id="${data.id}" data-toggle="modal" data-target="#infoModalColoredHeader1"><i class="icon icon-pencil-square-o"></i></a>
+                            return '<center>' + `<a href="{{ URL('pemesanan/show') }}/${data.id}" class="btn btn-info btn-sm"  id="${data.id}"><i class="icon icon-eye"></i></a>
+                                                 <a href="#" class="btn btn-success btn-sm btn-edit"  id="${data.id}" data-toggle="modal" data-target="#infoModalColoredHeader1"><i class="icon icon-pencil-square-o"></i></a>
                                                  <a href="#" class="btn btn-danger btn-sm btn-delete"  id="${data.id}"><i class="icon icon-trash-o"></i></a>
                                                  <a href="#" class="btn btn-warning btn-sm btn-print"  id="${data.kode_pemesanan}"><i class="icon icon-print"></i></a>` + '</center>';
                         }
                     } else if (update == 1) {
                         if (data.id_jenis == 2) {
-                            return '<center>' + `<a href="#" class="btn btn-success btn-sm btn-edit"  id="${data.id}" data-toggle="modal" data-target="#infoModalColoredHeader1"><i class="icon icon-pencil-square-o"></i></a>` + '</center>';
+                            return '<center>' + `<a href="{{ URL('pemesanan/show') }}/${data.id}" class="btn btn-info btn-sm"  id="${data.id}"><i class="icon icon-eye"></i></a>
+                                                 <a href="#" class="btn btn-success btn-sm btn-edit"  id="${data.id}" data-toggle="modal" data-target="#infoModalColoredHeader1"><i class="icon icon-pencil-square-o"></i></a>` + '</center>';
                         } else {
-                            return '<center>' + `<a href="#" class="btn btn-success btn-sm btn-edit"  id="${data.id}" data-toggle="modal" data-target="#infoModalColoredHeader1"><i class="icon icon-pencil-square-o"></i></a>
+                            return '<center>' + `<a href="{{ URL('pemesanan/show') }}/${data.id}" class="btn btn-info btn-sm"  id="${data.id}"><i class="icon icon-eye"></i></a>
+                                                 <a href="#" class="btn btn-success btn-sm btn-edit"  id="${data.id}" data-toggle="modal" data-target="#infoModalColoredHeader1"><i class="icon icon-pencil-square-o"></i></a>
                                                  <a href="#" class="btn btn-warning btn-sm btn-print"  id="${data.kode_pemesanan}"><i class="icon icon-print"></i></a>` + '</center>';
                         }
                     } else {
                         if (data.id_jenis == 2) {
-                            return '<center>' + 'Tidak ada aksi' + '</center>';
+                            return '<center>' + `<a href="{{ URL('pemesanan/show') }}/${data.id}" class="btn btn-info btn-sm"  id="${data.id}"><i class="icon icon-eye"></i></a>` + '</center>';
                         } else {
-                            return '<center>' + `<a href="#" class="btn btn-warning btn-sm btn-print"  id="${data.kode_pemesanan}"><i class="icon icon-print"></i></a>` + '</center>';
+                            return '<center>' + `<a href="{{ URL('pemesanan/show') }}/${data.id}" class="btn btn-info btn-sm"  id="${data.id}"><i class="icon icon-eye"></i></a>
+                                                 <a href="#" class="btn btn-warning btn-sm btn-print"  id="${data.kode_pemesanan}"><i class="icon icon-print"></i></a>` + '</center>';
                         }
                     }
                 },
@@ -246,21 +250,13 @@
                     return "Rp. " + format(data.total_uang_masuk);
                 },
 
-                karyawan: function (row, type, data) {
-                    if (data.id_karyawan == null) {
-                        return '-';
-                    } else {
-                        return data.karyawan.karyawan.nama;
-                    }
-                },
-
                 batas: function (row, type, data) {
                     if (data.id_jenis == 2) {
                         var start = moment(data.tgl_pemesanan);
                         var tanggal = moment(start).add(7, 'days');
-                        return tanggal.format("YYYY-MM-DD");
+                        return '<center>'+ tanggal.format("YYYY-MM-DD"); +'</center>';
                     } else {
-                        return "-";
+                        return '<center>'+ data.tgl_pemesanan +'</center>';
                     }
                 }
             };
@@ -287,7 +283,6 @@
                     {data: 'DT_RowIndex'},
                     {data: 'kode_pemesanan'},
                     {data: 'batas', render: styles.batas},
-                    {data: 'karyawan', render: styles.karyawan},
                     {data: 'jumlah_tiket'},
                     {data: 'total_uang_masuk', render: styles.uang},
                     {data: 'status_penggunaan', render: styles.status},

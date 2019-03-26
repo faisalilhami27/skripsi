@@ -17,7 +17,7 @@ class UserModel extends Authenticatable
     protected $fillable = ["id_karyawan", "username", "password", "images", "status", "api_token"];
 
     protected $hidden = [
-        'password'
+        'password' , 'api_token'
     ];
 
     public function pemesanan()

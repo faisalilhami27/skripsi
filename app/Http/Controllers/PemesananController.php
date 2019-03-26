@@ -91,6 +91,19 @@ class PemesananController extends Controller
         }
     }
 
+    public function show($id)
+    {
+        $data = PemesananModel::with(['karyawan.karyawan', 'customer', 'jenisPemesanan', 'pembayaran'])
+            ->where('id', $id)
+            ->first();
+        $title = "Halaman Detail Pemesanan";
+        $deskripsi = "Halaman detail pemesanan digunakan untuk melihat detail pemesanan dari customer";
+        $tanggalPemesanan = strtotime($data->tgl_pemesanan);
+        $tanggalPemesanan = strtotime("+7 days", $tanggalPemesanan);
+        $nextDay = date("Y-m-d", $tanggalPemesanan);
+        return view('pemesanan.detailPemesanan', compact('data', 'title', 'deskripsi', 'nextDay'));
+    }
+
     public function edit(Request $request)
     {
         $id = $request->id;
