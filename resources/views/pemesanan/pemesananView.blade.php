@@ -39,7 +39,6 @@
                                     <tr>
                                         <th style="text-align: center">No</th>
                                         <th style="text-align: center; width: 130px">Kode</th>
-                                        <th style="text-align: center">Tanggal</th>
                                         <th style="text-align: center">Batas Masuk</th>
                                         <th style="text-align: center">Kasir</th>
                                         <th style="text-align: center">Jumlah Tiket</th>
@@ -261,7 +260,7 @@
                         var tanggal = moment(start).add(7, 'days');
                         return tanggal.format("YYYY-MM-DD");
                     } else {
-                        return data.tgl_pemesanan;
+                        return "-";
                     }
                 }
             };
@@ -287,7 +286,6 @@
                 columns: [
                     {data: 'DT_RowIndex'},
                     {data: 'kode_pemesanan'},
-                    {data: 'tgl_pemesanan'},
                     {data: 'batas', render: styles.batas},
                     {data: 'karyawan', render: styles.karyawan},
                     {data: 'jumlah_tiket'},
