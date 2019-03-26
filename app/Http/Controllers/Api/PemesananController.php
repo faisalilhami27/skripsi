@@ -8,6 +8,7 @@ use App\Models\PemesananModel;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use LaravelQRCode\Facades\QRCode;
 use PHPMailer\PHPMailer\Exception;
@@ -113,78 +114,85 @@ class PemesananController extends Controller
             ->setOutFile($path)
             ->png();
 
-        $insert = PemesananModel::create([
-            'kode_pemesanan' => "TRS-" . Carbon::now()->format('m-d') . "-" . $kode,
-            'tgl_pemesanan' => Carbon::now()->format('Y-m-d'),
-            'id_jenis' => $idJenis,
-            'jumlah_tiket' => $tiket,
-            'total_uang_masuk' => $uangPembayaran,
-            'uang_pembayaran' => $uangPembayaran,
-            'status_penggunaan' => 0,
-            'id_customer' => $customer,
-            'qr_code' => $qrCode
-        ]);
+        DB::beginTransaction();
+        try {
+            $insert = PemesananModel::create([
+                'kode_pemesanan' => "TRS-" . Carbon::now()->format('m-d') . "-" . $kode,
+                'tgl_pemesanan' => Carbon::now()->format('Y-m-d'),
+                'id_jenis' => $idJenis,
+                'jumlah_tiket' => $tiket,
+                'total_uang_masuk' => $uangPembayaran,
+                'uang_pembayaran' => $uangPembayaran,
+                'status_penggunaan' => 0,
+                'id_customer' => $customer,
+                'qr_code' => $qrCode
+            ]);
 
-        KonfirmasiPembayaranModel::create([
-            'kode_pemesanan' => "TRS-" . Carbon::now()->format('m-d') . "-" . $kode,
-            'id_status' => 1,
-            'batas_pembayaran' => Carbon::createFromFormat('Y-m-d H:i:s', $date)->addDay(1)
-        ]);
+            KonfirmasiPembayaranModel::create([
+                'kode_pemesanan' => "TRS-" . Carbon::now()->format('m-d') . "-" . $kode,
+                'id_status' => 1,
+                'batas_pembayaran' => Carbon::createFromFormat('Y-m-d H:i:s', $date)->addDay(1)
+            ]);
 
-        $pemesanan = PemesananModel::with(['customer', 'jenisPemesanan'])
-            ->where('id', $insert->id)
-            ->first();
-        $getKonfigurasi = KonfigurasiModel::all();
-        $email = $pemesanan->customer->email;
-        $getTotal = $getKonfigurasi[2]->nilai_konfig * $pemesanan->jumlah_tiket;
-        $totalHarga = "Rp. " . number_format($getTotal, 0, ".", ".");
+            $pemesanan = PemesananModel::with(['customer', 'jenisPemesanan'])
+                ->where('id', $insert->id)
+                ->first();
+            $getKonfigurasi = KonfigurasiModel::all();
+            $email = $pemesanan->customer->email;
+            $getTotal = $getKonfigurasi[2]->nilai_konfig * $pemesanan->jumlah_tiket;
+            $totalHarga = "Rp. " . number_format($getTotal, 0, ".", ".");
 
-        $data = $pemesanan;
-        $konfigurasi = $getKonfigurasi;
-        $total = $totalHarga;
-        $getPemesanan = PemesananModel::with(['pembayaran'])
-            ->where('id', $insert->id)
-            ->first();
-        $batas = $getPemesanan->pembayaran->batas_pembayaran;
+            $data = $pemesanan;
+            $konfigurasi = $getKonfigurasi;
+            $total = $totalHarga;
+            $getPemesanan = PemesananModel::with(['pembayaran'])
+                ->where('id', $insert->id)
+                ->first();
+            $batas = $getPemesanan->pembayaran->batas_pembayaran;
 
-        $body = view('bodyEmailPemesanan', compact('data', 'konfigurasi', 'total', 'batas'))->render();
-        $mail = new PHPMailer(true);
-        if ($insert) {
-            try {
-                $mail->IsSMTP(true);
-                $mail->IsHTML(true);
-                $mail->SMTPSecure = "ssl";
-                $mail->Host = "smtp.gmail.com";
-                $mail->Port = 465;
-                $mail->SMTPAuth = true;
-                $mail->Username = "failda.waterpark06@gmail.com";
-                $mail->Password = "barca1899";
-                $mail->SetFrom($mail->Username, "Pemesanan Tiket");
-                $mail->Subject = "Pemesanan Tiket";
-                $mail->AddAddress($email);
-                $mail->Body = $body;
-                if ($mail->send()) {
-                    $options = array(
-                        'cluster' => 'ap1',
-                        'useTLS' => true
-                    );
-                    $pusher = new Pusher(
-                        'ca529096e60dc5ab5a37',
-                        '06eb93af4bceb9c2da38',
-                        '717606',
-                        $options
-                    );
+            $body = view('bodyEmailPemesanan', compact('data', 'konfigurasi', 'total', 'batas'))->render();
+            $mail = new PHPMailer(true);
+            if ($insert) {
+                try {
+                    $mail->IsSMTP(true);
+                    $mail->IsHTML(true);
+                    $mail->SMTPSecure = "ssl";
+                    $mail->Host = "smtp.gmail.com";
+                    $mail->Port = 465;
+                    $mail->SMTPAuth = true;
+                    $mail->Username = "failda.waterpark06@gmail.com";
+                    $mail->Password = "barca1899";
+                    $mail->SetFrom($mail->Username, "Pemesanan Tiket");
+                    $mail->Subject = "Pemesanan Tiket";
+                    $mail->AddAddress($email);
+                    $mail->Body = $body;
+                    if ($mail->send()) {
+                        $options = array(
+                            'cluster' => 'ap1',
+                            'useTLS' => true
+                        );
+                        $pusher = new Pusher(
+                            'ca529096e60dc5ab5a37',
+                            '06eb93af4bceb9c2da38',
+                            '717606',
+                            $options
+                        );
 
-                    $data1['message'] = 'hello world';
-                    $pusher->trigger('my-channel', 'my-event', $data1);
-                    return response()->json(["status" => 200, "id_pemesanan" => $insert->id, "msg" => "Pemesanan berhasil"]);
+                        $data1['message'] = 'hello world';
+                        $pusher->trigger('my-channel', 'my-event', $data1);
+                        DB::commit();
+                        return response()->json(["status" => 200, "id_pemesanan" => $insert->id, "msg" => "Pemesanan berhasil"]);
+                    }
+                } catch (Exception $e) {
+                    echo 'Message could not be sent.';
+                    echo 'Mailer Error: ' . $mail->ErrorInfo;
                 }
-            } catch (Exception $e) {
-                echo 'Message could not be sent.';
-                echo 'Mailer Error: ' . $mail->ErrorInfo;
+            } else {
+                return response()->json(['status' => 500, 'msg' => 'Pemesanan gagal']);
             }
-        } else {
-            return response()->json(['status' => 500, 'msg' => 'Pemesanan gagal']);
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return response()->json(['status' => 500, 'msg' => 'Server sedang sibuk silahkan ulangi beberapa saat lagi']);
         }
     }
 
