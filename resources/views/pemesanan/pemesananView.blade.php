@@ -38,14 +38,14 @@
                                     <thead>
                                     <tr>
                                         <th style="text-align: center">No</th>
-                                        <th style="text-align: center; width: 130px">Kode</th>
+                                        <th style="text-align: center; width: 100px">Kode</th>
                                         <th style="text-align: center">Batas Masuk</th>
                                         <th style="text-align: center">Kasir</th>
                                         <th style="text-align: center">Jumlah Tiket</th>
                                         <th style="text-align: center">Pembayaran</th>
                                         <th style="text-align: center">Status</th>
                                         <th style="text-align: center">Jenis</th>
-                                        <th style="text-align: center" width="200px">Aksi</th>
+                                        <th style="text-align: center" width="120px">Aksi</th>
                                     </tr>
                                     </thead>
                                     <tbody>
