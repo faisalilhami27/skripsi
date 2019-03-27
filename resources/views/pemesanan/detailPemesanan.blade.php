@@ -31,12 +31,12 @@
                                             <td>{{ $data->customer->nama }}</td>
                                         </tr>
                                     @endif
-                                   @if(!is_null($data->id_karyawan))
+                                    @if(!is_null($data->id_karyawan))
                                         <tr>
                                             <td>Nama Karyawan</td>
                                             <td>{{ $data->karyawan->karyawan->nama }}</td>
                                         </tr>
-                                   @endif
+                                    @endif
                                     <tr>
                                         <td>Jumlah Tiket</td>
                                         <td>{{ $data->jumlah_tiket }} Tiket</td>
@@ -47,7 +47,7 @@
                                     </tr>
                                     <tr>
                                         <td>Status Penggunaan</td>
-                                        <td>
+                                        <td id="status">
                                             @if($data->status_penggunaan == 1)
                                                 <span class="label label-info">Sudah diverifikasi</span>
                                             @else
@@ -66,7 +66,8 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td colspan="2"><a href="{{ URL('pemesanan') }}" class="btn btn-primary"><i class="icon icon-backward"></i> Back</a></td>
+                                        <td colspan="2"><a href="{{ URL('pemesanan') }}" class="btn btn-primary"><i
+                                                    class="icon icon-backward"></i> Back</a></td>
                                     </tr>
                                 </table>
                             </div>
@@ -77,3 +78,20 @@
         </div>
     </div>
 @stop
+@push('scripts')
+    <script>
+        var pusher = new Pusher('ca529096e60dc5ab5a37', {
+            cluster: 'ap1',
+            forceTLS: true
+        });
+
+        var channel = pusher.subscribe('my-channel');
+        channel.bind('my-event', function (data) {
+            if (data.status == 1) {
+                $("#status").html('<span class="label label-info">Sudah diverifikasi</span>');
+            } else {
+                $("#status").html('<span class="label label-danger">Belum diverifikasi</span>');
+            }
+        });
+    </script>
+@endpush

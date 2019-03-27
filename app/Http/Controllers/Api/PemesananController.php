@@ -218,6 +218,10 @@ class PemesananController extends Controller
             } elseif ($getData->status_penggunaan == 1) {
                 return response()->json(['result' => 'Data Kosong', 'status' => 500, 'msg' => 'QR Code sudah digunakan']);
             } else {
+                $data = [
+                    'status_penggunaan' => 1
+                ];
+
                 $options = array(
                     'cluster' => 'ap1',
                     'useTLS' => true
@@ -229,11 +233,9 @@ class PemesananController extends Controller
                     $options
                 );
 
-                $data['message'] = 'hello world';
-                $pusher->trigger('my-channel', 'my-event', $data);
-                $pemesanan = PemesananModel::where('kode_pemesanan', $kode)->update([
-                    'status_penggunaan' => 1
-                ]);
+                $data1['status'] = $data['status_penggunaan'];
+                $pusher->trigger('my-channel', 'my-event', $data1);
+                $pemesanan = PemesananModel::where('kode_pemesanan', $kode)->update($data);
                 return response()->json(['result' => $pemesanan, 'status' => 200, 'msg' => 'Data sudah diverifikasi', 'jumlah' => $getData->jumlah_tiket, 'total' => $getData->total_uang_masuk]);
             }
         } catch (\Exception $e) {
