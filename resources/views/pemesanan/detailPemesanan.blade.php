@@ -66,7 +66,7 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td colspan="2"><a href="{{ URL('pemesanan') }}" class="btn btn-warning"><i class="icon icon-backward"></i> Back</a></td>
+                                        <td colspan="2"><a href="{{ URL('pemesanan') }}" class="btn btn-primary"><i class="icon icon-backward"></i> Back</a></td>
                                     </tr>
                                 </table>
                             </div>
