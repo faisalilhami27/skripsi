@@ -126,7 +126,7 @@ class KonfirmasiPembayaranController extends Controller
                     if ($mail->send()) {
                         OneSignal::sendNotificationToUser(
                             "Pembayaran ditolak karena ada kesalahan",
-                            $userId = '43597160-1e3d-4537-8f7e-69f0cadfc4dc',
+                            $userId = $data->customer->player_id,
                             $url = null,
                             $data = null,
                             $buttons = null,
