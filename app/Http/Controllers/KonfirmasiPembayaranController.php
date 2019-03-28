@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Session;
 use PHPMailer\PHPMailer\PHPMailer;
 use Yajra\DataTables\DataTables;
 use PHPMailer\PHPMailer\Exception;
+use OneSignal;
 
 class KonfirmasiPembayaranController extends Controller
 {
@@ -123,6 +124,15 @@ class KonfirmasiPembayaranController extends Controller
                     $mail->AddAddress($email);
                     $mail->Body = $body;
                     if ($mail->send()) {
+                        OneSignal::sendNotificationToUser(
+                            "Pembayaran ditolak karena ada kesalahan",
+                            $userId = '43597160-1e3d-4537-8f7e-69f0cadfc4dc',
+                            $url = null,
+                            $data = null,
+                            $buttons = null,
+                            $schedule = null,
+                            $headings = "Pemberitahuan Pembayaran"
+                        );
                         return response()->json(['status' => 200, 'msg' => 'Data berhasil diubah']);
                     }
                 } catch (Exception $e) {
@@ -149,6 +159,15 @@ class KonfirmasiPembayaranController extends Controller
                     $mail->AddAddress($email);
                     $mail->Body = $body;
                     if ($mail->send()) {
+                        OneSignal::sendNotificationToUser(
+                            "Pembayaran sudah diverifikasi",
+                            $userId = $data->customer->player_id,
+                            $url = null,
+                            $data1 = null,
+                            $buttons = null,
+                            $schedule = null,
+                            $headings = "Pemberitahuan Pembayaran"
+                        );
                         return response()->json(['status' => 200, 'msg' => 'Data berhasil diubah']);
                     }
                 } catch (Exception $e) {

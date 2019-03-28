@@ -21,6 +21,7 @@ class RegisterCustomerController extends Controller
             'email' => 'required|string|email|max:60',
             'password' => 'required|string|min:8|max:12',
             'no_hp' => 'required',
+            'player_id' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -32,6 +33,7 @@ class RegisterCustomerController extends Controller
         $email = htmlspecialchars($request->get('email'));
         $password = htmlspecialchars($request->get('password'));
         $noHP = htmlspecialchars($request->get('no_hp'));
+        $playerId = $request->get('player_id');
         $cekUsername = CustomerModel::where('username', $username)->count();
         $cekEmail = CustomerModel::where('email', $email)->count();
         $cekNoHP = CustomerModel::where('no_hp', $noHP)->count();
@@ -50,6 +52,7 @@ class RegisterCustomerController extends Controller
                 'password' => Hash::make($password),
                 'no_hp' => $noHP,
                 'status' => "n",
+                'player_id' => $playerId,
             ]);
 
             $konfigurasi = KonfigurasiModel::all();

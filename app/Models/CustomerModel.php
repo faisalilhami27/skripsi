@@ -12,7 +12,7 @@ class CustomerModel extends Authenticatable
     protected $guard = 'api_customer';
     protected $primaryKey = "id";
     protected $dates = ['deleted_at', 'updated_at', 'created_at'];
-    protected $fillable = ['nama', 'email', "username", 'password', 'no_hp', 'images', 'status' , "api_token"];
+    protected $fillable = ['nama', 'email', "username", 'password', 'no_hp', 'images', 'status' , "api_token", 'player_id'];
 
     protected $hidden = [
         'password' , 'api_token'

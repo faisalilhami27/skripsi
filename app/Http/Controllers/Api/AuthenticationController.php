@@ -7,6 +7,7 @@ use App\Models\UserModel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use Auth;
 
 class AuthenticationController extends Controller
 {
@@ -61,9 +62,7 @@ class AuthenticationController extends Controller
 
     public function getAuthenticatedUser()
     {
-        $token = $this->request->header('Authorization');
-        $replace = str_replace("Bearer ", "", $token);
-        $user = CustomerModel::where('id', decrypt($replace))->first();
+        $user = Auth::user();
         $data = [
             'id' => (String) $user->id,
             'nama' => $user->nama,
