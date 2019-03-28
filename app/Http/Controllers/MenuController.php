@@ -26,9 +26,9 @@ class MenuController extends Controller
 
     public function store(MenuRequest $request)
     {
-        $title = $request->title;
-        $url = $request->url;
-        $icon = $request->icon;
+        $title = htmlspecialchars($request->title);
+        $url = htmlspecialchars($request->url);
+        $icon = htmlspecialchars($request->icon);
         $menu = $request->is_main_menu;
         $status = $request->is_aktif;
 
@@ -62,9 +62,9 @@ class MenuController extends Controller
 
     public function update(MenuRequest $request)
     {
-        $title = $request->title;
-        $url = $request->url;
-        $icon = $request->icon;
+        $title = htmlspecialchars($request->title);
+        $url = htmlspecialchars($request->url);
+        $icon = htmlspecialchars($request->icon);
         $menu = $request->is_main_menu;
         $status = $request->is_aktif;
         $id = $request->id;

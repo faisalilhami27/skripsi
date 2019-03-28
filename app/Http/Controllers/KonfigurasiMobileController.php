@@ -62,8 +62,8 @@ class KonfigurasiMobileController extends Controller
         ]);
 
         $id = $request->id;
-        $title = $request->title;
-        $deskripsi = $request->deskripsi;
+        $title = htmlspecialchars($request->title);
+        $deskripsi = htmlspecialchars($request->deskripsi);
         $images = $request->file('images');
         $getData = KonfigurasiMobileModel::where('id', $id)->first();
 
