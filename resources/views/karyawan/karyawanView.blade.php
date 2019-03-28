@@ -371,13 +371,13 @@
         }
 
         function loadingBeforeSend() {
-            $("#btn-update-data").attr('disabled', 'disabled');
-            $("#btn-update-data").text('Menyimpan data....');
+            $("#btn-insert-data, #btn-update-data").attr('disabled', 'disabled');
+            $("#btn-insert-data, #btn-update-data").text('Menyimpan data....');
         }
 
         function loadingAfterSend() {
-            $("#btn-update-data").removeAttr('disabled');
-            $("#btn-update-data").text('Submit');
+            $("#btn-insert-data, #btn-update-data").removeAttr('disabled');
+            $("#btn-insert-data, #btn-update-data").text('Submit');
         }
     </script>
 @endpush

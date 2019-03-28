@@ -60,8 +60,8 @@
                                 <label for="upd_status" class="form-label">Level</label>
                                 <select id="upd_status" name="upd_status" class="form-control">
                                     <option value="">-- Pilih Level --</option>
-                                    <option value="0">Belum diverifikasi</option>
-                                    <option value="1">Sudah diverifikasi</option>
+                                    <option value="n">Belum diverifikasi</option>
+                                    <option value="y">Sudah diverifikasi</option>
                                 </select>
                                 <span class="text-danger">
                                     <strong id="status-error"></strong>

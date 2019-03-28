@@ -1,26 +1,26 @@
-@extends('template')
-@section('content')
+<?php $__env->startSection('content'); ?>
     <div class="layout-content">
         <div class="layout-content-body">
-            <button class="btn btn-info btn-sm" type="button" data-toggle="modal" data-target="#infoModalColoredHeader"
-                    style="margin-bottom: 10px"><i class="icon icon-plus-circle"></i> Tambah
-            </button>
             <div class="row gutter-xs">
                 <div class="col-xs-12">
                     <div class="card">
                         <div class="card-header">
-                            <strong>Daftar Level</strong>
+                            <strong>Daftar Menu</strong>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table id="demo-datatables" class="table table-striped table-nowrap dataTable"
-                                       cellspacing="0"
+                                <table id="demo-datatables"
+                                       class="table table-striped table-hover table-nowrap dataTable"
                                        width="100%">
                                     <thead>
                                     <tr>
                                         <th width="20px">No</th>
-                                        <th>Nama Level</th>
-                                        <th width="150px">Aksi</th>
+                                        <th>Nama Lengkap</th>
+                                        <th>Username</th>
+                                        <th>Email</th>
+                                        <th>No HP</th>
+                                        <th>Status</th>
+                                        <th>Aksi</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -29,35 +29,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-        <div id="infoModalColoredHeader" role="dialog" class="modal fade">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header bg-primary">
-                        <button type="button" class="close" data-dismiss="modal">
-                            <span aria-hidden="true">×</span>
-                            <span class="sr-only">Close</span>
-                        </button>
-                        <h4 class="modal-title-insert">Tambah Data level</h4>
-                    </div>
-                    <form class="form" method="post">
-                        <div class="modal-body">
-                            <div class="form-group">
-                                <label for="ins_nama">Nama Level</label>
-                                <input id="ins_nama" name="ins_nama" autocomplete="off" class="form-control" type="text"
-                                       placeholder="Masukan nama level" maxlength="30">
-                                <span class="text-danger">
-                                    <strong id="nama_level-error"></strong>
-                                </span>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button class="btn btn-default" data-dismiss="modal" type="button">Cancel</button>
-                            <button class="btn btn-primary" id="btn-insert-data" type="submit">Submit</button>
-                        </div>
-                    </form>
                 </div>
             </div>
         </div>
@@ -73,15 +44,27 @@
                     </div>
                     <form class="form" method="post">
                         <div class="modal-body">
-                            @method('PUT')
-                            {{ csrf_field() }}
-                            <input type="hidden" id="id_level" name="id_level">
+                            <?php echo method_field('PUT'); ?>
+                            <?php echo e(csrf_field()); ?>
+
+                            <input type="hidden" name="id" id="id">
                             <div class="form-group">
-                                <label for="upd_nama">Nama Level</label>
-                                <input id="upd_nama" name="upd_nama" autocomplete="off" class="form-control" type="text"
-                                       placeholder="Masukan nama level" maxlength="30">
+                                <label for="upd_email">Email</label>
+                                <input id="upd_email" name="upd_email" class="form-control" type="email"
+                                       placeholder="Masukan email" maxlength="60">
                                 <span class="text-danger">
-                                    <strong class="nama_level-error"></strong>
+                                    <strong id="email-error"></strong>
+                                </span>
+                            </div>
+                            <div class="form-group">
+                                <label for="upd_status" class="form-label">Level</label>
+                                <select id="upd_status" name="upd_status" class="form-control">
+                                    <option value="">-- Pilih Level --</option>
+                                    <option value="0">Belum diverifikasi</option>
+                                    <option value="1">Sudah diverifikasi</option>
+                                </select>
+                                <span class="text-danger">
+                                    <strong id="status-error"></strong>
                                 </span>
                             </div>
                         </div>
@@ -94,16 +77,23 @@
             </div>
         </div>
     </div>
-    @stop
-@push('scripts')
+    <?php $__env->stopSection(); ?>
+    <?php $__env->startPush('scripts'); ?>
     <script type="text/javascript">
         var table;
         $(document).ready(function () {
             var styles = {
                 button: function (row, type, data) {
-                    return '<center>' + `<a href="{{ URL('userlevel/getakses') }}/${data.id}" id="${data.id}" class="btn btn-info btn-sm btn-akses"><i class="icon icon-eye"></i></a>
-                                             <a href="#" class="btn btn-success btn-sm btn-edit" id="${data.id}" data-toggle="modal" data-target="#infoModalColoredHeader1"><i class="icon icon-pencil-square-o"></i></a>
+                    return '<center>' + `<a href="#" class="btn btn-success btn-sm btn-edit" id="${data.id}" data-toggle="modal" data-target="#infoModalColoredHeader1"><i class="icon icon-pencil-square-o"></i></a>
                                              <a href="#" class="btn btn-danger btn-sm btn-delete"  id="${data.id}"><i class="icon icon-trash-o"></i></a>` + '</center>';
+                },
+
+                status: function (row, type, data) {
+                    if (data.status == 0) {
+                        return '<center><span class="label label-danger">Belum diverifikasi</span></center>';
+                    } else {
+                        return '<center><span class="label label-success">Sudah diverifikasi</span></center>';
+                    }
                 }
             };
 
@@ -115,16 +105,20 @@
                 order: [],
 
                 ajax: {
-                    "url": '{{ URL('userlevel/json') }}',
+                    "url": '<?php echo e(URL('customer/json')); ?>',
                     "type": "POST",
                     "headers": {
-                        "X-CSRF-TOKEN": "{{ csrf_token() }}",
+                        "X-CSRF-TOKEN": "<?php echo e(csrf_token()); ?>",
                     },
                 },
 
                 columns: [
                     {data: 'DT_RowIndex'},
-                    {data: 'nama_level'},
+                    {data: 'nama'},
+                    {data: 'username'},
+                    {data: 'email'},
+                    {data: 'no_hp'},
+                    {data: 'status', render: styles.status},
                     {data: 'action', orderable: false, render: styles.button}
 
                 ],
@@ -133,16 +127,17 @@
             table.on('click', '.btn-edit', function (e) {
                 e.preventDefault();
                 var id = $(this).attr("id");
-                $(".modal-title-update").html("Update Data Level");
+                $(".modal-title-update").html("Update Data Customer");
                 $.ajax({
-                    url: "{{ URL('userlevel/getLevelById') }}",
+                    url: "<?php echo e(URL('customer/getCustomer')); ?>",
                     type: "GET",
                     data: "id=" + id,
                     dataType: 'json',
                     success: function (data) {
                         if (data.status == 200) {
-                            $("#id_level").val(data.list.id);
-                            $("#upd_nama").val(data.list.nama_level);
+                            $("#id").val(data.list.id);
+                            $("#upd_email").val(data.list.email);
+                            $("#upd_status").val(data.list.status);
                         } else {
                             notification(data.status, data.msg);
                         }
@@ -153,71 +148,34 @@
                 });
             });
 
-            $("#btn-insert-data").click(function (e) {
+            $("#btn-update-data").click(function (e) {
                 e.preventDefault();
-                var nama = $("#ins_nama").val();
-                var sendData = "nama_level=" + nama;
-
+                var email = $("#upd_email").val(),
+                    status = $("#upd_status").val(),
+                    id = $("#id").val(),
+                    sendData = "id=" + id + "&email=" + email + "&status=" + status;
                 $.ajax({
                     headers: {
-                        'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                        'X-CSRF-TOKEN': "<?php echo e(csrf_token()); ?>"
                     },
-                    url: "{{ URL('userlevel/insert') }}",
-                    type: "POST",
+                    url: "<?php echo e(URL('customer/update')); ?>",
+                    type: "PUT",
                     data: sendData,
                     dataType: 'json',
                     beforeSend: function() {
-                      loadingBeforeSend();
+                        loadingBeforeSend();
                     },
                     success: function (data) {
                         notification(data.status, data.msg);
-                        $('#infoModalColoredHeader').modal('hide');
-                        loadingAfterSend();
-                        setTimeout(function () {
-                            location.reload();
-                        }, 1000)
+                        $('#infoModalColoredHeader1').modal('hide');
+                  loadingAfterSend();
+                        table.ajax.reload();
                     },
                     error: function (resp) {
                         loadingAfterSend();
                         if (_.has(resp.responseJSON, 'errors')) {
                             _.map(resp.responseJSON.errors, function (val, key) {
                                 $('#' + key + '-error').html(val[0]).fadeIn(1000).fadeOut(5000);
-                            })
-                        }
-                        alert(resp.responseJSON.message)
-                    }
-                });
-            });
-
-            $("#btn-update-data").click(function (e) {
-                e.preventDefault();
-                var level = $("#upd_nama").val();
-                var id = $("#id_level").val(),
-                    sendData = "id=" + id + "&nama_level=" + level;
-                $.ajax({
-                    headers: {
-                        'X-CSRF-TOKEN': "{{ csrf_token() }}"
-                    },
-                    url: "{{ URL('userlevel/update') }}",
-                    type: "PUT",
-                    data: sendData,
-                    dataType: 'json',
-                    beforeSend: function() {
-                      loadingBeforeSend();
-                    },
-                    success: function (data) {
-                        notification(data.status, data.msg);
-                        $('#infoModalColoredHeader1').modal('hide');
-                        loadingAfterSend();
-                        setTimeout(function () {
-                            location.reload();
-                        }, 1000)
-                    },
-                    error: function (resp) {
-                        loadingAfterSend();
-                        if (_.has(resp.responseJSON, 'errors')) {
-                            _.map(resp.responseJSON.errors, function (val, key) {
-                                $('.' + key + '-error').html(val[0]).fadeIn(1000).fadeOut(5000);
                             })
                         }
                         alert(resp.responseJSON.message)
@@ -247,9 +205,9 @@
                             action: function () {
                                 $.ajax({
                                     headers: {
-                                        'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                                        'X-CSRF-TOKEN': "<?php echo e(csrf_token()); ?>"
                                     },
-                                    url: "{{ URL('userlevel/delete') }}",
+                                    url: "<?php echo e(URL('customer/delete')); ?>",
                                     type: "DELETE",
                                     data: "id=" + id,
                                     dataType: "json",
@@ -268,16 +226,45 @@
                     }
                 });
             });
+
+            $("#upd_email").keyup(function (e) {
+                e.preventDefault();
+                var email = $(this).val();
+                $.ajax({
+                    headers: {
+                        "X-CSRF-TOKEN": "<?php echo e(csrf_token()); ?>",
+                    },
+                    url: "<?php echo e(URL('user/cekEmail')); ?>",
+                    type: "GET",
+                    data: "email=" + email,
+                    dataType: "json",
+                    success: function (data) {
+                        if (data.status == 200) {
+                            $("#email-error").html("");
+                            $("#btn-update-data").removeAttr('disabled');
+                        } else {
+                            $("#email-error").html(data.msg);
+                            $("#email-error").css("color", "red");
+                            $("#btn-update-data").attr('disabled', 'disabled');
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        alert(status + " : " + error);
+                    }
+                });
+            });
         });
 
         function loadingBeforeSend() {
-            $("#btn-insert-data, #btn-update-data").attr('disabled', 'disabled');
-            $("#btn-insert-data, #btn-update-data").text('Menyimpan data....');
+            $("#btn-update-data").attr('disabled', 'disabled');
+            $("#btn-update-data").text('Menyimpan data....');
         }
 
         function loadingAfterSend() {
-            $("#btn-insert-data, #btn-update-data").removeAttr('disabled');
-            $("#btn-insert-data, #btn-update-data").text('Submit');
+            $("#btn-update-data").removeAttr('disabled');
+            $("#btn-update-data").text('Submit');
         }
     </script>
-@endpush
+<?php $__env->stopPush(); ?>
+
+<?php echo $__env->make('template', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>

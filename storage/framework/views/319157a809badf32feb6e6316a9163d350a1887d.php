@@ -1,13 +1,12 @@
-@extends('template')
-@section('content')
+<?php $__env->startSection('content'); ?>
     <div class="layout-content">
         <div class="layout-content-body">
-            @if($akses['create'] == 1)
+            <?php if($akses['create'] == 1): ?>
                 <button class="btn btn-info btn-sm" type="button" data-toggle="modal"
                         data-target="#infoModalColoredHeader"
                         style="margin-bottom: 10px"><i class="icon icon-plus-circle"></i> Tambah
                 </button>
-            @endif
+            <?php endif; ?>
             <button class="btn btn-success btn-sm" type="button" id="btnRefresh"
                     style="margin-bottom: 10px"><i class="icon icon-refresh"></i> Refresh
             </button>
@@ -68,7 +67,8 @@
                     </div>
                     <form class="form" method="post">
                         <div class="modal-body">
-                            {{ csrf_field() }}
+                            <?php echo e(csrf_field()); ?>
+
                             <div class="row">
                                 <div class="col-md-3">
                                     <button class="btn btn-success btn-sm" type="button" id="btnTiket1"
@@ -145,7 +145,8 @@
                     </div>
                     <form class="form" method="post" enctype="multipart/form-data">
                         <div class="modal-body">
-                            {{ csrf_field() }}
+                            <?php echo e(csrf_field()); ?>
+
                             <input type="hidden" id="id_trs" name="id_trs">
                             <input type="hidden" id="id_jenis" name="id_jenis" value="1">
                             <div class="form-group">
@@ -174,9 +175,9 @@
             </div>
         </div>
     </div>
-@stop
+<?php $__env->stopSection(); ?>
 
-@push('scripts')
+<?php $__env->startPush('scripts'); ?>
     <script type="text/javascript">
         $(document).ready(function () {
 
@@ -206,33 +207,33 @@
                 },
 
                 button: function (row, type, data) {
-                    var update = "{{ $akses['update'] }}";
-                    var hapus = "{{ $akses['delete'] }}";
+                    var update = "<?php echo e($akses['update']); ?>";
+                    var hapus = "<?php echo e($akses['delete']); ?>";
                     if (update == 1 && hapus == 1) {
                         if (data.id_jenis == 2) {
-                            return '<center>' + `<a href="{{ URL('pemesanan/show') }}/${data.id}" class="btn btn-info btn-sm"  id="${data.id}"><i class="icon icon-eye"></i></a>
+                            return '<center>' + `<a href="<?php echo e(URL('pemesanan/show')); ?>/${data.id}" class="btn btn-info btn-sm"  id="${data.id}"><i class="icon icon-eye"></i></a>
                                                  <a href="#" class="btn btn-success btn-sm btn-edit"  id="${data.id}" data-toggle="modal" data-target="#infoModalColoredHeader1"><i class="icon icon-pencil-square-o"></i></a>
                                                  <a href="#" class="btn btn-danger btn-sm btn-delete"  id="${data.id}"><i class="icon icon-trash-o"></i></a>` + '</center>';
                         } else {
-                            return '<center>' + `<a href="{{ URL('pemesanan/show') }}/${data.id}" class="btn btn-info btn-sm"  id="${data.id}"><i class="icon icon-eye"></i></a>
+                            return '<center>' + `<a href="<?php echo e(URL('pemesanan/show')); ?>/${data.id}" class="btn btn-info btn-sm"  id="${data.id}"><i class="icon icon-eye"></i></a>
                                                  <a href="#" class="btn btn-success btn-sm btn-edit"  id="${data.id}" data-toggle="modal" data-target="#infoModalColoredHeader1"><i class="icon icon-pencil-square-o"></i></a>
                                                  <a href="#" class="btn btn-danger btn-sm btn-delete"  id="${data.id}"><i class="icon icon-trash-o"></i></a>
                                                  <a href="#" class="btn btn-warning btn-sm btn-print"  id="${data.kode_pemesanan}"><i class="icon icon-print"></i></a>` + '</center>';
                         }
                     } else if (update == 1) {
                         if (data.id_jenis == 2) {
-                            return '<center>' + `<a href="{{ URL('pemesanan/show') }}/${data.id}" class="btn btn-info btn-sm"  id="${data.id}"><i class="icon icon-eye"></i></a>
+                            return '<center>' + `<a href="<?php echo e(URL('pemesanan/show')); ?>/${data.id}" class="btn btn-info btn-sm"  id="${data.id}"><i class="icon icon-eye"></i></a>
                                                  <a href="#" class="btn btn-success btn-sm btn-edit"  id="${data.id}" data-toggle="modal" data-target="#infoModalColoredHeader1"><i class="icon icon-pencil-square-o"></i></a>` + '</center>';
                         } else {
-                            return '<center>' + `<a href="{{ URL('pemesanan/show') }}/${data.id}" class="btn btn-info btn-sm"  id="${data.id}"><i class="icon icon-eye"></i></a>
+                            return '<center>' + `<a href="<?php echo e(URL('pemesanan/show')); ?>/${data.id}" class="btn btn-info btn-sm"  id="${data.id}"><i class="icon icon-eye"></i></a>
                                                  <a href="#" class="btn btn-success btn-sm btn-edit"  id="${data.id}" data-toggle="modal" data-target="#infoModalColoredHeader1"><i class="icon icon-pencil-square-o"></i></a>
                                                  <a href="#" class="btn btn-warning btn-sm btn-print"  id="${data.kode_pemesanan}"><i class="icon icon-print"></i></a>` + '</center>';
                         }
                     } else {
                         if (data.id_jenis == 2) {
-                            return '<center>' + `<a href="{{ URL('pemesanan/show') }}/${data.id}" class="btn btn-info btn-sm"  id="${data.id}"><i class="icon icon-eye"></i></a>` + '</center>';
+                            return '<center>' + `<a href="<?php echo e(URL('pemesanan/show')); ?>/${data.id}" class="btn btn-info btn-sm"  id="${data.id}"><i class="icon icon-eye"></i></a>` + '</center>';
                         } else {
-                            return '<center>' + `<a href="{{ URL('pemesanan/show') }}/${data.id}" class="btn btn-info btn-sm"  id="${data.id}"><i class="icon icon-eye"></i></a>
+                            return '<center>' + `<a href="<?php echo e(URL('pemesanan/show')); ?>/${data.id}" class="btn btn-info btn-sm"  id="${data.id}"><i class="icon icon-eye"></i></a>
                                                  <a href="#" class="btn btn-warning btn-sm btn-print"  id="${data.kode_pemesanan}"><i class="icon icon-print"></i></a>` + '</center>';
                         }
                     }
@@ -327,7 +328,7 @@
                     $("#btn-insert-data").removeAttr("disabled");
                     $("#btn-update-data").removeAttr("disabled");
 
-                    var jml_uang = jml_tiket * "{{ $konfig[2]->nilai_konfig }}";
+                    var jml_uang = jml_tiket * "<?php echo e($konfig[2]->nilai_konfig); ?>";
                     var bilangan = jml_uang;
 
                     var reverse = bilangan.toString().split('').reverse().join(''),
@@ -356,9 +357,9 @@
                 $(".modal-title-update").html("Update Data Pemesanan");
                 $.ajax({
                     headers: {
-                        "X-CSRF-TOKEN": "{{ csrf_token() }}",
+                        "X-CSRF-TOKEN": "<?php echo e(csrf_token()); ?>",
                     },
-                    url: "{{ URL('pemesanan/getPemesananById') }}",
+                    url: "<?php echo e(URL('pemesanan/getPemesananById')); ?>",
                     type: "GET",
                     data: "id=" + id,
                     dataType: 'json',
@@ -391,9 +392,9 @@
 
                 $.ajax({
                     headers: {
-                        "X-CSRF-TOKEN": "{{ csrf_token() }}",
+                        "X-CSRF-TOKEN": "<?php echo e(csrf_token()); ?>",
                     },
-                    url: "{{ URL('pemesanan/insert') }}",
+                    url: "<?php echo e(URL('pemesanan/insert')); ?>",
                     type: "POST",
                     data: sendData,
                     dataType: 'json',
@@ -429,9 +430,9 @@
                 var sendData = "id=" + id + "&tiket=" + jml_tiket + "&total=" + replace_total;
                 $.ajax({
                     headers: {
-                        "X-CSRF-TOKEN": "{{ csrf_token() }}",
+                        "X-CSRF-TOKEN": "<?php echo e(csrf_token()); ?>",
                     },
-                    url: "{{ URL('pemesanan/update') }}",
+                    url: "<?php echo e(URL('pemesanan/update')); ?>",
                     type: "PUT",
                     data: sendData,
                     dataType: 'json',
@@ -480,9 +481,9 @@
                             action: function () {
                                 $.ajax({
                                     headers: {
-                                        "X-CSRF-TOKEN": "{{ csrf_token() }}",
+                                        "X-CSRF-TOKEN": "<?php echo e(csrf_token()); ?>",
                                     },
-                                    url: "{{ URL('pemesanan/delete') }}",
+                                    url: "<?php echo e(URL('pemesanan/delete')); ?>",
                                     type: "DELETE",
                                     data: "id=" + id,
                                     dataType: "json",
@@ -503,7 +504,7 @@
             table.on('click', '.btn-print', function () {
                 var id = $(this).attr('id');
                 console.log(id);
-                var url = '{{ URL('pemesanan/printTicket')}}' + '/' + id;
+                var url = '<?php echo e(URL('pemesanan/printTicket')); ?>' + '/' + id;
                 var W = window.open(url);
                 W.window.print();
             });
@@ -515,7 +516,7 @@
             $("#btnTiket1").click(function () {
                 var tiket = 1;
                 var pembayaran = $("#ins_pembayaran").val();
-                var harga = "{{ $konfig[2]->nilai_konfig }}";
+                var harga = "<?php echo e($konfig[2]->nilai_konfig); ?>";
                 var total = tiket * harga;
                 var reverse = total.toString().split('').reverse().join(''),
                     ribuan = reverse.match(/\d{1,3}/g);
@@ -537,7 +538,7 @@
             $("#btnTiket2").click(function () {
                 var tiket = 2;
                 var pembayaran = $("#ins_pembayaran").val();
-                var harga = "{{ $konfig[2]->nilai_konfig }}";
+                var harga = "<?php echo e($konfig[2]->nilai_konfig); ?>";
                 var total = tiket * harga;
                 var reverse = total.toString().split('').reverse().join(''),
                     ribuan = reverse.match(/\d{1,3}/g);
@@ -559,7 +560,7 @@
             $("#btnTiket3").click(function () {
                 var tiket = 3;
                 var pembayaran = $("#ins_pembayaran").val();
-                var harga = "{{ $konfig[2]->nilai_konfig }}";
+                var harga = "<?php echo e($konfig[2]->nilai_konfig); ?>";
                 var total = tiket * harga;
                 var reverse = total.toString().split('').reverse().join(''),
                     ribuan = reverse.match(/\d{1,3}/g);
@@ -581,7 +582,7 @@
             $("#btnTiket4").click(function () {
                 var tiket = 4;
                 var pembayaran = $("#ins_pembayaran").val();
-                var harga = "{{ $konfig[2]->nilai_konfig }}";
+                var harga = "<?php echo e($konfig[2]->nilai_konfig); ?>";
                 var total = tiket * harga;
                 var reverse = total.toString().split('').reverse().join(''),
                     ribuan = reverse.match(/\d{1,3}/g);
@@ -602,13 +603,13 @@
         });
 
         function loadingBeforeSend() {
-            $("#btn-insert-data, #btn-update-data").attr('disabled', 'disabled');
-            $("#btn-insert-data, #btn-update-data").text('Menyimpan data....');
+            $("#btn-update-data").attr('disabled', 'disabled');
+            $("#btn-update-data").text('Menyimpan data....');
         }
 
         function loadingAfterSend() {
-            $("#btn-insert-data, #btn-update-data").removeAttr('disabled');
-            $("#btn-insert-data, #btn-update-data").text('Submit');
+            $("#btn-update-data").removeAttr('disabled');
+            $("#btn-update-data").text('Submit');
         }
     </script>
     <script>
@@ -622,4 +623,6 @@
             table.ajax.reload();
         });
     </script>
-@endpush
+<?php $__env->stopPush(); ?>
+
+<?php echo $__env->make('template', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>

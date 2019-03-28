@@ -1,5 +1,4 @@
-@extends('template')
-@section('content')
+<?php $__env->startSection('content'); ?>
     <div class="layout-content">
         <div class="layout-content-body">
             <button class="btn btn-info btn-sm" type="button" data-toggle="modal" data-target="#infoModalColoredHeader"
@@ -48,7 +47,8 @@
                     </div>
                     <form class="form" method="post">
                         <div class="modal-body">
-                            {{ csrf_field() }}
+                            <?php echo e(csrf_field()); ?>
+
                             <div class="form-group">
                                 <label for="title">Title</label>
                                 <input id="title" name="title" class="form-control" type="text"
@@ -78,9 +78,9 @@
                                 <select id="demo-select2-2" name="main_menu" class="form-control">
                                     <option value="">-- Pilih Main Menu --</option>
                                     <option value="0">Main Menu</option>
-                                    @foreach($menu as $m)
+                                    <?php $__currentLoopData = $menu; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $m): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                         <option value="<?= $m->id ?>"><?= $m->title ?></option>
-                                    @endforeach
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </select>
                                 <span class="text-danger">
                                     <strong id="is_main_menu-error"></strong>
@@ -118,8 +118,9 @@
                     </div>
                     <form class="form" method="post">
                         <div class="modal-body">
-                            @method('PUT')
-                            {{ csrf_field() }}
+                            <?php echo method_field('PUT'); ?>
+                            <?php echo e(csrf_field()); ?>
+
                             <input type="hidden" name="id" id="id">
                             <div class="form-group">
                                 <label for="upd_title">Title</label>
@@ -150,9 +151,9 @@
                                 <select id="upd_main_menu" name="main_menu" class="form-control">
                                     <option value="">-- Pilih Main Menu --</option>
                                     <option value="0">Main Menu</option>
-                                    @foreach($menu as $m)
+                                    <?php $__currentLoopData = $menu; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $m): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                         <option value="<?= $m->id ?>"><?= $m->title ?></option>
-                                    @endforeach
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </select>
                                 <span class="text-danger">
                                     <strong class="is_main_menu-error"></strong>
@@ -179,8 +180,8 @@
             </div>
         </div>
     </div>
-    @stop
-@push('scripts')
+    <?php $__env->stopSection(); ?>
+<?php $__env->startPush('scripts'); ?>
     <script type="text/javascript">
         var table;
         $(document).ready(function () {
@@ -209,10 +210,10 @@
                 order: [],
 
                 ajax: {
-                    "url": '{{ URL('kelolamenu/json') }}',
+                    "url": '<?php echo e(URL('kelolamenu/json')); ?>',
                     "type": "POST",
                     "headers": {
-                        "X-CSRF-TOKEN": "{{ csrf_token() }}",
+                        "X-CSRF-TOKEN": "<?php echo e(csrf_token()); ?>",
                     },
                 },
 
@@ -233,7 +234,7 @@
                 var id = $(this).attr("id");
                 $(".modal-title-update").html("Update Data Menu");
                 $.ajax({
-                    url: "{{ URL('kelolamenu/getMenu') }}",
+                    url: "<?php echo e(URL('kelolamenu/getMenu')); ?>",
                     type: "GET",
                     data: "id=" + id,
                     dataType: 'json',
@@ -266,9 +267,9 @@
 
                 $.ajax({
                     headers: {
-                        'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                        'X-CSRF-TOKEN': "<?php echo e(csrf_token()); ?>"
                     },
-                    url: "{{ URL('kelolamenu/insert') }}",
+                    url: "<?php echo e(URL('kelolamenu/insert')); ?>",
                     type: "POST",
                     data: sendData,
                     dataType: 'json',
@@ -307,9 +308,9 @@
                     sendData = "id=" + id + "&title=" + title + "&url=" + url + "&icon=" + icon + "&is_main_menu=" + menu + "&is_aktif=" + status;
                 $.ajax({
                     headers: {
-                        'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                        'X-CSRF-TOKEN': "<?php echo e(csrf_token()); ?>"
                     },
-                    url: "{{ URL('kelolamenu/update') }}",
+                    url: "<?php echo e(URL('kelolamenu/update')); ?>",
                     type: "PUT",
                     data: sendData,
                     dataType: 'json',
@@ -357,9 +358,9 @@
                             action: function () {
                                 $.ajax({
                                     headers: {
-                                        'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                                        'X-CSRF-TOKEN': "<?php echo e(csrf_token()); ?>"
                                     },
-                                    url: "{{ URL('kelolamenu/delete') }}",
+                                    url: "<?php echo e(URL('kelolamenu/delete')); ?>",
                                     type: "DELETE",
                                     data: "id=" + id,
                                     dataType: "json",
@@ -389,13 +390,15 @@
         }
 
         function loadingBeforeSend() {
-            $("#btn-insert-data, #btn-update-data").attr('disabled', 'disabled');
-            $("#btn-insert-data, #btn-update-data").text('Menyimpan data....');
+            $("#btn-update-data").attr('disabled', 'disabled');
+            $("#btn-update-data").text('Menyimpan data....');
         }
 
         function loadingAfterSend() {
-            $("#btn-insert-data, #btn-update-data").removeAttr('disabled');
-            $("#btn-insert-data, #btn-update-data").text('Submit');
+            $("#btn-update-data").removeAttr('disabled');
+            $("#btn-update-data").text('Submit');
         }
     </script>
-@endpush
+<?php $__env->stopPush(); ?>
+
+<?php echo $__env->make('template', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>

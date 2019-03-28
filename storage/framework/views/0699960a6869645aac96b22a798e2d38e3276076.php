@@ -1,5 +1,4 @@
-@extends('template')
-@section('content')
+<?php $__env->startSection('content'); ?>
     <div class="layout-content">
         <div class="layout-content-body">
             <button class="btn btn-info btn-sm" type="button" data-toggle="modal" data-target="#infoModalColoredHeader"
@@ -52,9 +51,9 @@
                                 <label for="karyawan" class="form-label">Karyawan</label>
                                 <select id="karyawan" name="karyawan" class="form-control">
                                     <option value="">-- Pilih Karyawan --</option>
-                                    @foreach ($user as $m)
+                                    <?php $__currentLoopData = $user; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $m): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                         <option value="<?= $m->id ?>"><?= $m->nama ?></option>
-                                    @endforeach
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </select>
                                 <span class="text-danger">
                                     <strong id="karyawan-error"></strong>
@@ -89,9 +88,9 @@
                                 <label for="demo-select2-1" class="form-label">Level</label>
                                 <select id="demo-select2-1" name="ins_level" class="form-control" multiple>
                                     <option value="">-- Pilih Level --</option>
-                                    @foreach ($level as $m)
+                                    <?php $__currentLoopData = $level; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $m): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                         <option value="<?= $m->id ?>"><?= $m->nama_level ?></option>
-                                    @endforeach
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </select>
                                 <span class="text-danger">
                                 <strong id="level-error"></strong>
@@ -134,9 +133,9 @@
                                 <label for="upd_level" class="form-label">Level</label>
                                 <select id="upd_level" name="upd_level" class="form-control" multiple>
                                     <option value="">-- Pilih Level --</option>
-                                    @foreach ($level as $m)
+                                    <?php $__currentLoopData = $level; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $m): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                         <option value="<?= $m->id ?>"><?= $m->nama_level ?></option>
-                                    @endforeach
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </select>
                                 <span class="text-danger">
                                     <strong class="level-error"></strong>
@@ -163,8 +162,8 @@
             </div>
         </div>
     </div>
-@stop
-@push('scripts')
+<?php $__env->stopSection(); ?>
+<?php $__env->startPush('scripts'); ?>
     <script type="text/javascript">
         var table;
         $(document).ready(function () {
@@ -217,10 +216,10 @@
                 responsive: true,
                 order: [],
                 ajax: {
-                    "url": '{{ URL('user/json') }}',
+                    "url": '<?php echo e(URL('user/json')); ?>',
                     "type": "POST",
                     "headers": {
-                        "X-CSRF-TOKEN": "{{ csrf_token() }}"
+                        "X-CSRF-TOKEN": "<?php echo e(csrf_token()); ?>"
                     },
                 },
                 columns: [
@@ -246,9 +245,9 @@
                 $(".modal-title-update").html("Update Data User");
                 $.ajax({
                     headers: {
-                        "X-CSRF-TOKEN": "{{ csrf_token() }}",
+                        "X-CSRF-TOKEN": "<?php echo e(csrf_token()); ?>",
                     },
-                    url: "{{ URL('user/getUserById') }}",
+                    url: "<?php echo e(URL('user/getUserById')); ?>",
                     type: "GET",
                     data: "id=" + id,
                     dataType: 'json',
@@ -284,9 +283,9 @@
                 } else {
                     $.ajax({
                         headers: {
-                            "X-CSRF-TOKEN": "{{ csrf_token() }}",
+                            "X-CSRF-TOKEN": "<?php echo e(csrf_token()); ?>",
                         },
-                        url: "{{ URL('user/insert') }}",
+                        url: "<?php echo e(URL('user/insert')); ?>",
                         type: "POST",
                         data: sendData,
                         dataType: 'json',
@@ -330,9 +329,9 @@
                 } else {
                     $.ajax({
                         headers: {
-                            "X-CSRF-TOKEN": "{{ csrf_token() }}",
+                            "X-CSRF-TOKEN": "<?php echo e(csrf_token()); ?>",
                         },
-                        url: "{{ URL('user/update') }}",
+                        url: "<?php echo e(URL('user/update')); ?>",
                         type: "PUT",
                         data: sendData,
                         dataType: 'json',
@@ -382,9 +381,9 @@
                             action: function () {
                                 $.ajax({
                                     headers: {
-                                        "X-CSRF-TOKEN": "{{ csrf_token() }}",
+                                        "X-CSRF-TOKEN": "<?php echo e(csrf_token()); ?>",
                                     },
-                                    url: "{{ URL('user/delete') }}",
+                                    url: "<?php echo e(URL('user/delete')); ?>",
                                     type: "DELETE",
                                     data: "id=" + id,
                                     dataType: "json",
@@ -427,9 +426,9 @@
                             action: function () {
                                 $.ajax({
                                     headers: {
-                                        "X-CSRF-TOKEN": "{{ csrf_token() }}",
+                                        "X-CSRF-TOKEN": "<?php echo e(csrf_token()); ?>",
                                     },
-                                    url: "{{ URL('user/resetpassword') }}",
+                                    url: "<?php echo e(URL('user/resetpassword')); ?>",
                                     type: "PUT",
                                     data: "id=" + id,
                                     dataType: "json",
@@ -454,9 +453,9 @@
                 var username = $(this).val();
                 $.ajax({
                     headers: {
-                        "X-CSRF-TOKEN": "{{ csrf_token() }}",
+                        "X-CSRF-TOKEN": "<?php echo e(csrf_token()); ?>",
                     },
-                    url: "{{ URL('user/cekUsername') }}",
+                    url: "<?php echo e(URL('user/cekUsername')); ?>",
                     type: "GET",
                     data: "username=" + username,
                     dataType: "json",
@@ -486,13 +485,15 @@
         }
 
         function loadingBeforeSend() {
-            $("#btn-insert-data, #btn-update-data").attr('disabled', 'disabled');
-            $("#btn-insert-data, #btn-update-data").text('Menyimpan data....');
+            $("#btn-update-data").attr('disabled', 'disabled');
+            $("#btn-update-data").text('Menyimpan data....');
         }
 
         function loadingAfterSend() {
-            $("#btn-insert-data, #btn-update-data").removeAttr('disabled');
-            $("#btn-insert-data, #btn-update-data").text('Submit');
+            $("#btn-update-data").removeAttr('disabled');
+            $("#btn-update-data").text('Submit');
         }
     </script>
-@endpush
+<?php $__env->stopPush(); ?>
+
+<?php echo $__env->make('template', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>

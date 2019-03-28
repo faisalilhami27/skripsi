@@ -1,5 +1,4 @@
-@extends('template')
-@section('content')
+<?php $__env->startSection('content'); ?>
     <div class="layout-content">
         <div class="layout-content-body">
             <button class="btn btn-info btn-sm" type="button" data-toggle="modal" data-target="#infoModalColoredHeader"
@@ -73,8 +72,9 @@
                     </div>
                     <form class="form" method="post">
                         <div class="modal-body">
-                            @method('PUT')
-                            {{ csrf_field() }}
+                            <?php echo method_field('PUT'); ?>
+                            <?php echo e(csrf_field()); ?>
+
                             <input type="hidden" id="id_level" name="id_level">
                             <div class="form-group">
                                 <label for="upd_nama">Nama Level</label>
@@ -94,14 +94,14 @@
             </div>
         </div>
     </div>
-    @stop
-@push('scripts')
+    <?php $__env->stopSection(); ?>
+<?php $__env->startPush('scripts'); ?>
     <script type="text/javascript">
         var table;
         $(document).ready(function () {
             var styles = {
                 button: function (row, type, data) {
-                    return '<center>' + `<a href="{{ URL('userlevel/getakses') }}/${data.id}" id="${data.id}" class="btn btn-info btn-sm btn-akses"><i class="icon icon-eye"></i></a>
+                    return '<center>' + `<a href="<?php echo e(URL('userlevel/getakses')); ?>/${data.id}" id="${data.id}" class="btn btn-info btn-sm btn-akses"><i class="icon icon-eye"></i></a>
                                              <a href="#" class="btn btn-success btn-sm btn-edit" id="${data.id}" data-toggle="modal" data-target="#infoModalColoredHeader1"><i class="icon icon-pencil-square-o"></i></a>
                                              <a href="#" class="btn btn-danger btn-sm btn-delete"  id="${data.id}"><i class="icon icon-trash-o"></i></a>` + '</center>';
                 }
@@ -115,10 +115,10 @@
                 order: [],
 
                 ajax: {
-                    "url": '{{ URL('userlevel/json') }}',
+                    "url": '<?php echo e(URL('userlevel/json')); ?>',
                     "type": "POST",
                     "headers": {
-                        "X-CSRF-TOKEN": "{{ csrf_token() }}",
+                        "X-CSRF-TOKEN": "<?php echo e(csrf_token()); ?>",
                     },
                 },
 
@@ -135,7 +135,7 @@
                 var id = $(this).attr("id");
                 $(".modal-title-update").html("Update Data Level");
                 $.ajax({
-                    url: "{{ URL('userlevel/getLevelById') }}",
+                    url: "<?php echo e(URL('userlevel/getLevelById')); ?>",
                     type: "GET",
                     data: "id=" + id,
                     dataType: 'json',
@@ -160,9 +160,9 @@
 
                 $.ajax({
                     headers: {
-                        'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                        'X-CSRF-TOKEN': "<?php echo e(csrf_token()); ?>"
                     },
-                    url: "{{ URL('userlevel/insert') }}",
+                    url: "<?php echo e(URL('userlevel/insert')); ?>",
                     type: "POST",
                     data: sendData,
                     dataType: 'json',
@@ -196,9 +196,9 @@
                     sendData = "id=" + id + "&nama_level=" + level;
                 $.ajax({
                     headers: {
-                        'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                        'X-CSRF-TOKEN': "<?php echo e(csrf_token()); ?>"
                     },
-                    url: "{{ URL('userlevel/update') }}",
+                    url: "<?php echo e(URL('userlevel/update')); ?>",
                     type: "PUT",
                     data: sendData,
                     dataType: 'json',
@@ -247,9 +247,9 @@
                             action: function () {
                                 $.ajax({
                                     headers: {
-                                        'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                                        'X-CSRF-TOKEN': "<?php echo e(csrf_token()); ?>"
                                     },
-                                    url: "{{ URL('userlevel/delete') }}",
+                                    url: "<?php echo e(URL('userlevel/delete')); ?>",
                                     type: "DELETE",
                                     data: "id=" + id,
                                     dataType: "json",
@@ -271,13 +271,15 @@
         });
 
         function loadingBeforeSend() {
-            $("#btn-insert-data, #btn-update-data").attr('disabled', 'disabled');
-            $("#btn-insert-data, #btn-update-data").text('Menyimpan data....');
+            $("#btn-update-data").attr('disabled', 'disabled');
+            $("#btn-update-data").text('Menyimpan data....');
         }
 
         function loadingAfterSend() {
-            $("#btn-insert-data, #btn-update-data").removeAttr('disabled');
-            $("#btn-insert-data, #btn-update-data").text('Submit');
+            $("#btn-update-data").removeAttr('disabled');
+            $("#btn-update-data").text('Submit');
         }
     </script>
-@endpush
+<?php $__env->stopPush(); ?>
+
+<?php echo $__env->make('template', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
