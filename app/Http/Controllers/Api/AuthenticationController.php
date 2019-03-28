@@ -65,7 +65,7 @@ class AuthenticationController extends Controller
         $replace = str_replace("Bearer ", "", $token);
         $user = CustomerModel::where('id', decrypt($replace))->first();
         $data = [
-            'id' => (String)$user->id,
+            'id' => (String) $user->id,
             'nama' => $user->nama,
             'email' => $user->email,
             'username' => $user->username,
