@@ -265,7 +265,7 @@
 
             //	//datatables
             table = $('#demo-datatables').DataTable({
-                processing: true,
+                // processing: true,
                 autowidth: true,
                 serverSide: true,
                 responsive: true,
