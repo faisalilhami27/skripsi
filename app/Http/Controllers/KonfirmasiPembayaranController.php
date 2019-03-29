@@ -125,7 +125,7 @@ class KonfirmasiPembayaranController extends Controller
                     $mail->Body = $body;
                     if ($mail->send()) {
                         OneSignal::sendNotificationToUser(
-                            "Pembayaran ditolak karena ada kesalahan",
+                            "Pembayaran dari account " . $data->customer->username . " terdapat kesalahan",
                             $userId = $data->customer->player_id,
                             $url = null,
                             $data = null,
@@ -160,7 +160,7 @@ class KonfirmasiPembayaranController extends Controller
                     $mail->Body = $body;
                     if ($mail->send()) {
                         OneSignal::sendNotificationToUser(
-                            "Pembayaran sudah diverifikasi",
+                            "Pembayaran dari account " . $data->customer->username . " sudah diverifikasi",
                             $userId = $data->customer->player_id,
                             $url = null,
                             $data1 = null,

@@ -20,7 +20,7 @@
     <style>sup {
         font-size: 100% !important;
     }</style><![endif]-->
-    <!--[if !mso]><!-- -->
+
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i" rel="stylesheet">
     <!--<![endif]-->
     <style type="text/css">
