@@ -420,9 +420,15 @@
     }
 </script>
 <script>
-    var pusher = new Pusher('ca529096e60dc5ab5a37', {
+    var appKey = '{{ env('PUSHER_APP_KEY') }}';
+    var pusher = new Pusher(appKey, {
         cluster: 'ap1',
         forceTLS: true
+    });
+
+    var channel1 = pusher.subscribe('my-channel');
+    channel1.bind('my-event', function (data) {
+        table.ajax.reload();
     });
 
     var channel = pusher.subscribe('my-channel1');
@@ -430,4 +436,5 @@
         table.ajax.reload();
     });
 </script>
+
 @endpush

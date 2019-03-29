@@ -32,7 +32,7 @@
                                     <tr>
                                         <th style="text-align: center">No</th>
                                         <th width="200" style="text-align: center">Bukti Pembayaran</th>
-                                        <th style="text-align: center">Kode</th>
+                                        <th width="120" style="text-align: center">Kode</th>
                                         <th style="text-align: center">Batas Pembayaran</th>
                                         <th style="text-align: center">Pembayaran</th>
                                         <th style="text-align: center">Customer</th>
@@ -420,9 +420,15 @@
     }
 </script>
 <script>
-    var pusher = new Pusher('ca529096e60dc5ab5a37', {
+    var appKey = '<?php echo e(env('PUSHER_APP_KEY')); ?>';
+    var pusher = new Pusher(appKey, {
         cluster: 'ap1',
         forceTLS: true
+    });
+
+    var channel1 = pusher.subscribe('my-channel');
+    channel1.bind('my-event', function (data) {
+        table.ajax.reload();
     });
 
     var channel = pusher.subscribe('my-channel1');
@@ -430,6 +436,7 @@
         table.ajax.reload();
     });
 </script>
+
 <?php $__env->stopPush(); ?>
 
 <?php echo $__env->make('template', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>

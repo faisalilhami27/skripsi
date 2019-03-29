@@ -603,17 +603,18 @@
         });
 
         function loadingBeforeSend() {
-            $("#btn-update-data").attr('disabled', 'disabled');
-            $("#btn-update-data").text('Menyimpan data....');
+            $("#btn-insert-data, #btn-update-data").attr('disabled', 'disabled');
+            $("#btn-insert-data, #btn-update-data").text('Menyimpan data....');
         }
 
         function loadingAfterSend() {
-            $("#btn-update-data").removeAttr('disabled');
-            $("#btn-update-data").text('Submit');
+            $("#btn-insert-data, #btn-update-data").removeAttr('disabled');
+            $("#btn-insert-data, #btn-update-data").text('Submit');
         }
     </script>
     <script>
-        var pusher = new Pusher('ca529096e60dc5ab5a37', {
+        var appKey = '<?php echo e(env('PUSHER_APP_KEY')); ?>';
+        var pusher = new Pusher(appKey, {
             cluster: 'ap1',
             forceTLS: true
         });

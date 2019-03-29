@@ -612,7 +612,8 @@
         }
     </script>
     <script>
-        var pusher = new Pusher('ca529096e60dc5ab5a37', {
+        var appKey = '{{ env('PUSHER_APP_KEY') }}';
+        var pusher = new Pusher(appKey, {
             cluster: 'ap1',
             forceTLS: true
         });

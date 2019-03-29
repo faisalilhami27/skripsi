@@ -33,13 +33,13 @@ class PembayaranController extends Controller
 
                 if ($update) {
                     $options = array(
-                        'cluster' => 'ap1',
+                        'cluster' => env('PUSHER_APP_CLUSTER'),
                         'useTLS' => true
                     );
                     $pusher = new Pusher(
-                        'ca529096e60dc5ab5a37',
-                        '06eb93af4bceb9c2da38',
-                        '717606',
+                        env('PUSHER_APP_KEY'),
+                        env('PUSHER_APP_SECRET'),
+                        env('PUSHER_APP_ID'),
                         $options
                     );
 
