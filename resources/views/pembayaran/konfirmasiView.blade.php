@@ -189,10 +189,11 @@
 
         //	//datatables
         table = $('#demo-datatables').DataTable({
-            // processing: true,
+            processing: false,
             serverSide: true,
             destroy: true,
             responsive: true,
+            aLengthMenu: [[5, 10, 25, 100], [5, 10, 25, 100]],
             order: [],
 
             ajax: {

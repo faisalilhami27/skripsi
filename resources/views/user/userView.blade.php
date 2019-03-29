@@ -215,6 +215,7 @@
                 processing: true,
                 serverSide: true,
                 responsive: true,
+                aLengthMenu: [[5, 10, 25, 100], [5, 10, 25, 100]],
                 order: [],
                 ajax: {
                     "url": '{{ URL('user/json') }}',
