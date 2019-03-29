@@ -33,7 +33,7 @@
                                     <tr>
                                         <th style="text-align: center">No</th>
                                         <th width="200" style="text-align: center">Bukti Pembayaran</th>
-                                        <th width="120" style="text-align: center">Kode</th>
+                                        <th width="115" style="text-align: center">Kode</th>
                                         <th style="text-align: center">Batas Pembayaran</th>
                                         <th style="text-align: center">Pembayaran</th>
                                         <th style="text-align: center">Customer</th>
