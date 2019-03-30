@@ -1,4 +1,4 @@
-<p align="center"><img src="https://failda-waterpark.com/storage/img/logo2.png" width="150" hegiht="64"><b>Failda Waterpark</b></p>
+<p align="center"><img src="https://failda-waterpark.com/storage/img/logo2.png" width="150" hegiht="64"></p>
 
 ## 1. About Failda Waterpark
 
@@ -51,6 +51,6 @@ Note : Silahkan ubah file .env sesuai kebutuhan dan konfigurasi database.
 
 Link untuk menjalankan API :
 
-[![Run in Postman](https://run.pstmn.io/button.svg)](https://www.getpostman.com/collections/52827144f68b6eb59525)
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/52827144f68b6eb59525)
 
 
