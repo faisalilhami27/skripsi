@@ -20,6 +20,7 @@ class CreateMstPembayaranTable extends Migration
             $table->dateTime('batas_pembayaran');
             $table->text('bukti_pembayaran')->nullable();
             $table->integer('id_karyawan')->unsigned()->nullable();
+            $table->text('komentar')->nullable()->default(null);
             $table->timestamps();
             $table->softDeletes();
 

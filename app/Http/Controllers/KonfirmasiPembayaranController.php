@@ -86,6 +86,7 @@ class KonfirmasiPembayaranController extends Controller
     {
         $konfigurasi = KonfigurasiModel::all();
         $status = $request->id_status;
+        $deskripsi = $request->deskripsi;
         $pengubah = Session::get('id_users');
         $id = $request->id;
         $getKode = KonfirmasiPembayaranModel::findOrFail($id);
@@ -101,16 +102,18 @@ class KonfirmasiPembayaranController extends Controller
             return response()->json(['status' => 449, 'msg' => 'Silahkan ubah status jika data sudah lengkap']);
         }
 
-        $update = KonfirmasiPembayaranModel::find($id)->update([
-            'id_status' => $status,
-            'id_karyawan' => $pengubah
-        ]);
-
         $mail = new PHPMailer(true);
         if ($status == 3) {
+            $update = KonfirmasiPembayaranModel::find($id)->update([
+                'id_status' => $status,
+                'id_karyawan' => $pengubah,
+                'komentar' => $deskripsi,
+                'bukti_pembayaran' => null
+            ]);
+
             if ($update) {
                 try {
-                    $body = view('bodyEmailFailed', compact('data', 'konfigurasi', 'total', 'getKode'))->render();
+                    $body = view('bodyEmailFailed', compact('data', 'konfigurasi', 'total', 'getKode', 'deskripsi'))->render();
                     $mail->IsSMTP(true);
                     $mail->IsHTML(true);
                     $mail->SMTPSecure = "ssl";
@@ -143,6 +146,12 @@ class KonfirmasiPembayaranController extends Controller
                 return response()->json(['status' => 449, 'msg' => 'Data gagal diubah']);
             }
         } else {
+            $update = KonfirmasiPembayaranModel::find($id)->update([
+                'id_status' => $status,
+                'id_karyawan' => $pengubah,
+                'komentar' => null
+            ]);
+
             if ($update) {
                 try {
                     $body = view('bodyEmail', compact('data', 'konfigurasi', 'total', 'getKode'))->render();

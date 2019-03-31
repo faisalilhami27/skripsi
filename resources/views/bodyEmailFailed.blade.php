@@ -389,15 +389,14 @@
                                                             <td class="es-m-txt-c" align="center"
                                                                 style="padding:0;Margin:0;padding-bottom:10px;"><strong><span
                                                                         style="font-size:24px;">Ma<span
-                                                                            style="background-color:#000000;"></span>af pembayaran anda tidak sesuai</span></strong><br>
+                                                                            style="background-color:#000000;"></span>af pembayaran anda terdapat kesalahan</span></strong><br>
                                                             </td>
                                                         </tr>
                                                         <tr style="border-collapse:collapse;">
                                                             <td align="left"
                                                                 style="padding:0;Margin:0;padding-top:15px;padding-bottom:20px;">
                                                                 <p style="text-align: center ;Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:16px;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:24px;color:#777777;">
-                                                                    Bukti pembayaran anda tidak sesuai atau nominal pembayaran anda masih kurang.
-                                                                    Silahkan lakukan konfirmasi pembayaran kembali. Terima kasih<br></p></td>
+                                                                    {{ $deskripsi }}<br></p></td>
 
                                                         </tr>
                                                     </table>
@@ -637,7 +636,7 @@
                                                                       style="border-style:solid;border-color:transparent;background:#66B3B7;border-width:0px;display:inline-block;border-radius:5px;width:auto;"> <a
                                                                         href="https://viewstripo.email/"
                                                                         class="es-button" target="_blank"
-                                                                        style="mso-style-priority:100 !important;text-decoration:none;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;font-size:18px;color:#FFFFFF;border-style:solid;border-color:#66B3B7;border-width:15px 30px 15px 30px;display:inline-block;background:#66B3B7;border-radius:5px;font-weight:normal;font-style:normal;line-height:22px;width:auto;text-align:center;">Confirmed</a> </span>
+                                                                        style="mso-style-priority:100 !important;text-decoration:none;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;font-size:18px;color:#FFFFFF;border-style:solid;border-color:#66B3B7;border-width:15px 30px 15px 30px;display:inline-block;background:#66B3B7;border-radius:5px;font-weight:normal;font-style:normal;line-height:22px;width:auto;text-align:center;">Pembayaran Tidak Sesuai</a> </span>
                                                             </td>
                                                         </tr>
                                                     </table>

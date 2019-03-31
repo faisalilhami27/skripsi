@@ -77,6 +77,13 @@
                                         <strong id="id_status-error"></strong>
                                     </span>
                             </div>
+                            <div class="form-group deskripsi" style="display: none">
+                                <label for="upd_deskripsi" class="control-label">Pesan Kesalahan</label>
+                                <textarea id="upd_deskripsi" class="form-control" placeholder="Masukan deskripsi" name="upd_deskripsi" rows="3" required></textarea>
+                                <span class="text-danger">
+                                    <strong class="deskripsi-error"></strong>
+                                </span>
+                            </div>
                         </div>
                         <div class="modal-footer">
                             <button class="btn btn-default" data-dismiss="modal" type="button">Cancel</button>
@@ -137,9 +144,11 @@
             },
 
             images: function (row, type, data) {
-                if (data.bukti_pembayaran == null) {
+                if (data.bukti_pembayaran == null && data.id_status == 1) {
                     return 'Belum konfirmasi pembayaran';
-                } else {
+                } else if (data.bukti_pembayaran == null && data.id_status == 3) {
+                    return 'Harus upload ulang';
+                }  else {
                     return `<a href="#" id="${data.id}" class="btn-link" data-toggle="modal" data-target="#infoModalColoredHeader2">View bukti pembayaran</a>`;
                 }
             },
@@ -275,6 +284,10 @@
                     if (data.status == 200) {
                         $("#id_konfirmasi").val(data.list.id);
                         $("#upd_status").val(data.list.id_status);
+                        if (data.list.id_status == 3) {
+                            $(".deskripsi").show();
+                            $("#upd_deskripsi").val(data.list.komentar);
+                        }
                     } else {
                         notification(502, "Data tidak ditemukan");
                     }
@@ -315,7 +328,18 @@
             e.preventDefault();
             var id = $("#id_konfirmasi").val();
             var id_status = $("#upd_status").val();
-            var sendData = "id=" + id + "&id_status=" + id_status;
+            var deskripsi = $("#upd_deskripsi").val();
+            var sendData = "id=" + id + "&id_status=" + id_status + "&deskripsi=" + deskripsi;
+
+            if (id_status == 3 && deskripsi == '') {
+                $(".deskripsi-error").html("The deskripsi field is required");
+                $(".deskripsi-error").css("color", "red");
+                $(".deskripsi-error").fadeIn(1000);
+                $(".deskripsi-error").fadeOut(5000);
+                $("#btn-update-data").attr('disabled', 'disabled');
+                return;
+            }
+
             $.ajax({
                 headers: {
                     "X-CSRF-TOKEN": "{{ csrf_token() }}",
@@ -392,6 +416,23 @@
         $("#btnRefresh").click(function () {
             table.ajax.reload();
         });
+
+        $("#upd_deskripsi").keyup(function () {
+           var deskripsi = $(this).val();
+           if (deskripsi != '') {
+               $("#btn-update-data").removeAttr('disabled');
+           }
+        });
+
+        $("#upd_status").change(function () {
+            var status = $(this).val();
+            if (status == 3) {
+                $(".deskripsi").slideDown(1000);
+            } else {
+                $(".deskripsi").slideUp(1000);
+                $("#btn-update-data").removeAttr('disabled');
+            }
+        })
     });
 
     function format(angka) {
