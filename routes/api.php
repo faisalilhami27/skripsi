@@ -25,6 +25,11 @@ Route::post('changePassword', 'Api\ForgotPasswordController@changePassword');
 Route::post('register', 'Api\RegisterCustomerController@register');
 Route::post('login', 'Api\AuthenticationController@login');
 
+// Route Content Mobile
+Route::prefix('mobile')->group(function () {
+    Route::get('contentMobile', 'Api\KonfigurasiMobileController@index');
+});
+
 Route::middleware(['auth:api_customer'])->group(function () {
     // Route Customer
     Route::prefix('customer')->group(function () {
@@ -38,11 +43,6 @@ Route::middleware(['auth:api_customer'])->group(function () {
         Route::get('getPemesanan', 'Api\PemesananController@show');
         Route::get('getPemesananByCustomer', 'Api\PemesananController@getPemesananByIdCustomer');
         Route::post('insertPemesanan', 'Api\PemesananController@store');
-    });
-
-    // Route Content Mobile
-    Route::prefix('mobile')->group(function () {
-        Route::get('contentMobile', 'Api\KonfigurasiMobileController@index');
     });
 
     // Route Content Mobile
