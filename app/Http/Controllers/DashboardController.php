@@ -17,28 +17,25 @@ class DashboardController extends Controller
             ->where('tgl_pemesanan', '=', $date)
             ->where('id_jenis', '=', 1)
             ->first()->total;
-        $hari2 = PemesananModel::select(DB::raw('count(kode_pemesanan) as total'))
-            ->whereHas('pembayaran', function ($query) {
-                $query->where('id_status', 2);
-            })
-            ->where('tgl_pemesanan', '=', $date)
-            ->where('id_jenis', '=', 2)
-            ->first()->total;
         $totalUang = PemesananModel::select(DB::raw('sum(total_uang_masuk) as total'))
             ->where('tgl_pemesanan', '=', $date)
             ->where('id_jenis', '=', 1)
             ->first()->total;
-        $totalUangFromMobile = PemesananModel::select(DB::raw('sum(total_uang_masuk) as total'))
-            ->whereHas('pembayaran', function ($query) {
-                $query->where('id_status', 2);
-            })
-            ->where('tgl_pemesanan', '=', $date)
-            ->where('id_jenis', '=', 2)
-            ->first()->total;
 
+        $client = new \GuzzleHttp\Client();
+        $token = [
+            'Authorization' => 'Bearer ' . env('TOKEN_MOOTA')
+        ];
+        $request = $client->get('https://app.moota.co/api/v1/bank/'. env('BANK_ID') .'/mutation', [
+            'headers' => $token
+        ]);
+        $response = $request->getBody()->getContents();
+        $decode = json_decode($response);
+        $saldoTerbaru = substr($decode->data[0]->balance, 0, -3);
+        $saldoTerakhir = substr($decode->data[1]->balance, 0, -3);
         $title = "Halaman Dashboard";
         $deskripsi = "Halaman Dashboard digunakan untuk melihat statistik";
-        return view('dashboard', compact('title', 'deskripsi', 'hari', 'hari2', 'totalUangFromMobile', 'totalUang'));
+        return view('dashboard', compact('title', 'deskripsi', 'hari', 'saldoTerakhir', 'saldoTerbaru', 'totalUang'));
     }
 
     public function chartForDataByDay()

@@ -33,8 +33,8 @@
                     <div class="card bg-info no-border">
                         <div class="card-values">
                             <div class="p-x">
-                                <small>Penjualan Tiket Online Per Hari</small>
-                                <h3 class="card-title fw-l">{{ $hari2 }}</h3>
+                                <small>Saldo Terakhir di Bank</small>
+                                <h3 class="card-title fw-l">Rp. {{ number_format($saldoTerakhir, 0, ".", ".") }}</h3>
                             </div>
                         </div>
                         <div class="card-chart">
@@ -46,8 +46,8 @@
                     <div class="card bg-warning no-border">
                         <div class="card-values">
                             <div class="p-x">
-                                <small>Total Pemasukan Dari Tiket Online Per Hari</small>
-                                <h3 class="card-title fw-l">Rp. {{ number_format($totalUangFromMobile, 0 , ".", ".") }}</h3>
+                                <small>Saldo Terbaru di Bank</small>
+                                <h3 class="card-title fw-l">Rp. {{ number_format($saldoTerbaru, 0, ".", ".") }}</h3>
                             </div>
                         </div>
                         <div class="card-chart">
