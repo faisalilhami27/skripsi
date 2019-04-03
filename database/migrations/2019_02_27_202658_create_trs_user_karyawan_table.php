@@ -13,7 +13,7 @@ class CreateTrsUserKaryawanTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_karyawan', function (Blueprint $table) {
+        Schema::create('role_user_karyawan', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('id_karyawan');
             $table->integer('id_user_level');
