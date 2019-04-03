@@ -32,6 +32,6 @@ class CreateMstMenuTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mst_menu');
+        Schema::dropIfExists('menu');
     }
 }

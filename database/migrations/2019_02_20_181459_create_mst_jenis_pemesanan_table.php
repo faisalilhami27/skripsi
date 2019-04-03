@@ -28,6 +28,6 @@ class CreateMstJenisPemesananTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mst_jenis_pemesanan');
+        Schema::dropIfExists('jenis_pemesanan');
     }
 }

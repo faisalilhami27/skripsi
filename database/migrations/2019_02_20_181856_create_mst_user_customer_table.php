@@ -36,6 +36,6 @@ class CreateMstUserCustomerTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mst_user_customer');
+        Schema::dropIfExists('user_customer');
     }
 }

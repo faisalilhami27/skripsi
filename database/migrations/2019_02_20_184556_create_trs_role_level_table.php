@@ -36,6 +36,6 @@ class CreateTrsRoleLevelTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('trs_role_level');
+        Schema::dropIfExists('role_level');
     }
 }

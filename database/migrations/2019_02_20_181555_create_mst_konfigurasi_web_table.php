@@ -28,6 +28,6 @@ class CreateMstKonfigurasiWebTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mst_konfigurasi_web');
+        Schema::dropIfExists('konfigurasi_web');
     }
 }

@@ -28,6 +28,6 @@ class CreateMstStatusPembayaranTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mst_status_pembayaran');
+        Schema::dropIfExists('status_pembayaran');
     }
 }

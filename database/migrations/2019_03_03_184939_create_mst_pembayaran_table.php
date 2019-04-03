@@ -36,6 +36,6 @@ class CreateMstPembayaranTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mst_pembayaran');
+        Schema::dropIfExists('pembayaran');
     }
 }

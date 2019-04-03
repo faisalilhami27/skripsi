@@ -40,6 +40,6 @@ class CreateMstPemesananTiketTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mst_pemesanan_tiket');
+        Schema::dropIfExists('pemesanan_tiket');
     }
 }

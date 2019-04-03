@@ -30,6 +30,6 @@ class CreateMstKonfigurasiMobileTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mst_konfigurasi_mobile');
+        Schema::dropIfExists('konfigurasi_mobile');
     }
 }

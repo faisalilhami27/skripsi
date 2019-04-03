@@ -28,6 +28,6 @@ class CreateMstUserLevelTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mst_user_level');
+        Schema::dropIfExists('user_level');
     }
 }

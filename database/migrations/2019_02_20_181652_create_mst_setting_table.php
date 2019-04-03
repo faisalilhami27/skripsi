@@ -29,6 +29,6 @@ class CreateMstSettingTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mst_setting');
+        Schema::dropIfExists('setting');
     }
 }

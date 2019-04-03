@@ -30,6 +30,6 @@ class CreateMstKaryawanTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mst_karyawan');
+        Schema::dropIfExists('karyawan');
     }
 }
