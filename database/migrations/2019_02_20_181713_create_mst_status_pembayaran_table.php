@@ -13,7 +13,7 @@ class CreateMstStatusPembayaranTable extends Migration
      */
     public function up()
     {
-        Schema::create('mst_status_pembayaran', function (Blueprint $table) {
+        Schema::create('status_pembayaran', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nama_status', 30);
             $table->timestamps();

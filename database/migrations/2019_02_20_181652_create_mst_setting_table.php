@@ -13,7 +13,7 @@ class CreateMstSettingTable extends Migration
      */
     public function up()
     {
-        Schema::create('mst_setting', function (Blueprint $table) {
+        Schema::create('setting', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nama_setting', 30);
             $table->string('value', 5);

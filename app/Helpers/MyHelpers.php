@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Session;
 if (!function_exists('sidebar')) {
     function sidebar()
     {
-        $setting = DB::table('mst_setting')->where('id', 1)->first();
+        $setting = DB::table('setting')->where('id', 1)->first();
         if ($setting->value == "ya") {
             $sqlMenu = MenuModel::whereIn('id', function ($query) {
                 $idUserLevel = Session::get('id_user_level');
@@ -176,7 +176,7 @@ if (!function_exists('checkAccess')) {
 if (!function_exists('getIdMenu')) {
     function getIdMenu()
     {
-        $setting = DB::table('mst_setting')->where('id', 1)->first();
+        $setting = DB::table('setting')->where('id', 1)->first();
         if ($setting->value == "ya") {
             $sqlMenu = MenuModel::whereIn('id', function ($query) {
                 $idUserLevel = Session::get('id_user_level');

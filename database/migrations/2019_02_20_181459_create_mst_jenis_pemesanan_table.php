@@ -13,7 +13,7 @@ class CreateMstJenisPemesananTable extends Migration
      */
     public function up()
     {
-        Schema::create('mst_jenis_pemesanan', function (Blueprint $table) {
+        Schema::create('jenis_pemesanan', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nama_jenis', 30);
             $table->timestamps();

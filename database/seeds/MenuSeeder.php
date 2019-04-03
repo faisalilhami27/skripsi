@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class MenuSeeder extends Seeder
 {
@@ -11,7 +12,7 @@ class MenuSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('mst_menu')->insert([
+        DB::table('menu')->insert([
             [
                 'title' => 'Dashboard',
                 'url' => 'dashboard',

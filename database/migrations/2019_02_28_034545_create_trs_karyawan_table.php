@@ -13,7 +13,7 @@ class CreateTrsKaryawanTable extends Migration
      */
     public function up()
     {
-        Schema::create('mst_user_karyawan', function (Blueprint $table) {
+        Schema::create('user_karyawan', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('id_karyawan')->unsigned()->index();
             $table->string('username', 20);

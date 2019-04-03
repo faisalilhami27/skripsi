@@ -12,7 +12,7 @@ class KonfigurasiSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('mst_konfigurasi_web')->insert([
+        DB::table('konfigurasi_web')->insert([
             [
                 'kode_konfig' => "ALAMAT_PERUSAHAAN",
                 'nilai_konfig' => 'Kp. Rawasari RT/RW 02/03 Kecamatan Sukanagara Desa Sukanagara Kabupaten Cianjur, Jawa Barat, 42364.'

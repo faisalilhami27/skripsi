@@ -12,7 +12,7 @@ class JenisPemesananSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('mst_jenis_pemesanan')->insert([
+        DB::table('jenis_pemesanan')->insert([
             [
                 'nama_jenis' => 'Langsung',
             ],

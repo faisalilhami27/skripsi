@@ -12,7 +12,7 @@ class SettingSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('mst_setting')->insert([
+        DB::table('setting')->insert([
             [
                 'nama_setting' => 'Tampil Menu',
                 'value' => 'ya'

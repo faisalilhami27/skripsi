@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class KonfirmasiPembayaranModel extends Model
 {
     use SoftDeletes;
-    protected $table = "mst_pembayaran";
+    protected $table = "pembayaran";
     protected $primaryKey = "id";
     protected $dates = ['deleted_at', 'updated_at', 'created_at'];
     protected $fillable = ['kode_pemesanan', 'id_status', 'bukti_pembayaran', 'id_karyawan', "batas_pembayaran"];

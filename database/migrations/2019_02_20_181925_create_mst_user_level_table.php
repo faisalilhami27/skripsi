@@ -13,7 +13,7 @@ class CreateMstUserLevelTable extends Migration
      */
     public function up()
     {
-        Schema::create('mst_user_level', function (Blueprint $table) {
+        Schema::create('user_level', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nama_level', 30);
             $table->timestamps();

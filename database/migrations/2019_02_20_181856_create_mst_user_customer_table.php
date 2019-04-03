@@ -13,7 +13,7 @@ class CreateMstUserCustomerTable extends Migration
      */
     public function up()
     {
-        Schema::create('mst_user_customer', function (Blueprint $table) {
+        Schema::create('user_customer', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nama', 60);
             $table->string('username', 20);

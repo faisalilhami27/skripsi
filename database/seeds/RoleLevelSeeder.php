@@ -12,7 +12,7 @@ class RoleLevelSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('trs_role_level')->insert([
+        DB::table('role_level')->insert([
             [
                 'id_user_level' => 1,
                 'id_menu' => 1,

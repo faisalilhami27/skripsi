@@ -112,7 +112,7 @@ class UserLevelController extends Controller
         if ($akses == null) {
             $update = RoleLevelModel::create($data);
         } else {
-            $update = DB::table('trs_role_level')
+            $update = DB::table('role_level')
                 ->where('id_menu', $id_menu)
                 ->where('id_user_level', $id_user_level)
                 ->delete();

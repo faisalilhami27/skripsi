@@ -13,7 +13,7 @@ class CreateMstMenuTable extends Migration
      */
     public function up()
     {
-        Schema::create('mst_menu', function (Blueprint $table) {
+        Schema::create('menu', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title', 50);
             $table->string('url', 50);

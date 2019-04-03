@@ -12,7 +12,7 @@ class StatusPembayaranSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('mst_status_pembayaran')->insert([
+        DB::table('status_pembayaran')->insert([
             [
                 'nama_status' => 'Menunggu Pembayaran',
             ],

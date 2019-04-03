@@ -13,7 +13,7 @@ class CreateMstKaryawanTable extends Migration
      */
     public function up()
     {
-        Schema::create('mst_karyawan', function (Blueprint $table) {
+        Schema::create('karyawan', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nama', 50);
             $table->string('email', 60);

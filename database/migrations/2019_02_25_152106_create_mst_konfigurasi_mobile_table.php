@@ -13,7 +13,7 @@ class CreateMstKonfigurasiMobileTable extends Migration
      */
     public function up()
     {
-        Schema::create('mst_konfigurasi_mobile', function (Blueprint $table) {
+        Schema::create('konfigurasi_mobile', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title', 50);
             $table->text('images');

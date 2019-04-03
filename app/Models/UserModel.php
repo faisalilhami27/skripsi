@@ -10,7 +10,7 @@ class UserModel extends Authenticatable
 {
     use Notifiable;
     use SoftDeletes;
-    protected $table = "mst_user_karyawan";
+    protected $table = "user_karyawan";
     protected $guard = 'api_karyawan';
     protected $primaryKey = "id";
     protected $dates = ['deleted_at', 'updated_at', 'created_at'];

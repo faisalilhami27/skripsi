@@ -12,7 +12,7 @@ class UserLevelSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('mst_user_level')->insert([
+        DB::table('user_level')->insert([
             [
                 'nama_level' => 'Administrator'
             ],

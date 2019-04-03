@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class KonfigurasiModel extends Model
 {
     use SoftDeletes;
-    protected $table = "mst_konfigurasi_web";
+    protected $table = "konfigurasi_web";
     protected $primaryKey = "id";
     protected $dates = ['deleted_at', 'updated_at', 'created_at'];
     protected $fillable = ['kode_konfig', 'nilai_konfig'];

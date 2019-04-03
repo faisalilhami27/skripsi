@@ -13,7 +13,7 @@ class CreateTrsRoleLevelTable extends Migration
      */
     public function up()
     {
-        Schema::create('trs_role_level', function (Blueprint $table) {
+        Schema::create('role_level', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('id_user_level')->unsigned();
             $table->integer('id_menu')->unsigned();

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class KaryawanSeeder extends Seeder
 {
@@ -11,7 +12,7 @@ class KaryawanSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('mst_karyawan')->insert([
+        DB::table('karyawan')->insert([
             [
                 'nama' => "Muhamad Faisal Ilhami Akbar",
                 'email' => 'faisal.ilhami1997@gmail.com',

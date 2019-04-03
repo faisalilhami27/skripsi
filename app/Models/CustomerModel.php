@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class CustomerModel extends Authenticatable
 {
     use SoftDeletes;
-    protected $table = "mst_user_customer";
+    protected $table = "user_customer";
     protected $guard = 'api_customer';
     protected $primaryKey = "id";
     protected $dates = ['deleted_at', 'updated_at', 'created_at'];

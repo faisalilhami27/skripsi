@@ -13,7 +13,7 @@ class CreateMstPembayaranTable extends Migration
      */
     public function up()
     {
-        Schema::create('mst_pembayaran', function (Blueprint $table) {
+        Schema::create('pembayaran', function (Blueprint $table) {
             $table->increments('id');
             $table->string('kode_pemesanan', 20);
             $table->integer('id_status')->unsigned();

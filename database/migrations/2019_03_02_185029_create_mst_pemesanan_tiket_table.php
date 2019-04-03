@@ -13,7 +13,7 @@ class CreateMstPemesananTiketTable extends Migration
      */
     public function up()
     {
-        Schema::create('mst_pemesanan_tiket', function (Blueprint $table) {
+        Schema::create('pemesanan_tiket', function (Blueprint $table) {
             $table->increments('id');
             $table->string('kode_pemesanan', 20)->unique();
             $table->date('tgl_pemesanan');
