@@ -24,8 +24,8 @@ class CreateMstPembayaranTable extends Migration
             $table->timestamps();
             $table->softDeletes();
 
-            $table->foreign('id_karyawan')->references('id')->on('mst_user_karyawan');
-            $table->foreign('id_status')->references('id')->on('mst_status_pembayaran');
+            $table->foreign('id_karyawan')->references('id')->on('user_karyawan');
+            $table->foreign('id_status')->references('id')->on('status_pembayaran');
         });
     }
 

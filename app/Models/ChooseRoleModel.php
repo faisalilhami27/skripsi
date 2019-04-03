@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class   ChooseRoleModel extends Model
 {
-    protected $table = "user_karyawan";
+    protected $table = "role_user_karyawan";
     protected $primaryKey = "id";
     protected $dates = ['deleted_at', 'updated_at', 'created_at'];
     protected $fillable = ['id_user_level', 'id_karyawan'];

@@ -28,8 +28,8 @@ class CreateMstPemesananTiketTable extends Migration
             $table->timestamps();
             $table->softDeletes();
 
-            $table->foreign('id_karyawan')->references('id')->on('mst_user_karyawan');
-            $table->foreign('id_jenis')->references('id')->on('mst_jenis_pemesanan');
+            $table->foreign('id_karyawan')->references('id')->on('user_karyawan');
+            $table->foreign('id_jenis')->references('id')->on('jenis_pemesanan');
         });
     }
 

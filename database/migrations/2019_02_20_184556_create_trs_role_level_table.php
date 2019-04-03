@@ -24,8 +24,8 @@ class CreateTrsRoleLevelTable extends Migration
             $table->timestamps();
             $table->softDeletes();
 
-            $table->foreign('id_user_level')->references('id')->on('mst_user_level');
-            $table->foreign('id_menu')->references('id')->on('mst_menu');
+            $table->foreign('id_user_level')->references('id')->on('user_level');
+            $table->foreign('id_menu')->references('id')->on('menu');
         });
     }
 

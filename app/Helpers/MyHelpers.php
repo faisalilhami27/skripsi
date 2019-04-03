@@ -22,7 +22,7 @@ if (!function_exists('sidebar')) {
             $sqlMenu = MenuModel::whereIn('id', function ($query) {
                 $idUserLevel = Session::get('id_user_level');
                 $query->select('id_menu')
-                    ->from('trs_role_level')
+                    ->from('role_level')
                     ->where('id_user_level', $idUserLevel);
             })
                 ->where('is_main_menu', 0)
@@ -181,7 +181,7 @@ if (!function_exists('getIdMenu')) {
             $sqlMenu = MenuModel::whereIn('id', function ($query) {
                 $idUserLevel = Session::get('id_user_level');
                 $query->select('id_menu')
-                    ->from('trs_role_level')
+                    ->from('role_level')
                     ->where('id_user_level', $idUserLevel);
             })
                 ->where('is_main_menu', 0)
