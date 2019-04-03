@@ -404,13 +404,13 @@
         }
 
         function loadingBeforeSend() {
-            $("#btn-update-data").attr('disabled', 'disabled');
-            $("#btn-update-data").text('Menyimpan data....');
+            $("#btn-update-data, #btn-insert-data").attr('disabled', 'disabled');
+            $("#btn-update-data, #btn-insert-data").text('Menyimpan data....');
         }
 
         function loadingAfterSend() {
-            $("#btn-update-data").removeAttr('disabled');
-            $("#btn-update-data").text('Submit');
+            $("#btn-update-data, #btn-insert-data").removeAttr('disabled');
+            $("#btn-update-data, #btn-insert-data").text('Submit');
         }
     </script>
 @endpush
