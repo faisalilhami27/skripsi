@@ -17,7 +17,7 @@ class PembayaranController extends Controller
         $size = 1000000;
         $cekImage = KonfirmasiPembayaranModel::where('kode_pemesanan', $kode)->first();
         $images = $cekImage->bukti_pembayaran;
-//        return response()->json(['status' => $images, 'msg' => 'Silahkan pilih gambar']);
+
         if (is_null($file)) {
             return response()->json(['status' => 500, 'msg' => 'Silahkan pilih gambar']);
         } else {
