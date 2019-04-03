@@ -12,7 +12,7 @@ class ChooseRoleSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('user_karyawan')->insert([
+        DB::table('role_user_karyawan')->insert([
             [
                 'id_karyawan' => 1,
                 'id_user_level' => 1
