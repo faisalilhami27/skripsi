@@ -11,7 +11,7 @@ class KonfirmasiPembayaranModel extends Model
     protected $table = "pembayaran";
     protected $primaryKey = "id";
     protected $dates = ['deleted_at', 'updated_at', 'created_at'];
-    protected $fillable = ['kode_pemesanan', 'id_status', 'bukti_pembayaran', 'id_karyawan', "batas_pembayaran"];
+    protected $fillable = ['kode_pemesanan', 'id_status', 'bukti_pembayaran', 'id_karyawan', "batas_pembayaran", "komentar"];
 
     public function pemesananTiket()
     {
