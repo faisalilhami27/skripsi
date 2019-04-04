@@ -20,7 +20,7 @@
                     <div class="card bg-danger no-border">
                         <div class="card-values">
                             <div class="p-x">
-                                <small>Total Pemasukan Dari Tiket Offline Per Hari</small>
+                                <small>Total Uang Dari Tiket Offline Per Hari</small>
                                 <h3 class="card-title fw-l">Rp. {{ number_format($totalUang, 0 , ".", ".") }}</h3>
                             </div>
                         </div>
