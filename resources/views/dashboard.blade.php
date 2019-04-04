@@ -20,7 +20,7 @@
                     <div class="card bg-danger no-border">
                         <div class="card-values">
                             <div class="p-x">
-                                <small>Total Uang Dari Tiket Offline Per Hari</small>
+                                <small>Pemasukan Tiket Offline Per Hari</small>
                                 <h3 class="card-title fw-l">Rp. {{ number_format($totalUang, 0 , ".", ".") }}</h3>
                             </div>
                         </div>
@@ -33,8 +33,8 @@
                     <div class="card bg-info no-border">
                         <div class="card-values">
                             <div class="p-x">
-                                <small>Saldo Terakhir di Bank</small>
-                                <h3 class="card-title fw-l">Rp. {{ number_format($saldoTerakhir, 0, ".", ".") }}</h3>
+                                <small>Penjualan Tiket Online Per Hari</small>
+                                <h3 class="card-title fw-l">{{ $hari2 }}</h3>
                             </div>
                         </div>
                         <div class="card-chart">

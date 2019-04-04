@@ -11,5 +11,5 @@ class MenuModel extends Model
     protected $table = "menu";
     protected $primaryKey = "id";
     protected $dates = ['deleted_at', 'updated_at', 'created_at'];
-    protected $fillable = ["title", "icon", "url", "is_main_menu", "is_aktif"];
+    protected $fillable = ["title", "icon", "url", "is_main_menu", "is_aktif", "order_num"];
 }

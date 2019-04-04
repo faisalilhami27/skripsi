@@ -27,6 +27,7 @@ if (!function_exists('sidebar')) {
             })
                 ->where('is_main_menu', 0)
                 ->where('is_aktif', 'y')
+                ->orderBy('order_num', 'ASC')
                 ->get();
         } else {
             $sqlMenu = MenuModel::where('is_aktif', 'y')

@@ -18,6 +18,7 @@ class CreateMstMenuTable extends Migration
             $table->string('title', 50);
             $table->string('url', 50);
             $table->string('icon', 50);
+            $table->integer('order_num')->nullable();
             $table->integer('is_main_menu');
             $table->enum('is_aktif', ['y', 'n']);
             $table->timestamps();

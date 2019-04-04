@@ -20,7 +20,7 @@ class MenuController extends Controller
 
     public function datatable()
     {
-        $menu = MenuModel::select("id", "title", "url", "icon", "is_main_menu", "is_aktif")->get();
+        $menu = MenuModel::select("id", "title", "url", "icon", "is_main_menu", "is_aktif", "order_num")->get();
         return DataTables::of($menu)->addIndexColumn()->make(true);
     }
 
@@ -29,6 +29,7 @@ class MenuController extends Controller
         $title = htmlspecialchars($request->title);
         $url = htmlspecialchars($request->url);
         $icon = htmlspecialchars($request->icon);
+        $nomor = htmlspecialchars($request->nomor);
         $menu = $request->is_main_menu;
         $status = $request->is_aktif;
 
@@ -36,6 +37,7 @@ class MenuController extends Controller
             'title' => $title,
             'url' => $url,
             'icon' => $icon,
+            'order_num' => $nomor,
             'is_main_menu' => $menu,
             'is_aktif' => $status
         ]);
@@ -65,6 +67,7 @@ class MenuController extends Controller
         $title = htmlspecialchars($request->title);
         $url = htmlspecialchars($request->url);
         $icon = htmlspecialchars($request->icon);
+        $nomor = htmlspecialchars($request->nomor);
         $menu = $request->is_main_menu;
         $status = $request->is_aktif;
         $id = $request->id;
@@ -73,6 +76,7 @@ class MenuController extends Controller
             'title' => $title,
             'url' => $url,
             'icon' => $icon,
+            'order_num' => $nomor,
             'is_main_menu' => $menu,
             'is_aktif' => $status
         ]);

@@ -27,6 +27,7 @@ class MenuRequest extends FormRequest
             'title' => 'required|max:30|regex:/^[a-zA-Z ]*$/',
             'url' => 'required|max:30|regex:/^[a-zA-Z]*$/',
             'icon' => 'required|max:30',
+            'nomor' => 'required|max:4|regex:/^[0-9]*$/',
             'is_main_menu' => 'required',
             'is_aktif' => 'required'
         ];

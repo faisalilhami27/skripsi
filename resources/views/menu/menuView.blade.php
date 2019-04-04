@@ -22,6 +22,7 @@
                                         <th>Title</th>
                                         <th>URL</th>
                                         <th>Icon</th>
+                                        <th>Nomor Urut</th>
                                         <th>Main Menu</th>
                                         <th>Status</th>
                                         <th width="150px">Aksi</th>
@@ -52,7 +53,7 @@
                             <div class="form-group">
                                 <label for="title">Title</label>
                                 <input id="title" name="title" class="form-control" type="text"
-                                       placeholder="Masukan title menu">
+                                       placeholder="Masukan title menu" maxlength="30">
                                 <span class="text-danger">
                                     <strong id="title-error"></strong>
                                 </span>
@@ -60,7 +61,7 @@
                             <div class="form-group">
                                 <label for="url">Url</label>
                                 <input id="url" name="url" class="form-control" type="text"
-                                       placeholder="Masukan url menu">
+                                       placeholder="Masukan url menu" maxlength="30">
                                 <span class="text-danger">
                                     <strong id="url-error"></strong>
                                 </span>
@@ -68,9 +69,17 @@
                             <div class="form-group">
                                 <label for="icon">Icon</label>
                                 <input id="icon" name="icon" class="form-control" type="text"
-                                       placeholder="Masukan icon menu contoh : icon icon-user">
+                                       placeholder="Masukan icon menu contoh : icon icon-user" maxlength="30">
                                 <span class="text-danger">
                                     <strong id="icon-error"></strong>
+                                </span>
+                            </div>
+                            <div class="form-group">
+                                <label for="nomor">Nomor Urut</label>
+                                <input id="nomor" name="nomor" class="form-control" type="text"
+                                       placeholder="Masukan nomor urut menu contoh : 1" maxlength="4">
+                                <span class="text-danger">
+                                    <strong id="nomor-error"></strong>
                                 </span>
                             </div>
                             <div class="form-group">
@@ -124,7 +133,7 @@
                             <div class="form-group">
                                 <label for="upd_title">Title</label>
                                 <input id="upd_title" name="upd_title" class="form-control" type="text"
-                                       placeholder="Masukan title menu">
+                                       placeholder="Masukan title menu" maxlength="30">
                                 <span class="text-danger">
                                     <strong class="title-error"></strong>
                                 </span>
@@ -132,18 +141,26 @@
                             <div class="form-group">
                                 <label for="upd_url">Url</label>
                                 <input id="upd_url" name="upd_url" class="form-control" type="text"
-                                       placeholder="Masukan url menu">
+                                       placeholder="Masukan url menu" maxlength="30">
                                 <span class="text-danger">
                                     <strong class="url-error"></strong>
-                            </span>
+                                </span>
                             </div>
                             <div class="form-group">
                                 <label for="upd_icon">Icon</label>
                                 <input id="upd_icon" name="upd_icon" class="form-control" type="text"
-                                       placeholder="Masukan icon menu contoh : icon icon-user">
+                                       placeholder="Masukan icon menu contoh : icon icon-user" maxlength="30">
                                 <span class="text-danger">
                                     <strong class="icon-error"></strong>
-                            </span>
+                                </span>
+                            </div>
+                            <div class="form-group">
+                                <label for="upd_nomor">Nomor Urut</label>
+                                <input id="upd_nomor" name="upd_nomor" class="form-control" type="text"
+                                       placeholder="Masukan nomor urut menu contoh : 1" maxlength="4">
+                                <span class="text-danger">
+                                    <strong class="nomor-error"></strong>
+                                </span>
                             </div>
                             <div class="form-group">
                                 <label for="upd_main_menu" class="form-label">Main Menu</label>
@@ -196,6 +213,10 @@
                     } else {
                         return "<center>" + "<span class='label label-danger'>Tidak aktif</span>" + "</center>";
                     }
+                },
+
+                icon: function (row, type, data) {
+                    return `<span class="${data.icon}"></span>`;
                 }
             };
 
@@ -221,7 +242,8 @@
                     {data: 'DT_RowIndex'},
                     {data: 'title'},
                     {data: 'url'},
-                    {data: 'icon'},
+                    {data: 'icon', render: styles.icon},
+                    {data: 'order_num'},
                     {data: 'is_main_menu'},
                     {data: 'is_aktif', render: styles.status},
                     {data: 'action', orderable: false, render: styles.button}
@@ -244,6 +266,7 @@
                             $("#upd_title").val(data.list.title);
                             $("#upd_url").val(data.list.url);
                             $("#upd_icon").val(data.list.icon);
+                            $("#upd_nomor").val(data.list.order_num);
                             $("#upd_main_menu").val(data.list.is_main_menu);
                             $("#upd_status").val(data.list.is_aktif);
                         } else {
@@ -261,9 +284,10 @@
                 var title = $("#title").val(),
                     url = $("#url").val(),
                     icon = $("#icon").val(),
+                    nomor = $("#nomor").val(),
                     menu = $("#demo-select2-2").val(),
                     status = $("#demo-select2-1").val(),
-                    sendData = "title=" + title + "&url=" + url + "&icon=" + icon + "&is_main_menu=" + menu + "&is_aktif=" + status;
+                    sendData = "title=" + title + "&url=" + url + "&nomor=" + nomor + "&icon=" + icon + "&is_main_menu=" + menu + "&is_aktif=" + status;
 
                 $.ajax({
                     headers: {
@@ -302,10 +326,11 @@
                 var title = $("#upd_title").val(),
                     url = $("#upd_url").val(),
                     icon = $("#upd_icon").val(),
+                    nomor = $("#upd_nomor").val(),
                     menu = $("#upd_main_menu").val(),
                     status = $("#upd_status").val(),
                     id = $("#id").val(),
-                    sendData = "id=" + id + "&title=" + title + "&url=" + url + "&icon=" + icon + "&is_main_menu=" + menu + "&is_aktif=" + status;
+                    sendData = "id=" + id + "&title=" + title + "&nomor=" + nomor + "&url=" + url + "&icon=" + icon + "&is_main_menu=" + menu + "&is_aktif=" + status;
                 $.ajax({
                     headers: {
                         'X-CSRF-TOKEN': "{{ csrf_token() }}"
@@ -385,6 +410,7 @@
             $("#title").val("");
             $("#url").val("");
             $("#icon").val("");
+            $("#nomor").val("");
             $("#main_menu").val("");
             $("#status").val("");
         }
