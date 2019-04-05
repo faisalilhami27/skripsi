@@ -111,12 +111,10 @@
                         if (data.count == 1) {
                             setTimeout(function () {
                                 $(location).attr('href', "{{ url('dashboard') }}");
-                                loadingAfterSend();
                             }, 1000);
                         } else {
                             setTimeout(function () {
                                 $(location).attr('href', "{{ url('role') }}");
-                                loadingAfterSend();
                             }, 1000);
                         }
                     } else {
