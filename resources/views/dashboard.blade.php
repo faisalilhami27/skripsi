@@ -7,7 +7,7 @@
                     <div class="card bg-primary no-border">
                         <div class="card-values">
                             <div class="p-x">
-                                <small>Penjualan Tiket Offline Per Hari</small>
+                                <small>Penjualan Tiket Per Hari</small>
                                 <h3 class="card-title fw-l">{{ $hari }}</h3>
                             </div>
                         </div>
@@ -20,7 +20,7 @@
                     <div class="card bg-danger no-border">
                         <div class="card-values">
                             <div class="p-x">
-                                <small>Pemasukan Tiket Offline Per Hari</small>
+                                <small>Pemasukan Tiket Per Hari</small>
                                 <h3 class="card-title fw-l">Rp. {{ number_format($totalUang, 0 , ".", ".") }}</h3>
                             </div>
                         </div>
