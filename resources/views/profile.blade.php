@@ -201,7 +201,8 @@
             </div>
         </div>
     </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+@stop
+@push('scripts')
     <script type="text/javascript">
         $(document).ready(function () {
             $('.form-checkbox').click(function () {
@@ -260,8 +261,8 @@
                     processData: false,
                     url: "{{ URL('profile/update') }}",
                     data: formData,
-                    beforeSend: function() {
-                      loadingBeforeSend();
+                    beforeSend: function () {
+                        loadingBeforeSend();
                     },
                     success: function (data) {
                         notification(data.status, data.msg);
@@ -435,5 +436,4 @@
             $("#btn-update-data").text('Submit');
         }
     </script>
-
-@endsection
+@endpush

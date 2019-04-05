@@ -1,7 +1,7 @@
 <div class="layout-footer">
     <div class="layout-footer-body">
         <small class="version"> Version {{ versionApp() }}</small>
-        <small class="copyright"><?= date('Y') ?> &copy; Failda Waterpark <a href="https://laravel.com" target="_blank">Powered By Laravel 5.7</a></small>
+        <small class="copyright">{{ \Carbon\Carbon::now()->format('Y') }} &copy; Failda Waterpark <a href="https://laravel.com" target="_blank">Powered By Laravel 5.7</a></small>
     </div>
 </div>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -12,8 +12,9 @@
 <script src="{{ asset('js/jquery-confirm.js') }}"></script>
 <script src="{{ asset('js/script.js') }}"></script>
 <script src="{{ asset('js/jquery.autocomplete.min.js') }}"></script>
-<script src="https://js.pusher.com/4.4/pusher.min.js"></script>
+<script src="//js.pusher.com/4.4/pusher.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
 <script src="{{ asset('js/jquery.idle.min.js') }}"></script>
 <script>

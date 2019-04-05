@@ -12,7 +12,12 @@
                             </div>
                         </div>
                         <div class="card-chart">
-                            <canvas data-chart="line" data-animation="false" data-labels='["Jun 21", "Jun 20", "Jun 19", "Jun 18", "Jun 17", "Jun 16", "Jun 15"]' data-values='[{"backgroundColor": "transparent", "borderColor": "#ffffff", "data": [25250, 23370, 25568, 28961, 26762, 30072, 25135]}]' data-scales='{"yAxes": [{ "ticks": {"max": 31072}}]}' data-hide='["legend", "points", "scalesX", "scalesY", "tooltips"]' height="35"></canvas>
+                            <canvas data-chart="line" data-animation="false"
+                                    data-labels='["Jun 21", "Jun 20", "Jun 19", "Jun 18", "Jun 17", "Jun 16", "Jun 15"]'
+                                    data-values='[{"backgroundColor": "transparent", "borderColor": "#ffffff", "data": [25250, 23370, 25568, 28961, 26762, 30072, 25135]}]'
+                                    data-scales='{"yAxes": [{ "ticks": {"max": 31072}}]}'
+                                    data-hide='["legend", "points", "scalesX", "scalesY", "tooltips"]'
+                                    height="35"></canvas>
                         </div>
                     </div>
                 </div>
@@ -25,7 +30,12 @@
                             </div>
                         </div>
                         <div class="card-chart">
-                            <canvas data-chart="line" data-animation="false" data-labels='["Jun 21", "Jun 20", "Jun 19", "Jun 18", "Jun 17", "Jun 16", "Jun 15"]' data-values='[{"backgroundColor": "transparent", "borderColor": "#ffffff", "data": [8796, 11317, 8678, 9452, 8453, 11853, 9945]}]' data-scales='{"yAxes": [{ "ticks": {"max": 12742}}]}' data-hide='["legend", "points", "scalesX", "scalesY", "tooltips"]' height="35"></canvas>
+                            <canvas data-chart="line" data-animation="false"
+                                    data-labels='["Jun 21", "Jun 20", "Jun 19", "Jun 18", "Jun 17", "Jun 16", "Jun 15"]'
+                                    data-values='[{"backgroundColor": "transparent", "borderColor": "#ffffff", "data": [8796, 11317, 8678, 9452, 8453, 11853, 9945]}]'
+                                    data-scales='{"yAxes": [{ "ticks": {"max": 12742}}]}'
+                                    data-hide='["legend", "points", "scalesX", "scalesY", "tooltips"]'
+                                    height="35"></canvas>
                         </div>
                     </div>
                 </div>
@@ -38,7 +48,12 @@
                             </div>
                         </div>
                         <div class="card-chart">
-                            <canvas data-chart="line" data-animation="false" data-labels='["Jun 21", "Jun 20", "Jun 19", "Jun 18", "Jun 17", "Jun 16", "Jun 15"]' data-values='[{"backgroundColor": "transparent", "borderColor": "#ffffff", "data": [116196, 145160, 124419, 147004, 134740, 120846, 137225]}]' data-scales='{"yAxes": [{ "ticks": {"max": 158029}}]}' data-hide='["legend", "points", "scalesX", "scalesY", "tooltips"]' height="35"></canvas>
+                            <canvas data-chart="line" data-animation="false"
+                                    data-labels='["Jun 21", "Jun 20", "Jun 19", "Jun 18", "Jun 17", "Jun 16", "Jun 15"]'
+                                    data-values='[{"backgroundColor": "transparent", "borderColor": "#ffffff", "data": [116196, 145160, 124419, 147004, 134740, 120846, 137225]}]'
+                                    data-scales='{"yAxes": [{ "ticks": {"max": 158029}}]}'
+                                    data-hide='["legend", "points", "scalesX", "scalesY", "tooltips"]'
+                                    height="35"></canvas>
                         </div>
                     </div>
                 </div>
@@ -51,7 +66,12 @@
                             </div>
                         </div>
                         <div class="card-chart">
-                            <canvas data-chart="line" data-animation="false" data-labels='["Jun 21", "Jun 20", "Jun 19", "Jun 18", "Jun 17", "Jun 16", "Jun 15"]' data-values='[{"backgroundColor": "transparent", "borderColor": "#ffffff", "data": [13590442, 12362934, 13639564, 13055677, 12915203, 11009940, 11542408]}]' data-scales='{"yAxes": [{ "ticks": {"max": 14662531}}]}' data-hide='["legend", "points", "scalesX", "scalesY", "tooltips"]' height="35"></canvas>
+                            <canvas data-chart="line" data-animation="false"
+                                    data-labels='["Jun 21", "Jun 20", "Jun 19", "Jun 18", "Jun 17", "Jun 16", "Jun 15"]'
+                                    data-values='[{"backgroundColor": "transparent", "borderColor": "#ffffff", "data": [13590442, 12362934, 13639564, 13055677, 12915203, 11009940, 11542408]}]'
+                                    data-scales='{"yAxes": [{ "ticks": {"max": 14662531}}]}'
+                                    data-hide='["legend", "points", "scalesX", "scalesY", "tooltips"]'
+                                    height="35"></canvas>
                         </div>
                     </div>
                 </div>
@@ -82,8 +102,8 @@
             </div>
         </div>
     </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+@stop
+@push('scripts')
     <script>
         $(document).ready(function () {
             var url = "{{ URL('dashboard/chart') }}";
@@ -163,7 +183,7 @@
                             scales: {
                                 yAxes: [{
                                     ticks: {
-                                        beginAtZero:true
+                                        beginAtZero: true
                                     }
                                 }]
                             }
@@ -176,4 +196,4 @@
             });
         });
     </script>
-@endsection
+@endpush

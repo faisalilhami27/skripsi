@@ -35,7 +35,7 @@
     </div>
     <div class="error-footer">
         <p>
-            <small>© {{ date('Y') }} Failda Waterpark</small>
+            <small>© {{ \Carbon\Carbon::now()->format('Y') }} Failda Waterpark</small>
         </p>
     </div>
 </div>
