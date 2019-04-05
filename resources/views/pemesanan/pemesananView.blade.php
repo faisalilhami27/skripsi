@@ -44,7 +44,7 @@
                                         <th style="text-align: center">Pembayaran</th>
                                         <th style="text-align: center">Status</th>
                                         <th style="text-align: center">Jenis</th>
-                                        <th style="text-align: center" width="150px">Aksi</th>
+                                        <th style="text-align: center" width="170px">Aksi</th>
                                     </tr>
                                     </thead>
                                     <tbody>
