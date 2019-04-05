@@ -129,7 +129,7 @@ class KonfirmasiPembayaranController extends Controller
                     $mail->Body = $body;
                     if ($mail->send()) {
                         OneSignal::sendNotificationToUser(
-                            "Pembayaran dari account " . $data->customer->username . " terdapat kesalahan",
+                            "Pembayaran dari account " . $data->customer->username . " terdapat kesalahan. Untuk detailnya silahkan buka email",
                             $userId = $data->customer->player_id,
                             $url = null,
                             $data = null,
@@ -192,6 +192,20 @@ class KonfirmasiPembayaranController extends Controller
                             $schedule = null,
                             $headings = "Pemberitahuan Pembayaran"
                         );
+
+                        $options = array(
+                            'cluster' => env('PUSHER_APP_CLUSTER'),
+                            'useTLS' => true
+                        );
+                        $pusher = new Pusher(
+                            env('PUSHER_APP_KEY'),
+                            env('PUSHER_APP_SECRET'),
+                            env('PUSHER_APP_ID'),
+                            $options
+                        );
+
+                        $data1['message'] = 'hello world';
+                        $pusher->trigger('my-channel2', 'my-event2', $data1);
                         return response()->json(['status' => 200, 'msg' => 'Data berhasil diubah']);
                     }
                 } catch (Exception $e) {
