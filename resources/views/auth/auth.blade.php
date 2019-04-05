@@ -102,23 +102,30 @@
                 type: "POST",
                 dataType: "JSON",
                 data: sendData,
+                beforeSend: function() {
+                  loadingBeforeSend();
+                },
                 success: function (data) {
                     if (data.status == 200) {
                         notification(data.status, data.msg);
                         if (data.count == 1) {
                             setTimeout(function () {
                                 $(location).attr('href', "{{ url('dashboard') }}");
+                                loadingAfterSend();
                             }, 1000);
                         } else {
                             setTimeout(function () {
                                 $(location).attr('href', "{{ url('role') }}");
+                                loadingAfterSend();
                             }, 1000);
                         }
                     } else {
                         notification(data.status, data.msg);
+                        loadingAfterSend();
                     }
                 },
                 error: function (resp) {
+                    loadingAfterSend();
                     if (_.has(resp.responseJSON, 'errors')) {
                         _.map(resp.responseJSON.errors, function (val, key) {
                             $('#' + key + '-error').html(val[0]).fadeIn(1000).fadeOut(5000);
@@ -129,6 +136,16 @@
             });
         });
     });
+
+    function loadingBeforeSend() {
+        $("#btn-login").attr('disabled', 'disabled');
+        $("#btn-login").text('Processing...');
+    }
+
+    function loadingAfterSend() {
+        $("#btn-login").removeAttr('disabled');
+        $("#btn-login").html('<span class="icon icon-sign-in"></span> Sign in');
+    }
 </script>
 </body>
 </html>

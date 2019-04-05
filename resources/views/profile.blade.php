@@ -108,7 +108,8 @@
                                         <div class="col-sm-8">
                                             <div class="input-with-icon">
                                                 <div class="input-group">
-                                                    <input class="form-control form-password" id="password" maxlength="12"
+                                                    <input class="form-control form-password" id="password"
+                                                           maxlength="12"
                                                            type="password" placeholder="Password">
                                                     <span class="input-group-addon">
                                                             <label
@@ -133,7 +134,8 @@
                                             <div class="input-with-icon">
                                                 <div class="input-group">
                                                     <input class="form-control form-password1" id="konf_password"
-                                                           maxlength="12" type="password" placeholder="Konfirmasi Password">
+                                                           maxlength="12" type="password"
+                                                           placeholder="Konfirmasi Password">
                                                     <span class="input-group-addon">
                                                             <label
                                                                 class="custom-control custom-control-primary custom-checkbox">
@@ -258,13 +260,18 @@
                     processData: false,
                     url: "{{ URL('profile/update') }}",
                     data: formData,
+                    beforeSend: function() {
+                      loadingBeforeSend();
+                    },
                     success: function (data) {
                         notification(data.status, data.msg);
+                        loadingAfterSend();
                         setTimeout(function () {
                             location.reload();
                         }, 1000)
                     },
                     error: function (resp) {
+                        loadingAfterSend();
                         if (_.has(resp.responseJSON, 'errors')) {
                             _.map(resp.responseJSON.errors, function (val, key) {
                                 $('#' + key + '-error').html(val[0]).fadeIn(1000).fadeOut(5000);
@@ -417,6 +424,16 @@
                 });
             });
         });
+
+        function loadingBeforeSend() {
+            $("#btn-update-data").attr('disabled', 'disabled');
+            $("#btn-update-data").text('Menyimpan data....');
+        }
+
+        function loadingAfterSend() {
+            $("#btn-update-data").removeAttr('disabled');
+            $("#btn-update-data").text('Submit');
+        }
     </script>
 
 @endsection
