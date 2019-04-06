@@ -93,7 +93,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="ins_tiket">Jumlah Tiket</label>
-                                <input id="ins_tiket" name="ins_tiket" maxlength="5" class="form-control" type="text"
+                                <input id="ins_tiket" name="ins_tiket" maxlength="5" class="form-control" autocomplete="off" type="text"
                                        placeholder="Masukan jumlah tiket">
                                 <span class="text-danger">
                                     <strong id="tiket-error"></strong>
@@ -102,8 +102,7 @@
                             <div class="form-group">
                                 <label for="ins_pembayaran">Jumlah Uang</label>
                                 <input id="ins_pembayaran" name="ins_pembayaran" data-a-sep="." class="form-control"
-                                       type="text"
-                                       placeholder="Masukan jumlah uang" maxlength="20">
+                                       type="text" placeholder="Masukan jumlah uang" maxlength="20" autocomplete="off">
                                 <span class="text-danger">
                                     <strong id="pembayaran-error"></strong>
                                 </span>

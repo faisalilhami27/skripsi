@@ -53,7 +53,7 @@
                             <div class="form-group">
                                 <label for="title">Title</label>
                                 <input id="title" name="title" class="form-control" type="text"
-                                       placeholder="Masukan title menu" maxlength="30">
+                                       placeholder="Masukan title menu" maxlength="30" autocomplete="off">
                                 <span class="text-danger">
                                     <strong id="title-error"></strong>
                                 </span>
@@ -61,7 +61,7 @@
                             <div class="form-group">
                                 <label for="url">Url</label>
                                 <input id="url" name="url" class="form-control" type="text"
-                                       placeholder="Masukan url menu" maxlength="30">
+                                       placeholder="Masukan url menu" maxlength="30" autocomplete="off">
                                 <span class="text-danger">
                                     <strong id="url-error"></strong>
                                 </span>
@@ -69,7 +69,7 @@
                             <div class="form-group">
                                 <label for="icon">Icon</label>
                                 <input id="icon" name="icon" class="form-control" type="text"
-                                       placeholder="Masukan icon menu contoh : icon icon-user" maxlength="30">
+                                       placeholder="Masukan icon menu contoh : icon icon-user" maxlength="30" autocomplete="off">
                                 <span class="text-danger">
                                     <strong id="icon-error"></strong>
                                 </span>
@@ -77,7 +77,7 @@
                             <div class="form-group">
                                 <label for="nomor">Nomor Urut</label>
                                 <input id="nomor" name="nomor" class="form-control" type="text"
-                                       placeholder="Masukan nomor urut menu contoh : 1" maxlength="4">
+                                       placeholder="Masukan nomor urut menu contoh : 1" maxlength="4" autocomplete="off">
                                 <span class="text-danger">
                                     <strong id="nomor-error"></strong>
                                 </span>
@@ -133,7 +133,7 @@
                             <div class="form-group">
                                 <label for="upd_title">Title</label>
                                 <input id="upd_title" name="upd_title" class="form-control" type="text"
-                                       placeholder="Masukan title menu" maxlength="30">
+                                       placeholder="Masukan title menu" maxlength="30" autocomplete="off">
                                 <span class="text-danger">
                                     <strong class="title-error"></strong>
                                 </span>
@@ -141,7 +141,7 @@
                             <div class="form-group">
                                 <label for="upd_url">Url</label>
                                 <input id="upd_url" name="upd_url" class="form-control" type="text"
-                                       placeholder="Masukan url menu" maxlength="30">
+                                       placeholder="Masukan url menu" maxlength="30" autocomplete="off">
                                 <span class="text-danger">
                                     <strong class="url-error"></strong>
                                 </span>
@@ -149,7 +149,7 @@
                             <div class="form-group">
                                 <label for="upd_icon">Icon</label>
                                 <input id="upd_icon" name="upd_icon" class="form-control" type="text"
-                                       placeholder="Masukan icon menu contoh : icon icon-user" maxlength="30">
+                                       placeholder="Masukan icon menu contoh : icon icon-user" maxlength="30" autocomplete="off">
                                 <span class="text-danger">
                                     <strong class="icon-error"></strong>
                                 </span>
@@ -157,7 +157,7 @@
                             <div class="form-group">
                                 <label for="upd_nomor">Nomor Urut</label>
                                 <input id="upd_nomor" name="upd_nomor" class="form-control" type="text"
-                                       placeholder="Masukan nomor urut menu contoh : 1" maxlength="4">
+                                       placeholder="Masukan nomor urut menu contoh : 1" maxlength="4" autocomplete="off">
                                 <span class="text-danger">
                                     <strong class="nomor-error"></strong>
                                 </span>

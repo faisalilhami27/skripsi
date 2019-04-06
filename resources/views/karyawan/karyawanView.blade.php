@@ -53,7 +53,7 @@
                             <div class="form-group">
                                 <label for="nama">Nama Lengkap</label>
                                 <input id="nama" name="nama" class="form-control" type="text"
-                                       placeholder="Masukan nama" maxlength="60">
+                                       placeholder="Masukan nama" maxlength="60" autocomplete="off">
                                 <span class="text-danger">
                                     <strong id="nama-error"></strong>
                                 </span>
@@ -61,7 +61,7 @@
                             <div class="form-group">
                                 <label for="email">Email</label>
                                 <input id="email" name="email" class="form-control" type="text"
-                                       placeholder="Masukan email" maxlength="60">
+                                       placeholder="Masukan email" maxlength="60" autocomplete="off">
                                 <span class="text-danger">
                                     <strong id="email-error"></strong>
                                 </span>
@@ -69,7 +69,7 @@
                             <div class="form-group">
                                 <label for="no_hp">Nomor Handphone</label>
                                 <input id="no_hp" name="no_hp" class="form-control" type="text"
-                                       placeholder="Masukan nomor hp" maxlength="15">
+                                       placeholder="Masukan nomor hp" maxlength="15" autocomplete="off">
                                 <span class="text-danger">
                                     <strong id="noHp-error"></strong>
                                 </span>
@@ -101,7 +101,7 @@
                             <div class="form-group">
                                 <label for="upd_nama">Nama Lengkap</label>
                                 <input id="upd_nama" name="upd_nama" class="form-control" type="text"
-                                       placeholder="Masukan nama" maxlength="60">
+                                       placeholder="Masukan nama" maxlength="60" autocomplete="off">
                                 <span class="text-danger">
                                     <strong class="nama-error"></strong>
                                 </span>
@@ -109,7 +109,7 @@
                             <div class="form-group">
                                 <label for="upd_email">Email</label>
                                 <input id="upd_email" name="upd_email" class="form-control" type="text"
-                                       placeholder="Masukan email" maxlength="60">
+                                       placeholder="Masukan email" maxlength="60" autocomplete="off">
                                 <span class="text-danger">
                                     <strong class="email-error"></strong>
                                 </span>
@@ -117,7 +117,7 @@
                             <div class="form-group">
                                 <label for="upd_no_hp">Nomor Handphone</label>
                                 <input id="upd_no_hp" name="upd_no_hp" class="form-control" type="text"
-                                       placeholder="Masukan nomor hp" maxlength="15">
+                                       placeholder="Masukan nomor hp" maxlength="15" autocomplete="off">
                                 <span class="text-danger">
                                     <strong class="noHp-error"></strong>
                                 </span>

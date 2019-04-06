@@ -3,11 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="37d309ce-f579-43ec-925f-71a95f48e59e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/KonfigurasiMobileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/KonfigurasiMobileController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/KonfigurasiController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/KonfigurasiController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/KonfigurasiRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/KonfigurasiRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/KonfigurasiSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/KonfigurasiSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/konfigurasi/konfigurasi.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/konfigurasi/konfigurasi.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/customer/customerView.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/customer/customerView.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/karyawan/karyawanView.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/karyawan/karyawanView.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/konfigurasimobile/konfigurasiMobileView.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/konfigurasimobile/konfigurasiMobileView.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/menu/menuView.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/menu/menuView.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pemesanan/pemesananView.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pemesanan/pemesananView.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/user/userView.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/userView.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -38,64 +39,89 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/KonfirmasiPembayaranController.php">
+        <entry file="file://$PROJECT_DIR$/resources/views/konfigurasi/konfigurasi.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-828">
-              <caret line="17" column="6" selection-start-line="17" selection-start-column="6" selection-end-line="17" selection-end-column="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/DashboardController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="322">
-              <caret line="54" column="5" selection-start-line="54" selection-start-column="5" selection-end-line="54" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/blokir.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="299">
-              <caret line="31" column="11" selection-start-line="31" selection-start-column="11" selection-end-line="31" selection-end-column="11" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/database/seeds/KonfigurasiSeeder.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="504">
-              <caret line="60" column="52" lean-forward="true" selection-start-line="60" selection-start-column="52" selection-end-line="60" selection-end-column="52" />
+            <state relative-caret-position="127">
+              <caret line="215" column="81" selection-start-line="215" selection-start-column="81" selection-end-line="215" selection-end-column="81" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/views/konfigurasi/konfigurasi.blade.php">
+        <entry file="file://$PROJECT_DIR$/resources/views/menu/menuView.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3140">
-              <caret line="220" column="74" selection-start-line="220" selection-start-column="74" selection-end-line="220" selection-end-column="74" />
+            <state relative-caret-position="851">
+              <caret line="160" column="58" lean-forward="true" selection-start-line="160" selection-start-column="58" selection-end-line="160" selection-end-column="58" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Api/KonfigurasiMobileController.php">
+        <entry file="file://$PROJECT_DIR$/resources/views/pembayaran/konfirmasiView.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="207">
+              <caret line="75" column="57" lean-forward="true" selection-start-line="75" selection-start-column="57" selection-end-line="75" selection-end-column="57" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/konfigurasimobile/konfigurasiMobileView.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-161">
+              <caret line="116" column="90" selection-start-line="116" selection-start-column="90" selection-end-line="116" selection-end-column="90" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/pemesanan/pemesananView.blade.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="345">
-              <caret line="17" column="48" lean-forward="true" selection-start-line="17" selection-start-column="48" selection-end-line="17" selection-end-column="48" />
+              <caret line="104" column="51" selection-start-line="104" selection-start-column="51" selection-end-line="104" selection-end-column="51" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/KonfigurasiController.php">
+        <entry file="file://$PROJECT_DIR$/resources/views/user/userView.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="69" column="43" lean-forward="true" selection-start-line="69" selection-start-column="43" selection-end-line="69" selection-end-column="43" />
+            <state relative-caret-position="-1541">
+              <caret line="65" column="103" selection-start-line="65" selection-start-column="103" selection-end-line="65" selection-end-column="103" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/userlevel/userLevelView.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1587" />
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/customer/customerView.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="115">
+              <caret line="53" column="100" selection-start-line="53" selection-start-column="100" selection-end-line="53" selection-end-column="100" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/karyawan/karyawanView.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-23">
+              <caret line="119" column="103" selection-start-line="119" selection-start-column="103" selection-end-line="119" selection-end-column="103" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/routes/api.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="483">
+              <caret line="22" column="70" selection-start-line="22" selection-start-column="70" selection-end-line="22" selection-end-column="70" />
             </state>
           </provider>
         </entry>
@@ -156,9 +182,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/database/seeds/SettingSeeder.php" />
-        <option value="$PROJECT_DIR$/database/seeds/StatusPembayaranSeeder.php" />
-        <option value="$PROJECT_DIR$/database/seeds/UserLevelSeeder.php" />
         <option value="$PROJECT_DIR$/database/seeds/UserSeeder.php" />
         <option value="$PROJECT_DIR$/database/seeds/ChooseRoleSeeder.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_02_20_181459_create_mst_jenis_pemesanan_table.php" />
@@ -183,7 +206,6 @@
         <option value="$PROJECT_DIR$/app/Http/Requests/MenuRequest.php" />
         <option value="$PROJECT_DIR$/app/Models/MenuModel.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/MenuController.php" />
-        <option value="$PROJECT_DIR$/resources/views/menu/menuView.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/MutasiBankController.php" />
         <option value="$PROJECT_DIR$/resources/views/bank/mutasiBank.blade.php" />
         <option value="$PROJECT_DIR$/routes/web.php" />
@@ -193,20 +215,24 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/KonfirmasiPembayaranController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Api/PembayaranController.php" />
         <option value="$PROJECT_DIR$/resources/views/auth/auth.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/pemesanan/pemesananView.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/profile.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/dashboard.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/blokir.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/footer.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/KaryawanController.php" />
-        <option value="$PROJECT_DIR$/resources/views/karyawan/karyawanView.blade.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_02_20_181555_create_mst_konfigurasi_web_table.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Api/AuthenticationController.php" />
         <option value="$PROJECT_DIR$/database/seeds/KonfigurasiSeeder.php" />
         <option value="$PROJECT_DIR$/app/Http/Requests/KonfigurasiRequest.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Api/KonfigurasiMobileController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/KonfigurasiController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Api/KonfigurasiMobileController.php" />
         <option value="$PROJECT_DIR$/resources/views/konfigurasi/konfigurasi.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/user/userView.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/customer/customerView.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/pemesanan/pemesananView.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/konfigurasimobile/konfigurasiMobileView.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/karyawan/karyawanView.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/menu/menuView.blade.php" />
       </list>
     </option>
   </component>
@@ -439,6 +465,13 @@
               <item name="wsps" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="konfigurasimobile" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="wsps" type="b2602c69:ProjectViewProjectNode" />
+              <item name="wsps" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
               <item name="layouts" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -461,6 +494,20 @@
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
               <item name="pemesanan" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="wsps" type="b2602c69:ProjectViewProjectNode" />
+              <item name="wsps" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="user" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="wsps" type="b2602c69:ProjectViewProjectNode" />
+              <item name="wsps" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="userlevel" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="wsps" type="b2602c69:ProjectViewProjectNode" />
@@ -592,28 +639,7 @@
       <workItem from="1554177606817" duration="757000" />
       <workItem from="1554212691244" duration="25189000" />
       <workItem from="1554435238601" duration="10510000" />
-      <workItem from="1554528205982" duration="7222000" />
-    </task>
-    <task id="LOCAL-00141" summary="penambahan pusher untuk realtime aplikasi">
-      <created>1553573432276</created>
-      <option name="number" value="00141" />
-      <option name="presentableId" value="LOCAL-00141" />
-      <option name="project" value="LOCAL" />
-      <updated>1553573432276</updated>
-    </task>
-    <task id="LOCAL-00142" summary="penambahan pusher untuk realtime aplikasi">
-      <created>1553574901363</created>
-      <option name="number" value="00142" />
-      <option name="presentableId" value="LOCAL-00142" />
-      <option name="project" value="LOCAL" />
-      <updated>1553574901364</updated>
-    </task>
-    <task id="LOCAL-00143" summary="penambahan pusher untuk realtime aplikasi">
-      <created>1553575650125</created>
-      <option name="number" value="00143" />
-      <option name="presentableId" value="LOCAL-00143" />
-      <option name="project" value="LOCAL" />
-      <updated>1553575650125</updated>
+      <workItem from="1554528205982" duration="9159000" />
     </task>
     <task id="LOCAL-00144" summary="penambahan pusher untuk realtime aplikasi">
       <created>1553576237838</created>
@@ -937,14 +963,36 @@
       <option name="project" value="LOCAL" />
       <updated>1554536461474</updated>
     </task>
-    <option name="localTasksCounter" value="190" />
+    <task id="LOCAL-00190" summary="perbaikan konfigurasi">
+      <created>1554546339457</created>
+      <option name="number" value="00190" />
+      <option name="presentableId" value="LOCAL-00190" />
+      <option name="project" value="LOCAL" />
+      <updated>1554546339457</updated>
+    </task>
+    <task id="LOCAL-00191" summary="perbaikan konfigurasi">
+      <created>1554546438385</created>
+      <option name="number" value="00191" />
+      <option name="presentableId" value="LOCAL-00191" />
+      <option name="project" value="LOCAL" />
+      <updated>1554546438385</updated>
+    </task>
+    <task id="LOCAL-00192" summary="perbaikan konfigurasi">
+      <created>1554562877003</created>
+      <option name="number" value="00192" />
+      <option name="presentableId" value="LOCAL-00192" />
+      <option name="project" value="LOCAL" />
+      <updated>1554562877003</updated>
+    </task>
+    <option name="localTasksCounter" value="193" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="524670000" />
+    <option name="totallyTimeSpent" value="526607000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49823943" visible="true" weight="0.26399395" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -1024,37 +1072,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="perbaikan konfigurasi" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AuthController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="159">
-          <caret line="32" column="47" selection-start-line="32" selection-start-column="47" selection-end-line="32" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Middleware/CheckingRoleUser.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="31" column="41" selection-start-line="31" selection-start-column="41" selection-end-line="31" selection-end-column="41" />
-          <folding>
-            <element signature="e#39#64#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/layouts/sidebar.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="18" column="31" selection-start-line="18" selection-start-column="31" selection-end-line="18" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/ChooseRoleModel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="18" column="26" selection-start-line="18" selection-start-column="26" selection-end-line="18" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_20_181637_create_mst_menu_table.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="299">
@@ -1079,13 +1096,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/menu/menuView.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="10" column="49" lean-forward="true" selection-start-line="10" selection-start-column="49" selection-end-line="10" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Models/MenuModel.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="230">
@@ -1101,13 +1111,6 @@
             <element signature="n#style#0;n#a#0;n#li#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#a#0;n#li#0;n#!!top" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/customer/customerView.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="10" column="47" lean-forward="true" selection-end-line="269" />
         </state>
       </provider>
     </entry>
@@ -1266,27 +1269,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/pembayaran/konfirmasiView.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="156" column="53" lean-forward="true" selection-start-line="155" selection-start-column="16" selection-end-line="156" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/pemesanan/pemesananView.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="9" column="18" lean-forward="true" selection-start-line="4" selection-start-column="12" selection-end-line="9" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/karyawan/karyawanView.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="16" column="47" lean-forward="true" selection-start-line="16" selection-start-column="47" selection-end-line="16" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MenuController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="598">
@@ -1360,13 +1342,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Api/KonfigurasiMobileController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="17" column="48" lean-forward="true" selection-start-line="17" selection-start-column="48" selection-end-line="17" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/KonfigurasiController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
@@ -1374,10 +1349,78 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Api/KonfigurasiMobileController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="403">
+          <caret line="28" column="1" lean-forward="true" selection-start-line="28" selection-start-column="1" selection-end-line="28" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/api.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="483">
+          <caret line="22" column="70" selection-start-line="22" selection-start-column="70" selection-end-line="22" selection-end-column="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/pemesanan/pemesananView.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="104" column="51" selection-start-line="104" selection-start-column="51" selection-end-line="104" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/pembayaran/konfirmasiView.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="75" column="57" lean-forward="true" selection-start-line="75" selection-start-column="57" selection-end-line="75" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/karyawan/karyawanView.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-23">
+          <caret line="119" column="103" selection-start-line="119" selection-start-column="103" selection-end-line="119" selection-end-column="103" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/userView.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1541">
+          <caret line="65" column="103" selection-start-line="65" selection-start-column="103" selection-end-line="65" selection-end-column="103" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/userlevel/userLevelView.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1587" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/customer/customerView.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="53" column="100" selection-start-line="53" selection-start-column="100" selection-end-line="53" selection-end-column="100" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/konfigurasi/konfigurasi.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3140">
-          <caret line="220" column="74" selection-start-line="220" selection-start-column="74" selection-end-line="220" selection-end-column="74" />
+        <state relative-caret-position="127">
+          <caret line="215" column="81" selection-start-line="215" selection-start-column="81" selection-end-line="215" selection-end-column="81" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/konfigurasimobile/konfigurasiMobileView.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-161">
+          <caret line="116" column="90" selection-start-line="116" selection-start-column="90" selection-end-line="116" selection-end-column="90" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/menu/menuView.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="851">
+          <caret line="160" column="58" lean-forward="true" selection-start-line="160" selection-start-column="58" selection-end-line="160" selection-end-column="58" />
         </state>
       </provider>
     </entry>

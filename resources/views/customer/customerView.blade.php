@@ -51,7 +51,7 @@
                             <div class="form-group">
                                 <label for="upd_email">Email</label>
                                 <input id="upd_email" name="upd_email" class="form-control" type="email"
-                                       placeholder="Masukan email" maxlength="60">
+                                       placeholder="Masukan email" maxlength="60" autocomplete="off">
                                 <span class="text-danger">
                                     <strong id="email-error"></strong>
                                 </span>

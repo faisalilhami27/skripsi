@@ -63,7 +63,7 @@
                             <div class="form-group">
                                 <label for="ins_username">Username</label>
                                 <input id="ins_username" name="ins_username" class="form-control" type="text"
-                                       placeholder="Masukan username" maxlength="60">
+                                       placeholder="Masukan username" maxlength="60" autocomplete="off">
                                 <span class="text-danger">
                                     <strong id="username-error"></strong>
                                 </span>

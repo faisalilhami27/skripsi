@@ -50,7 +50,7 @@
                             <div class="form-group">
                                 <label for="title">Title</label>
                                 <input id="title" name="title" class="form-control" type="text"
-                                       placeholder="Masukan title" maxlength="30">
+                                       placeholder="Masukan title" maxlength="30" autocomplete="off">
                                 <span class="text-danger">
                                     <strong id="title-error"></strong>
                                 </span>
@@ -115,7 +115,7 @@
                             <div class="form-group">
                                 <label for="upd_title">Title</label>
                                 <input id="upd_title" name="upd_title" class="form-control" type="text"
-                                       placeholder="Masukan title" maxlength="30">
+                                       placeholder="Masukan title" maxlength="30" autocomplete="off">
                                 <span class="text-danger">
                                     <strong class="title-error"></strong>
                                 </span>
