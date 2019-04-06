@@ -28,6 +28,7 @@ class KonfigurasiController extends Controller
         $harga = htmlspecialchars($request->harga);
         $bank = htmlspecialchars($request->bank);
         $norek = htmlspecialchars($request->norek);
+        $pemilikRekening = htmlspecialchars($request->pemilik_rekening);
         $file = $request->file('gambar');
         $konfig = KonfigurasiModel::all();
 
@@ -64,6 +65,9 @@ class KonfigurasiController extends Controller
             } else if ($norek != $konfig[10]->nilai_konfig) {
                 $data = ['nilai_konfig' => $norek];
                 $kode = "NOREK";
+            } else if ($pemilikRekening != $konfig[11]->nilai_konfig) {
+                $data = ['nilai_konfig' => $pemilikRekening];
+                $kode = "PEMILIK_REKENING";
             }
 
             if ($kode == '' && $data == '') {

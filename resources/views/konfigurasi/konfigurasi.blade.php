@@ -109,6 +109,18 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
+                                            <label class="col-sm-4" for="form-control-1">Pemilik Rekening</label>
+                                            <div class="col-sm-8">
+                                                <div class="input-with-icon">
+                                                    <input id="pemilik_rekening" autocomplete="off" name="pemilik_rekening" value="{{ $konfig[11]->nilai_konfig }}" maxlength="50" class="form-control" type="text" placeholder="Pemilik Rekening">
+                                                    <span class="icon icon-user-md input-icon"></span>
+                                                    <span class="text-danger">
+                                                        <strong id="pemilik_rekening-error"></strong>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
                                             <label class="col-sm-4" for="form-control-1">Reset Password</label>
                                             <div class="col-sm-8">
                                                 <div class="input-with-icon">
@@ -191,7 +203,7 @@
                                         <tr>
                                             <td>Nama Pemilik</td>
                                             <td width="1px">:</td>
-                                            <td>{{ $konfig[5]->nilai_konfig }}</td>
+                                            <td>{{ $konfig[6]->nilai_konfig }}</td>
                                         </tr>
                                         <tr>
                                             <td>No Telepon</td>
@@ -202,6 +214,16 @@
                                             <td>Email</td>
                                             <td width="1px">:</td>
                                             <td>{{ $konfig[1]->nilai_konfig }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Bank</td>
+                                            <td width="1px">:</td>
+                                            <td>{{ $konfig[10]->nilai_konfig }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Nomor Rekening</td>
+                                            <td width="1px">:</td>
+                                            <td>{{ $konfig[9]->nilai_konfig }}</td>
                                         </tr>
                                     </table>
                                 </div>
@@ -266,6 +288,7 @@
                 var noHP = $("#no_hp").val();
                 var bank = $("#bank").val();
                 var norek = $("#norek").val();
+                var pemilikRekening = $("#pemilik_rekening").val();
                 var images = $('#gambar').prop('files')[0];
                 var formData = new FormData();
 
@@ -278,6 +301,7 @@
                 formData.append('alamat', alamat);
                 formData.append('no_hp', noHP);
                 formData.append('bank', bank);
+                formData.append('pemilik_rekening', pemilikRekening);
                 formData.append('norek', norek);
                 formData.append('gambar', images);
 

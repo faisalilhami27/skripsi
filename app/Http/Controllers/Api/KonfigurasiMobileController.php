@@ -17,6 +17,7 @@ class KonfigurasiMobileController extends Controller
           'harga' => (integer) $konfigurasiWeb[2]->nilai_konfig,
           'bank' => $konfigurasiWeb[9]->nilai_konfig,
           'norek' => $konfigurasiWeb[10]->nilai_konfig,
+          'pemimlik' => $konfigurasiWeb[11]->nilai_konfig,
         ];
 
         if ($kontenMobile) {

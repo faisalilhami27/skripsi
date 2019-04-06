@@ -56,6 +56,10 @@ class KonfigurasiSeeder extends Seeder
             [
                 'kode_konfig' => "NOREK",
                 'nilai_konfig' => '223101000405534'
+            ],
+            [
+                'kode_konfig' => "PEMILIK_REKENING",
+                'nilai_konfig' => 'Failda Waterpark'
             ]
         ]);
     }

@@ -34,6 +34,7 @@ class KonfigurasiRequest extends FormRequest
             'harga' => 'required|max:15|regex:/^[0-9]*$/',
             'bank' => 'required|max:20|regex:/^[a-zA-Z ]*$/',
             'norek' => 'required|max:25|regex:/^[0-9]*$/',
+            'pemilik_rekening' => 'required|max:50|regex:/^[a-zA-Z,. ]*$/',
         ];
     }
 }
