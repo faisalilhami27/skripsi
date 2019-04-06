@@ -14,6 +14,7 @@ class CreateMstKonfigurasiWebTable extends Migration
     public function up()
     {
         Schema::create('konfigurasi_web', function (Blueprint $table) {
+            $table->increments('id');
             $table->string('kode_konfig', 20)->index()->unique();
             $table->text('nilai_konfig');
             $table->timestamps();

@@ -29,14 +29,16 @@ class AuthenticationController extends Controller
         switch ($this->request->loginAs) {
             case 'api_customer':
                 $loginAs = CustomerModel::where('username', $this->request->username)->first();
-                if (!is_null($this->request->player_id) || $this->request->player_id != '') {
-                    if ($this->request->player_id != $loginAs->player_id) {
-                        CustomerModel::where('username', $this->request->username)->update([
-                            'player_id' => $this->request->player_id
-                        ]);
+                if (!is_null($loginAs)) {
+                    if (!is_null($this->request->player_id) || $this->request->player_id != '') {
+                        if ($this->request->player_id != $loginAs->player_id) {
+                            CustomerModel::where('username', $this->request->username)->update([
+                                'player_id' => $this->request->player_id
+                            ]);
+                        }
+                    } else {
+                        return "";
                     }
-                } else {
-                    return "";
                 }
                 $user = $loginAs;
                 break;

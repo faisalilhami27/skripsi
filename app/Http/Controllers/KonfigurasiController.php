@@ -26,6 +26,8 @@ class KonfigurasiController extends Controller
         $alamat = htmlspecialchars($request->alamat);
         $versi = htmlspecialchars($request->versi);
         $harga = htmlspecialchars($request->harga);
+        $bank = htmlspecialchars($request->bank);
+        $norek = htmlspecialchars($request->norek);
         $file = $request->file('gambar');
         $konfig = KonfigurasiModel::all();
 
@@ -56,6 +58,12 @@ class KonfigurasiController extends Controller
             } else if ($harga != $konfig[2]->nilai_konfig) {
                 $data = ['nilai_konfig' => $harga];
                 $kode = "HARGA_TIKET";
+            } else if ($bank != $konfig[9]->nilai_konfig) {
+                $data = ['nilai_konfig' => $bank];
+                $kode = "BANK";
+            } else if ($norek != $konfig[10]->nilai_konfig) {
+                $data = ['nilai_konfig' => $norek];
+                $kode = "NOREK";
             }
 
             if ($kode == '' && $data == '') {

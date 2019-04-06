@@ -28,10 +28,12 @@ class KonfigurasiRequest extends FormRequest
             'nama_pemilik' => 'required|max:50|regex:/^[a-zA-Z,. ]*$/',
             'email' => 'required|max:50|email',
             'alamat' => 'required',
-            'versi' => 'required',
+            'versi' => 'required|regex:/^[0-9. ]*$/',
             'password' => 'required|min:8|max:12',
-            'no_hp' => 'required|max:15',
-            'harga' => 'required|max:15',
+            'no_hp' => 'required|max:12|regex:/^[0-9]*$/',
+            'harga' => 'required|max:15|regex:/^[0-9]*$/',
+            'bank' => 'required|max:20|regex:/^[a-zA-Z ]*$/',
+            'norek' => 'required|max:25|regex:/^[0-9]*$/',
         ];
     }
 }

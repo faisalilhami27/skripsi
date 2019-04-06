@@ -49,6 +49,14 @@ class KonfigurasiSeeder extends Seeder
                 'kode_konfig' => "VERSION",
                 'nilai_konfig' => '1.0'
             ],
+            [
+                'kode_konfig' => "BANK",
+                'nilai_konfig' => 'BANK BRI'
+            ],
+            [
+                'kode_konfig' => "NOREK",
+                'nilai_konfig' => '223101000405534'
+            ]
         ]);
     }
 }

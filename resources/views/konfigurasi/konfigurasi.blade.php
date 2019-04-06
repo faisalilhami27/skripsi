@@ -85,6 +85,30 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
+                                            <label class="col-sm-4" for="form-control-1">Nama Bank</label>
+                                            <div class="col-sm-8">
+                                                <div class="input-with-icon">
+                                                    <input id="bank" autocomplete="off" name="bank" value="{{ $konfig[9]->nilai_konfig }}" maxlength="12" class="form-control" type="text" placeholder="Nama Bank">
+                                                    <span class="icon icon-bank input-icon"></span>
+                                                    <span class="text-danger">
+                                                        <strong id="bank-error"></strong>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-4" for="form-control-1">Nomor Rekening</label>
+                                            <div class="col-sm-8">
+                                                <div class="input-with-icon">
+                                                    <input id="norek" autocomplete="off" name="norek" value="{{ $konfig[10]->nilai_konfig }}" maxlength="25" class="form-control" type="text" placeholder="Nomor Rekening">
+                                                    <span class="icon icon-balance-scale input-icon"></span>
+                                                    <span class="text-danger">
+                                                        <strong id="norek-error"></strong>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
                                             <label class="col-sm-4" for="form-control-1">Reset Password</label>
                                             <div class="col-sm-8">
                                                 <div class="input-with-icon">
@@ -240,6 +264,8 @@
                 var harga = $("#harga").val().split(".").join("");
                 var versi = $("#versi").val();
                 var noHP = $("#no_hp").val();
+                var bank = $("#bank").val();
+                var norek = $("#norek").val();
                 var images = $('#gambar').prop('files')[0];
                 var formData = new FormData();
 
@@ -251,6 +277,8 @@
                 formData.append('nama_pemilik', pemilik);
                 formData.append('alamat', alamat);
                 formData.append('no_hp', noHP);
+                formData.append('bank', bank);
+                formData.append('norek', norek);
                 formData.append('gambar', images);
 
                 $('input[type=file]').change(function () {
