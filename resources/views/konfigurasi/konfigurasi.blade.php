@@ -208,7 +208,7 @@
                                         <tr>
                                             <td>No Telepon</td>
                                             <td width="1px">:</td>
-                                            <td>{{ $konfig[4]->nilai_konfig }}</td>
+                                            <td>{{ $konfig[5]->nilai_konfig }}</td>
                                         </tr>
                                         <tr>
                                             <td>Email</td>
@@ -218,12 +218,12 @@
                                         <tr>
                                             <td>Bank</td>
                                             <td width="1px">:</td>
-                                            <td>{{ $konfig[10]->nilai_konfig }}</td>
+                                            <td>{{ $konfig[9]->nilai_konfig }}</td>
                                         </tr>
                                         <tr>
                                             <td>Nomor Rekening</td>
                                             <td width="1px">:</td>
-                                            <td>{{ $konfig[9]->nilai_konfig }}</td>
+                                            <td>{{ $konfig[10]->nilai_konfig }}</td>
                                         </tr>
                                     </table>
                                 </div>
