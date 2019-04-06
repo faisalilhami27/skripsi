@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\KaryawanRequest;
 use App\Models\KaryawanModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Yajra\DataTables\DataTables;
 
 class KaryawanController extends Controller
@@ -12,9 +13,12 @@ class KaryawanController extends Controller
 
     public function index()
     {
+        $idUserLevel = Session::get('id_user_level');
+        $idMenu = getIdMenu();
+        $akses = checkAccess($idUserLevel, $idMenu);
         $title = 'Halaman Data Karyawan';
         $deskripsi = 'Halaman data karyawan digunakan untuk mengelola karyawan';
-        return view('karyawan.karyawanView', compact( 'title', 'deskripsi'));
+        return view('karyawan.karyawanView', compact( 'title', 'deskripsi', 'akses'));
     }
 
     public function datatable()

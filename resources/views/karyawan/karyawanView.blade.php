@@ -2,9 +2,12 @@
 @section('content')
     <div class="layout-content">
         <div class="layout-content-body">
-            <button class="btn btn-info btn-sm" type="button" data-toggle="modal" data-target="#infoModalColoredHeader"
-                    style="margin-bottom: 10px"><i class="icon icon-plus-circle"></i> Tambah
-            </button>
+            @if($akses['create'] == 1)
+                <button class="btn btn-info btn-sm" type="button" data-toggle="modal"
+                        data-target="#infoModalColoredHeader"
+                        style="margin-bottom: 10px"><i class="icon icon-plus-circle"></i> Tambah
+                </button>
+            @endif
             <div class="row gutter-xs">
                 <div class="col-xs-12">
                     <div class="card">
@@ -137,8 +140,16 @@
         $(document).ready(function () {
             var styles = {
                 button: function (row, type, data) {
-                    return '<center>' + `<a href="#" class="btn btn-success btn-sm btn-edit" id="${data.id}" data-toggle="modal" data-target="#infoModalColoredHeader1"><i class="icon icon-pencil-square-o"></i></a>
+                    var update = "{{ $akses['update'] }}";
+                    var hapus = "{{ $akses['delete'] }}";
+                    if (update == 1 && hapus == 1) {
+                        return '<center>' + `<a href="#" class="btn btn-success btn-sm btn-edit" id="${data.id}" data-toggle="modal" data-target="#infoModalColoredHeader1"><i class="icon icon-pencil-square-o"></i></a>
                                              <a href="#" class="btn btn-danger btn-sm btn-delete"  id="${data.id}"><i class="icon icon-trash-o"></i></a>` + '</center>';
+                    } else if (update == 1) {
+                        return '<center>' + `<a href="#" class="btn btn-success btn-sm btn-edit" id="${data.id}" data-toggle="modal" data-target="#infoModalColoredHeader1"><i class="icon icon-pencil-square-o"></i></a>` + '</center>';
+                    } else {
+                        return 'Tidak mempunyai akses';
+                    }
                 },
             };
 
