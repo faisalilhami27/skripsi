@@ -24,8 +24,10 @@ class AuthController extends Controller
         $password = htmlspecialchars($request->password);
         $user = UserModel::with('karyawan')
             ->where('username', $username)->first();
-        if (is_null($user['username'])) {
-            return response()->json(['status' => 449, 'msg' => 'Username anda tidak terdaftar']);
+        if (is_null($user)) {
+            return response()->json(['status' => 500, 'msg' => 'Akun anda sudah dihapus oleh pihak perusahaan']);
+        } else if (is_null($user['username'])) {
+            return response()->json(['status' => 500, 'msg' => 'Username anda tidak terdaftar']);
         } else {
             if ($user['status'] == "y") {
                 if ($user->count() > 0) {
@@ -45,13 +47,13 @@ class AuthController extends Controller
                         Session::put('count', $chooseRole->count());
                         return response()->json(['status' => 200, 'msg' => 'Login berhasil akan diarahkan ke halaman utama', 'count' => $chooseRole->count()]);
                     } else {
-                        return response()->json(['status' => 449, 'msg' => 'Password yang anda inputkan salah']);
+                        return response()->json(['status' => 500, 'msg' => 'Password yang anda inputkan salah']);
                     }
                 } else {
-                    return response()->json(['status' => 449, 'msg' => 'Password yang anda inputkan salah']);
+                    return response()->json(['status' => 500, 'msg' => 'Password yang anda inputkan salah']);
                 }
             } else {
-                return response()->json(['status' => 449, 'msg' => 'Akun anda dinonaktifkan']);
+                return response()->json(['status' => 500, 'msg' => 'Akun anda dinonaktifkan']);
             }
         }
     }

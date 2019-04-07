@@ -51,7 +51,7 @@ class PemesananController extends Controller
         $namaKasir = Session::get('id_users');
 
         if ($uangPembayaran < $jumlahUang) {
-            return response()->json(['status' => 449, 'msg' => 'Uang pembayaran tidak boleh kurang dari harga']);
+            return response()->json(['status' => 500, 'msg' => 'Uang pembayaran tidak boleh kurang dari harga']);
         } else {
             $kode = setKode();
             $generate = "TRS-" . Carbon::now()->format('m-d') . "-" . $kode;
@@ -87,7 +87,7 @@ class PemesananController extends Controller
         if ($insert) {
             return response()->json(['status' => 200, 'msg' => 'Data berhasil ditambahkan']);
         } else {
-            return response()->json(['status' => 449, 'msg' => 'Data gagal ditambahkan']);
+            return response()->json(['status' => 500, 'msg' => 'Data gagal ditambahkan']);
         }
     }
 
@@ -112,7 +112,7 @@ class PemesananController extends Controller
         if ($data) {
             return response()->json(['status' => 200, 'list' => $data]);
         } else {
-            return response()->json(['status' => 449, 'msg' => 'Data tidak ditemukan']);
+            return response()->json(['status' => 500, 'msg' => 'Data tidak ditemukan']);
         }
     }
 
@@ -137,7 +137,7 @@ class PemesananController extends Controller
         if ($update) {
             return response()->json(['status' => 200, 'msg' => 'Data berhasil diubah']);
         } else {
-            return response()->json(['status' => 449, 'msg' => 'Data gagal diubah']);
+            return response()->json(['status' => 500, 'msg' => 'Data gagal diubah']);
         }
     }
 
@@ -150,7 +150,7 @@ class PemesananController extends Controller
         if ($delete) {
             return response()->json(['status' => 200, 'msg' => 'Data berhasil dihapus']);
         } else {
-            return response()->json(['status' => 449, 'msg' => 'Data gagal dihapus']);
+            return response()->json(['status' => 500, 'msg' => 'Data gagal dihapus']);
         }
     }
 

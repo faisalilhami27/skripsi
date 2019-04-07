@@ -30,12 +30,14 @@ class UserLevelController extends Controller
     {
         $data = htmlspecialchars($request->nama_level);
 
-        $insert = UserLevelModel::create($data);
+        $insert = UserLevelModel::create([
+            'nama_level' => $data
+        ]);
 
         if ($insert) {
             return response()->json(['status' => 200, 'msg' => 'Data berhasil ditambahkan']);
         } else {
-            return response()->json(['status' => 449, 'msg' => 'Data gagal ditambahkan']);
+            return response()->json(['status' => 500, 'msg' => 'Data gagal ditambahkan']);
         }
     }
 
@@ -58,7 +60,7 @@ class UserLevelController extends Controller
         if ($getData) {
             return response()->json(['status' => 200, 'list' => $getData]);
         } else {
-            return response()->json(['status' => 449, 'msg' => 'Data tidak ditemukan']);
+            return response()->json(['status' => 500, 'msg' => 'Data tidak ditemukan']);
         }
     }
 
@@ -74,7 +76,7 @@ class UserLevelController extends Controller
         if ($update) {
             return response()->json(['status' => 200, 'msg' => 'Data berhasil diubah']);
         } else {
-            return response()->json(['status' => 449, 'msg' => 'Data berhasil diubah']);
+            return response()->json(['status' => 500, 'msg' => 'Data berhasil diubah']);
         }
     }
 
@@ -87,7 +89,7 @@ class UserLevelController extends Controller
         if ($delete) {
             return response()->json(['status' => 200, 'msg' => 'Data berhasil dihapus']);
         } else {
-            return response()->json(['status' => 449, 'msg' => 'Data gagal dihapus']);
+            return response()->json(['status' => 500, 'msg' => 'Data gagal dihapus']);
         }
     }
 

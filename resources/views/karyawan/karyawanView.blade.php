@@ -132,9 +132,9 @@
             </div>
         </div>
     </div>
-    @stop
+@stop
 
-    @push('scripts')
+@push('scripts')
     <script type="text/javascript">
         var table;
         $(document).ready(function () {
@@ -227,7 +227,9 @@
                         $('#infoModalColoredHeader').modal('hide');
                         loadingAfterSend();
                         resetForm();
-                        table.ajax.reload();
+                        setTimeout(function () {
+                            location.reload();
+                        }, 1000);
                     },
                     error: function (resp) {
                         loadingAfterSend();
@@ -263,7 +265,9 @@
                         notification(data.status, data.msg);
                         $('#infoModalColoredHeader1').modal('hide');
                         loadingAfterSend();
-                        table.ajax.reload();
+                        setTimeout(function () {
+                            location.reload();
+                        }, 1000);
                     },
                     error: function (resp) {
                         loadingAfterSend();

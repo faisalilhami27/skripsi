@@ -65,7 +65,7 @@ class KonfirmasiPembayaranController extends Controller
         if ($data) {
             return response()->json(['status' => 200, 'list' => $data]);
         } else {
-            return response()->json(['status' => 449, 'msg' => 'Data tidak ditemukan']);
+            return response()->json(['status' => 500, 'msg' => 'Data tidak ditemukan']);
         }
     }
 
@@ -79,7 +79,7 @@ class KonfirmasiPembayaranController extends Controller
         if ($data) {
             return response()->json(['status' => 200, 'list' => $data]);
         } else {
-            return response()->json(['status' => 449, 'msg' => 'Data tidak ditemukan']);
+            return response()->json(['status' => 500, 'msg' => 'Data tidak ditemukan']);
         }
     }
 
@@ -100,7 +100,7 @@ class KonfirmasiPembayaranController extends Controller
         $total = "Rp. " . number_format($getTotal, 0, ".", ".");
 
         if ($status == 1) {
-            return response()->json(['status' => 449, 'msg' => 'Silahkan ubah status jika data sudah lengkap']);
+            return response()->json(['status' => 500, 'msg' => 'Silahkan ubah status jika data sudah lengkap']);
         }
 
         $mail = new PHPMailer(true);
@@ -158,7 +158,7 @@ class KonfirmasiPembayaranController extends Controller
                     echo 'Mailer Error: ' . $mail->ErrorInfo;
                 }
             } else {
-                return response()->json(['status' => 449, 'msg' => 'Data gagal diubah']);
+                return response()->json(['status' => 500, 'msg' => 'Data gagal diubah']);
             }
         } else {
             $update = KonfirmasiPembayaranModel::find($id)->update([
@@ -213,7 +213,7 @@ class KonfirmasiPembayaranController extends Controller
                     echo 'Mailer Error: ' . $mail->ErrorInfo;
                 }
             } else {
-                return response()->json(['status' => 449, 'msg' => 'Data gagal diubah']);
+                return response()->json(['status' => 500, 'msg' => 'Data gagal diubah']);
             }
         }
     }
@@ -227,7 +227,7 @@ class KonfirmasiPembayaranController extends Controller
         if ($delete) {
             return response()->json(['status' => 200, 'msg' => 'Data berhasil dihapus']);
         } else {
-            return response()->json(['status' => 449, 'msg' => 'Data gagal dihapus']);
+            return response()->json(['status' => 500, 'msg' => 'Data gagal dihapus']);
         }
     }
 }

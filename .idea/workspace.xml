@@ -3,7 +3,92 @@
   <component name="ChangeListManager">
     <list default="true" id="37d309ce-f579-43ec-925f-71a95f48e59e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AuthController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CustomerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CustomerController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/KaryawanController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/KaryawanController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/KonfigurasiController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/KonfigurasiController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/KonfigurasiMobileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/KonfigurasiMobileController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/KonfirmasiPembayaranController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/KonfirmasiPembayaranController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MenuController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MenuController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PemesananController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PemesananController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProfileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProfileController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserLevelController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserLevelController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/CheckingRoleUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/CheckingRoleUser.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/fonts/fontawesome-webfont.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/fonts/fontawesome-webfont.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/fonts/icon-works-webfont.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/fonts/icon-works-webfont.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/flags/1x1/bn.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/img/flags/1x1/bn.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/flags/1x1/bo.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/img/flags/1x1/bo.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/flags/1x1/bt.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/img/flags/1x1/bt.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/flags/1x1/bz.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/img/flags/1x1/bz.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/flags/1x1/dm.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/img/flags/1x1/dm.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/flags/1x1/eg.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/img/flags/1x1/eg.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/flags/1x1/fj.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/img/flags/1x1/fj.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/flags/1x1/gq.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/img/flags/1x1/gq.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/flags/1x1/gs.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/img/flags/1x1/gs.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/flags/1x1/gt.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/img/flags/1x1/gt.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/flags/1x1/hr.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/img/flags/1x1/hr.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/flags/1x1/je.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/img/flags/1x1/je.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/flags/1x1/kg.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/img/flags/1x1/kg.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/flags/1x1/ky.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/img/flags/1x1/ky.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/flags/1x1/kz.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/img/flags/1x1/kz.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/flags/1x1/mp.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/img/flags/1x1/mp.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/flags/1x1/mw.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/img/flags/1x1/mw.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/flags/1x1/mx.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/img/flags/1x1/mx.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/flags/1x1/nf.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/img/flags/1x1/nf.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/flags/1x1/ni.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/img/flags/1x1/ni.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/flags/1x1/pa.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/img/flags/1x1/pa.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/flags/1x1/pn.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/img/flags/1x1/pn.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/flags/1x1/rs.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/img/flags/1x1/rs.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/flags/1x1/sa.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/img/flags/1x1/sa.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/flags/1x1/sh.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/img/flags/1x1/sh.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/flags/1x1/sm.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/img/flags/1x1/sm.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/flags/1x1/sv.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/img/flags/1x1/sv.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/flags/1x1/sx.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/img/flags/1x1/sx.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/flags/1x1/tm.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/img/flags/1x1/tm.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/flags/1x1/ug.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/img/flags/1x1/ug.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/flags/1x1/va.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/img/flags/1x1/va.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/flags/1x1/vg.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/img/flags/1x1/vg.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/flags/1x1/vi.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/img/flags/1x1/vi.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/flags/1x1/vu.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/img/flags/1x1/vu.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/flags/4x3/as.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/img/flags/4x3/as.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/flags/4x3/bm.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/img/flags/4x3/bm.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/flags/4x3/bn.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/img/flags/4x3/bn.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/flags/4x3/bo.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/img/flags/4x3/bo.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/flags/4x3/bt.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/img/flags/4x3/bt.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/flags/4x3/dm.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/img/flags/4x3/dm.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/flags/4x3/eg.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/img/flags/4x3/eg.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/flags/4x3/fj.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/img/flags/4x3/fj.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/flags/4x3/gb-nir.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/img/flags/4x3/gb-nir.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/flags/4x3/gt.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/img/flags/4x3/gt.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/flags/4x3/im.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/img/flags/4x3/im.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/flags/4x3/je.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/img/flags/4x3/je.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/flags/4x3/ky.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/img/flags/4x3/ky.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/flags/4x3/kz.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/img/flags/4x3/kz.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/flags/4x3/md.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/img/flags/4x3/md.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/flags/4x3/me.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/img/flags/4x3/me.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/flags/4x3/mp.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/img/flags/4x3/mp.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/flags/4x3/mx.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/img/flags/4x3/mx.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/flags/4x3/mz.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/img/flags/4x3/mz.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/flags/4x3/nf.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/img/flags/4x3/nf.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/flags/4x3/ni.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/img/flags/4x3/ni.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/flags/4x3/pn.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/img/flags/4x3/pn.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/flags/4x3/rs.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/img/flags/4x3/rs.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/flags/4x3/sh.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/img/flags/4x3/sh.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/flags/4x3/sm.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/img/flags/4x3/sm.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/flags/4x3/sv.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/img/flags/4x3/sv.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/flags/4x3/sx.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/img/flags/4x3/sx.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/flags/4x3/va.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/img/flags/4x3/va.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/flags/4x3/vg.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/img/flags/4x3/vg.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/flags/4x3/zm.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/img/flags/4x3/zm.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/flags/4x3/zw.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/img/flags/4x3/zw.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/vendor.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/vendor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/customer/customerView.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/customer/customerView.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/karyawan/karyawanView.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/karyawan/karyawanView.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/konfigurasimobile/konfigurasiMobileView.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/konfigurasimobile/konfigurasiMobileView.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pembayaran/konfirmasiView.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pembayaran/konfirmasiView.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pemesanan/pemesananView.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pemesanan/pemesananView.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/user/userView.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/userView.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -34,87 +119,37 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/konfigurasimobile/konfigurasiMobileView.blade.php">
+        <entry file="file://$PROJECT_DIR$/app/Http/Requests/UserLevelRequest.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2668">
-              <caret line="116" column="90" selection-start-line="116" selection-start-column="90" selection-end-line="116" selection-end-column="90" />
+            <state relative-caret-position="345">
+              <caret line="21" column="20" lean-forward="true" selection-start-line="21" selection-start-column="20" selection-end-line="21" selection-end-column="20" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/pemesanan/pemesananView.blade.php">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UserLevelController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2392">
-              <caret line="104" column="51" selection-start-line="104" selection-start-column="51" selection-end-line="104" selection-end-column="51" />
+            <state relative-caret-position="242">
+              <caret line="66" column="21" lean-forward="true" selection-start-line="66" selection-start-column="21" selection-end-line="66" selection-end-column="21" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/user/userView.blade.php">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ChooseRoleController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="23">
-              <caret line="65" column="103" selection-start-line="65" selection-start-column="103" selection-end-line="65" selection-end-column="103" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/userlevel/userLevelView.blade.php">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/customer/customerView.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1219">
-              <caret line="53" column="100" selection-start-line="53" selection-start-column="100" selection-end-line="53" selection-end-column="100" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/karyawan/karyawanView.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="67">
-              <caret line="353" column="24" lean-forward="true" selection-start-line="353" selection-start-column="24" selection-end-line="353" selection-end-column="24" />
+            <state relative-caret-position="-57">
+              <caret line="8" column="6" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ProfileController.php">
+        <entry file="file://$PROJECT_DIR$/app/Http/Middleware/CheckingRoleUser.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="230">
-              <caret line="27" column="30" lean-forward="true" selection-start-line="27" selection-start-column="30" selection-end-line="27" selection-end-column="30" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AuthController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-276">
-              <caret line="12" column="6" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Api/AuthenticationController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
-              <caret line="17" column="34" lean-forward="true" selection-start-line="17" selection-start-column="34" selection-end-line="17" selection-end-column="34" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Api/PemesananController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="518">
-              <caret line="192" column="33" selection-start-line="192" selection-start-column="33" selection-end-line="192" selection-end-column="33" />
+            <state relative-caret-position="-69">
+              <caret line="10" column="6" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
             </state>
           </provider>
         </entry>
@@ -156,6 +191,8 @@
       <find>trs_role_level</find>
       <find>idUser</find>
       <find>'cluster' =&gt; 'ap1'</find>
+      <find>table.ajax.reload();</find>
+      <find>449</find>
     </findStrings>
     <replaceStrings>
       <replace>table.ajax.reload</replace>
@@ -165,6 +202,7 @@
       <replace>mst_user_karyawan</replace>
       <replace />
       <replace>responsive: true,</replace>
+      <replace>500</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -176,9 +214,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/database/seeds/ChooseRoleSeeder.php" />
-        <option value="$PROJECT_DIR$/database/migrations/2019_02_20_181459_create_mst_jenis_pemesanan_table.php" />
-        <option value="$PROJECT_DIR$/database/migrations/2019_02_20_181652_create_mst_setting_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_02_20_181713_create_mst_status_pembayaran_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_02_20_181856_create_mst_user_customer_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_02_20_181925_create_mst_user_level_table.php" />
@@ -190,7 +225,6 @@
         <option value="$PROJECT_DIR$/database/migrations/2019_03_02_185029_create_mst_pemesanan_tiket_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_03_03_184939_create_mst_pembayaran_table.php" />
         <option value="$PROJECT_DIR$/app/Models/ChooseRoleModel.php" />
-        <option value="$PROJECT_DIR$/app/Http/Middleware/CheckingRoleUser.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/DashboardController.php" />
         <option value="$PROJECT_DIR$/app/Helpers/MyHelpers.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_02_20_181637_create_mst_menu_table.php" />
@@ -200,9 +234,7 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/MenuController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/MutasiBankController.php" />
         <option value="$PROJECT_DIR$/resources/views/bank/mutasiBank.blade.php" />
-        <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Api/RegisterCustomerController.php" />
-        <option value="$PROJECT_DIR$/resources/views/pembayaran/konfirmasiView.blade.php" />
         <option value="$PROJECT_DIR$/app/Models/KonfirmasiPembayaranModel.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/KonfirmasiPembayaranController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Api/PembayaranController.php" />
@@ -219,14 +251,20 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/KonfigurasiController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Api/KonfigurasiMobileController.php" />
         <option value="$PROJECT_DIR$/resources/views/konfigurasi/konfigurasi.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/user/userView.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/customer/customerView.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/pemesanan/pemesananView.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/konfigurasimobile/konfigurasiMobileView.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/karyawan/karyawanView.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/menu/menuView.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Api/PemesananController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ProfileController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/UserController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Middleware/CheckingRoleUser.php" />
+        <option value="$PROJECT_DIR$/routes/web.php" />
+        <option value="$PROJECT_DIR$/resources/views/user/userView.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/customer/customerView.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/karyawan/karyawanView.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/konfigurasimobile/konfigurasiMobileView.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/pembayaran/konfirmasiView.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/pemesanan/pemesananView.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/AuthController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/UserLevelController.php" />
       </list>
     </option>
   </component>
@@ -363,6 +401,12 @@
               <item name="wsps" type="b2602c69:ProjectViewProjectNode" />
               <item name="wsps" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Exceptions" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="wsps" type="b2602c69:ProjectViewProjectNode" />
+              <item name="wsps" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="Helpers" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -385,6 +429,13 @@
               <item name="Http" type="462c0819:PsiDirectoryNode" />
               <item name="Controllers" type="462c0819:PsiDirectoryNode" />
               <item name="Api" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="wsps" type="b2602c69:ProjectViewProjectNode" />
+              <item name="wsps" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Http" type="462c0819:PsiDirectoryNode" />
+              <item name="Middleware" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="wsps" type="b2602c69:ProjectViewProjectNode" />
@@ -519,7 +570,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="editor.config.ad.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="E:/LaravelProject/web-student-service" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -634,14 +685,7 @@
       <workItem from="1554212691244" duration="25189000" />
       <workItem from="1554435238601" duration="10510000" />
       <workItem from="1554528205982" duration="10574000" />
-      <workItem from="1554604948473" duration="926000" />
-    </task>
-    <task id="LOCAL-00146" summary="penambahan detail pemesanan">
-      <created>1553627235988</created>
-      <option name="number" value="00146" />
-      <option name="presentableId" value="LOCAL-00146" />
-      <option name="project" value="LOCAL" />
-      <updated>1553627235989</updated>
+      <workItem from="1554604948473" duration="6285000" />
     </task>
     <task id="LOCAL-00147" summary="perbaikan detail pemesanan">
       <created>1553660752725</created>
@@ -979,11 +1023,18 @@
       <option name="project" value="LOCAL" />
       <updated>1554566434198</updated>
     </task>
-    <option name="localTasksCounter" value="195" />
+    <task id="LOCAL-00195" summary="perbaikan profil">
+      <created>1554606146182</created>
+      <option name="number" value="00195" />
+      <option name="presentableId" value="LOCAL-00195" />
+      <option name="project" value="LOCAL" />
+      <updated>1554606146182</updated>
+    </task>
+    <option name="localTasksCounter" value="196" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="528948000" />
+    <option name="totallyTimeSpent" value="534307000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
@@ -1038,7 +1089,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="fix bug tampilan" />
     <MESSAGE value="penambahan htmlspecialcharacters untuk keamanan" />
     <MESSAGE value="penambahan notifikasi" />
     <MESSAGE value="perbaikan bug" />
@@ -1063,68 +1113,14 @@
     <MESSAGE value="perbaikan konfigurasi" />
     <MESSAGE value="menghilangkan autocomplete" />
     <MESSAGE value="perbaikan pusher" />
-    <option name="LAST_COMMIT_MESSAGE" value="perbaikan pusher" />
+    <MESSAGE value="perbaikan profil" />
+    <option name="LAST_COMMIT_MESSAGE" value="perbaikan profil" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/Http/Requests/MenuRequest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="311">
-          <caret line="29" column="44" lean-forward="true" selection-start-line="29" selection-start-column="44" selection-end-line="29" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/MenuModel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="11" column="33" lean-forward="true" selection-start-line="11" selection-start-column="33" selection-end-line="12" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Helpers/MyHelpers.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
-          <folding>
-            <element signature="n#style#0;n#a#0;n#li#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#0;n#li#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MutasiBankController.php" />
-    <entry file="file://$PROJECT_DIR$/resources/views/bank/mutasiBank.blade.php" />
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/CustomerController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="8" column="6" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.env">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="932">
-          <caret line="44" column="26" lean-forward="true" selection-start-line="44" selection-start-column="26" selection-end-line="44" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="36" column="14" selection-start-line="36" selection-start-column="14" selection-end-line="36" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Concerns/HasRelationships.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="280">
           <caret line="671" column="52" selection-start-line="671" selection-start-column="52" selection-end-line="671" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="621">
-          <caret line="36" column="53" selection-start-line="36" selection-start-column="53" selection-end-line="36" selection-end-column="53" />
         </state>
       </provider>
     </entry>
@@ -1184,13 +1180,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="138">
           <caret line="13" column="6" selection-start-line="13" selection-start-column="6" selection-end-line="13" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UserController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="966">
-          <caret line="51" column="15" selection-start-line="51" selection-start-column="15" selection-end-line="51" selection-end-column="15" />
         </state>
       </provider>
     </entry>
@@ -1340,62 +1329,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/pembayaran/konfirmasiView.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1725">
-          <caret line="75" column="57" selection-start-line="75" selection-start-column="57" selection-end-line="75" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/konfigurasimobile/konfigurasiMobileView.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2668">
-          <caret line="116" column="90" selection-start-line="116" selection-start-column="90" selection-end-line="116" selection-end-column="90" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/pemesanan/pemesananView.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2392">
-          <caret line="104" column="51" selection-start-line="104" selection-start-column="51" selection-end-line="104" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/userlevel/userLevelView.blade.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/customer/customerView.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1219">
-          <caret line="53" column="100" selection-start-line="53" selection-start-column="100" selection-end-line="53" selection-end-column="100" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Api/PemesananController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="518">
           <caret line="192" column="33" selection-start-line="192" selection-start-column="33" selection-end-line="192" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/userView.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23">
-          <caret line="65" column="103" selection-start-line="65" selection-start-column="103" selection-end-line="65" selection-end-column="103" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/karyawan/karyawanView.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="67">
-          <caret line="353" column="24" lean-forward="true" selection-start-line="353" selection-start-column="24" selection-end-line="353" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AuthController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-276">
-          <caret line="12" column="6" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
         </state>
       </provider>
     </entry>
@@ -1410,6 +1347,135 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="230">
           <caret line="27" column="30" lean-forward="true" selection-start-line="27" selection-start-column="30" selection-end-line="27" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Exceptions/Handler.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="311">
+          <caret line="45" column="9" lean-forward="true" selection-start-line="45" selection-start-column="9" selection-end-line="45" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="19" column="50" lean-forward="true" selection-start-line="19" selection-start-column="50" selection-end-line="19" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UserController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="137" column="16" selection-start-line="137" selection-start-column="16" selection-end-line="137" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/customer/customerView.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1447">
+          <caret line="244" column="49" selection-start-line="244" selection-start-column="49" selection-end-line="244" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/karyawan/karyawanView.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="573">
+          <caret line="273" column="65" selection-start-line="273" selection-start-column="65" selection-end-line="273" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Requests/KonfigurasiMobileRequest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="334">
+          <caret line="28" column="30" lean-forward="true" selection-start-line="28" selection-start-column="30" selection-end-line="28" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/pembayaran/konfirmasiView.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-678">
+          <caret line="370" column="19" selection-start-line="370" selection-start-column="19" selection-end-line="370" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/pemesanan/pemesananView.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="343">
+          <caret line="496" column="60" selection-start-line="496" selection-start-column="60" selection-end-line="496" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/userView.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="251">
+          <caret line="396" column="38" selection-start-line="396" selection-start-column="38" selection-end-line="396" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Support/Facades/Auth.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="333">
+          <caret line="31" column="6" selection-start-line="31" selection-start-column="6" selection-end-line="31" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AuthController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1152">
+          <caret line="4" column="4" lean-forward="true" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
+          <folding>
+            <element signature="e#40#74#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/konfigurasimobile/konfigurasiMobileView.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4876">
+          <caret line="42" column="36" lean-forward="true" selection-start-line="42" selection-start-column="36" selection-end-line="42" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/KonfigurasiMobileController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="483">
+          <caret line="45" column="27" lean-forward="true" selection-start-line="45" selection-start-column="27" selection-end-line="45" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/userlevel/userLevelView.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2783">
+          <caret line="181" column="40" selection-start-line="181" selection-start-column="40" selection-end-line="181" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Requests/UserLevelRequest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="21" column="20" lean-forward="true" selection-start-line="21" selection-start-column="20" selection-end-line="21" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UserLevelController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="66" column="21" lean-forward="true" selection-start-line="66" selection-start-column="21" selection-end-line="66" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ChooseRoleController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-57">
+          <caret line="8" column="6" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Middleware/CheckingRoleUser.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-69">
+          <caret line="10" column="6" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
         </state>
       </provider>
     </entry>

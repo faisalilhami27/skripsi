@@ -57,7 +57,8 @@
                             </div>
                             <div class="form-group">
                                 <label for="deskripsi" class="control-label">Deskripsi</label>
-                                <textarea id="deskripsi" class="form-control" maxlength="100" placeholder="Masukan deskripsi" name="deskripsi" rows="3" required></textarea>
+                                <textarea id="deskripsi" class="form-control" maxlength="100"
+                                          placeholder="Masukan deskripsi" name="deskripsi" rows="3" required></textarea>
                                 <span class="text-danger">
                                     <strong id="deskripsi-error"></strong>
                                 </span>
@@ -69,7 +70,8 @@
                                 <label for="ins_images">Images</label>
                                 <div class="input-with-icon">
                                     <div class="input-group input-file">
-                                        <input class="form-control ins_images" readonly type="text" placeholder="No file chosen"
+                                        <input class="form-control ins_images" readonly type="text"
+                                               placeholder="No file chosen"
                                                style="background-color: rgba(0,0,0, 0.1)">
                                         <span class="icon icon-paperclip input-icon"></span>
                                         <span class="input-group-btn">
@@ -122,7 +124,9 @@
                             </div>
                             <div class="form-group">
                                 <label for="upd_deskripsi" class="control-label">Deskripsi</label>
-                                <textarea id="upd_deskripsi" class="form-control" maxlength="100" placeholder="Masukan deskripsi" name="upd_deskripsi" rows="3" required></textarea>
+                                <textarea id="upd_deskripsi" class="form-control" maxlength="100"
+                                          placeholder="Masukan deskripsi" name="upd_deskripsi" rows="3"
+                                          required></textarea>
                                 <span class="text-danger">
                                     <strong class="deskripsi-error"></strong>
                                 </span>
@@ -134,7 +138,8 @@
                                 <label for="upd_images">Images</label>
                                 <div class="input-with-icon">
                                     <div class="input-group input-file">
-                                        <input class="form-control upd_images" readonly type="text" placeholder="No file chosen"
+                                        <input class="form-control upd_images" readonly type="text"
+                                               placeholder="No file chosen"
                                                style="background-color: rgba(0,0,0, 0.1)">
                                         <span class="icon icon-paperclip input-icon"></span>
                                         <span class="input-group-btn">
@@ -163,16 +168,16 @@
             </div>
         </div>
     </div>
-    @stop
-    @push('scripts')
+@stop
+@push('scripts')
     <script type="text/javascript">
         var table;
         $(document).ready(function () {
 
             var maxLength = 100;
-            $('textarea').keyup(function() {
+            $('textarea').keyup(function () {
                 var length = $(this).val().length;
-                var length = maxLength-length;
+                var length = maxLength - length;
                 $('#countCharacters, .countCharacters').text(length);
             });
 
@@ -260,15 +265,17 @@
                     contentType: false,
                     processData: false,
                     dataType: 'json',
-                    beforeSend: function() {
-                      loadingBeforeSend();
+                    beforeSend: function () {
+                        loadingBeforeSend();
                     },
                     success: function (data) {
                         $("#infoModalColoredHeader").modal('hide');
                         loadingAfterSend();
                         notification(data.status, data.msg);
                         resetForm();
-                        table.ajax.reload();
+                        setTimeout(function () {
+                            location.reload();
+                        }, 1000);
                     },
                     error: function (resp) {
                         loadingAfterSend();
@@ -305,14 +312,16 @@
                     contentType: false,
                     processData: false,
                     dataType: 'json',
-                    beforeSend: function() {
-                      loadingBeforeSend();
+                    beforeSend: function () {
+                        loadingBeforeSend();
                     },
                     success: function (data) {
                         $("#infoModalColoredHeader1").modal('hide');
                         loadingAfterSend();
                         notification(data.status, data.msg);
-                        table.ajax.reload();
+                        setTimeout(function () {
+                            location.reload();
+                        }, 1000);
                     },
                     error: function (resp) {
                         loadingAfterSend();

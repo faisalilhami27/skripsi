@@ -122,7 +122,7 @@ class ProfileController extends Controller
         if ($update) {
             return response()->json(['status' => 200, 'msg' => 'Data berhasil diubah']);
         } else {
-            return response()->json(['status' => 449, 'msg' => 'Data gagal diubah']);
+            return response()->json(['status' => 500, 'msg' => 'Data gagal diubah']);
         }
     }
 
@@ -138,11 +138,11 @@ class ProfileController extends Controller
         $konfirmasiPassword = $request->password_confirmation;
 
         if (empty($password) || empty($konfirmasiPassword)) {
-            $json = ["status" => 449, "msg" => "Password dan Konfirmasi Password harus diisi"];
+            $json = ["status" => 500, "msg" => "Password dan Konfirmasi Password harus diisi"];
         } elseif ($password != $konfirmasiPassword) {
-            $json = ["status" => 449, "msg" => "Password dan Konfirmasi Password harus sama"];
+            $json = ["status" => 500, "msg" => "Password dan Konfirmasi Password harus sama"];
         } elseif (strlen($password) < 8) {
-            $json = ["status" => 449, "msg" => "Password minimal 8 karakter"];
+            $json = ["status" => 500, "msg" => "Password minimal 8 karakter"];
         } else {
             UserModel::findOrFail($id)->update([
                 'password' => Hash::make($password),

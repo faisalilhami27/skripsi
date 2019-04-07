@@ -93,7 +93,8 @@
                             </div>
                             <div class="form-group">
                                 <label for="ins_tiket">Jumlah Tiket</label>
-                                <input id="ins_tiket" name="ins_tiket" maxlength="5" class="form-control" autocomplete="off" type="text"
+                                <input id="ins_tiket" name="ins_tiket" maxlength="5" class="form-control"
+                                       autocomplete="off" type="text"
                                        placeholder="Masukan jumlah tiket">
                                 <span class="text-danger">
                                     <strong id="tiket-error"></strong>
@@ -253,9 +254,10 @@
                     if (data.id_jenis == 2) {
                         var start = moment(data.tgl_pemesanan);
                         var tanggal = moment(start).add(7, 'days');
-                        return '<center>'+ tanggal.format("YYYY-MM-DD"); +'</center>';
+                        return '<center>' + tanggal.format("YYYY-MM-DD");
+                        +'</center>';
                     } else {
-                        return '<center>'+ data.tgl_pemesanan +'</center>';
+                        return '<center>' + data.tgl_pemesanan + '</center>';
                     }
                 }
             };
@@ -488,7 +490,9 @@
                                     dataType: "json",
                                     success: function (data) {
                                         notification(data.status, data.msg);
-                                        table.ajax.reload();
+                                        setTimeout(function () {
+                                            location.reload();
+                                        }, 1000);
                                     },
                                     error: function (xhr, status, error) {
                                         alert(status + " : " + error);
@@ -509,7 +513,9 @@
             });
 
             $("#btnRefresh").click(function () {
-                table.ajax.reload();
+                setTimeout(function () {
+                    location.reload();
+                }, 1000);
             });
 
             $("#btnTiket1").click(function () {
@@ -620,7 +626,9 @@
 
         var channel = pusher.subscribe('my-channel');
         channel.bind('my-event', function (data) {
-            table.ajax.reload();
+            setTimeout(function () {
+                location.reload();
+            }, 1000);
         });
     </script>
 @endpush

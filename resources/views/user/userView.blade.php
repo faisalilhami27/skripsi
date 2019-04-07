@@ -437,7 +437,9 @@
                                     success: function (data) {
                                         notification(data.status, data.msg);
                                         setTimeout(function () {
-                                            table.ajax.reload();
+                                            setTimeout(function () {
+location.reload();
+                                        }, 1000);
                                         }, 1000);
                                     },
                                     error: function (xhr, status, error) {

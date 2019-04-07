@@ -42,7 +42,7 @@ class UserController extends Controller
         $cekUser = UserModel::where('id_karyawan', $karyawan)->first();
 
         if ($cekUser['id_karyawan'] == $karyawan) {
-            return response()->json(['status' => 449, 'msg' => 'Akun sudah ada pada sistem']);
+            return response()->json(['status' => 500, 'msg' => 'Akun sudah ada pada sistem']);
         }
 
         foreach ($level as $item) {
@@ -62,7 +62,7 @@ class UserController extends Controller
         if ($insert) {
             return response()->json(['status' => 200, 'msg' => 'Data berhasil ditambahkan']);
         } else {
-            return response()->json(['status' => 449, 'msg' => 'Data gagal ditambahkan']);
+            return response()->json(['status' => 500, 'msg' => 'Data gagal ditambahkan']);
         }
     }
 
@@ -84,7 +84,7 @@ class UserController extends Controller
         if ($level) {
             return response()->json(['status' => 200, 'level' => $item, 'user' => $user]);
         } else {
-            return response()->json(['status' => 449, 'msg' => "Data tidak ditemukan"]);
+            return response()->json(['status' => 500, 'msg' => "Data tidak ditemukan"]);
         }
     }
 
@@ -123,7 +123,7 @@ class UserController extends Controller
         if ($update) {
             return response()->json(['status' => 200, 'msg' => 'Data berhasil diubah']);
         } else {
-            return response()->json(['status' => 449, 'msg' => 'Data gagal diubah']);
+            return response()->json(['status' => 500, 'msg' => 'Data gagal diubah']);
         }
     }
 
@@ -136,7 +136,7 @@ class UserController extends Controller
         if ($delete) {
             return response()->json(['status' => 200, 'msg' => 'Data berhasil dihapus']);
         } else {
-            return response()->json(['status' => 449, 'msg' => 'Data gagal dihapus']);
+            return response()->json(['status' => 500, 'msg' => 'Data gagal dihapus']);
         }
     }
 
@@ -156,7 +156,7 @@ class UserController extends Controller
         if ($reset) {
             return response()->json(['status' => 200, 'msg' => 'Data berhasil direset']);
         } else {
-            return response()->json(['status' => 449, 'msg' => 'Data gagal direset']);
+            return response()->json(['status' => 500, 'msg' => 'Data gagal direset']);
         }
     }
 
@@ -167,7 +167,7 @@ class UserController extends Controller
         $getEmail = $cekUsername->count();
 
         if ($getEmail == 1) {
-            return response()->json(['status' => 449, 'msg' => 'username has been used']);
+            return response()->json(['status' => 500, 'msg' => 'username has been used']);
         } else {
             return response()->json(['status' => 200, 'msg' => 'username available']);
         }
@@ -180,7 +180,7 @@ class UserController extends Controller
         $getEmail = $cekUsername->count();
 
         if ($getEmail == 1) {
-            return response()->json(['status' => 449, 'msg' => 'email has been used']);
+            return response()->json(['status' => 500, 'msg' => 'email has been used']);
         } else {
             return response()->json(['status' => 200, 'msg' => 'email available']);
         }
@@ -193,7 +193,7 @@ class UserController extends Controller
         $getNoHp = $cekUsername->count();
 
         if ($getNoHp == 1) {
-            return response()->json(['status' => 449, 'msg' => 'No Handphone has been used']);
+            return response()->json(['status' => 500, 'msg' => 'No Handphone has been used']);
         } else {
             return response()->json(['status' => 200, 'msg' => 'No Handphone available']);
         }

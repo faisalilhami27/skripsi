@@ -71,7 +71,7 @@ class KonfigurasiController extends Controller
             }
 
             if ($kode == '' && $data == '') {
-                return response()->json(['status' => 449]);
+                return response()->json(['status' => 500]);
             } else {
                 $update = KonfigurasiModel::where('kode_konfig', $kode)->update($data);
             }
@@ -79,7 +79,7 @@ class KonfigurasiController extends Controller
             if ($update) {
                 return response()->json(['status' => 200, 'msg' => 'Data berhasil diubah otomatis']);
             } else {
-                return response()->json(['status' => 449, 'msg' => 'Data gagal diubah']);
+                return response()->json(['status' => 500, 'msg' => 'Data gagal diubah']);
             }
         } else {
             $kode = "LOGO_PERUSAHAAN";
@@ -89,14 +89,14 @@ class KonfigurasiController extends Controller
             ];
 
             if ($file->getSize() > 1000000) {
-                return response()->json(["status" => 449, "msg" => "Maksimal file adalah 1 MB"]);
+                return response()->json(["status" => 500, "msg" => "Maksimal file adalah 1 MB"]);
             } else {
                 $update = KonfigurasiModel::where('kode_konfig', $kode)->update($data);
 
                 if ($update) {
                     return response()->json(['status' => 200, 'msg' => 'Data berhasil diubah otomatis']);
                 } else {
-                    return response()->json(['status' => 449, 'msg' => 'Data gagal diubah']);
+                    return response()->json(['status' => 500, 'msg' => 'Data gagal diubah']);
                 }
             }
         }

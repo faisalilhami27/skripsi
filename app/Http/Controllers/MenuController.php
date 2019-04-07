@@ -45,7 +45,7 @@ class MenuController extends Controller
         if ($insert) {
             return response()->json(['status' => 200, 'msg' => 'Data berhasil ditambahkan']);
         } else {
-            return response()->json(['status' => 449, 'msg' => 'Data gagal ditambahkan']);
+            return response()->json(['status' => 500, 'msg' => 'Data gagal ditambahkan']);
         }
     }
 
@@ -58,7 +58,7 @@ class MenuController extends Controller
         if ($getData) {
             return response()->json(['status' => 200, 'list' => $getData]);
         } else {
-            return response()->json(['status' => 449, 'msg' => 'Data tidak ditemukan']);
+            return response()->json(['status' => 500, 'msg' => 'Data tidak ditemukan']);
         }
     }
 
@@ -84,7 +84,7 @@ class MenuController extends Controller
         if ($update) {
             return response()->json(['status' => 200, 'msg' => 'Data berhasil diubah']);
         } else {
-            return response()->json(['status' => 449, 'msg' => 'Data gagal diubah']);
+            return response()->json(['status' => 500, 'msg' => 'Data gagal diubah']);
         }
     }
 
@@ -97,7 +97,7 @@ class MenuController extends Controller
         if ($delete) {
             return response()->json(['status' => 200, 'msg' => 'Data berhasil dihapus']);
         } else {
-            return response()->json(['status' => 449, 'msg' => 'Data gagal dihapus']);
+            return response()->json(['status' => 500, 'msg' => 'Data gagal dihapus']);
         }
     }
 }

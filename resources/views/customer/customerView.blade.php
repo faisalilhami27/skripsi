@@ -77,8 +77,8 @@
             </div>
         </div>
     </div>
-    @stop
-    @push('scripts')
+@stop
+@push('scripts')
     <script type="text/javascript">
         var table;
         $(document).ready(function () {
@@ -163,14 +163,16 @@
                     type: "PUT",
                     data: sendData,
                     dataType: 'json',
-                    beforeSend: function() {
+                    beforeSend: function () {
                         loadingBeforeSend();
                     },
                     success: function (data) {
                         notification(data.status, data.msg);
                         $('#infoModalColoredHeader1').modal('hide');
-                  loadingAfterSend();
-                        table.ajax.reload();
+                        loadingAfterSend();
+                        setTimeout(function () {
+                            location.reload();
+                        }, 1000);
                     },
                     error: function (resp) {
                         loadingAfterSend();
