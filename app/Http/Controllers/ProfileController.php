@@ -25,7 +25,7 @@ class ProfileController extends Controller
     {
         $id = Session::get('id_users');
         $user = UserModel::with('karyawan')
-            ->where('id_karyawan', $id)
+            ->where('id', $id)
             ->first();
         $level = ChooseRoleModel::with('roleMany')
             ->where('id_karyawan', $id)
