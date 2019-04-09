@@ -626,9 +626,7 @@
 
         var channel = pusher.subscribe('my-channel');
         channel.bind('my-event', function (data) {
-            setTimeout(function () {
-                location.reload();
-            }, 1000);
+            table.ajax.reload();
         });
     </script>
 @endpush

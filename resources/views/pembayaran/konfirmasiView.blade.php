@@ -474,16 +474,12 @@
 
         var channel1 = pusher.subscribe('my-channel');
         channel1.bind('my-event', function (data) {
-            setTimeout(function () {
-                location.reload();
-            }, 1000);
+            table.ajax.reload();
         });
 
         var channel = pusher.subscribe('my-channel1');
         channel.bind('my-event1', function (data) {
-            setTimeout(function () {
-                location.reload();
-            }, 1000);
+            table.ajax.reload();
         });
     </script>
 
