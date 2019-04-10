@@ -31,8 +31,11 @@ class ChooseRoleController extends Controller
     public function linkDashboard(Request $request)
     {
         $idUserLevel = $request->id;
+        $level = ChooseRoleModel::where('id_user_level', $idUserLevel)->first();
         Session::put('id_user_level', $idUserLevel);
+        Session::put('id_role', $level->id);
         $id = Session::get('id_user_level');
-        return response()->json(['status' => 200, 'level' => $id]);
+        $idRole = Session::get('id_role');
+        return response()->json(['status' => 200, 'level' => $id, 'id_role' => $idRole]);
     }
 }

@@ -32,11 +32,11 @@ class AuthController extends Controller
             if ($user['status'] == "y") {
                 if ($user->count() > 0) {
                     if (Hash::check($password, $user['password'])) {
-                        $chooseRole = ChooseRoleModel::with('roleMany')
+                        $chooseRole = ChooseRoleModel::with('role')
                             ->where('id_karyawan', $user->id)
                             ->get();
                         if ($chooseRole->count() == 1) {
-                            Session::put('id_user_level', $chooseRole[0]->id_user_level);
+                            Session::put('id_user_level', $chooseRole->id_user_level);
                         }
                         Session::put('id_users', $user->id);
                         Session::put('nama_lengkap', $user->karyawan->nama);

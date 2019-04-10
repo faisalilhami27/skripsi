@@ -267,7 +267,7 @@
                             $("#upd_url").val(data.list.url);
                             $("#upd_icon").val(data.list.icon);
                             $("#upd_nomor").val(data.list.order_num);
-                            $("#upd_main_menu").val(data.list.is_main_menu);
+                            $("#upd_main_menu").select2().val(data.list.is_main_menu).trigger('change');
                             $("#upd_status").val(data.list.is_aktif);
                         } else {
                             notification(data.status, data.msg);
