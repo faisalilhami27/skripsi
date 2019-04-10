@@ -35,13 +35,13 @@ if (!function_exists('sidebar')) {
                 ->get();
         }
 
+        $idUser = Session::get('id_user_level');
         $mainMenu = $sqlMenu;
         $page = Request::segment(1);
         foreach ($mainMenu as $menu) {
             $subMenu = MenuModel::where('is_aktif', 'y')
                 ->where('is_main_menu', $menu->id)
                 ->get();
-            $idUser = Session::get('id_user_level');
             $role = MenuModel::with('roleLevel')
                 ->whereHas('roleLevel', function ($query) use ($idUser){
                     $query->where('id_user_level', $idUser);
@@ -88,6 +88,50 @@ if (!function_exists('sidebar')) {
                 }
             }
         }
+    }
+}
+
+if (!function_exists('getIdMenu')) {
+    function getIdMenu()
+    {
+        $setting = DB::table('setting')->where('id', 1)->first();
+        if ($setting->value == "ya") {
+            $sqlMenu = MenuModel::whereIn('id', function ($query) {
+                $idUserLevel = Session::get('id_user_level');
+                $query->select('id_menu')
+                    ->from('role_level')
+                    ->where('id_user_level', $idUserLevel);
+            })
+                ->where('is_aktif', 'y')
+                ->orderBy('order_num', 'ASC')
+                ->get();
+        } else {
+            $sqlMenu = MenuModel::where('is_aktif', 'y')
+                ->where('is_main_menu', 0)
+                ->get();
+        }
+
+        $mainMenu = $sqlMenu;
+        $page = Request::segment(1);
+        foreach ($mainMenu as $menu) {
+            if ($menu->is_main_menu != 0) {
+                $subMenu = MenuModel::where('is_aktif', 'y')
+                    ->where('is_main_menu', $menu->is_main_menu)
+                    ->get();
+                if ($subMenu->count() > 0) {
+                    foreach ($subMenu as $sub) {
+                        if ($page == $sub->url) {
+                            Session::put('id_menu', $sub->id);
+                        }
+                    }
+                }
+            } else {
+                if ($page == $menu->url) {
+                    Session::put('id_menu', $menu->id);
+                }
+            }
+        }
+        return Session::get('id_menu');
     }
 }
 
@@ -180,50 +224,6 @@ if (!function_exists('checkAccess')) {
         ];
 
         return $data;
-    }
-}
-
-if (!function_exists('getIdMenu')) {
-    function getIdMenu()
-    {
-        $setting = DB::table('setting')->where('id', 1)->first();
-        if ($setting->value == "ya") {
-            $sqlMenu = MenuModel::whereIn('id', function ($query) {
-                $idUserLevel = Session::get('id_user_level');
-                $query->select('id_menu')
-                    ->from('role_level')
-                    ->where('id_user_level', $idUserLevel);
-            })
-                ->where('is_main_menu', 0)
-                ->where('is_aktif', 'y')
-                ->get();
-        } else {
-            $sqlMenu = MenuModel::where('is_aktif', 'y')
-                ->where('is_main_menu', 0)
-                ->get();
-        }
-
-        $mainMenu = $sqlMenu;
-        $page = Request::segment(1);
-        foreach ($mainMenu as $menu) {
-            if ($menu->is_main_menu != 0) {
-                $subMenu = MenuModel::where('is_aktif', 'y')
-                    ->where('is_main_menu', $menu->id)
-                    ->get();
-                if ($subMenu->count() > 0) {
-                    foreach ($subMenu as $sub) {
-                        if ($page == $sub->url) {
-                            Session::put('id_menu', $sub->id);
-                        }
-                    }
-                }
-            } else {
-                if ($page == $menu->url) {
-                    Session::put('id_menu', $menu->id);
-                }
-            }
-        }
-        return Session::get('id_menu');
     }
 }
 
