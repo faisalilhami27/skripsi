@@ -416,9 +416,7 @@
             });
 
             $("#btnRefresh").click(function () {
-                setTimeout(function () {
-                    location.reload();
-                }, 1000);
+                table.ajax.reload();
             });
 
             $("#upd_deskripsi").keyup(function () {

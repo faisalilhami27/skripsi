@@ -513,9 +513,7 @@
             });
 
             $("#btnRefresh").click(function () {
-                setTimeout(function () {
-                    location.reload();
-                }, 1000);
+                table.ajax.reload();
             });
 
             $("#btnTiket1").click(function () {

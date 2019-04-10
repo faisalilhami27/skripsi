@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="37d309ce-f579-43ec-925f-71a95f48e59e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app/Helpers/MyHelpers.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Helpers/MyHelpers.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PemesananController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PemesananController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -36,8 +35,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Helpers/MyHelpers.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-34">
-              <caret line="112" column="8" selection-start-line="112" selection-start-column="8" selection-end-line="112" selection-end-column="8" />
+            <state relative-caret-position="299">
+              <caret line="66" column="28" lean-forward="true" selection-start-line="66" selection-start-column="28" selection-end-line="66" selection-end-column="28" />
               <folding>
                 <element signature="e#101#133#0#PHP" expanded="true" />
                 <element signature="n#style#0;n#a#0;n#li#0;n#!!top" expanded="true" />
@@ -50,8 +49,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PemesananController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="322">
-              <caret line="25" column="12" selection-start-line="25" selection-start-column="12" selection-end-line="25" selection-end-column="12" />
+            <state relative-caret-position="115">
+              <caret line="28" column="55" selection-start-line="28" selection-start-column="55" selection-end-line="28" selection-end-column="55" />
             </state>
           </provider>
         </entry>
@@ -167,8 +166,8 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/AuthController.php" />
         <option value="$PROJECT_DIR$/resources/views/menu/menuView.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Requests/MenuRequest.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/PemesananController.php" />
         <option value="$PROJECT_DIR$/app/Helpers/MyHelpers.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/PemesananController.php" />
       </list>
     </option>
   </component>
@@ -611,14 +610,7 @@
       <workItem from="1554706534686" duration="1192000" />
       <workItem from="1554832036841" duration="6648000" />
       <workItem from="1554871683192" duration="40000" />
-      <workItem from="1554873273036" duration="24834000" />
-    </task>
-    <task id="LOCAL-00154" summary="penambahan notifikasi">
-      <created>1553797760648</created>
-      <option name="number" value="00154" />
-      <option name="presentableId" value="LOCAL-00154" />
-      <option name="project" value="LOCAL" />
-      <updated>1553797760648</updated>
+      <workItem from="1554873273036" duration="25153000" />
     </task>
     <task id="LOCAL-00155" summary="perbaikan bug">
       <created>1553837834057</created>
@@ -956,11 +948,18 @@
       <option name="project" value="LOCAL" />
       <updated>1554917873735</updated>
     </task>
-    <option name="localTasksCounter" value="203" />
+    <task id="LOCAL-00203" summary="perbaikan sidebar">
+      <created>1554922381809</created>
+      <option name="number" value="00203" />
+      <option name="presentableId" value="LOCAL-00203" />
+      <option name="project" value="LOCAL" />
+      <updated>1554922381809</updated>
+    </task>
+    <option name="localTasksCounter" value="204" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="567406000" />
+    <option name="totallyTimeSpent" value="567725000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
@@ -1016,7 +1015,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="koneksi ke third party moota" />
     <MESSAGE value="perbaikan konfigurasi mobile" />
     <MESSAGE value="perbaikan nama table" />
     <MESSAGE value="perbaikan seeder" />
@@ -1041,7 +1039,8 @@
     <MESSAGE value="perbaikan sidebar dan controller login" />
     <MESSAGE value="perbaikan sidebar dan controller login serta modul kelola menu" />
     <MESSAGE value="perbaikan request menu" />
-    <option name="LAST_COMMIT_MESSAGE" value="perbaikan request menu" />
+    <MESSAGE value="perbaikan sidebar" />
+    <option name="LAST_COMMIT_MESSAGE" value="perbaikan sidebar" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/database/seeds/KonfigurasiSeeder.php">
@@ -1408,15 +1407,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PemesananController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="25" column="12" selection-start-line="25" selection-start-column="12" selection-end-line="25" selection-end-column="12" />
+        <state relative-caret-position="115">
+          <caret line="28" column="55" selection-start-line="28" selection-start-column="55" selection-end-line="28" selection-end-column="55" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Helpers/MyHelpers.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-34">
-          <caret line="112" column="8" selection-start-line="112" selection-start-column="8" selection-end-line="112" selection-end-column="8" />
+        <state relative-caret-position="299">
+          <caret line="66" column="28" lean-forward="true" selection-start-line="66" selection-start-column="28" selection-end-line="66" selection-end-column="28" />
           <folding>
             <element signature="e#101#133#0#PHP" expanded="true" />
             <element signature="n#style#0;n#a#0;n#li#0;n#!!top" expanded="true" />
