@@ -29,6 +29,7 @@ class MenuController extends Controller
         $title = htmlspecialchars($request->title);
         $url = htmlspecialchars($request->url);
         $icon = htmlspecialchars($request->icon);
+        $sub = htmlspecialchars($request->sub);
         $nomor = htmlspecialchars($request->nomor);
         $menu = $request->is_main_menu;
         $status = $request->is_aktif;
@@ -38,6 +39,7 @@ class MenuController extends Controller
             'url' => $url,
             'icon' => $icon,
             'order_num' => $nomor,
+            'order_sub' => $sub,
             'is_main_menu' => $menu,
             'is_aktif' => $status
         ]);
@@ -67,6 +69,7 @@ class MenuController extends Controller
         $title = htmlspecialchars($request->title);
         $url = htmlspecialchars($request->url);
         $icon = htmlspecialchars($request->icon);
+        $sub = htmlspecialchars($request->sub);
         $nomor = htmlspecialchars($request->nomor);
         $menu = $request->is_main_menu;
         $status = $request->is_aktif;
@@ -77,6 +80,7 @@ class MenuController extends Controller
             'url' => $url,
             'icon' => $icon,
             'order_num' => $nomor,
+            'order_sub' => $sub,
             'is_main_menu' => $menu,
             'is_aktif' => $status
         ]);

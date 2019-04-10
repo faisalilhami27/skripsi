@@ -8,15 +8,24 @@
                         <li class="sidenav-search">
                             <form class="sidenav-form" action="">
                                 <div class="form-group form-group-sm">
-                                    <select name="" id="level" class="form-control" style="color: #fff">
-                                        @foreach(App\Models\ChooseRoleModel::with('role')->where('id_karyawan', Session::get('id_users'))->get() as $r)
-                                            @if(!empty(Session::get('id_role')) && Session::get('id_role') == $r->id)
-                                                <option value="{{ $r->id_user_level }}" selected>{{ $r->role->nama_level }}</option>
-                                            @else
-                                                <option value="{{ $r->id_user_level }}">{{ $r->role->nama_level }}</option>
-                                            @endif
-                                        @endforeach
-                                    </select>
+                                    @if(Session::get('count') == 1)
+                                        <div class="input-with-icon">
+                                            <input class="form-control" type="text" placeholder="Search…">
+                                            <span class="icon icon-search input-icon"></span>
+                                        </div>
+                                    @else
+                                        <select name="" id="level" class="form-control" style="color: #fff">
+                                            @foreach(App\Models\ChooseRoleModel::with('role')->where('id_karyawan', Session::get('id_users'))->get() as $r)
+                                                @if(!empty(Session::get('id_role')) && Session::get('id_role') == $r->id)
+                                                    <option value="{{ $r->id_user_level }}"
+                                                            selected>{{ $r->role->nama_level }}</option>
+                                                @else
+                                                    <option
+                                                        value="{{ $r->id_user_level }}">{{ $r->role->nama_level }}</option>
+                                                @endif
+                                            @endforeach
+                                        </select>
+                                    @endif
                                 </div>
                             </form>
                         </li>

@@ -42,11 +42,12 @@ if (!function_exists('sidebar')) {
                 ->where('is_main_menu', $menu->id)
                 ->get();
             $idUser = Session::get('id_user_level');
-            $role = RoleLevelModel::with('menu')
-                ->whereHas('menu', function ($query) {
-                    $query->where('is_main_menu', '!=', 0);
+            $role = MenuModel::with('roleLevel')
+                ->whereHas('roleLevel', function ($query) use ($idUser){
+                    $query->where('id_user_level', $idUser);
                 })
-                ->where('id_user_level', $idUser)
+                ->where('is_main_menu', '!=', 0)
+                ->orderBy('order_sub', 'ASC')
                 ->get();
 
             if ($subMenu->count() > 0) {
@@ -57,10 +58,10 @@ if (!function_exists('sidebar')) {
 						</a>
 							<ul class='sidenav level-2 collapse'>";
                 foreach ($role as $sub) {
-                    if ($page == $sub->menu->url) {
-                        echo "<li class='active'>" . "<a href='" . URL($sub->menu->url) . "'  style='cursor: pointer'>" . '<span class="' . $sub->menu->icon . '"></span>' . strtoupper($sub->menu->title) . "</a></li>";
+                    if ($page == $sub->url) {
+                        echo "<li class='active'>" . "<a href='" . URL($sub->url) . "'  style='cursor: pointer'>" . '<span class="' . $sub->icon . '"></span>' . strtoupper($sub->title) . "</a></li>";
                     } else {
-                        echo "<li>" . "<a href='" . URL($sub->menu->url) . "'  style='cursor: pointer'>" . '<span class="' . $sub->menu->icon . '"></span>' . strtoupper($sub->menu->title) . "</a></li>";
+                        echo "<li>" . "<a href='" . URL($sub->url) . "'  style='cursor: pointer'>" . '<span class="' . $sub->icon . '"></span>' . strtoupper($sub->title) . "</a></li>";
                     }
                 }
                 echo " </ul>

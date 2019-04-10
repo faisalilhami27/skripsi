@@ -11,5 +11,10 @@ class MenuModel extends Model
     protected $table = "menu";
     protected $primaryKey = "id";
     protected $dates = ['deleted_at', 'updated_at', 'created_at'];
-    protected $fillable = ["title", "icon", "url", "is_main_menu", "is_aktif", "order_num"];
+    protected $fillable = ["title", "icon", "url", "is_main_menu", "is_aktif", "order_num", "order_sub"];
+
+    public function roleLevel()
+    {
+        return $this->belongsTo(RoleLevelModel::class, 'id', 'id_menu');
+    }
 }

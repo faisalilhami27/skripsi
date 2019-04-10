@@ -95,6 +95,14 @@
                                     <strong id="is_main_menu-error"></strong>
                                 </span>
                             </div>
+                            <div class="form-group nomor_sub_menu" style="display: none;">
+                                <label for="nomor_sub_menu">Nomor Urut Sub Menu</label>
+                                <input id="nomor_sub_menu" name="nomor_sub_menu" class="form-control" type="text"
+                                       placeholder="Masukan nomor urut sub menu contoh : 1" maxlength="4" autocomplete="off">
+                                <span class="text-danger">
+                                    <strong id="sub-error"></strong>
+                                </span>
+                            </div>
                             <div class="form-group">
                                 <label for="demo-select2-1" class="form-label">Status</label>
                                 <select id="demo-select2-1" name="status" class="form-control">
@@ -174,6 +182,14 @@
                                 <span class="text-danger">
                                     <strong class="is_main_menu-error"></strong>
                             </span>
+                            </div>
+                            <div class="form-group upd_nomor_sub_menu" style="display: none">
+                                <label for="upd_nomor_sub_menu">Nomor Urut Sub Menu</label>
+                                <input id="upd_nomor_sub_menu" name="upd_nomor_sub_menu" class="form-control" type="text"
+                                       placeholder="Masukan nomor urut menu contoh : 1" maxlength="4" autocomplete="off">
+                                <span class="text-danger">
+                                    <strong class="sub-error"></strong>
+                                </span>
                             </div>
                             <div class="form-group">
                                 <label for="upd_status" class="form-label">Status</label>
@@ -267,6 +283,7 @@
                             $("#upd_url").val(data.list.url);
                             $("#upd_icon").val(data.list.icon);
                             $("#upd_nomor").val(data.list.order_num);
+                            $("#upd_nomor_sub_menu").val(data.list.order_sub);
                             $("#upd_main_menu").select2().val(data.list.is_main_menu).trigger('change');
                             $("#upd_status").val(data.list.is_aktif);
                         } else {
@@ -281,84 +298,103 @@
 
             $("#btn-insert-data").click(function (e) {
                 e.preventDefault();
+                var subMenu = $("#nomor_sub_menu").val();
                 var title = $("#title").val(),
                     url = $("#url").val(),
                     icon = $("#icon").val(),
                     nomor = $("#nomor").val(),
+                    sub = $("#nomor_sub_menu").val(),
                     menu = $("#demo-select2-2").val(),
                     status = $("#demo-select2-1").val(),
-                    sendData = "title=" + title + "&url=" + url + "&nomor=" + nomor + "&icon=" + icon + "&is_main_menu=" + menu + "&is_aktif=" + status;
+                    sendData = "title=" + title + "&url=" + url + "&nomor=" + nomor + "&sub=" + sub + "&icon=" + icon + "&is_main_menu=" + menu + "&is_aktif=" + status;
 
-                $.ajax({
-                    headers: {
-                        'X-CSRF-TOKEN': "{{ csrf_token() }}"
-                    },
-                    url: "{{ URL('kelolamenu/insert') }}",
-                    type: "POST",
-                    data: sendData,
-                    dataType: 'json',
-                    beforeSend: function () {
-                        loadingBeforeSend();
-                    },
-                    success: function (data) {
-                        notification(data.status, data.msg);
-                        $('#infoModalColoredHeader').modal('hide');
-                        loadingAfterSend();
-                        resetForm();
-                        setTimeout(function () {
-                            location.reload();
-                        }, 1000);
-                    },
-                    error: function (resp) {
-                        loadingAfterSend();
-                        if (_.has(resp.responseJSON, 'errors')) {
-                            _.map(resp.responseJSON.errors, function (val, key) {
-                                $('#' + key + '-error').html(val[0]).fadeIn(1000).fadeOut(5000);
-                            })
+                if (subMenu == '' && menu != 0) {
+                    $("#sub-error").html("This number sub menu is required");
+                    $("#sub-error").css("color", "red");
+                    $("#sub-error").fadeIn(1000);
+                    $("#sub-error").fadeOut(5000);
+                } else {
+                    $.ajax({
+                        headers: {
+                            'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                        },
+                        url: "{{ URL('kelolamenu/insert') }}",
+                        type: "POST",
+                        data: sendData,
+                        dataType: 'json',
+                        beforeSend: function () {
+                            loadingBeforeSend();
+                        },
+                        success: function (data) {
+                            notification(data.status, data.msg);
+                            $('#infoModalColoredHeader').modal('hide');
+                            loadingAfterSend();
+                            resetForm();
+                            setTimeout(function () {
+                                location.reload();
+                            }, 1000);
+                        },
+                        error: function (resp) {
+                            loadingAfterSend();
+                            if (_.has(resp.responseJSON, 'errors')) {
+                                _.map(resp.responseJSON.errors, function (val, key) {
+                                    $('#' + key + '-error').html(val[0]).fadeIn(1000).fadeOut(5000);
+                                })
+                            }
+                            alert(resp.responseJSON.message)
                         }
-                        alert(resp.responseJSON.message)
-                    }
-                });
+                    });
+                }
             });
 
             $("#btn-update-data").click(function (e) {
                 e.preventDefault();
+                var subMenu = $("#upd_nomor_sub_menu").val();
                 var title = $("#upd_title").val(),
                     url = $("#upd_url").val(),
                     icon = $("#upd_icon").val(),
                     nomor = $("#upd_nomor").val(),
                     menu = $("#upd_main_menu").val(),
+                    sub = $("#upd_nomor_sub_menu").val(),
                     status = $("#upd_status").val(),
                     id = $("#id").val(),
-                    sendData = "id=" + id + "&title=" + title + "&nomor=" + nomor + "&url=" + url + "&icon=" + icon + "&is_main_menu=" + menu + "&is_aktif=" + status;
-                $.ajax({
-                    headers: {
-                        'X-CSRF-TOKEN': "{{ csrf_token() }}"
-                    },
-                    url: "{{ URL('kelolamenu/update') }}",
-                    type: "PUT",
-                    data: sendData,
-                    dataType: 'json',
-                    beforeSend: function () {
-                        loadingBeforeSend();
-                    },
-                    success: function (data) {
-                        notification(data.status, data.msg);
-                        $('#infoModalColoredHeader1').modal('hide');
-                        setTimeout(function () {
-                            location.reload();
-                        }, 1000);
-                    },
-                    error: function (resp) {
-                        loadingAfterSend();
-                        if (_.has(resp.responseJSON, 'errors')) {
-                            _.map(resp.responseJSON.errors, function (val, key) {
-                                $('.' + key + '-error').html(val[0]).fadeIn(1000).fadeOut(5000);
-                            })
+                    sendData = "id=" + id + "&title=" + title + "&nomor=" + nomor + "&sub=" + sub + "&url=" + url + "&icon=" + icon + "&is_main_menu=" + menu + "&is_aktif=" + status;
+
+                if (subMenu == '' && menu != 0) {
+                    $(".sub-error").html("This number sub menu is required");
+                    $(".sub-error").css("color", "red");
+                    $(".sub-error").fadeIn(1000);
+                    $(".sub-error").fadeOut(5000);
+                } else {
+                    $.ajax({
+                        headers: {
+                            'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                        },
+                        url: "{{ URL('kelolamenu/update') }}",
+                        type: "PUT",
+                        data: sendData,
+                        dataType: 'json',
+                        beforeSend: function () {
+                            loadingBeforeSend();
+                        },
+                        success: function (data) {
+                            notification(data.status, data.msg);
+                            $('#infoModalColoredHeader1').modal('hide');
+                            setTimeout(function () {
+                                location.reload();
+                            }, 1000);
+                        },
+                        error: function (resp) {
+                            loadingAfterSend();
+                            if (_.has(resp.responseJSON, 'errors')) {
+                                _.map(resp.responseJSON.errors, function (val, key) {
+                                    $('.' + key + '-error').html(val[0]).fadeIn(1000).fadeOut(5000);
+                                })
+                            }
+                            alert(resp.responseJSON.message)
                         }
-                        alert(resp.responseJSON.message)
-                    }
-                });
+                    });
+                }
             });
 
             table.on('click', '.btn-delete', function (e) {
@@ -403,6 +439,32 @@
                         }
                     }
                 });
+            });
+
+            $("#nomor_sub_menu, #upd_nomor_sub_menu").keyup(function (e) {
+                e.preventDefault();
+                var nomor = $(this).val();
+                var reg = /^\d+$/;
+
+                if (!nomor.match(reg)) {
+                    $(".sub-error, #sub-error").html("This number sub menu must be number format");
+                    $(".sub-error, #sub-error").css("color", "red");
+                    $(".sub-error, #sub-error").fadeIn(1000);
+                    $(".sub-error, #sub-error").fadeOut(5000);
+                    $("#btn-insert-data, #btn-update-data").attr('disabled', true);
+                } else {
+                    $("#btn-insert-data, #btn-update-data").removeAttr('disabled');
+                }
+            });
+
+            $("#upd_main_menu, #demo-select2-2").change(function (e) {
+                e.preventDefault();
+                var menu = $(this).val();
+                if (menu == 0 || menu == '') {
+                    $(".upd_nomor_sub_menu, .nomor_sub_menu").slideUp(1000);
+                } else {
+                    $(".upd_nomor_sub_menu, .nomor_sub_menu").slideDown(1000);
+                }
             });
         });
 

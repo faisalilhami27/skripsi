@@ -24,19 +24,19 @@ class AuthController extends Controller
         $password = htmlspecialchars($request->password);
         $user = UserModel::with('karyawan')
             ->where('username', $username)->first();
-        if (is_null($user)) {
-            return response()->json(['status' => 500, 'msg' => 'Akun anda sudah dihapus oleh pihak perusahaan']);
-        } else if (is_null($user['username'])) {
+        if (is_null($user['username'])) {
             return response()->json(['status' => 500, 'msg' => 'Username anda tidak terdaftar']);
+        } else if (is_null($user)) {
+            return response()->json(['status' => 500, 'msg' => 'Akun anda sudah dihapus oleh pihak perusahaan']);
         } else {
             if ($user['status'] == "y") {
                 if ($user->count() > 0) {
                     if (Hash::check($password, $user['password'])) {
-                        $chooseRole = ChooseRoleModel::with('role')
+                        $chooseRole = ChooseRoleModel::with('roleMany')
                             ->where('id_karyawan', $user->id)
                             ->get();
                         if ($chooseRole->count() == 1) {
-                            Session::put('id_user_level', $chooseRole->id_user_level);
+                            Session::put('id_user_level', $chooseRole[0]->id_user_level);
                         }
                         Session::put('id_users', $user->id);
                         Session::put('nama_lengkap', $user->karyawan->nama);
