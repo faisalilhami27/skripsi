@@ -41,6 +41,14 @@ if (!function_exists('sidebar')) {
             $subMenu = MenuModel::where('is_aktif', 'y')
                 ->where('is_main_menu', $menu->id)
                 ->get();
+            $idUser = Session::get('id_user_level');
+            $role = RoleLevelModel::with('menu')
+                ->whereHas('menu', function ($query) {
+                    $query->where('is_main_menu', '!=', 0);
+                })
+                ->where('id_user_level', $idUser)
+                ->get();
+
             if ($subMenu->count() > 0) {
                 echo "<li class='sidenav-item has-subnav'>
 						<a href='' aria-haspopup='true'>
@@ -48,11 +56,11 @@ if (!function_exists('sidebar')) {
 							<span class='sidenav-label'>" . strtoupper($menu->title) . "</span>
 						</a>
 							<ul class='sidenav level-2 collapse'>";
-                foreach ($subMenu as $sub) {
-                    if ($page == $sub->url) {
-                        echo "<li class='active'>" . "<a href='" . URL($sub->url) . "'  style='cursor: pointer'>" . '<span class="' . $sub->icon . '"></span>' . strtoupper($sub->title) . "</a></li>";
+                foreach ($role as $sub) {
+                    if ($page == $sub->menu->url) {
+                        echo "<li class='active'>" . "<a href='" . URL($sub->menu->url) . "'  style='cursor: pointer'>" . '<span class="' . $sub->menu->icon . '"></span>' . strtoupper($sub->menu->title) . "</a></li>";
                     } else {
-                        echo "<li>" . "<a href='" . URL($sub->url) . "'  style='cursor: pointer'>" . '<span class="' . $sub->icon . '"></span>' . strtoupper($sub->title) . "</a></li>";
+                        echo "<li>" . "<a href='" . URL($sub->menu->url) . "'  style='cursor: pointer'>" . '<span class="' . $sub->menu->icon . '"></span>' . strtoupper($sub->menu->title) . "</a></li>";
                     }
                 }
                 echo " </ul>

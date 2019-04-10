@@ -46,7 +46,9 @@ class KonfirmasiPembayaranController extends Controller
             $data->where('id_status', '!=', 2);
         }
 
-        $datatable = $data->orderBy('kode_pemesanan', 'DESC')->get();
+        $datatable = $data->orderBy('kode_pemesanan', 'DESC')
+            ->where('bukti_pembayaran', '!=', Null)
+            ->get();
         return DataTables::of($datatable)->addIndexColumn()->make(true);
     }
 

@@ -284,7 +284,7 @@
                 columns: [
                     {data: 'DT_RowIndex'},
                     {data: 'kode_pemesanan'},
-                    {data: 'batas', render: styles.batas},
+                    {data: 'batas_pembayaran', render: styles.batas},
                     {data: 'jumlah_tiket'},
                     {data: 'total_uang_masuk', render: styles.uang},
                     {data: 'status_penggunaan', render: styles.status},
@@ -295,7 +295,7 @@
 
                 columnDefs: [
                     {
-                        targets: [-1, 0], //first column / numbering column
+                        targets: [-1, 0, -2, 2], //first column / numbering column
                         orderable: false, //set not orderable
                     },
                 ],

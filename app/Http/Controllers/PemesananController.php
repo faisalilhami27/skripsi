@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use LaravelQRCode\Facades\QRCode;
+use phpDocumentor\Reflection\Types\Null_;
 use Yajra\DataTables\DataTables;
 
 class PemesananController extends Controller
@@ -30,7 +31,11 @@ class PemesananController extends Controller
 
     public function datatable(Request $request)
     {
-        $data = PemesananModel::with('karyawan.karyawan', 'jenisPemesanan');
+        $data = PemesananModel::with('karyawan.karyawan', 'jenisPemesanan')
+            ->whereHas('pembayaran', function ($query){
+                $query->where('bukti_pembayaran', '!=', Null);
+                $query->orWhere('id_status', 2);
+            });
 
         if (htmlspecialchars($request->has('status')) && htmlspecialchars($request->query('status')) != "") {
             $data->where('status_penggunaan', htmlspecialchars($request->query('status')));
