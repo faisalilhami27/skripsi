@@ -28,44 +28,44 @@
                                     $no = 1;
                                     foreach ($menu as $m) {
                                         echo "<tr>
-											<td>$no</td>
-											<td>" . $m->title . "</td>
-											<td align='center'>
+                                            <td>$no</td>
+                                            <td>" . $m->title . "</td>
+                                            <td align='center'>
                                             <label class='switch switch-primary'>
                                                 <input class='switch-input change' type='checkbox' id='" . $m->id . "' " . beriAkses(Request::segment(3), $m->id) . ">
                                                 <span class='switch-track'></span>
                                                 <span class='switch-thumb'></span>
                                             </label>
-											</td>
+                                            </td>
                                            <td align='center'>
                                             <label class='switch switch-success'>
                                                 <input class='switch-input create" . $m->id . "' type='checkbox' id='" . $m->id . "' " . create(Request::segment(3), $m->id) . ">
                                                 <span class='switch-track'></span>
                                                 <span class='switch-thumb'></span>
                                             </label>
-											</td>
+                                            </td>
                                           <td align='center'>
                                             <label class='switch switch-warning'>
                                                 <input class='switch-input read" . $m->id . "' type='checkbox' id='" . $m->id . "' " . read(Request::segment(3), $m->id) . ">
                                                 <span class='switch-track'></span>
                                                 <span class='switch-thumb'></span>
                                             </label>
-											</td>
+                                            </td>
                                            <td align='center'>
                                             <label class='switch switch-info'>
                                                 <input class='switch-input update" . $m->id . "' type='checkbox' id='" . $m->id . "' " . update(Request::segment(3), $m->id) . ">
                                                 <span class='switch-track'></span>
                                                 <span class='switch-thumb'></span>
                                             </label>
-											</td>
+                                            </td>
                                            <td align='center'>
                                             <label class='switch switch-danger'>
-                                                <input class='switch-input delete" . $m->id . "' type='checkbox' id='" . $m->id . "' " .delete(Request::segment(3), $m->id) . ">
+                                                <input class='switch-input delete" . $m->id . "' type='checkbox' id='" . $m->id . "' " . delete(Request::segment(3), $m->id) . ">
                                                 <span class='switch-track'></span>
                                                 <span class='switch-thumb'></span>
                                             </label>
-											</td>
-											</tr>";
+                                            </td>
+                                            </tr>";
                                         $no++;
                                     } ?>
                                     </tbody>
@@ -79,7 +79,8 @@
             </div>
         </div>
     </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+@stop
+@push('scripts')
     <script type="text/javascript">
         $(document).ready(function () {
             $(".change").each(function () {
@@ -170,7 +171,7 @@
                                 "hideMethod": "fadeOut"
                             };
                             toastr.success(data.msg);
-                             setTimeout(function () {
+                            setTimeout(function () {
                                 location.reload();
                             }, 2000);
                         },
@@ -212,7 +213,7 @@
                                 "hideMethod": "fadeOut"
                             };
                             toastr.success(data.msg);
-                             setTimeout(function () {
+                            setTimeout(function () {
                                 location.reload();
                             }, 2000);
                         },
@@ -254,7 +255,7 @@
                                 "hideMethod": "fadeOut"
                             };
                             toastr.success(data.msg);
-                             setTimeout(function () {
+                            setTimeout(function () {
                                 location.reload();
                             }, 2000);
                         },
@@ -296,9 +297,9 @@
                             "hideMethod": "fadeOut"
                         };
                         toastr.success(data.msg);
-                         setTimeout(function () {
-                                location.reload();
-                            }, 2000);
+                        setTimeout(function () {
+                            location.reload();
+                        }, 2000);
                     },
                     error: function (xhr, status, error) {
                         alert(status + " : " + error);
@@ -307,4 +308,4 @@
             });
         });
     </script>
-@endsection
+@endpush
