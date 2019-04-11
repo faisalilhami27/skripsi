@@ -46,7 +46,7 @@ if (!function_exists('sidebar')) {
                 ->whereHas('roleLevel', function ($query) use ($idUser){
                     $query->where('id_user_level', $idUser);
                 })
-                ->where('is_main_menu', '!=', 0)
+                ->where('is_main_menu', $menu->id)
                 ->orderBy('order_sub', 'ASC')
                 ->get();
 
