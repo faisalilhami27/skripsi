@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\PemesananRequest;
-use App\Models\JenisPemesananModel;
 use App\Models\KonfigurasiModel;
 use App\Models\KonfirmasiPembayaranModel;
 use App\Models\PemesananModel;
@@ -12,12 +11,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use LaravelQRCode\Facades\QRCode;
-use phpDocumentor\Reflection\Types\Null_;
 use Yajra\DataTables\DataTables;
 
 class PemesananController extends Controller
 {
-
     public function index()
     {
         $konfig = KonfigurasiModel::get();
