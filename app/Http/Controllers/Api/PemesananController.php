@@ -167,19 +167,6 @@ class PemesananController extends Controller
                     $mail->AddAddress($email);
                     $mail->Body = $body;
                     if ($mail->send()) {
-                        $options = array(
-                            'cluster' => env('PUSHER_APP_CLUSTER'),
-                            'useTLS' => true
-                        );
-                        $pusher = new Pusher(
-                            env('PUSHER_APP_KEY'),
-                            env('PUSHER_APP_SECRET'),
-                            env('PUSHER_APP_ID'),
-                            $options
-                        );
-
-                        $data1['message'] = 'hello world';
-                        $pusher->trigger('my-channel', 'my-event', $data1);
                         DB::commit();
                         return response()->json(["status" => 200, "id_pemesanan" => $insert->id, "msg" => "Pemesanan berhasil"]);
                     }

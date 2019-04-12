@@ -622,6 +622,11 @@
             forceTLS: true
         });
 
+        var channel = pusher.subscribe('my-channel1');
+        channel.bind('my-event1', function (data) {
+            table.ajax.reload();
+        });
+
         var channel = pusher.subscribe('my-channel');
         channel.bind('my-event', function (data) {
             table.ajax.reload();

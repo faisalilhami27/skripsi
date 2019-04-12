@@ -6,12 +6,21 @@ use App\Models\KonfirmasiPembayaranModel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 use Pusher\Pusher;
 
 class PembayaranController extends Controller
 {
     public function update(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'bukti' => 'required|mimes:jpg,png,jpeg,gif,svg|max:2048'
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['status' => 500, 'msg' =>  $validator->errors()->first()]);
+        }
+
         $kode = $request->kode_pemesanan;
         $file = $request->file('bukti');
         $size = 1000000;
