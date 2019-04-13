@@ -95,28 +95,28 @@ class UserLevelController extends Controller
 
     public function changePrivilege(Request $request)
     {
-        $id_menu = $request->id_menu;
-        $id_user_level = $request->level;
+        $idMenu = $request->id_menu;
+        $idUserLevel = $request->level;
 
         $data = [
-            'id_menu' => $id_menu,
-            'id_user_level' => $id_user_level,
+            'id_menu' => $idMenu,
+            'id_user_level' => $idUserLevel,
             'create' => 0,
             'read' => 0,
             'update' => 0,
             'delete' => 0
         ];
 
-        $akses = RoleLevelModel::where('id_user_level', $id_user_level)
-            ->where('id_menu', $id_menu)
+        $akses = RoleLevelModel::where('id_user_level', $idUserLevel)
+            ->where('id_menu', $idMenu)
             ->first();
 
-        if ($akses == null) {
+        if (is_null($akses)) {
             $update = RoleLevelModel::create($data);
         } else {
             $update = DB::table('role_level')
-                ->where('id_menu', $id_menu)
-                ->where('id_user_level', $id_user_level)
+                ->where('id_menu', $idMenu)
+                ->where('id_user_level', $idUserLevel)
                 ->delete();
         }
         if ($update) {
@@ -130,8 +130,8 @@ class UserLevelController extends Controller
     {
         $value = $request->value;
         $field = $request->field;
-        $id_user_level = $request->level;
-        $id_menu = $request->id_menu;
+        $idUserLevel = $request->level;
+        $idMenu = $request->id_menu;
 
         if ($field == 'create') {
             $data = [
@@ -151,8 +151,8 @@ class UserLevelController extends Controller
             ];
         }
 
-        $update = RoleLevelModel::where('id_user_level', $id_user_level)
-            ->where('id_menu', $id_menu)
+        $update = RoleLevelModel::where('id_user_level', $idUserLevel)
+            ->where('id_menu', $idMenu)
             ->update($data);
 
         if ($update) {

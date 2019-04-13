@@ -1,5 +1,6 @@
 <?php
 
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -19,7 +20,8 @@ class RoleLevelSeeder extends Seeder
                 'create' => 1,
                 'read' => 1,
                 'update' => 1,
-                'delete' => 1
+                'delete' => 1,
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s')
             ],
             [
                 'id_user_level' => 1,
@@ -27,7 +29,8 @@ class RoleLevelSeeder extends Seeder
                 'create' => 1,
                 'read' => 1,
                 'update' => 1,
-                'delete' => 1
+                'delete' => 1,
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s')
             ],
             [
                 'id_user_level' => 1,
@@ -35,7 +38,8 @@ class RoleLevelSeeder extends Seeder
                 'create' => 1,
                 'read' => 1,
                 'update' => 1,
-                'delete' => 1
+                'delete' => 1,
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s')
             ],
             [
                 'id_user_level' => 1,
@@ -43,7 +47,8 @@ class RoleLevelSeeder extends Seeder
                 'create' => 1,
                 'read' => 1,
                 'update' => 1,
-                'delete' => 1
+                'delete' => 1,
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s')
             ],
             [
                 'id_user_level' => 1,
@@ -51,7 +56,8 @@ class RoleLevelSeeder extends Seeder
                 'create' => 1,
                 'read' => 1,
                 'update' => 1,
-                'delete' => 1
+                'delete' => 1,
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s')
             ],
             [
                 'id_user_level' => 1,
@@ -59,7 +65,8 @@ class RoleLevelSeeder extends Seeder
                 'create' => 0,
                 'read' => 1,
                 'update' => 1,
-                'delete' => 1
+                'delete' => 1,
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s')
             ],
             [
                 'id_user_level' => 1,
@@ -67,7 +74,8 @@ class RoleLevelSeeder extends Seeder
                 'create' => 0,
                 'read' => 1,
                 'update' => 1,
-                'delete' => 1
+                'delete' => 1,
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s')
             ],
             [
                 'id_user_level' => 1,
@@ -75,7 +83,8 @@ class RoleLevelSeeder extends Seeder
                 'create' => 1,
                 'read' => 1,
                 'update' => 1,
-                'delete' => 1
+                'delete' => 1,
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s')
             ],
             [
                 'id_user_level' => 1,
@@ -83,7 +92,8 @@ class RoleLevelSeeder extends Seeder
                 'create' => 1,
                 'read' => 1,
                 'update' => 1,
-                'delete' => 1
+                'delete' => 1,
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s')
             ],
             [
                 'id_user_level' => 1,
@@ -91,7 +101,8 @@ class RoleLevelSeeder extends Seeder
                 'create' => 1,
                 'read' => 1,
                 'update' => 1,
-                'delete' => 1
+                'delete' => 1,
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s')
             ]
         ]);
     }

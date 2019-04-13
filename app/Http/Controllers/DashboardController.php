@@ -2,25 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ChooseRoleModel;
 use App\Models\KonfirmasiPembayaranModel;
 use App\Models\PemesananModel;
-use App\Models\RoleLevelModel;
 use Carbon\Carbon;
-use function foo\func;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Session;
 
 class DashboardController extends Controller
 {
 
     public function index()
     {
-//        $idKaryawan = Session::get('id_users');
-//        $chooseRole = ChooseRoleModel::with('role')
-//            ->where('id_karyawan', $idKaryawan)
-//            ->get();
-//        echo json_encode($chooseRole); die;
         $date = Carbon::now()->format("Y-m-d");
         $hari = PemesananModel::select(DB::raw('count(kode_pemesanan) as total'))
             ->where('tgl_pemesanan', '=', $date)
