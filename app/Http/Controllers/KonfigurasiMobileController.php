@@ -12,8 +12,8 @@ class KonfigurasiMobileController extends Controller
 
     public function index()
     {
-        $title = 'Halaman Konfigurasi Website';
-        $deskripsi = 'Halaman konfigurasi website digunakan untuk mengelola konfigurasi aplikasi';
+        $title = 'Halaman Konfigurasi Mobile';
+        $deskripsi = 'Halaman konfigurasi mobile digunakan untuk mengelola content berita untuk aplikasi mobile';
         return view('konfigurasimobile.konfigurasiMobileView', compact('title', 'deskripsi'));
     }
 
