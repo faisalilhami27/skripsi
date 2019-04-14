@@ -30,7 +30,7 @@ class MenuSeeder extends Seeder
                 'is_aktif' => 'y'
             ],
             [
-                'title' => 'Level Penguna',
+                'title' => 'Level Pengguna',
                 'url' => 'userlevel',
                 'icon' => 'icon icon-users',
                 'order_num' => 3,
