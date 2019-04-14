@@ -45,7 +45,9 @@ Route::middleware(['checkRole'])->group(function () {
     // modul user level
     Route::group(['prefix' => 'userlevel'], function () {
         Route::get('/', 'UserLevelController@index');
+        Route::get('/getMenu', 'UserLevelController@getMenu');
         Route::post('/json', 'UserLevelController@datatable');
+        Route::post('/json2/{id}', 'UserLevelController@datatable2');
         Route::get('/getakses/{id}', 'UserLevelController@show');
         Route::get('/getLevelById', 'UserLevelController@edit');
         Route::post('/insert/', 'UserLevelController@store');

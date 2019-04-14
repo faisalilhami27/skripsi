@@ -94,7 +94,7 @@
             </div>
         </div>
     </div>
-    @stop
+@stop
 @push('scripts')
     <script type="text/javascript">
         var table;
@@ -167,8 +167,8 @@
                     type: "POST",
                     data: sendData,
                     dataType: 'json',
-                    beforeSend: function() {
-                      loadingBeforeSend();
+                    beforeSend: function () {
+                        loadingBeforeSend();
                     },
                     success: function (data) {
                         notification(data.status, data.msg);
@@ -203,8 +203,8 @@
                     type: "PUT",
                     data: sendData,
                     dataType: 'json',
-                    beforeSend: function() {
-                      loadingBeforeSend();
+                    beforeSend: function () {
+                        loadingBeforeSend();
                     },
                     success: function (data) {
                         notification(data.status, data.msg);

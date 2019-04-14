@@ -11,7 +11,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-striped">
+                                <table class="table table-striped" id="demo-datatables" width="100%">
                                     <thead>
                                     <tr>
                                         <th width="30px">No</th>
@@ -24,54 +24,9 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <?php
-                                    $no = 1;
-                                    foreach ($menu as $m) {
-                                        echo "<tr>
-                                            <td>$no</td>
-                                            <td>" . $m->title . "</td>
-                                            <td align='center'>
-                                            <label class='switch switch-primary'>
-                                                <input class='switch-input change' type='checkbox' id='" . $m->id . "' " . beriAkses(Request::segment(3), $m->id) . ">
-                                                <span class='switch-track'></span>
-                                                <span class='switch-thumb'></span>
-                                            </label>
-                                            </td>
-                                           <td align='center'>
-                                            <label class='switch switch-success'>
-                                                <input class='switch-input create" . $m->id . "' type='checkbox' id='" . $m->id . "' " . create(Request::segment(3), $m->id) . ">
-                                                <span class='switch-track'></span>
-                                                <span class='switch-thumb'></span>
-                                            </label>
-                                            </td>
-                                          <td align='center'>
-                                            <label class='switch switch-warning'>
-                                                <input class='switch-input read" . $m->id . "' type='checkbox' id='" . $m->id . "' " . read(Request::segment(3), $m->id) . ">
-                                                <span class='switch-track'></span>
-                                                <span class='switch-thumb'></span>
-                                            </label>
-                                            </td>
-                                           <td align='center'>
-                                            <label class='switch switch-info'>
-                                                <input class='switch-input update" . $m->id . "' type='checkbox' id='" . $m->id . "' " . update(Request::segment(3), $m->id) . ">
-                                                <span class='switch-track'></span>
-                                                <span class='switch-thumb'></span>
-                                            </label>
-                                            </td>
-                                           <td align='center'>
-                                            <label class='switch switch-danger'>
-                                                <input class='switch-input delete" . $m->id . "' type='checkbox' id='" . $m->id . "' " . delete(Request::segment(3), $m->id) . ">
-                                                <span class='switch-track'></span>
-                                                <span class='switch-thumb'></span>
-                                            </label>
-                                            </td>
-                                            </tr>";
-                                        $no++;
-                                    } ?>
                                     </tbody>
                                 </table>
                                 <div class="pull-left" style="margin-top: 20px"><a href="{{ URL('userlevel') }}" class="btn btn-danger btn-sm"><span class="icon icon-backward"></span> Kembali</a></div>
-                                <div class="pull-right">{{ $menu->links() }}</div>
                             </div>
                         </div>
                     </div>
@@ -83,190 +38,36 @@
 @push('scripts')
     <script type="text/javascript">
         $(document).ready(function () {
-            $(".change").each(function () {
-                var id = $(this).attr("id");
-                if ($(this).is(":checked")) {
-                    $(".create" + id).attr("disabled", false);
-                    $(".read" + id).attr("disabled", false);
-                    $(".update" + id).attr("disabled", false);
-                    $(".delete" + id).attr("disabled", false);
-                } else {
-                    $(".create" + id).attr("disabled", true);
-                    $(".read" + id).attr("disabled", true);
-                    $(".update" + id).attr("disabled", true);
-                    $(".delete" + id).attr("disabled", true);
-                }
+            var idUser = '{{ $params }}';
+            getMenu();
+            //	//datatables
+            table = $('#demo-datatables').DataTable({
+                processing: true,
+                serverSide: true,
+                responsive: true,
+                aLengthMenu: [[5, 10, 25, 100], [5, 10, 25, 100]],
+                order: [],
 
-                $(".create" + id).change(function () {
-                    var id_menu = $(this).attr("id");
-                    var value = $(".create" + id).is(":checked") ? 1 : 0;
-                    var field = "create";
-                    var level = '{{ Request::segment(3) }}';
-                    $.ajax({
-                        headers: {
-                            'X-CSRF-TOKEN': "{{ csrf_token() }}"
-                        },
-                        url: "{{ URL('userlevel/updateAccess') }}",
-                        type: "PUT",
-                        dataType: "json",
-                        data: "id_menu=" + id_menu + "&level=" + level + "&value=" + value + "&field=" + field,
-                        success: function (data) {
-                            toastr.options = {
-                                "closeButton": false,
-                                "debug": false,
-                                "newestOnTop": false,
-                                "progressBar": true,
-                                "positionClass": "toast-top-right",
-                                "preventDuplicates": false,
-                                "onclick": null,
-                                "showDuration": "300",
-                                "hideDuration": "1000",
-                                "timeOut": "3000",
-                                "extendedTimeOut": "1000",
-                                "showEasing": "swing",
-                                "hideEasing": "linear",
-                                "showMethod": "fadeIn",
-                                "hideMethod": "fadeOut"
-                            };
-                            toastr.success(data.msg);
-                            setTimeout(function () {
-                                location.reload();
-                            }, 2000);
-                        },
-                        error: function (xhr, status, error) {
-                            alert(status + " : " + error);
-                        }
-                    });
-                });
+                ajax: {
+                    "url": '{{ URL('userlevel/json2') }}' + '/' + idUser,
+                    "type": "POST",
+                    "headers": {
+                        "X-CSRF-TOKEN": "{{ csrf_token() }}",
+                    },
+                },
 
-                $(".read" + id).change(function () {
-                    var id_menu = $(this).attr("id");
-                    var value = $(".read" + id).is(":checked") ? 1 : 0;
-                    var field = "read";
-                    var level = '{{ Request::segment(3) }}';
-                    $.ajax({
-                        headers: {
-                            'X-CSRF-TOKEN': "{{ csrf_token() }}"
-                        },
-                        url: "{{ URL('userlevel/updateAccess') }}",
-                        type: "PUT",
-                        dataType: "json",
-                        data: "id_menu=" + id_menu + "&level=" + level + "&value=" + value + "&field=" + field,
-                        success: function (data) {
-                            toastr.options = {
-                                "closeButton": false,
-                                "debug": false,
-                                "newestOnTop": false,
-                                "progressBar": true,
-                                "positionClass": "toast-top-right",
-                                "preventDuplicates": false,
-                                "onclick": null,
-                                "showDuration": "300",
-                                "hideDuration": "1000",
-                                "timeOut": "3000",
-                                "extendedTimeOut": "1000",
-                                "showEasing": "swing",
-                                "hideEasing": "linear",
-                                "showMethod": "fadeIn",
-                                "hideMethod": "fadeOut"
-                            };
-                            toastr.success(data.msg);
-                            setTimeout(function () {
-                                location.reload();
-                            }, 2000);
-                        },
-                        error: function (xhr, status, error) {
-                            alert(status + " : " + error);
-                        }
-                    });
-                });
-
-                $(".update" + id).change(function () {
-                    var id_menu = $(this).attr("id");
-                    var value = $(".update" + id).is(":checked") ? 1 : 0;
-                    var field = "update";
-                    var level = '{{ Request::segment(3) }}';
-                    $.ajax({
-                        headers: {
-                            'X-CSRF-TOKEN': "{{ csrf_token() }}"
-                        },
-                        url: "{{ URL('userlevel/updateAccess') }}",
-                        type: "PUT",
-                        dataType: "json",
-                        data: "id_menu=" + id_menu + "&level=" + level + "&value=" + value + "&field=" + field,
-                        success: function (data) {
-                            toastr.options = {
-                                "closeButton": false,
-                                "debug": false,
-                                "newestOnTop": false,
-                                "progressBar": true,
-                                "positionClass": "toast-top-right",
-                                "preventDuplicates": false,
-                                "onclick": null,
-                                "showDuration": "300",
-                                "hideDuration": "1000",
-                                "timeOut": "3000",
-                                "extendedTimeOut": "1000",
-                                "showEasing": "swing",
-                                "hideEasing": "linear",
-                                "showMethod": "fadeIn",
-                                "hideMethod": "fadeOut"
-                            };
-                            toastr.success(data.msg);
-                            setTimeout(function () {
-                                location.reload();
-                            }, 2000);
-                        },
-                        error: function (xhr, status, error) {
-                            alert(status + " : " + error);
-                        }
-                    });
-                });
-
-                $(".delete" + id).change(function () {
-                    var id_menu = $(this).attr("id");
-                    var value = $(".delete" + id).is(":checked") ? 1 : 0;
-                    var field = "delete";
-                    var level = '{{ Request::segment(3) }}';
-                    $.ajax({
-                        headers: {
-                            'X-CSRF-TOKEN': "{{ csrf_token() }}"
-                        },
-                        url: "{{ URL('userlevel/updateAccess') }}",
-                        type: "PUT",
-                        dataType: "json",
-                        data: "id_menu=" + id_menu + "&level=" + level + "&value=" + value + "&field=" + field,
-                        success: function (data) {
-                            toastr.options = {
-                                "closeButton": false,
-                                "debug": false,
-                                "newestOnTop": false,
-                                "progressBar": true,
-                                "positionClass": "toast-top-right",
-                                "preventDuplicates": false,
-                                "onclick": null,
-                                "showDuration": "300",
-                                "hideDuration": "1000",
-                                "timeOut": "3000",
-                                "extendedTimeOut": "1000",
-                                "showEasing": "swing",
-                                "hideEasing": "linear",
-                                "showMethod": "fadeIn",
-                                "hideMethod": "fadeOut"
-                            };
-                            toastr.success(data.msg);
-                            setTimeout(function () {
-                                location.reload();
-                            }, 2000);
-                        },
-                        error: function (xhr, status, error) {
-                            alert(status + " : " + error);
-                        }
-                    });
-                });
+                columns: [
+                    {data: 'DT_RowIndex'},
+                    {data: 'title'},
+                    {data: 'akses'},
+                    {data: 'create'},
+                    {data: 'read'},
+                    {data: 'update'},
+                    {data: 'delete'},
+                ],
             });
 
-            $(".change").change(function () {
+            table.on('change', '.change', function () {
                 var id_menu = $(this).attr("id");
                 var level = '{{ Request::segment(3) }}';
 
@@ -307,5 +108,194 @@
                 });
             });
         });
+
+        function getMenu() {
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                },
+                url: "{{ URL('userlevel/getMenu') }}",
+                type: "GET",
+                dataType: "json",
+                success: function (data) {
+                    $.each(data, function (i) {
+                        crud(data[i].id);
+                    })
+                },
+                error: function (xhr, status, error) {
+                    alert(status + " : " + error);
+                }
+            });
+        }
+
+        function crud(id) {
+            table.on('change', '.create' + id, function () {
+                var id_menu = $(this).attr("id");
+                var value = $(".create" + id).is(":checked") ? 1 : 0;
+                var field = "create";
+                var level = '{{ Request::segment(3) }}';
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                    },
+                    url: "{{ URL('userlevel/updateAccess') }}",
+                    type: "PUT",
+                    dataType: "json",
+                    data: "id_menu=" + id_menu + "&level=" + level + "&value=" + value + "&field=" + field,
+                    success: function (data) {
+                        toastr.options = {
+                            "closeButton": false,
+                            "debug": false,
+                            "newestOnTop": false,
+                            "progressBar": true,
+                            "positionClass": "toast-top-right",
+                            "preventDuplicates": false,
+                            "onclick": null,
+                            "showDuration": "300",
+                            "hideDuration": "1000",
+                            "timeOut": "3000",
+                            "extendedTimeOut": "1000",
+                            "showEasing": "swing",
+                            "hideEasing": "linear",
+                            "showMethod": "fadeIn",
+                            "hideMethod": "fadeOut"
+                        };
+                        toastr.success(data.msg);
+                        setTimeout(function () {
+                            location.reload();
+                        }, 2000);
+                    },
+                    error: function (xhr, status, error) {
+                        alert(status + " : " + error);
+                    }
+                });
+            });
+
+            table.on('change', '.read' + id, function () {
+                var id_menu = $(this).attr("id");
+                var value = $(".read" + id).is(":checked") ? 1 : 0;
+                var field = "read";
+                var level = '{{ Request::segment(3) }}';
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                    },
+                    url: "{{ URL('userlevel/updateAccess') }}",
+                    type: "PUT",
+                    dataType: "json",
+                    data: "id_menu=" + id_menu + "&level=" + level + "&value=" + value + "&field=" + field,
+                    success: function (data) {
+                        toastr.options = {
+                            "closeButton": false,
+                            "debug": false,
+                            "newestOnTop": false,
+                            "progressBar": true,
+                            "positionClass": "toast-top-right",
+                            "preventDuplicates": false,
+                            "onclick": null,
+                            "showDuration": "300",
+                            "hideDuration": "1000",
+                            "timeOut": "3000",
+                            "extendedTimeOut": "1000",
+                            "showEasing": "swing",
+                            "hideEasing": "linear",
+                            "showMethod": "fadeIn",
+                            "hideMethod": "fadeOut"
+                        };
+                        toastr.success(data.msg);
+                        setTimeout(function () {
+                            location.reload();
+                        }, 2000);
+                    },
+                    error: function (xhr, status, error) {
+                        alert(status + " : " + error);
+                    }
+                });
+            });
+
+            table.on('change', '.update' + id, function () {
+                var id_menu = $(this).attr("id");
+                var value = $(".update" + id).is(":checked") ? 1 : 0;
+                var field = "update";
+                var level = '{{ Request::segment(3) }}';
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                    },
+                    url: "{{ URL('userlevel/updateAccess') }}",
+                    type: "PUT",
+                    dataType: "json",
+                    data: "id_menu=" + id_menu + "&level=" + level + "&value=" + value + "&field=" + field,
+                    success: function (data) {
+                        toastr.options = {
+                            "closeButton": false,
+                            "debug": false,
+                            "newestOnTop": false,
+                            "progressBar": true,
+                            "positionClass": "toast-top-right",
+                            "preventDuplicates": false,
+                            "onclick": null,
+                            "showDuration": "300",
+                            "hideDuration": "1000",
+                            "timeOut": "3000",
+                            "extendedTimeOut": "1000",
+                            "showEasing": "swing",
+                            "hideEasing": "linear",
+                            "showMethod": "fadeIn",
+                            "hideMethod": "fadeOut"
+                        };
+                        toastr.success(data.msg);
+                        setTimeout(function () {
+                            location.reload();
+                        }, 2000);
+                    },
+                    error: function (xhr, status, error) {
+                        alert(status + " : " + error);
+                    }
+                });
+            });
+
+            table.on('change', '.delete' + id, function () {
+                var id_menu = $(this).attr("id");
+                var value = $(".delete" + id).is(":checked") ? 1 : 0;
+                var field = "delete";
+                var level = '{{ Request::segment(3) }}';
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                    },
+                    url: "{{ URL('userlevel/updateAccess') }}",
+                    type: "PUT",
+                    dataType: "json",
+                    data: "id_menu=" + id_menu + "&level=" + level + "&value=" + value + "&field=" + field,
+                    success: function (data) {
+                        toastr.options = {
+                            "closeButton": false,
+                            "debug": false,
+                            "newestOnTop": false,
+                            "progressBar": true,
+                            "positionClass": "toast-top-right",
+                            "preventDuplicates": false,
+                            "onclick": null,
+                            "showDuration": "300",
+                            "hideDuration": "1000",
+                            "timeOut": "3000",
+                            "extendedTimeOut": "1000",
+                            "showEasing": "swing",
+                            "hideEasing": "linear",
+                            "showMethod": "fadeIn",
+                            "hideMethod": "fadeOut"
+                        };
+                        toastr.success(data.msg);
+                        setTimeout(function () {
+                            location.reload();
+                        }, 2000);
+                    },
+                    error: function (xhr, status, error) {
+                        alert(status + " : " + error);
+                    }
+                });
+            });
+        }
     </script>
 @endpush

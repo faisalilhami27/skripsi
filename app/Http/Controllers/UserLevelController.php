@@ -41,14 +41,97 @@ class UserLevelController extends Controller
         }
     }
 
+    public function getMenu()
+    {
+        $menu = MenuModel::get();
+        return response()->json($menu);
+    }
+
     public function show(Request $request)
     {
         $params = $request->segment(3);
         $level = UserLevelModel::where('id', $params)->first();
-        $menu = MenuModel::select('id', 'title')->paginate(5);
         $title = "Halaman Hak Akses";
         $deskripsi = "Halaman user level digunakan untuk memberi hak akses untuk user";
-        return view('userlevel.akses', compact('title', 'deskripsi', 'menu', 'level'));
+        return view('userlevel.akses', compact('title', 'deskripsi', 'level', 'params'));
+    }
+
+    public function datatable2($id)
+    {
+        $menu = MenuModel::select('id', 'title')->get();
+        return DataTables::of($menu)->addIndexColumn()
+            ->addColumn('akses', function ($query) use ($id) {
+                return "<label class='switch switch-primary'>
+                            <input class='switch-input change' type='checkbox' id='" . $query->id . "' " . beriAkses($id, $query->id) . ">
+                            <span class='switch-track'></span>
+                            <span class='switch-thumb'></span>
+                        </label>";
+            })
+            ->addColumn('create', function ($query) use ($id) {
+                $akses = cekAkses($id, $query->id);
+                if ($akses == 0) {
+                    return "<label class='switch switch-success'>
+                            <input class='switch-input create" . $query->id . "' type='checkbox' disabled id='" . $query->id . "' " . create($id, $query->id) . ">
+                            <span class='switch-track'></span>
+                            <span class='switch-thumb'></span>
+                        </label>";
+                } else {
+                    return "<label class='switch switch-success'>
+                            <input class='switch-input create" . $query->id . "' type='checkbox' id='" . $query->id . "' " . create($id, $query->id) . ">
+                            <span class='switch-track'></span>
+                            <span class='switch-thumb'></span>
+                        </label>";
+                }
+            })
+            ->addColumn('read', function ($query) use ($id) {
+                $akses = cekAkses($id, $query->id);
+                if ($akses == 0) {
+                    return "<label class='switch switch-warning'>
+                            <input class='switch-input read" . $query->id . "' type='checkbox' disabled id='" . $query->id . "' " . read($id, $query->id) . ">
+                            <span class='switch-track'></span>
+                            <span class='switch-thumb'></span>
+                        </label>";
+                } else {
+                    return "<label class='switch switch-warning'>
+                            <input class='switch-input read" . $query->id . "' type='checkbox' id='" . $query->id . "' " . read($id, $query->id) . ">
+                            <span class='switch-track'></span>
+                            <span class='switch-thumb'></span>
+                        </label>";
+                }
+            })
+            ->addColumn('update', function ($query) use ($id) {
+                $akses = cekAkses($id, $query->id);
+                if ($akses == 0) {
+                    return "<label class='switch switch-info'>
+                            <input class='switch-input update" . $query->id . "' type='checkbox' disabled id='" . $query->id . "' " . update($id, $query->id) . ">
+                            <span class='switch-track'></span>
+                            <span class='switch-thumb'></span>
+                        </label>";
+                } else {
+                    return "<label class='switch switch-info'>
+                            <input class='switch-input update" . $query->id . "' type='checkbox' id='" . $query->id . "' " . update($id, $query->id) . ">
+                            <span class='switch-track'></span>
+                            <span class='switch-thumb'></span>
+                        </label>";
+                }
+            })
+            ->addColumn('delete', function ($query) use ($id) {
+                $akses = cekAkses($id, $query->id);
+                if ($akses == 0) {
+                    return "<label class='switch switch-danger'>
+                            <input class='switch-input delete" . $query->id . "' type='checkbox' disabled id='" . $query->id . "' " . delete($id, $query->id) . ">
+                            <span class='switch-track'></span>
+                            <span class='switch-thumb'></span>
+                        </label>";
+                } else {
+                    return "<label class='switch switch-danger'>
+                            <input class='switch-input delete" . $query->id . "' type='checkbox' id='" . $query->id . "' " . delete($id, $query->id) . ">
+                            <span class='switch-track'></span>
+                            <span class='switch-thumb'></span>
+                        </label>";
+                }
+            })
+            ->rawColumns(['akses', 'create', 'read', 'update', 'delete'])->make(true);
     }
 
     public function edit(Request $request)

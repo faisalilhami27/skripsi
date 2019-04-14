@@ -43,7 +43,7 @@ if (!function_exists('sidebar')) {
                 ->where('is_main_menu', $menu->id)
                 ->get();
             $role = MenuModel::with('roleLevel')
-                ->whereHas('roleLevel', function ($query) use ($idUser){
+                ->whereHas('roleLevel', function ($query) use ($idUser) {
                     $query->where('id_user_level', $idUser);
                 })
                 ->where('is_main_menu', $menu->id)
@@ -144,7 +144,23 @@ if (!function_exists('beriAkses')) {
         $akses = $query->count();
         if ($akses > 0) {
             return "checked='checked'";
+        } else {
+            return $akses;
         }
+    }
+}
+
+if (!function_exists('cekAkses')) {
+    function cekAkses($idUserLevel, $idMenu)
+    {
+        $query = RoleLevelModel::where('id_user_level', $idUserLevel)
+            ->where('id_menu', $idMenu)
+            ->get();
+        $akses = $query->count();
+        if ($akses > 0) {
+            return 1;
+        }
+        return 0;
     }
 }
 
