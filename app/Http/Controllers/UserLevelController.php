@@ -205,7 +205,7 @@ class UserLevelController extends Controller
         if ($update) {
             return response()->json(['status' => 200, 'msg' => 'Data berhasil diubah']);
         } else {
-            return response()->json(['status' => 200, 'msg' => 'Data gagal diubah']);
+            return response()->json(['status' => 500, 'msg' => 'Data gagal diubah']);
         }
     }
 
@@ -241,7 +241,7 @@ class UserLevelController extends Controller
         if ($update) {
             return response()->json(['status' => 200, 'msg' => 'Data berhasil diubah']);
         } else {
-            return response()->json(['status' => 200, 'msg' => 'Data gagal diubah']);
+            return response()->json(['status' => 500, 'msg' => 'Data gagal diubah']);
         }
     }
 }

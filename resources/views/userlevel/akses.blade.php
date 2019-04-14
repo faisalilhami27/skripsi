@@ -80,24 +80,7 @@
                     dataType: "json",
                     data: "id_menu=" + id_menu + "&level=" + level,
                     success: function (data) {
-                        toastr.options = {
-                            "closeButton": false,
-                            "debug": false,
-                            "newestOnTop": false,
-                            "progressBar": true,
-                            "positionClass": "toast-top-right",
-                            "preventDuplicates": false,
-                            "onclick": null,
-                            "showDuration": "300",
-                            "hideDuration": "1000",
-                            "timeOut": "3000",
-                            "extendedTimeOut": "1000",
-                            "showEasing": "swing",
-                            "hideEasing": "linear",
-                            "showMethod": "fadeIn",
-                            "hideMethod": "fadeOut"
-                        };
-                        toastr.success(data.msg);
+                        notification(data.status, data.msg);
                         setTimeout(function () {
                             location.reload();
                         }, 2000);
@@ -143,24 +126,7 @@
                     dataType: "json",
                     data: "id_menu=" + id_menu + "&level=" + level + "&value=" + value + "&field=" + field,
                     success: function (data) {
-                        toastr.options = {
-                            "closeButton": false,
-                            "debug": false,
-                            "newestOnTop": false,
-                            "progressBar": true,
-                            "positionClass": "toast-top-right",
-                            "preventDuplicates": false,
-                            "onclick": null,
-                            "showDuration": "300",
-                            "hideDuration": "1000",
-                            "timeOut": "3000",
-                            "extendedTimeOut": "1000",
-                            "showEasing": "swing",
-                            "hideEasing": "linear",
-                            "showMethod": "fadeIn",
-                            "hideMethod": "fadeOut"
-                        };
-                        toastr.success(data.msg);
+                        notification(data.status, data.msg);
                         setTimeout(function () {
                             location.reload();
                         }, 2000);
@@ -185,24 +151,7 @@
                     dataType: "json",
                     data: "id_menu=" + id_menu + "&level=" + level + "&value=" + value + "&field=" + field,
                     success: function (data) {
-                        toastr.options = {
-                            "closeButton": false,
-                            "debug": false,
-                            "newestOnTop": false,
-                            "progressBar": true,
-                            "positionClass": "toast-top-right",
-                            "preventDuplicates": false,
-                            "onclick": null,
-                            "showDuration": "300",
-                            "hideDuration": "1000",
-                            "timeOut": "3000",
-                            "extendedTimeOut": "1000",
-                            "showEasing": "swing",
-                            "hideEasing": "linear",
-                            "showMethod": "fadeIn",
-                            "hideMethod": "fadeOut"
-                        };
-                        toastr.success(data.msg);
+                        notification(data.status, data.msg);
                         setTimeout(function () {
                             location.reload();
                         }, 2000);
@@ -227,24 +176,7 @@
                     dataType: "json",
                     data: "id_menu=" + id_menu + "&level=" + level + "&value=" + value + "&field=" + field,
                     success: function (data) {
-                        toastr.options = {
-                            "closeButton": false,
-                            "debug": false,
-                            "newestOnTop": false,
-                            "progressBar": true,
-                            "positionClass": "toast-top-right",
-                            "preventDuplicates": false,
-                            "onclick": null,
-                            "showDuration": "300",
-                            "hideDuration": "1000",
-                            "timeOut": "3000",
-                            "extendedTimeOut": "1000",
-                            "showEasing": "swing",
-                            "hideEasing": "linear",
-                            "showMethod": "fadeIn",
-                            "hideMethod": "fadeOut"
-                        };
-                        toastr.success(data.msg);
+                        notification(data.status, data.msg);
                         setTimeout(function () {
                             location.reload();
                         }, 2000);
@@ -269,24 +201,7 @@
                     dataType: "json",
                     data: "id_menu=" + id_menu + "&level=" + level + "&value=" + value + "&field=" + field,
                     success: function (data) {
-                        toastr.options = {
-                            "closeButton": false,
-                            "debug": false,
-                            "newestOnTop": false,
-                            "progressBar": true,
-                            "positionClass": "toast-top-right",
-                            "preventDuplicates": false,
-                            "onclick": null,
-                            "showDuration": "300",
-                            "hideDuration": "1000",
-                            "timeOut": "3000",
-                            "extendedTimeOut": "1000",
-                            "showEasing": "swing",
-                            "hideEasing": "linear",
-                            "showMethod": "fadeIn",
-                            "hideMethod": "fadeOut"
-                        };
-                        toastr.success(data.msg);
+                        notification(data.status, data.msg);
                         setTimeout(function () {
                             location.reload();
                         }, 2000);
