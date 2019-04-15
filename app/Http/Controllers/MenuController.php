@@ -12,7 +12,9 @@ class MenuController extends Controller
 
     public function index()
     {
-        $menu = MenuModel::select('id', 'title')->get();
+        $menu = MenuModel::select('id', 'title')
+            ->where('is_main_menu', 0)
+            ->get();
         $title = "Halaman Kelola Menu";
         $deskripsi = "Halaman kelola menu digunakan untuk mengelola data menu yang digunakan";
         return view('menu.menuView', compact('title', 'deskripsi', 'menu'));
@@ -26,7 +28,7 @@ class MenuController extends Controller
 
     public function store(MenuRequest $request)
     {
-        $title = htmlspecialchars($request->title);
+        $title = htmlspecialchars(ucwords($request->title));
         $url = htmlspecialchars($request->url);
         $icon = htmlspecialchars($request->icon);
         $sub = htmlspecialchars($request->sub);
@@ -66,7 +68,7 @@ class MenuController extends Controller
 
     public function update(MenuRequest $request)
     {
-        $title = htmlspecialchars($request->title);
+        $title = htmlspecialchars(ucwords($request->title));
         $url = htmlspecialchars($request->url);
         $icon = htmlspecialchars($request->icon);
         $sub = htmlspecialchars($request->sub);

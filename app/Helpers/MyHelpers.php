@@ -54,14 +54,14 @@ if (!function_exists('sidebar')) {
                 echo "<li class='sidenav-item has-subnav'>
 						<a href='' aria-haspopup='true'>
 							<span class='sidenav-icon " . $menu->icon . "'></span>
-							<span class='sidenav-label'>" . strtoupper($menu->title) . "</span>
+							<span class='sidenav-label'>" . $menu->title . "</span>
 						</a>
 							<ul class='sidenav level-2 collapse'>";
                 foreach ($role as $sub) {
                     if ($page == $sub->url) {
-                        echo "<li class='active'>" . "<a href='" . URL($sub->url) . "'  style='cursor: pointer'>" . '<span class="' . $sub->icon . '"></span>' . strtoupper($sub->title) . "</a></li>";
+                        echo "<li class='active'>" . "<a href='" . URL($sub->url) . "'  style='cursor: pointer'>" . '<span class="' . $sub->icon . '"></span>' . $sub->title . "</a></li>";
                     } else {
-                        echo "<li>" . "<a href='" . URL($sub->url) . "'  style='cursor: pointer'>" . '<span class="' . $sub->icon . '"></span>' . strtoupper($sub->title) . "</a></li>";
+                        echo "<li>" . "<a href='" . URL($sub->url) . "'  style='cursor: pointer'>" . '<span class="' . $sub->icon . '"></span>' . $sub->title . "</a></li>";
                     }
                 }
                 echo " </ul>
@@ -74,7 +74,7 @@ if (!function_exists('sidebar')) {
                     echo "
 						<a href='" . URL($menu->url) . "'>
 							<span class='sidenav-icon " . $menu->icon . "'><i class=''></i></span>
-                    		<span class='sidenav-label'>" . strtoupper($menu->title) . "</span>
+                    		<span class='sidenav-label'>" . $menu->title . "</span>
 						</a>";
                     echo "</li>";
                 } else {
@@ -82,7 +82,7 @@ if (!function_exists('sidebar')) {
                     echo "
 						<a href='" . URL($menu->url) . "'>
 							<span class='sidenav-icon " . $menu->icon . "'></span>
-                    		<span class='sidenav-label'>" . strtoupper($menu->title) . "</span>
+                    		<span class='sidenav-label'>" . $menu->title . "</span>
 						</a>";
                     echo "</li>";
                 }
