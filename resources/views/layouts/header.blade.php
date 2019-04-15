@@ -182,7 +182,7 @@
                             </a>
                         </li>
                         <li class="visible-xs-block">
-                            <a href="contacts.html">
+                            <a href="">
                                 <span class="icon icon-level-up icon-lg icon-fw"></span>
                                 Version {{ versionApp() }}
                             </a>
@@ -201,7 +201,7 @@
                             </a>
                         </li>
                         <li class="visible-xs-block">
-                            <a href="contacts.html">
+                            <a href="">
                                 <span class="icon icon-level-up icon-lg icon-fw"></span>
                                 Version {{ versionApp() }}
                             </a>
