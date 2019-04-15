@@ -39,7 +39,6 @@ Route::middleware(['checkRole'])->group(function () {
         Route::get('/notif', 'DashboardController@getNotification');
         Route::get('/chart1', 'DashboardController@chartForDataByMonth');
         Route::put('/update', 'DashboardController@updateNotif');
-        Route::get('/chart1', 'DashboardController@chartForDataByMonth');
     });
 
     // modul user level
