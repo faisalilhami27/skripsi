@@ -18,7 +18,7 @@ class DashboardController extends Controller
             ->where('id_jenis', '=', 1)
             ->first()->total;
         $hari2 = PemesananModel::select(DB::raw('count(kode_pemesanan) as total'))
-            ->whereHas('pembayaran', function ($query){
+            ->whereHas('pembayaran', function ($query) {
                 $query->where('id_status', 2);
             })
             ->where('tgl_pemesanan', '=', $date)
@@ -33,7 +33,7 @@ class DashboardController extends Controller
         $token = [
             'Authorization' => 'Bearer ' . env('TOKEN_MOOTA')
         ];
-        $request = $client->get('https://app.moota.co/api/v1/bank/'. env('BANK_ID') .'/mutation', [
+        $request = $client->get('https://app.moota.co/api/v1/bank/' . env('BANK_ID') . '/mutation', [
             'headers' => $token
         ]);
         $response = $request->getBody()->getContents();

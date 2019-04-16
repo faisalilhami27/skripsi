@@ -56,7 +56,9 @@ if (!function_exists('sidebar')) {
 							<span class='sidenav-icon " . $menu->icon . "'></span>
 							<span class='sidenav-label'>" . $menu->title . "</span>
 						</a>
-							<ul class='sidenav level-2 collapse'>";
+							<ul class='sidenav level-2 collapse'>
+							<li class='sidenav-heading'>". $menu->title ."</li>
+							";
                 foreach ($role as $sub) {
                     if ($page == $sub->url) {
                         echo "<li class='active'>" . "<a href='" . URL($sub->url) . "'  style='cursor: pointer'>" . '<span class="' . $sub->icon . '"></span>' . $sub->title . "</a></li>";

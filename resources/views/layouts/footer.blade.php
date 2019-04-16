@@ -1,9 +1,3 @@
-<div class="layout-footer">
-    <div class="layout-footer-body">
-        <small class="version"> Version {{ versionApp() }}</small>
-        <small class="copyright">{{ \Carbon\Carbon::now()->format('Y') }} &copy; Failda Waterpark <a href="https://laravel.com" target="_blank">Powered By Laravel 5.7</a></small>
-    </div>
-</div>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="{{ asset('js/vendor.min.js') }}"></script>
 <script src="{{ asset('js/elephant.min.js') }}"></script>
@@ -31,6 +25,25 @@
     var channel = pusher.subscribe('my-channel1');
     channel.bind('my-event1', function (data) {
         load_unseen_notification();
+    });
+
+    $('#level').change(function (e) {
+        e.preventDefault();
+        var id = $(this).val();
+        $.ajax({
+            headers: {
+                "X-CSRF-TOKEN": "{{ csrf_token() }}",
+            },
+            url: "{{ url('link') }}",
+            type: "GET",
+            data: "id=" + id,
+            dataType: "JSON",
+            success: function (data) {
+                if (data.status == 200) {
+                    $(location).attr('href', "{{ url('dashboard') }}");
+                }
+            },
+        });
     });
 
     function load_unseen_notification() {
