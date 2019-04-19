@@ -4,7 +4,7 @@
         <div class="layout-sidebar-body">
             <div class="custom-scrollbar">
                 <nav id="sidenav" class="sidenav-collapse collapse">
-                    <ul class="sidenav level-1">
+                    <ul class="sidenav level-1 list-menu">
                         <li class="sidenav-search">
                             <form class="sidenav-form" action="">
                                 <div class="form-group form-group-sm">

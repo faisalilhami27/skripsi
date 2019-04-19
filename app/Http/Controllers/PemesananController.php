@@ -10,7 +10,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
-use LaravelQRCode\Facades\QRCode;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use Yajra\DataTables\DataTables;
 
 class PemesananController extends Controller
@@ -60,11 +60,10 @@ class PemesananController extends Controller
             $qrCode = $generate . ".png";
             $path = "storage/qr_code/" . $qrCode;
             Storage::makeDirectory('qr_code');
-            QRCode::text($generate)
-                ->setErrorCorrectionLevel("H")
-                ->setSize(10)
-                ->setOutFile($path)
-                ->png();
+            QrCode::format('png')
+                ->size(500)
+                ->errorCorrection('H')
+                ->generate($generate, $path);
 
             $insert = PemesananModel::create([
                 'kode_pemesanan' => "TRS-" . Carbon::now()->format('m-d') . "-" . $kode,

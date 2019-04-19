@@ -10,10 +10,10 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
-use LaravelQRCode\Facades\QRCode;
 use PHPMailer\PHPMailer\Exception;
 use PHPMailer\PHPMailer\PHPMailer;
 use Pusher\Pusher;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class PemesananController extends Controller
 {
@@ -108,11 +108,10 @@ class PemesananController extends Controller
         $qrCode = $generate . ".png";
         $path = "storage/qr_code/" . $qrCode;
         Storage::makeDirectory('qr_code');
-        QRCode::text($generate)
-            ->setErrorCorrectionLevel("H")
-            ->setSize(10)
-            ->setOutFile($path)
-            ->png();
+        QrCode::format('png')
+            ->size(500)
+            ->errorCorrection('H')
+            ->generate($generate, $path);
 
         DB::beginTransaction();
         try {

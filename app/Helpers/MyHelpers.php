@@ -56,7 +56,7 @@ if (!function_exists('sidebar')) {
 							<span class='sidenav-icon " . $menu->icon . "'></span>
 							<span class='sidenav-label'>" . $menu->title . "</span>
 						</a>
-							<ul class='sidenav level-2 collapse'>
+							<ul class='sidenav level-2 sub-menu collapse'>
 							<li class='sidenav-heading'>". $menu->title ."</li>
 							";
                 foreach ($role as $sub) {

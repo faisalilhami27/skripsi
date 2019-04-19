@@ -27,6 +27,25 @@
         load_unseen_notification();
     });
 
+    $(function() {
+        setNavigation()
+    });
+
+    function setNavigation() {
+        var path = window.location.pathname;
+        path = path[0] == '/' ? path.substr(1) : path; //it will remove the dash in the URL
+
+        $("ul.list-menu .sub-menu a").each(function() {
+            var href = $(this).attr('href');
+            var pathHref = href.split('/').slice(3).join('/');
+
+            if (path === pathHref) {
+                $(this).parent().parent().closest('li').addClass('active');
+                $(this).closest('ul').addClass('in');
+            }
+        });
+    }
+
     $('#level').change(function (e) {
         e.preventDefault();
         var id = $(this).val();
