@@ -7,9 +7,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class KaryawanModel extends Model
 {
-    use SoftDeletes;
-    protected $table = "karyawan";
-    protected $primaryKey = "id";
-    protected $dates = ['deleted_at', 'updated_at', 'created_at'];
-    protected $fillable = ['nama', 'email', 'no_hp'];
+  use SoftDeletes;
+  protected $table = "karyawan";
+  protected $primaryKey = "id";
+  protected $dates = ['deleted_at', 'updated_at', 'created_at'];
+  protected $fillable = ['nama', 'email', 'no_hp'];
+
+  public function kehadiran()
+  {
+    return $this->hasMany(KehadiranModel::class, 'id_karyawan', 'id');
+  }
 }

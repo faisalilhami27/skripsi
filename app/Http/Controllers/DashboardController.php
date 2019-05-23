@@ -38,7 +38,11 @@ class DashboardController extends Controller
         ]);
         $response = $request->getBody()->getContents();
         $decode = json_decode($response);
-        $saldoTerbaru = substr($decode->data[0]->balance, 0, -3);
+        if (!empty($decode->data[0])) {
+            $saldoTerbaru = substr($decode->data[0]->balance, 0, -3);
+        } else {
+            $saldoTerbaru = 0;
+        }
         $title = "Halaman Dashboard";
         $deskripsi = "Halaman Dashboard digunakan untuk melihat statistik";
         return view('dashboard', compact('title', 'deskripsi', 'hari', 'hari2', 'saldoTerbaru', 'totalUang'));

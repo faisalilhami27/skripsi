@@ -6,6 +6,7 @@
  * Time: 14:13
  */
 
+use App\Models\KehadiranModel;
 use App\Models\KonfigurasiModel;
 use App\Models\MenuModel;
 use App\Models\PemesananModel;
@@ -37,7 +38,7 @@ if (!function_exists('sidebar')) {
 
         $idUser = Session::get('id_user_level');
         $mainMenu = $sqlMenu;
-        $page = Request::segment(1);
+        $page = Request::segment(1) . '/' . Request::segment(2);
         foreach ($mainMenu as $menu) {
             $subMenu = MenuModel::where('is_aktif', 'y')
                 ->where('is_main_menu', $menu->id)
@@ -328,4 +329,75 @@ if (!function_exists('decryptString')) {
 
         return $output;
     }
+}
+
+if (!function_exists('monthConverter')) {
+  function monthConverter($param)
+  {
+    switch ($param) {
+      case '1':
+        $value = 'Januari';
+        break;
+      case '2':
+        $value = 'Februari';
+        break;
+      case '3':
+        $value = 'Maret';
+        break;
+      case '4':
+        $value = 'April';
+        break;
+      case '5':
+        $value = 'Mei';
+        break;
+      case '6':
+        $value = 'Juni';
+        break;
+      case '7':
+        $value = 'Juli';
+        break;
+      case '8':
+        $value = 'Agustus';
+        break;
+      case '9':
+        $value = 'September';
+        break;
+      case '10':
+        $value = 'Oktober';
+        break;
+      case '11':
+        $value = 'November';
+        break;
+      case '12':
+        $value = 'Desember';
+        break;
+    }
+    return $value;
+  }
+}
+
+if (!function_exists('cekStatusKehadiranKaryawan')) {
+  function cekStatusKehadiranKaryawan($id)
+  {
+    $month = date('m');
+    $kehadiran = KehadiranModel::where('id_karyawan', $id)
+      ->whereMonth('tanggal', '=', $month)
+      ->get();
+
+    return $kehadiran;
+  }
+}
+
+if (!function_exists('countStatusKehadiranKaryawan')) {
+  function countStatusKehadiranKaryawan($id, $status)
+  {
+    $count = 0;
+    $month = date('m');
+    $kehadiran = KehadiranModel::where('id_karyawan', $id)
+      ->where('status', $status)
+      ->whereMonth('tanggal', $month);
+
+    $count += $kehadiran->count();
+    return $count;
+  }
 }

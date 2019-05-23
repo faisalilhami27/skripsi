@@ -41,6 +41,7 @@
 
             if (path === pathHref) {
                 $(this).parent().parent().closest('li').addClass('active');
+                $(this).parent().parent().closest('li').addClass('open');
                 $(this).closest('ul').addClass('in');
             }
         });
