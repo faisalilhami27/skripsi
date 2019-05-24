@@ -22,7 +22,9 @@ class MenuController extends Controller
 
     public function datatable()
     {
-        $menu = MenuModel::select("id", "title", "url", "icon", "is_main_menu", "is_aktif", "order_num")->get();
+        $menu = MenuModel::select("id", "title", "url", "icon", "is_main_menu", "is_aktif", "order_num")
+          ->orderBy('id', 'DESC')
+          ->get();
         return DataTables::of($menu)->addIndexColumn()->make(true);
     }
 
