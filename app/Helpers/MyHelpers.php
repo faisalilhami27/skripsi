@@ -38,7 +38,8 @@ if (!function_exists('sidebar')) {
 
         $idUser = Session::get('id_user_level');
         $mainMenu = $sqlMenu;
-        $page = Request::segment(1) . '/' . Request::segment(2);
+        $page = Request::segment(1);
+        $subPage = Request::segment(1) . '/' . Request::segment(2);
         foreach ($mainMenu as $menu) {
             $subMenu = MenuModel::where('is_aktif', 'y')
                 ->where('is_main_menu', $menu->id)
@@ -61,7 +62,7 @@ if (!function_exists('sidebar')) {
 							<li class='sidenav-heading'>". $menu->title ."</li>
 							";
                 foreach ($role as $sub) {
-                    if ($page == $sub->url) {
+                    if ($subPage == $sub->url) {
                         echo "<li class='active'>" . "<a href='" . URL($sub->url) . "'  style='cursor: pointer'>" . '<span class="' . $sub->icon . '"></span>' . $sub->title . "</a></li>";
                     } else {
                         echo "<li>" . "<a href='" . URL($sub->url) . "'  style='cursor: pointer'>" . '<span class="' . $sub->icon . '"></span>' . $sub->title . "</a></li>";

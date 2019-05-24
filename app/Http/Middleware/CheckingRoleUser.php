@@ -7,6 +7,7 @@ use App\Models\RoleLevelModel;
 use App\Models\UserModel;
 use Closure;
 use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Session;
 
 class CheckingRoleUser
 {
@@ -27,12 +28,12 @@ class CheckingRoleUser
         } else if (is_null($user)) {
             return redirect('auth');
         } else {
-            $modul = Request::segment(1);
+            $modul = getIdMenu();
             if ($modul == "") {
-                $modul = "dashboard";
+                $modul = "1";
             }
             $idUserLevel = $request->session()->get('id_user_level');
-            $menu = MenuModel::where('url', $modul)->first();
+            $menu = MenuModel::where('id', $modul)->first();
             $idMenu = $menu['id'];
             $hakAkses = RoleLevelModel::where('id_menu', $idMenu)
                 ->where('id_user_level', $idUserLevel)
