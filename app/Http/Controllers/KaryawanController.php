@@ -32,11 +32,13 @@ class KaryawanController extends Controller
         $nama = htmlspecialchars($request->nama);
         $email = htmlspecialchars($request->email);
         $noHp = htmlspecialchars($request->noHp);
+        $status = $request->status;
 
         $insert = KaryawanModel::create([
             'nama' => $nama,
             'email' => $email,
-            'no_hp' => $noHp
+            'no_hp' => $noHp,
+            'status' => $status,
         ]);
 
         if ($insert) {

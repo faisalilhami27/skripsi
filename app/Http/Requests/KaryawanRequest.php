@@ -26,7 +26,8 @@ class KaryawanRequest extends FormRequest
         return [
             'nama' => 'required|max:50|regex:/^[a-zA-Z ]*$/',
             'email' => 'required|email|max:60',
-            'noHp' => 'required|numeric'
+            'noHp' => 'required|numeric',
+            'status' => 'required'
         ];
     }
 }

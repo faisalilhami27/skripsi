@@ -25,6 +25,7 @@
                                         <th>Nama Lengkap</th>
                                         <th>Email</th>
                                         <th>No HP</th>
+                                        <th>Status Karyawan</th>
                                         <th>Aksi</th>
                                     </tr>
                                     </thead>
@@ -72,6 +73,17 @@
                                        placeholder="Masukan nomor hp" maxlength="15" autocomplete="off">
                                 <span class="text-danger">
                                     <strong id="noHp-error"></strong>
+                                </span>
+                            </div>
+                            <div class="form-group">
+                                <label for="no_hp">Status</label>
+                                <select name="status" id="status" class="form-control">
+                                    <option value="">Pilih Status</option>
+                                    <option value="1">Aktif</option>
+                                    <option value="0">Tidak Aktif</option>
+                                </select>
+                                <span class="text-danger">
+                                    <strong id="status-error"></strong>
                                 </span>
                             </div>
                         </div>
@@ -122,6 +134,17 @@
                                     <strong class="noHp-error"></strong>
                                 </span>
                             </div>
+                            <div class="form-group">
+                                <label for="no_hp">Status</label>
+                                <select name="upd_status" id="upd_status" class="form-control">
+                                    <option value="">Pilih Status</option>
+                                    <option value="1">Aktif</option>
+                                    <option value="0">Tidak Aktif</option>
+                                </select>
+                                <span class="text-danger">
+                                    <strong class="status-error"></strong>
+                                </span>
+                            </div>
                         </div>
                         <div class="modal-footer">
                             <button class="btn btn-default" data-dismiss="modal" type="button">Cancel</button>
@@ -151,6 +174,14 @@
                         return 'Tidak mempunyai akses';
                     }
                 },
+
+                status: function (row, type, data) {
+                    if (data.status == 1) {
+                        return '<span class="label label-success">Aktif</span>';
+                    } else {
+                        return '<span class="label label-danger">Tidak Aktif</span>';
+                    }
+                }
             };
 
             //	//datatables
@@ -174,6 +205,7 @@
                     {data: 'nama'},
                     {data: 'email'},
                     {data: 'no_hp'},
+                    {data: 'status', render: styles.status},
                     {data: 'action', orderable: false, render: styles.button}
 
                 ],
@@ -194,6 +226,7 @@
                             $("#upd_nama").val(data.list.nama);
                             $("#upd_email").val(data.list.email);
                             $("#upd_no_hp").val(data.list.no_hp);
+                            $("#upd_status").val(data.list.status);
                         } else {
                             notification(data.status, data.msg);
                         }
@@ -209,7 +242,8 @@
                 var nama = $("#nama").val(),
                     email = $("#email").val(),
                     no_hp = $("#no_hp").val(),
-                    sendData = "nama=" + nama + "&email=" + email + "&noHp=" + no_hp;
+                    status = $("#status").val(),
+                    sendData = "nama=" + nama + "&email=" + email + "&noHp=" + no_hp + "&status=" + status;
 
                 $.ajax({
                     headers: {
@@ -248,8 +282,9 @@
                 var nama = $("#upd_nama").val(),
                     email = $("#upd_email").val(),
                     no_hp = $("#upd_no_hp").val(),
+                    status = $("#upd_status").val(),
                     id = $("#id").val(),
-                    sendData = "id=" + id + "&nama=" + nama + "&email=" + email + "&noHp=" + no_hp;
+                    sendData = "id=" + id + "&nama=" + nama + "&email=" + email + "&noHp=" + no_hp + "&status=" + status;
                 $.ajax({
                     headers: {
                         'X-CSRF-TOKEN': "{{ csrf_token() }}"

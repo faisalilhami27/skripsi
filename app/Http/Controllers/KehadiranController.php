@@ -85,7 +85,9 @@ class KehadiranController extends Controller
 
   public function datatable1()
   {
-    $karyawan = KaryawanModel::where('id', '!=', 1)->get();
+    $karyawan = KaryawanModel::where('id', '!=', 1)
+      ->where('status', 1)
+      ->get();
     return DataTables::of($karyawan)->addIndexColumn()->make(true);
   }
 
@@ -207,7 +209,9 @@ class KehadiranController extends Controller
   {
     $monthName = date('n');
     $name = "Rekapitulasi Kehadiran Karyawan bulan " . monthConverter($monthName) . ".pdf";
-    $karyawan = KaryawanModel::where('id', '!=', 1)->get();
+    $karyawan = KaryawanModel::where('id', '!=', 1)
+      ->where('status', 1)
+      ->get();
     $pdf = App::make('dompdf.wrapper');
     $pdf->setPaper('A4', 'landscape');
     $pdf->loadView("cetak/cetak_kehadiran", compact('karyawan'));

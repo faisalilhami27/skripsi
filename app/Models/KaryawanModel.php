@@ -11,7 +11,7 @@ class KaryawanModel extends Model
   protected $table = "karyawan";
   protected $primaryKey = "id";
   protected $dates = ['deleted_at', 'updated_at', 'created_at'];
-  protected $fillable = ['nama', 'email', 'no_hp'];
+  protected $fillable = ['nama', 'email', 'no_hp', 'status'];
 
   public function kehadiran()
   {
