@@ -89,7 +89,7 @@
                 },
 
                 status: function (row, type, data) {
-                    if (data.status == 0) {
+                    if (data.status == 'n') {
                         return '<center><span class="label label-danger">Belum diverifikasi</span></center>';
                     } else {
                         return '<center><span class="label label-success">Sudah diverifikasi</span></center>';
