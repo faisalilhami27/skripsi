@@ -12,6 +12,8 @@
       font-family: Arial;
       text-align: center;
       font-weight: bold;
+      margin-left: -12px;
+      margin-right: 12px;
     }
 
     .alamat {
