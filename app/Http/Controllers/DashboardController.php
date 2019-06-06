@@ -50,7 +50,7 @@ class DashboardController extends Controller
 
     public function chartForDataByDay()
     {
-        $data = PemesananModel::select(DB::raw('DAY(tgl_pemesanan) AS tanggal, COUNT(*) AS jumlah'))
+        $data = PemesananModel::select(DB::raw('DAY(tgl_pemesanan) AS tanggal, SUM(*) AS jumlah'))
             ->whereRaw('MONTH(tgl_pemesanan) = MONTH(CURDATE())')
             ->groupBy(DB::raw('tgl_pemesanan'))
             ->get();
@@ -59,7 +59,7 @@ class DashboardController extends Controller
 
     public function chartForDataByMonth()
     {
-        $data = PemesananModel::select(DB::raw('MONTHNAME(tgl_pemesanan) AS bulan, COUNT(*) AS jumlah'))
+        $data = PemesananModel::select(DB::raw('MONTHNAME(tgl_pemesanan) AS bulan, SUM(*) AS jumlah'))
             ->whereRaw('YEAR(tgl_pemesanan) = YEAR(CURDATE())')
             ->groupBy(DB::raw('MONTH(tgl_pemesanan)'))
             ->get();
