@@ -8,7 +8,13 @@
                         <div class="card-values">
                             <div class="p-x">
                                 <small>Penjualan Tiket Per Hari</small>
-                                <h3 class="card-title fw-l">{{ $hari }}</h3>
+                                <h3 class="card-title fw-l">
+                                    @if($hari == 0)
+                                        {{ 0 }}
+                                    @else
+                                        {{ $hari }}
+                                    @endif
+                                </h3>
                             </div>
                         </div>
                         <div class="card-chart">
@@ -44,7 +50,13 @@
                         <div class="card-values">
                             <div class="p-x">
                                 <small>Penjualan Tiket Online Per Hari</small>
-                                <h3 class="card-title fw-l">{{ $hari2 }}</h3>
+                                <h3 class="card-title fw-l">
+                                    @if($hari2 == 0)
+                                        {{ 0 }}
+                                    @else
+                                        {{ $hari2 }}
+                                    @endif
+                                </h3>
                             </div>
                         </div>
                         <div class="card-chart">
