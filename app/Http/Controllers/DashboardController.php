@@ -59,7 +59,7 @@ class DashboardController extends Controller
 
     public function chartForDataByMonth()
     {
-        $data = PemesananModel::select(DB::raw('MONTHNAME(tgl_pemesanan) AS bulan, AVG(jumlah_tiket) AS jumlah'))
+        $data = PemesananModel::select(DB::raw('MONTHNAME(tgl_pemesanan) AS bulan, SUM(jumlah_tiket) AS jumlah'))
             ->whereRaw('YEAR(tgl_pemesanan) = YEAR(CURDATE())')
             ->groupBy(DB::raw('MONTH(tgl_pemesanan)'))
             ->get();
