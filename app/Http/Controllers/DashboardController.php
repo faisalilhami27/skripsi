@@ -13,11 +13,11 @@ class DashboardController extends Controller
     public function index()
     {
         $date = Carbon::now()->format("Y-m-d");
-        $hari = PemesananModel::select(DB::raw('count(kode_pemesanan) as total'))
+        $hari = PemesananModel::select(DB::raw('sum(jumlah_tiket) as total'))
             ->where('tgl_pemesanan', '=', $date)
             ->where('id_jenis', '=', 1)
             ->first()->total;
-        $hari2 = PemesananModel::select(DB::raw('count(kode_pemesanan) as total'))
+        $hari2 = PemesananModel::select(DB::raw('sum(jumlah_tiket) as total'))
             ->whereHas('pembayaran', function ($query) {
                 $query->where('id_status', 2);
             })
