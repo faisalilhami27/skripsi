@@ -81,6 +81,7 @@ class PemesananController extends Controller
             KonfirmasiPembayaranModel::create([
                 'kode_pemesanan' => $insert->kode_pemesanan,
                 'bukti_pembayaran' => null,
+                'batas_pembayaran' => date('Y-m-d H:i:s'),
                 'id_status' => 2
             ]);
         }
