@@ -17,8 +17,7 @@
                                         <select name="" id="level" class="form-control" style="color: #fff">
                                             @foreach(App\Models\ChooseRoleModel::with('role')->where('id_karyawan', Session::get('id_users'))->get() as $r)
                                                 @if(!empty(Session::get('id_role')) && Session::get('id_role') == $r->id)
-                                                    <option value="{{ $r->id_user_level }}"
-                                                            selected>{{ $r->role->nama_level }}</option>
+                                                    <option value="{{ $r->id_user_level }}" selected>{{ $r->role->nama_level }}</option>
                                                 @else
                                                     <option value="{{ $r->id_user_level }}">{{ $r->role->nama_level }}</option>
                                                 @endif
