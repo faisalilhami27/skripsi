@@ -27,7 +27,7 @@ class MenuRequest extends FormRequest
             return [
                 'title' => 'required|max:30|regex:/^[a-zA-Z ]*$/',
                 'url' => 'required|max:30|regex:/^[a-zA-Z#-.\/]*$/',
-                'icon' => 'required|max:30',
+                'icon' => 'required|max:30||regex:/^[a-zA-Z- ]*$/',
                 'is_main_menu' => 'required',
                 'is_aktif' => 'required'
             ];
@@ -35,7 +35,7 @@ class MenuRequest extends FormRequest
             return [
                 'title' => 'required|max:30|regex:/^[a-zA-Z ]*$/',
                 'url' => 'required|max:30|regex:/^[a-zA-Z#-.\/]*$/',
-                'icon' => 'required|max:30',
+                'icon' => 'required|max:30||regex:/^[a-zA-Z- ]*$/',
                 'nomor' => 'required|max:4|regex:/^[0-9]*$/',
                 'is_main_menu' => 'required',
                 'is_aktif' => 'required'
