@@ -16,7 +16,8 @@ class KaryawanSeeder extends Seeder
             [
                 'nama' => "Muhamad Faisal Ilhami Akbar",
                 'email' => 'faisal.ilhami1997@gmail.com',
-                'no_hp' => '085795118959'
+                'no_hp' => '085795118959',
+                'status' => 1
             ],
         ]);
     }

@@ -24,8 +24,10 @@ class AuthController extends Controller
         $password = htmlspecialchars($request->password);
         $user = UserModel::with('karyawan')
             ->where('username', $username)->first();
-        if (is_null($user['username'])) {
-            return response()->json(['status' => 500, 'msg' => 'Username anda tidak terdaftar']);
+        if (is_null($user->karyawan->status == 0)) {
+            return response()->json(['status' => 500, 'msg' => 'Status karyawan tidak aktif']);
+        } else if (is_null($user['username'])) {
+          return response()->json(['status' => 500, 'msg' => 'Username anda tidak terdaftar']);
         } else if (is_null($user)) {
             return response()->json(['status' => 500, 'msg' => 'Akun anda sudah dihapus oleh pihak perusahaan']);
         } else {

@@ -201,6 +201,8 @@ class PemesananController extends Controller
                 return response()->json(['result' => '', 'status' => 500, 'msg' => 'Tidak diperbolehkan masuk karena melebihi batas tanggal yang sudah ditentukan yaitu tanggal ' . $nextDay . '']);
             } else if ($getData->pembayaran->id_status == 1) {
                 return response()->json(['result' => '', 'status' => 500, 'msg' => 'Anda belum melakukan pembayaran']);
+            } else if ($getData->pembayaran->id_status == 3) {
+                return response()->json(['result' => '', 'status' => 500, 'msg' => 'Proses pembayaran terdapat kesalahan']);
             } elseif ($getData->status_penggunaan == 1) {
                 return response()->json(['result' => 'Data Kosong', 'status' => 500, 'msg' => 'QR Code sudah digunakan']);
             } else {
