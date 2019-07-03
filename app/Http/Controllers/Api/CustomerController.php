@@ -40,7 +40,7 @@ class CustomerController extends Controller
                 $data = [
                     'nama' => $nama,
                     'no_hp' => $noHp,
-                    'images' => url('storage') . "/" . $file->store('img', 'public')
+                    'images' => url('storage') . "/" . $file->store('img' . '/'. $checkData->username, 'public')
                 ];
 
                 $update = CustomerModel::where('id', $id)->update($data);
