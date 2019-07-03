@@ -36,26 +36,14 @@ class CustomerController extends Controller
                 if ($file->getSize() > $size) {
                     return response()->json(["status" => 500, "msg" => "Maximum file 1 MB"]);
                 }
-                $images = $checkData->images;
-                if (is_null($images)) {
-                    $data = [
-                        'nama' => $nama,
-                        'no_hp' => $noHp,
-                        'images' => url('storage') . "/" . $file->store('img', 'public')
-                    ];
 
-                    $update = CustomerModel::where('id', $id)->update($data);
-                } else {
-                    $pathDelete = str_replace(url('') . '/', '', $images);
-                    unlink($pathDelete);
-                    $data = [
-                        'nama' => $nama,
-                        'no_hp' => $noHp,
-                        'images' => url('storage') . "/" . $file->store('img', 'public')
-                    ];
+                $data = [
+                    'nama' => $nama,
+                    'no_hp' => $noHp,
+                    'images' => url('storage') . "/" . $file->store('img', 'public')
+                ];
 
-                    $update = CustomerModel::where('id', $id)->update($data);
-                }
+                $update = CustomerModel::where('id', $id)->update($data);
             } else {
                 $data = [
                     'nama' => $nama,
