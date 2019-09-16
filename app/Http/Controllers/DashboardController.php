@@ -29,23 +29,9 @@ class DashboardController extends Controller
             ->where('id_jenis', '=', 1)
             ->first()->total;
 
-        $client = new \GuzzleHttp\Client();
-        $token = [
-            'Authorization' => 'Bearer ' . env('TOKEN_MOOTA')
-        ];
-        $request = $client->get('https://app.moota.co/api/v1/bank/' . env('BANK_ID') . '/mutation', [
-            'headers' => $token
-        ]);
-        $response = $request->getBody()->getContents();
-        $decode = json_decode($response);
-        if (!empty($decode->data[0])) {
-            $saldoTerbaru = substr($decode->data[0]->balance, 0, -3);
-        } else {
-            $saldoTerbaru = 0;
-        }
         $title = "Halaman Dashboard";
         $deskripsi = "Halaman Dashboard digunakan untuk melihat statistik";
-        return view('dashboard', compact('title', 'deskripsi', 'hari', 'hari2', 'saldoTerbaru', 'totalUang'));
+        return view('dashboard', compact('title', 'deskripsi', 'hari', 'hari2', 'totalUang'));
     }
 
     public function chartForDataByDay()

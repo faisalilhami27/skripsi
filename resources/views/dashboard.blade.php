@@ -74,7 +74,7 @@
                         <div class="card-values">
                             <div class="p-x">
                                 <small>Saldo Terbaru di Bank</small>
-                                <h3 class="card-title fw-l">Rp. {{ number_format($saldoTerbaru, 0, ".", ".") }}</h3>
+                                <h3 class="card-title fw-l">Rp. 0</h3>
                             </div>
                         </div>
                         <div class="card-chart">

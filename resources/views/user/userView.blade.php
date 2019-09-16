@@ -254,6 +254,7 @@
                     data: "id=" + id,
                     dataType: 'json',
                     success: function (data) {
+                         console.log(data.level);
                         if (data.status == 200) {
                             $("#id_users").val(data.user.id);
                             $("#upd_level").select2().val(data.level).trigger('change');
