@@ -44,7 +44,7 @@
                 <div class="form-group">
                     <label for="username">Username</label>
                     <div class="input-with-icon">
-                        <input id="username" class="form-control" placeholder="Username: faisal27" type="text" name="username" maxlength="20" autocomplete="off" autofocus required>
+                        <input id="username" class="form-control" placeholder="Username demo: faisal27" type="text" name="username" maxlength="20" autocomplete="off" autofocus required>
                         <span class="icon icon-user input-icon"></span>
                         <span class="text-danger">
                             <strong id="username-error"></strong>
@@ -54,7 +54,7 @@
                 <div class="form-group">
                     <label for="password">Password</label>
                     <div class="input-with-icon">
-                        <input id="password" placeholder="Password: barca1899" class="form-control" type="password" maxlength="12" name="password" required>
+                        <input id="password" placeholder="Password demo: barca1899" class="form-control" type="password" maxlength="12" name="password" required>
                         <span class="icon icon-lock input-icon"></span>
                         <span class="text-danger">
                             <strong id="password-error"></strong>
