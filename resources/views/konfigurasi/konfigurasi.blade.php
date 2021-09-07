@@ -146,7 +146,7 @@
                                             <div class="col-sm-8">
                                                 <div class="input-with-icon">
                                                     <div class="input-group input-file" >
-                                                        <input class="form-control" disabled type="text" placeholder="No file chosen" style="width: 283px; background-color: rgba(0,0,0, 0.1)">
+                                                        <input class="form-control" disabled type="text" placeholder="No file chosen" style="background-color: rgba(0,0,0, 0.1)">
                                                         <span class="icon icon-paperclip input-icon"></span>
                                                         <span class="input-group-btn">
                                                       <label class="btn btn-primary file-upload-btn">
